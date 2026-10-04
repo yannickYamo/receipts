@@ -1,0 +1,28 @@
+Monday.com Ltd. (styled in lowercase as monday.com) is an Israeli software company based in Tel Aviv. It develops work management software. The platform was launched in 2014 and relaunched in July 2019. The company went public in June 2021.
+
+
+== History ==
+The company began in 2012 as DaPulse, before renaming itself  Monday.com in 2017. Its product was initially developed on Wix.com since 2010, before spun off as a separate startup in 2012, with Wix as its first customer and supporter. DaPulse raised $1.5 million in seed funding that August, before commercially launching its product in 2014.
+In June 2020, monday.com released its API to third-party developers. monday.com's open API allows users to build on the platform capabilities. Use cases include custom views, dashboard widgets, automations, and integrations with other work apps. The company went public on June 10, 2021, As of 2025, the company reported it had 2,508 employees, and was serving over 245,000 customers. Co-founders Eran Zinman and Roy Mann serve as co-CEOs.
+In February 2026, monday.com's stock dropped 21% amid broader investor concerns about agentic AI tools potentially disrupting traditional SaaS work management platforms, in what was termed "SaaS-Pocolypse". The company's co-CEO Eran Zinman stated the company did not see "any impact currently from any AI company" and was shifting its product to be more AI-native.
+In June 2026, the company launched Monday Ventures, a venture capital firm investing in Israeli technology startups.
+In July 2026,  monday.com fired 20 percent of its work force in the wake of AI restructuring. 
+
+
+== Product ==
+Monday.com develops work management software, with no code development features.
+The company uses agentic AI, including a context aware AI assistant, and AI-based workflow and coding tools.
+
+
+== See also ==
+Comparison of project management software
+List of collaborative software
+
+
+== References ==
+
+
+== External links ==
+Official website
+Productivity tool Reviews
+Business data for Monday.com Ltd.:

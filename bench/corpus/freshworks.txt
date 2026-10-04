@@ -1,0 +1,24 @@
+Freshworks Inc. is a cloud-based software-as-a-service company, founded in 2010 in Chennai, India. The company provides cloud-based tools for customer relationship management (CRM), IT service management (ITSM), and e-commerce marketing. 
+In its initial public offering, Freshworks raised $1.03 billion following earlier funding rounds from venture capital firms such as Accel and Google's venture capital fund, CapitalG.
+
+
+== History ==
+Freshworks was founded in 2010 by former Zoho employees Girish Mathrubootham and Shan Krishnasamy in Chennai, India, as Freshdesk. The company moved their headquarters to San Mateo, California, in 2018. The company focuses on developing cloud-based customer service software and has undergone multiple rounds of funding from investors such as Accel, Tiger Global Management, and Sequoia Capital.
+Freshworks acquired three other companies, 1CLICK.io, Konotor, and Frilp, in 2015. In 2016, the company launched its second product, Freshsales, a customer relationship management (CRM) software.
+In 2014, it launched Freshservice, an ITSM that offers software and hardware asset management, incident management, and service request tracking services.
+In 2017, Freshdesk changed its name to Freshworks Inc. 
+In 2020 Zoho accused Freshworks of stealing Zoho's intellectual property, and the lawsuit was settled in 2021.
+Freshworks acquired Device42, an American IT-management firm, for $230 million in May 2024. In the same month, Mathrubootham transitioned to the role of executive chairman, with Dennis Woodside succeeding him as CEO.
+In December 2025, Freshworks agreed to acquire FireHydrant, an incident management platform powered by artificial intelligence, to expand its IT service management portfolio; the acquisition closed in January 2026. Freshworks reported 2025 as its first GAAP-profitable year, with net income of $183.7 million on revenue of $838.8 million.
+In March 2026, the company appointed Ian Tickle as chief revenue officer.
+In April 2026, the company introduced a new product called ITAM (short for "IT Asset Management"), which manages a company's entire technology stack. It replaced their existing tool, now renamed "IT Asset Management- Classic", and was made available to a part of the company's userbase.
+
+
+== See also ==
+Intercom, Inc.
+LivePerson
+Text
+Zendesk
+
+
+== References ==

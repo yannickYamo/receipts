@@ -1,0 +1,301 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "cost_usd_list_price": 0.1264,
+ "verdicts": {
+  "f1": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f2": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f3": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f4": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f5": {
+   "kept": false,
+   "reason": "beyond_quote",
+   "detail": "29% of its words are in the quote"
+  },
+  "f6": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "what product/service the $29 is for (Freddy AI Copilot add-on)"
+  },
+  "f7": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f8": {
+   "kept": false,
+   "reason": "figure_not_in_quote",
+   "detail": "2, 7, 12"
+  },
+  "f9": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that this applies on all plans"
+  },
+  "f10": {
+   "kept": false,
+   "reason": "figure_not_in_quote",
+   "detail": "5000"
+  },
+  "f11": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f12": {
+   "kept": false,
+   "reason": "beyond_quote",
+   "detail": "33% of its words are in the quote"
+  },
+  "f13": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f14": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f15": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f16": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f17": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f18": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f19": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f20": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f21": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f22": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f23": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f24": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f25": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f26": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f27": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f28": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f29": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f30": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f31": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f32": {
+   "kept": false,
+   "reason": "beyond_quote",
+   "detail": "27% of its words are in the quote"
+  },
+  "f33": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that it is an add-on"
+  },
+  "f34": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that it is an add-on"
+  },
+  "f35": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f36": {
+   "kept": false,
+   "reason": "figure_not_in_quote",
+   "detail": "2"
+  },
+  "f37": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that the access is provided as part of a free trial"
+  },
+  "f38": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f39": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f40": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f41": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f42": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f43": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f44": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f45": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f46": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f47": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f48": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that this is listed as a con"
+  },
+  "f49": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f50": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "the explicit framing that this is what Zendesk is 'best for'"
+  },
+  "f51": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f52": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f53": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f54": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f55": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f56": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f57": {
+   "kept": true,
+   "reason": "ok",
+   "detail": ""
+  },
+  "f58": {
+   "kept": false,
+   "reason": "polarity_mismatch",
+   "detail": ""
+  },
+  "f59": {
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that Zendesk Marketplace requires this; identification of publishers as the subject"
+  }
+ }
+}

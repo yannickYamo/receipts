@@ -1,0 +1,85 @@
+{
+ "round": "round2",
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "types": {
+  "clean": {
+   "n": 60,
+   "left_alone": 52,
+   "cut_by": {
+    "figure_not_in_quote": 1,
+    "beyond_quote": 5,
+    "polarity_mismatch": 2
+   },
+   "false_cuts": [
+    "r2-clean-008",
+    "r2-clean-016",
+    "r2-clean-018",
+    "r2-clean-024",
+    "r2-clean-029",
+    "r2-clean-036",
+    "r2-clean-041",
+    "r2-clean-057"
+   ]
+  },
+  "wrong_figure": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "figure_not_in_quote": 10
+   },
+   "missed": []
+  },
+  "fabricated_quote": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "quote_not_in_source": 10
+   },
+   "missed": []
+  },
+  "polarity": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "not_stated": 4,
+    "polarity_mismatch": 4,
+    "beyond_quote": 1,
+    "figure_not_in_quote": 1
+   },
+   "missed": []
+  },
+  "wrong_company": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "wrong_subject": 8,
+    "not_stated": 2
+   },
+   "missed": []
+  },
+  "beyond_quote": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "not_stated": 8,
+    "beyond_quote": 1,
+    "figure_not_in_quote": 1
+   },
+   "missed": []
+  },
+  "meaning_changed": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "not_stated": 10
+   },
+   "missed": []
+  }
+ },
+ "cost_usd_list_price": 0.1834,
+ "model_calls": 8,
+ "invented": {
+  "n": 60,
+  "caught": 60
+ }
+}

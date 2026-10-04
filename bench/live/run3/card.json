@@ -1,0 +1,995 @@
+{
+ "us": "Freshdesk",
+ "them": "Zendesk",
+ "backend": "claude-code (sonnet)",
+ "stats": {
+  "pages_read": 6,
+  "pages_unread": 2,
+  "facts_proposed": 59,
+  "facts_supported": 44,
+  "facts_cut": 15,
+  "facts_cut_by_reason": {
+   "beyond_quote": 3,
+   "not_stated": 8,
+   "figure_not_in_quote": 3,
+   "polarity_mismatch": 1
+  },
+  "lines_written": 24,
+  "lines_kept": 18,
+  "lines_cut": 6,
+  "model_calls": 18,
+  "cost_usd": 0.7108
+ },
+ "sources": [
+  {
+   "id": "e5db17199",
+   "url": "https://www.freshworks.com/freshdesk/pricing/",
+   "title": "Freshdesk Customer Support Software Pricing & Plans | Freshworks",
+   "fetched_at": "2026-10-04T06:23:49+00:00",
+   "sha256": "643cb9cea82bb3301e1368b42a6327487a598f29a30aeea16e8f642220acd165"
+  },
+  {
+   "id": "e99ff254d",
+   "url": "https://www.freshworks.com/products/what-is-freshdesk/",
+   "title": "What is Freshdesk (Freshworks’ Helpdesk)? | Freshworks",
+   "fetched_at": "2026-10-04T06:23:49+00:00",
+   "sha256": "3fc6dfa53b4eaa215327b7c43ea4c3cd19c7037ca177dd21f921bc76c45c0205"
+  },
+  {
+   "id": "e6694184f",
+   "url": "https://developers.freshdesk.com/",
+   "title": "Freshdesk Developers",
+   "fetched_at": "2026-10-04T06:23:50+00:00",
+   "sha256": "66ee48e0535db6b19ffbe553c10017cd3b2073fb9e9aa438b8de4bbadef2478d"
+  },
+  {
+   "id": "e55dcd4bd",
+   "url": "https://www.zendesk.com/pricing/",
+   "title": "Zendesk Pricing Plans | Starting from $19/month",
+   "fetched_at": "2026-10-04T06:24:14+00:00",
+   "sha256": "7e71554d38f855132c9b6522acd902fa94902d092c0012407eedd405d3c8fee5"
+  },
+  {
+   "id": "e16fc2c89",
+   "url": "https://www.zendesk.com/service/help-desk-software/",
+   "title": "13 best help desk software of 2026",
+   "fetched_at": "2026-10-04T06:24:14+00:00",
+   "sha256": "22e47f2da8b723cb1dafbe396e3049d42edc91aff1413d12a596dd659e4fc540"
+  },
+  {
+   "id": "edda9251f",
+   "url": "https://developer.zendesk.com/documentation/marketplace/",
+   "title": "Zendesk Marketplace | Zendesk Developer Docs",
+   "fetched_at": "2026-10-04T06:24:15+00:00",
+   "sha256": "241b1a25162ef97fcea2765dfe7b6057ed74008feed0095286789eea303666f4"
+  }
+ ],
+ "unread": [
+  {
+   "product": "Freshdesk",
+   "url": "https://www.g2.com/products/freshdesk/reviews",
+   "why": "the site answered 403"
+  },
+  {
+   "product": "Zendesk",
+   "url": "https://www.g2.com/products/zendesk-for-customer-service/reviews?qs=pros-and-cons",
+   "why": "the site answered 403"
+  }
+ ],
+ "facts": [
+  {
+   "id": "f1",
+   "text": "Freshdesk Growth plan costs $19 per agent per month, billed annually.",
+   "quote": "Growth ... $19 /agent/month, billed annually",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f2",
+   "text": "Freshdesk Pro plan costs $55 per agent per month, billed annually.",
+   "quote": "Pro ... $55 /agent/month, billed annually",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f3",
+   "text": "Freshdesk Enterprise plan costs $89 per agent per month, billed annually.",
+   "quote": "Enterprise ... $89 /agent/month, billed annually",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f4",
+   "text": "Freshdesk offers 500 free Freddy AI Agent sessions on the Growth, Pro, and Enterprise plans, limited to once per account.",
+   "quote": "We offer 500 free sessions on the Growth, Pro, and Enterprise plans to try out Freddy AI Agent. This is limited to once per account.",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "limit",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f5",
+   "text": "Freshdesk additional Freddy AI Agent sessions cost $49 per 100 sessions.",
+   "quote": "First 500 sessions included. $49 per 100 sessions",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "beyond_quote",
+   "why": "the claim says more than the quote does (29% of its words are in the quote)"
+  },
+  {
+   "id": "f6",
+   "text": "Freshdesk Freddy AI Copilot is an add-on at $29 per agent per month, billed annually.",
+   "quote": "*\n$29 /agent/month billed annually",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (product name (Freddy AI Copilot) and that it is an add-on)"
+  },
+  {
+   "id": "f7",
+   "text": "Freshdesk's free trial gives access to the Enterprise plan for 14 days.",
+   "quote": "When you sign up, you instantly get access to our Enterprise plan for 14 days. We will alert you before your trial expires.",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f8",
+   "text": "Freshdesk day passes cost $2, $7 and $12 per pass on Growth, Pro and Enterprise respectively.",
+   "quote": "Day passes (per agent per day)",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "figure_not_in_quote",
+   "why": "the claim states a figure the quote does not (2, 7, 12)"
+  },
+  {
+   "id": "f9",
+   "text": "Freshdesk connector app tasks cost $80 per 5,000 tasks on all plans.",
+   "quote": "Connector app tasks ... $80 per 5,000 tasks",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that this applies to all plans)"
+  },
+  {
+   "id": "f10",
+   "text": "Freshdesk Pro and Enterprise plans include 5,000 collaborators.",
+   "quote": "Collaborators\nInvite external agents and third parties to help your full-time support agents resolve complex customer issues.",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "limit",
+   "supported": false,
+   "reason": "figure_not_in_quote",
+   "why": "the claim states a figure the quote does not (5000)"
+  },
+  {
+   "id": "f11",
+   "text": "Freshdesk is trusted by 74,000+ businesses worldwide.",
+   "quote": "Trusted by 74,000+ Businesses Worldwide",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "customer",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f12",
+   "text": "Freshdesk charges no cancellation fees, and cancellation takes effect after the end of the term.",
+   "quote": "No. Freshdesk is a pay-as-you-go service. We do not have any cancellation fees.",
+   "evidence_id": "e5db17199",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "beyond_quote",
+   "why": "the claim says more than the quote does (33% of its words are in the quote)"
+  },
+  {
+   "id": "f13",
+   "text": "Freshdesk is a cloud-based, AI-powered customer service software from Freshworks.",
+   "quote": "Freshdesk is a cloud-based, AI-powered customer service software from Freshworks.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "company",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f14",
+   "text": "Freshdesk is built for growing customer service teams, typically for businesses of 50 to 500 employees.",
+   "quote": "Freshdesk is built for growing customer service teams, typically for  businesses of 50 to 500 employees, that want AI outcomes without a drawn-out transformation program.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "positioning",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f15",
+   "text": "Freshdesk includes Freddy AI Agent on all three plans, with complimentary 500 AI sessions.",
+   "quote": "Freddy AI Agent: On all three plans, with complimentary 500 AI sessions.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f16",
+   "text": "Freshdesk offers Freddy AI Copilot as an add-on for the Pro and Enterprise plans.",
+   "quote": "Freddy AI Copilot: An add-on for the Pro and Enterprise plans that helps every agent resolve with confidence,",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f17",
+   "text": "Freshdesk's Freddy AI Insights is available on Enterprise and runs root cause analysis.",
+   "quote": "Freddy AI Insights: On Enterprise, an AI assistant that runs root cause analysis and turns service data into trends and decisions for leaders.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f18",
+   "text": "Freshdesk provides multiple SLA policies on Pro and above for different customers, products, or priorities.",
+   "quote": "SLA management: Response and resolution targets for every ticket, with multiple SLA policies on Pro and above for different customers, products, or priorities.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f19",
+   "text": "Freshdesk offers parent-child tickets that split a complex issue into smaller, linked tasks worked on simultaneously by different agents.",
+   "quote": "Advanced ticketing: Parent-child tickets split a complex issue into smaller, linked tasks that different agents work on simultaneously, and ticket templates pre-fill recurring ones.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f20",
+   "text": "Freshdesk integrates with Google Workspace, Slack, Microsoft Teams, Shopify, and Mailchimp.",
+   "quote": "Freshdesk also integrates with Google Workspace, Slack, Microsoft Teams, Shopify, and Mailchimp, among many other common business apps.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "integration",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f21",
+   "text": "Freshdesk integrates with Google Workspace, Slack, Microsoft Teams, Shopify, Mailchimp, and 1,200 other common business apps.",
+   "quote": "Yes, Freshdesk integrates with Google Workspace, Slack, Microsoft Teams, Shopify, Mailchimp, and 1,200 other common business apps.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "integration",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f22",
+   "text": "Freshdesk is trusted by 50,000+ businesses worldwide.",
+   "quote": "Trusted by 50,000+ Businesses Worldwide",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "customer",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f23",
+   "text": "Freshdesk helped Thomas Cook cut unresolved tickets by 37% while total tickets handled increased by 55%.",
+   "quote": "Freshdesk powers first-class service for Thomas Cook ... The travel leader’s unresolved tickets dropped by 37% while total tickets handled increased by 55%.",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "customer",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f24",
+   "text": "Freshdesk Omni adds live chat, phone, WhatsApp, and expanded social channels into one Command Center.",
+   "quote": "Freshdesk Omni adds live chat, phone, WhatsApp, and expanded social channels into one Command Center, along with the full Freddy AI Agent Studio,",
+   "evidence_id": "e99ff254d",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f25",
+   "text": "Freshdesk provides API endpoints to access and manage data and bridge the helpdesk with other tools.",
+   "quote": "All the endpoints you need to access and manage your data, and bridge your helpdesk with the other tools you use.",
+   "evidence_id": "e6694184f",
+   "subject": "Freshdesk",
+   "topic": "integration",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that these are API endpoints)"
+  },
+  {
+   "id": "f26",
+   "text": "Freshdesk offers documentation for its app development tools so developers can design, code and bring Freshdesk app ideas to life.",
+   "quote": "The A-Z guide for our app development tools so you can easily design, code, and bring your Freshdesk app ideas to life.",
+   "evidence_id": "e6694184f",
+   "subject": "Freshdesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f27",
+   "text": "Freshdesk has Technology Partners who build value adding apps and integrations to enhance product capabilities.",
+   "quote": "Technology Partners build value adding apps and integrations to enhance product capabilities while Solution Partners consult, customise, implement and solve business problems by working with us.",
+   "evidence_id": "e6694184f",
+   "subject": "Freshdesk",
+   "topic": "company",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f28",
+   "text": "Freshdesk offers a free signup for those without an account.",
+   "quote": "Don't have a Freshdesk account? ... Signup for free",
+   "evidence_id": "e6694184f",
+   "subject": "Freshdesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f29",
+   "text": "Zendesk Support Team costs $19 per agent per month when paid yearly.",
+   "quote": "Support Team ... $19agent/month paid yearly",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f30",
+   "text": "Zendesk Suite Team costs $55 per agent per month when paid yearly.",
+   "quote": "Suite Team ... $55agent/month paid yearly",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f31",
+   "text": "Zendesk Suite Professional costs $115 per agent per month when paid yearly.",
+   "quote": "Suite Professional ... $115agent/month paid yearly",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f32",
+   "text": "Zendesk monthly billing costs $25 per agent/month for Support Team, $69 for Suite Team and $149 for Suite Professional.",
+   "quote": "Monthly subscription (per agent/month) ... $25 ... $69 ... $149",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "beyond_quote",
+   "why": "the claim says more than the quote does (27% of its words are in the quote)"
+  },
+  {
+   "id": "f33",
+   "text": "The Zendesk Copilot add-on costs $50 per agent per month paid yearly.",
+   "quote": "Copilot ... $50agent/month paid yearly",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that this is an add-on)"
+  },
+  {
+   "id": "f34",
+   "text": "The Zendesk Contact Center add-on costs $83 per agent per month paid yearly.",
+   "quote": "Contact Center ... $83agent/month paid yearly",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that this is an add-on)"
+  },
+  {
+   "id": "f35",
+   "text": "Zendesk AI agents are included in every Suite and Support plan, with pricing based on the successful outcomes they deliver.",
+   "quote": "Zendesk AI agents are included in every Suite and Support plan, with pricing based on the successful outcomes they deliver.",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f36",
+   "text": "Zendesk pay-as-you-go automated resolutions cost $2.00, versus $1.50 for committed automated resolutions.",
+   "quote": "Committed automated resolutions ... $1.50",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": false,
+   "reason": "figure_not_in_quote",
+   "why": "the claim states a figure the quote does not (2)"
+  },
+  {
+   "id": "f37",
+   "text": "Zendesk's free trial lasts 14 days and gives access to all features on the Customer Service Suite Professional plan by default.",
+   "quote": "You'll have access to all features on the Zendesk Customer Service Suite Professional plan for 14 days.",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that the trial is free and occurs by default)"
+  },
+  {
+   "id": "f38",
+   "text": "The Zendesk startups program gives early stage startups a 6-month trial of the Zendesk Suite for up to 50 agents.",
+   "quote": "The startups program provides early stage startups a 6-month trial of the Zendesk Suite for up to 50 agents.",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f39",
+   "text": "Zendesk Marketplace offers 1,800+ apps, partners, and integrations.",
+   "quote": "MarketplaceFind 1,800+ apps, partners, and integrations to serve customers and employees",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "integration",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f40",
+   "text": "Zendesk says 80,000+ companies choose it for AI service.",
+   "quote": "Why ZendeskSee why 80,000+ companies choose Zendesk for AI service",
+   "evidence_id": "e55dcd4bd",
+   "subject": "Zendesk",
+   "topic": "customer",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f41",
+   "text": "Zendesk plans start at $55 per agent/month, billed annually, with a 14-day free trial available.",
+   "quote": "Pricing: Plans start at $55 per agent/month, billed annually. A 14-day free trial is available.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f42",
+   "text": "Zendesk AI agents are pre-trained on over 18 billion real customer interactions.",
+   "quote": "Zendesk AI agents are pre-trained on over 18 billion real customer interactions and integrate with your business systems.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f43",
+   "text": "Zendesk AI agents can autonomously resolve requests, share knowledge base content, and execute tasks such as refunds and order tracking.",
+   "quote": "AI agents can autonomously resolve requests, share knowledge base content, and execute tasks such as refunds and order tracking.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f44",
+   "text": "Zendesk QA can review 100 percent of tickets.",
+   "quote": "Additionally, Zendesk QA can review 100 percent of your tickets to ensure your agents—both human and AI—are operating as efficiently as possible.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f45",
+   "text": "Zendesk Marketplace offers over 1,800 apps and integrations.",
+   "quote": "Zendesk seamlessly integrates with your existing tech stack and is easily customizable with the over 1,800 apps and integrations in the Zendesk Marketplace.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "integration",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f46",
+   "text": "Zendesk routing and intelligence can forward requests to the right agent based on availability, workload, and expertise.",
+   "quote": "Routing and intelligence can automatically forward requests to the right agent based on their availability, workload, and expertise.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f47",
+   "text": "Zendesk Agent Workspace is an omnichannel ticketing system fused with AI features like agent copilot.",
+   "quote": "Enable agents to provide fast, personalized service on any channel with the Zendesk Agent Workspace. This omnichannel ticketing system is fused with AI features like agent copilot—an AI-powered assistant that proactively anticipates and suggests next steps and can even take action on behalf of an agent based on defined business procedures.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f48",
+   "text": "Zendesk's listed con is that advanced AI tools are accessed through paid add-ons.",
+   "quote": "Advanced AI tools are accessed through paid add-ons",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "limit",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f49",
+   "text": "Cosmetics retailer Lush used Zendesk to achieve a 369 percent ROI in less than one year.",
+   "quote": "For example, cosmetics retailer Lush used Zendesk to achieve a 369 percent ROI in less than one year.",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "customer",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f50",
+   "text": "Zendesk is listed as best for customer experience and employee service in the comparison chart.",
+   "quote": "Zendesk\n\n$55 per agent/month (billed annually)\n\n14 days\n\nCustomer experience and employee service",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "positioning",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that Zendesk is positioned as 'best for' these categories)"
+  },
+  {
+   "id": "f51",
+   "text": "Zendesk includes a knowledge base and community forum tools so customers can find answers independently.",
+   "quote": "Includes a knowledge base and community forum tools, empowering customers to find answers independently",
+   "evidence_id": "e16fc2c89",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f52",
+   "text": "Zendesk Marketplace is a place to discover and install apps and bots for Zendesk Support (including Messaging), Zendesk Sell or Zendesk Chat, as well as themes for Zendesk Guide.",
+   "quote": "Zendesk Marketplace is a place to discover and install apps and bots for Zendesk Support (including Messaging), Zendesk Sell or Zendesk Chat, as well as themes for Zendesk Guide.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f53",
+   "text": "Zendesk Marketplace public apps are built with the Zendesk App framework, can be installed directly from the Marketplace, and can be offered free or set up as a paid app.",
+   "quote": "Public apps: Public apps are built with the Zendesk App framework and can be installed directly from the Zendesk Marketplace. Public apps can be offered free of charge, or can be set up as a paid app.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "feature",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f54",
+   "text": "Zendesk Marketplace integration apps are built using the REST API and generally live in a third-party product.",
+   "quote": "Integration apps: Integration apps are integrations built using our REST API, and generally live in a third-party product.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "integration",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f55",
+   "text": "Bots in the Zendesk Marketplace are integrations with third-party bots that can replace Answer Bot and are free to install.",
+   "quote": "Bots are integrations with third-party bots that can replace Answer Bot to be first responders of any channels customers want. They are free to install from the Marketplace.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f56",
+   "text": "Zendesk Marketplace themes modify the look and layout of a help center and can be free or paid with an option for a 14-day trial.",
+   "quote": "They modify the look and layout of a help center. They can be offered free of charge, or set up as a paid theme with an option for a 14-day trial.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "pricing",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f57",
+   "text": "Zendesk's Technology Partner Program may offer Solutions Architect consultation as part of assigned tier benefits, requested from within Partner Connect.",
+   "quote": "As part of Zendesk’s Technology Partner Program, Solutions Architect consultation may be offered to you as part of your assigned tier benefits. Technology partners can submit the request for consultation from within Partner Connect.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "company",
+   "supported": true,
+   "reason": "ok",
+   "why": "the quote is on the page and carries the claim's figures and words"
+  },
+  {
+   "id": "f58",
+   "text": "Zendesk Marketplace apps making server-side requests to Zendesk APIs for multiple customers must use global OAuth access tokens, not API tokens or regular OAuth tokens.",
+   "quote": "Use global OAuth access tokens for authentication to authenticate Zendesk API requests.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "limit",
+   "supported": false,
+   "reason": "polarity_mismatch",
+   "why": "the claim and the quote disagree on a negation"
+  },
+  {
+   "id": "f59",
+   "text": "Zendesk Marketplace requires publishers to disclose in the listing what Zendesk data the public or integration app will access and for what purpose.",
+   "quote": "Disclose in the Marketplace listing what Zendesk data the public or integration app will be accessing and for what purpose.",
+   "evidence_id": "edda9251f",
+   "subject": "Zendesk",
+   "topic": "limit",
+   "supported": false,
+   "reason": "not_stated",
+   "why": "the reader found a part of the claim the quote does not state (that this is an explicit requirement mandated by Zendesk Marketplace and applies to publishers)"
+  }
+ ],
+ "lines": [
+  {
+   "section": "they_win",
+   "text": "Zendesk Marketplace lists 1,800+ apps and integrations, against Freshdesk's 1,200 other business apps plus named integrations. Zendesk has the larger catalogue.",
+   "cites": [
+    "f39",
+    "f45",
+    "f21"
+   ],
+   "objection": "",
+   "kept": false,
+   "reason": "the reader: explicit statement that Zendesk's catalogue is larger"
+  },
+  {
+   "section": "they_win",
+   "text": "Zendesk AI agents are pre-trained on over 18 billion real customer interactions. They can resolve requests autonomously and execute tasks such as refunds and order tracking.",
+   "cites": [
+    "f42",
+    "f43"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "they_win",
+   "text": "Zendesk QA can review 100 percent of tickets.",
+   "cites": [
+    "f44"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "they_win",
+   "text": "Zendesk routing can send requests to the right agent based on availability, workload, and expertise.",
+   "cites": [
+    "f46"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "they_win",
+   "text": "Zendesk has a published ROI proof point: Lush reached 369 percent ROI in less than one year.",
+   "cites": [
+    "f49"
+   ],
+   "objection": "",
+   "kept": false,
+   "reason": "the reader: that Zendesk published or claims this as a proof point"
+  },
+  {
+   "section": "they_win",
+   "text": "Zendesk's startups program gives early-stage startups a 6-month Suite trial for up to 50 agents.",
+   "cites": [
+    "f38"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "we_win",
+   "text": "Freshdesk's entry price matches Zendesk's. Growth is $19 per agent per month billed annually, and so is Zendesk Support Team. The $55 tiers also match: Freshdesk Pro and Zendesk Suite Team.",
+   "cites": [
+    "f1",
+    "f29",
+    "f2",
+    "f30"
+   ],
+   "objection": "",
+   "kept": false,
+   "reason": "the reader: explicit statement that the prices match"
+  },
+  {
+   "section": "we_win",
+   "text": "Freshdesk Enterprise is $89 per agent per month billed annually. Zendesk Suite Professional is $115 on yearly payment.",
+   "cites": [
+    "f3",
+    "f31"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "we_win",
+   "text": "Freddy AI Agent is included on all three Freshdesk plans, with 500 free sessions (once per account). Zendesk's own listed con is that advanced AI tools come through paid add-ons.",
+   "cites": [
+    "f15",
+    "f4",
+    "f48"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "we_win",
+   "text": "Freshdesk's free trial gives 14 days of the Enterprise plan, so a prospect can test the top tier.",
+   "cites": [
+    "f7"
+   ],
+   "objection": "",
+   "kept": false,
+   "reason": "the reader: enabling prospects to test the top tier"
+  },
+  {
+   "section": "we_win",
+   "text": "Freshdesk parent-child tickets split a complex issue into linked tasks that different agents work on at the same time. Pro and above support multiple SLA policies by customer, product, or priority.",
+   "cites": [
+    "f19",
+    "f18"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "we_win",
+   "text": "Freshdesk Omni brings live chat, phone, WhatsApp, and expanded social channels into one Command Center.",
+   "cites": [
+    "f24"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "we_win",
+   "text": "Thomas Cook cut unresolved tickets by 37% on Freshdesk while total tickets handled rose 55%.",
+   "cites": [
+    "f23"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "we_win",
+   "text": "Freshdesk is built for growing teams, typically businesses of 50 to 500 employees.",
+   "cites": [
+    "f14"
+   ],
+   "objection": "",
+   "kept": false,
+   "reason": "the reader: that it applies to all growing teams, not just customer service teams"
+  },
+  {
+   "section": "questions",
+   "text": "Which AI capabilities do you need: a bot that resolves tickets, or agent assist? Have you priced the add-ons for each?",
+   "cites": [
+    "f48",
+    "f16",
+    "f15"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "questions",
+   "text": "Which third-party apps must your helpdesk connect to, for example Slack, Teams, Shopify, or Mailchimp?",
+   "cites": [
+    "f21",
+    "f39"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "questions",
+   "text": "Do your agents work complex issues that would be easier to split into linked tasks across several agents?",
+   "cites": [
+    "f19"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "questions",
+   "text": "Do you need multiple SLA policies by customer, product, or priority? That would put you on Pro or above.",
+   "cites": [
+    "f18"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "questions",
+   "text": "Do you want to support chat, phone, WhatsApp, and social channels from one console?",
+   "cites": [
+    "f24"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "questions",
+   "text": "Would you like to trial the full Enterprise plan for 14 days against your real tickets?",
+   "cites": [
+    "f7"
+   ],
+   "objection": "",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "objections",
+   "text": "True, Zendesk lists 1,800+. Freshdesk covers Google Workspace, Slack, Microsoft Teams, Shopify, Mailchimp and 1,200 other business apps, and it has developer documentation for custom apps. Let's check that your must-have tools are on the list.",
+   "cites": [
+    "f45",
+    "f21",
+    "f26"
+   ],
+   "objection": "Zendesk has far more apps in its marketplace.",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "objections",
+   "text": "Freshdesk includes Freddy AI Agent on every plan, with 500 free sessions, so you can test it on your own tickets before you pay for AI. Zendesk's own listed con is that advanced AI tools are paid add-ons.",
+   "cites": [
+    "f15",
+    "f4",
+    "f48"
+   ],
+   "objection": "Zendesk's AI agents can resolve tickets on their own.",
+   "kept": false,
+   "reason": "the reader: it adds a fact its citations do not state (Zendesk's AI agents can resolve tickets on their own)"
+  },
+  {
+   "section": "objections",
+   "text": "At entry level the prices do match: $19 for Growth and for Support Team. At the top, Freshdesk Enterprise is $89 against $115 for Zendesk Suite Professional. You can also try Enterprise free for 14 days.",
+   "cites": [
+    "f1",
+    "f29",
+    "f3",
+    "f31",
+    "f7"
+   ],
+   "objection": "Zendesk costs the same as Freshdesk, so why switch?",
+   "kept": true,
+   "reason": ""
+  },
+  {
+   "section": "objections",
+   "text": "Freshdesk has one too. Thomas Cook cut unresolved tickets by 37% while handling 55% more tickets.",
+   "cites": [
+    "f23",
+    "f49"
+   ],
+   "objection": "Zendesk has a proven ROI story.",
+   "kept": true,
+   "reason": ""
+  }
+ ],
+ "notes": []
+}

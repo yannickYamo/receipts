@@ -1,0 +1,20 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "pairs_read": 76,
+ "runs": [
+  {
+   "true_claims_cut_by_reader": 0,
+   "unsupported_claims_passed_by_reader": 0
+  },
+  {
+   "true_claims_cut_by_reader": 0,
+   "unsupported_claims_passed_by_reader": 0
+  },
+  {
+   "true_claims_cut_by_reader": 0,
+   "unsupported_claims_passed_by_reader": 0
+  }
+ ],
+ "claims_with_a_different_verdict_in_any_run": [],
+ "cost_usd_list_price_of_repeats": 0.3359
+}

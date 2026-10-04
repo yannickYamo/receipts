@@ -1,0 +1,148 @@
+Dropbox is a file hosting service operated by the American company Dropbox, Inc., headquartered in San Francisco, California, that offers cloud storage, file synchronization, personal cloud, and client software. Dropbox was founded in 2007 by MIT students Drew Houston and Arash Ferdowsi as a startup company, with initial funding from seed accelerator Y Combinator.
+Dropbox has experienced criticism and generated controversy for issues including security breaches and privacy concerns.
+
+
+== Concept ==
+Dropbox brings files together in one central place by creating a special folder on the user's computer. The contents of these folders are synchronized to Dropbox's servers and to other computers and devices where the user has installed Dropbox, keeping the same files up-to-date on all devices. Dropbox uses a freemium business model, where users are offered a free account with set storage size. For more capacity and additional features, Dropbox offers paid subscriptions. Dropbox Basic users are given two gigabytes of free storage space. Dropbox offers computer apps for Microsoft Windows, Apple macOS, and Linux computers, and mobile apps for iOS, Android, and Windows Phone smartphones and tablets. In March 2013, the company acquired Mailbox, a popular email app, and in April 2014, the company introduced Dropbox Carousel, a photo and video gallery app. Both Mailbox and Carousel were shut down in December 2015, with key features from both apps implemented into the regular Dropbox service. In October 2015, it officially announced Dropbox Paper, its collaborative document editor.
+
+
+== History ==
+
+Dropbox founder Drew Houston conceived the Dropbox concept after repeatedly forgetting his USB flash drive while he was a student at MIT.
+Houston founded Evenflow, Inc. in May 2007 as the company behind Dropbox, and shortly thereafter secured seed funding from Y Combinator. Dropbox was officially launched at 2008's TechCrunch Disrupt, an annual technology conference. Owing to trademark disputes between Domains by Proxy, Inc. and Evenflow, Dropbox's official domain name was "getdropbox.com" until October 2009, when it acquired its current domain, "dropbox.com". In October 2009, Evenflow, Inc. was renamed Dropbox, Inc.
+In an interview with TechCrunch's "Founder Stories" in October 2011, Houston explained that a demo video was released during Dropbox's early days, with one viewer being Arash Ferdowsi. Ferdowsi was "so impressed" that they formed a partnership. In regards to competition, Houston stated that "It is easy for me to explain the idea, it is actually really hard to do it."
+
+
+=== User growth ===
+Dropbox saw steady user growth after its inception. It surpassed the 1 million registered users milestone in April 2009, followed by 2 million in September, and 3 million in November. It passed 50 million users in October 2011, 100 million in November 2012, 500 million in 2016, and 700 million in 2021.
+
+
+=== Acquisitions ===
+In July 2012, Dropbox acquired TapEngage, an advertising startup. The following December, Dropbox acquired two companies; Audiogalaxy, a music-streaming startup, and Snapjoy, a company that provided photo organization tools for mobile platforms. In July 2013, Dropbox acquired Endorse, a startup which offered mobile coupons.
+In April 2014, Dropbox acquired photo-sharing company Loom (which would be shut down and integrated with the then-recently announced Carousel), and document-sharing startup Hackpad. Dropbox later announced in April 2017 that Hackpad would be shut down on July 19, with all notes being migrated to Dropbox Paper.
+In May 2014, Dropbox acquired Bubbli, a 3D graphics startup.
+In January 2015, Dropbox acquired CloudOn, a company that provided mobile applications for document editing and creation. At the same time, Dropbox told TechCrunch that CloudOn's base in Herzliya would become the first Dropbox office in Israel. In July, Dropbox acquired Clementine, an enterprise communication service.
+In January 2019, Dropbox acquired e-signature company HelloSign. The acquisition was reported to be Dropbox's largest to date, at a reported $230 million.
+In March 2021, Dropbox announced the acquisition of DocSend. DocSend offers a secure document sharing and analytics product.
+In October 2021, Dropbox announced that an agreement to acquire universal search company Command E has been signed.
+In November 2022, Dropbox announced that an agreement to acquire several key assets from Boxcryptor has been signed. Boxcryptor is a provider of end-to-end zero-knowledge encryption for cloud storage services.
+In December 2022, Dropbox announced the acquisition of form management platform FormSwift for $95 million.
+In August 2024, Dropbox announced the acquisition of AI scheduling tool Reclaim.ai.
+
+
+=== Remote workforce ===
+At the start of the COVID-19 pandemic in 2020, Dropbox was one of the first companies to shift to a remote workforce. In October 2020, the company announced its "virtual first" initiative which would shift the company to a long-term remote working plan, which launched officially April 2021.
+
+
+=== Workforce reductions ===
+In January 2021, Dropbox CEO Houston announced the layoff of 315 employees, which was approximately 11 percent of the workforce at the time. The company said the reductions were necessary in order to focus the company team structure and focus on top level priorities. The software firm also announced that COO Olivia Nottebohm would be leaving the company on February 5, 2021. In the same month, Dropbox announced it would sublease much of its office space in a transition to remote work.
+In April 2023, Houston announced the layoff of roughly 500 employees, or 16 percent of the current workforce. The company cited a slowdown in growth and a need for different, AI-focused skill-sets. In October 2024, Houston announced the layoff of roughly 528 employees, or 20 percent of the current workforce.
+
+
+=== Leadership change ===
+In May 2026, Dropbox announced that co-founder Drew Houston will step down from the role of chief executive officer to assume the role of executive chairman. The company said Houston will serve as co-CEO with Ashraf Alkarmi for an initial period before transitioning to the chairman role. Alkarmi, who is the company's chief product officer, will become the company's permanent CEO thereafter. Dropbox also announced the appointment of Mike Torres, who will replace Alkarmi as chief product officer from Google in July 2026.
+
+
+== Platforms ==
+Dropbox has computer apps for Microsoft Windows, Apple macOS, and Linux computers, and mobile apps for iOS, Android, and Windows Phone smartphones and tablets. It also offers a website interface. As part of its partnership with Microsoft, Dropbox announced a universal Windows 10 app in January 2016.
+Dropbox's apps offer an automatic photo uploading feature, allowing users to automatically upload photos or videos from cameras, tablets, SD cards, or smartphones to a dedicated "Camera Uploads" folder in their Dropbox. Users are given 500 megabytes of extra space for uploading their first photo, and are given up to 3 gigabytes of extra space if users continue using the method for more photos.
+In July 2014, Dropbox introduced "streaming sync" for its computer apps which improved the upload or download time by up to 2 times for large files.
+In August 2015, Dropbox announced the availability of "Universal 2nd Factor" USB security keys, providing two-factor authentication for logging into its services.
+
+
+== Financials ==
+Dropbox received initial funding from seed accelerator Y Combinator.
+In October 2008, Dropbox raised a $6 million Series A round led by Sequoia Capital with participation from Accel.
+A May 2010 report in The Wall Street Journal said that "since [founder Drew Houston] started reading Eric Ries' Lean startup blog about a year ago, the company has started trickling out new features when they are ready instead of waiting to launch a fully featured product. That helps test customer appetite, he says, dubbing the practice "minimum viable product".
+TechCrunch reported in July 2011 that Dropbox had been looking to raise between US$200 and US$300 million, and had a valuation "to end up in the $5 billion to $10 billion range. [...] quite a step up from its previous funding rounds which have totalled a tiny $7.2 million". As noted in a Forbes article, Dropbox had "revenue on track to hit $240 million in 2011".
+In April 2012, Dropbox announced that Bono and The Edge, two members of the Irish rock band U2, were individual investors in the company.
+In 2014 Dropbox raised financing from BlackRock Inc. and others that values the company at $10 billion.
+
+In March 2017, Bloomberg reported that Dropbox had secured a US$600 million credit line, with the company expected to file for its initial public offering (IPO) "as soon as this year".
+In February 2018, Dropbox filed an IPO to be listed on the Nasdaq. The company's initial intent was to raise $500 million. Dropbox's stock rose 42 percent to $29.89 in its first day of trading on March 23, 2018.
+
+
+== Business model ==
+Dropbox uses a freemium business model, where users are offered a free account with a set storage size, with paid subscriptions available that offer more capacity and additional features. Accordingly, Dropbox's revenue is a product of how many users they can convert to their paid services.
+Dropbox Basic users are given two gigabytes of free storage space. This can be expanded through referrals; users recommend the service to other people, and if those people start using the service, the user is awarded additional 500 megabytes of storage space. Dropbox Basic users can earn up to 16 gigabytes through the referral program.
+The Dropbox Plus subscription (named Dropbox Pro prior to March 2017) gives users 2 terabytes of storage space, as well as additional features, including:
+
+Advanced sharing controls: When sharing a link to a file or folder, users can set passwords and expiration limits.
+Remote wipe: If a device is stolen or lost, users can remotely wipe the Dropbox folder from the device the next time it comes online.
+"Extended Version History": An available add-on, it makes Dropbox keep deleted and previous versions of files for one year, a significant extension of the default 30-day recovery time.
+In November 2013, Dropbox announced changes to "Dropbox for Business" that would enable users to connect both their personal Dropbox and their business Dropbox to the same device, with each of the folders being "properly labeled for personal or work, and come with its own password, contacts, settings, and files". Furthermore, Dropbox announced shared audit logs, remote wipe for business administrators, and account transfers, as new features of its Business offering. In January 2017, Dropbox introduced "Smart Sync" for Business and Enterprise customers, a feature that lets Windows and macOS users see all files in the Dropbox folder, but only download specific files on-demand.
+Similar to Dropbox Basic, Dropbox Plus users can also earn extra space through referrals. Plus users earn 1 gigabyte per referral, up to 32 gigabytes.
+Dropbox Business is Dropbox's application for corporations, adding more business-centered functionality for teams, including collaboration tools, advanced security and control, unlimited file recovery, user management and granular permissions, and options for unlimited storage. For large organizations, Dropbox offers Dropbox Enterprise, the "highest tier" of its product offerings, adding domain management tools, an assigned Dropbox customer support member, and help from "expert advisors" on deployment and user training.
+In July 2016, Dropbox announced a new "AdminX" administrator dashboard for Business customers, offering improved control of company files and users. In June 2017, the AdminX dashboard was given a redesign and additional administrator functions, such as log-in durations, custom password strength parameters, and setting specific subdomain verifications for individual teams.
+
+
+=== Company partnerships ===
+In September 2012, Facebook and Dropbox integrated to allow users in Facebook Groups to share files using Dropbox. In 2013, Samsung pre-loaded the Dropbox mobile application on its Android devices and Dropbox provided extra space for users owning Samsung's devices. In November 2014, Dropbox announced a partnership with Microsoft to integrate Dropbox and Microsoft Office applications on iOS, Android and the  applications on the web.
+
+
+== Technology ==
+
+The Dropbox software enables users to drop any file into a designated folder. The file is then automatically uploaded to Dropbox's cloud-based service and made available to any other of the user's computers and devices that also have the Dropbox software installed, keeping the file up-to-date on all systems. When a file in a user's Dropbox folder is changed, Dropbox only uploads the pieces of the file that have been changed, whenever possible.
+When a file or folder is deleted, users can recover it within 30 days. For Dropbox Plus users, this recovery time can be extended to one year, by purchasing an "Extended Version History" add-on.
+Dropbox accounts that are not accessed or emails not replied in a year are automatically deleted.
+Dropbox also offers a LAN sync feature, where, instead of receiving information and data from the Dropbox servers, computers on the local network can exchange files directly between each other, potentially significantly improving synchronization speeds. LAN Sync discovers other peers on the same network via UDP port 17500 using a proprietary discovery protocol developed by early Dropbox engineer Paul Bohm in 2010.
+Originally, the Dropbox servers and computer apps were written in Python. In July 2014, Dropbox began migrating its performance-critical backend infrastructure to Go.
+In September 2012, Dropbox's website code base was rewritten from JavaScript to CoffeeScript.
+Dropbox originally used Amazon's S3 storage system to store user files, but between 2014 and 2016 they gradually moved away from Amazon to use their own hardware, referred to as "Magic Pocket", due to Dropbox's description as "a place where you keep all your stuff, it doesn't get lost, and you can always access it". In June 2017, the company announced a major global network expansion, aiming to increase synchronization speeds while cutting costs. The expansion, starting with 14 cities across 7 countries on 3 continents, adds "hundreds of gigabits of Internet connectivity with transit providers (regional and global ISPs), and hundreds of new peering partners (where we exchange traffic directly rather than through an ISP)".
+Dropbox uses SSL transfers for synchronization and stores the data via Advanced Encryption Standard (AES)-256 encryption.
+The functionality of Dropbox can be integrated into third-party applications through an application programming interface (API).
+Dropbox prevents sharing of copyrighted data, by checking the hash of files shared in public folders or between users against a blacklist of copyrighted material. This only applies to files or folders shared with other users or publicly, and not to files kept in an individual's Dropbox folder that are not shared.
+
+
+== Mailbox ==
+
+In March 2013, Dropbox acquired Mailbox, a popular email app, with Mailbox CEO Gentry Underwood saying that "Rather than grow Mailbox on our own, we've decided to join forces with Dropbox and build it out together". Under the deal, the developers of Mailbox joined Dropbox, but kept Mailbox running as a stand-alone app. The acquisition was reported to cost $100 million.
+In December 2015, Dropbox announced the shut-down of Mailbox.
+
+
+== Carousel ==
+
+In April 2014, Dropbox introduced Carousel, a photo and video gallery that "combines the photos in your Dropbox with the photos on your phone, and automatically backs up new ones as you take them." Carousel sorted photos by event and date. In December 2015, Dropbox announced the shut-down of Carousel. In a blog post, Drew Houston and Arash Ferdowsi explained that "We'll be taking key features from Carousel back to the place where your photos live – in the Dropbox app."
+
+
+== Dropbox Paper ==
+
+In April 2015, Dropbox launched a Dropbox Notes collaborative note-taking service in beta testing phase, prompting speculation if Dropbox was planning to bring out a product to compete with Google Docs. TechCrunch noted that Dropbox Notes appeared to be a new version of "Project Composer", a previous iteration of the service with roots from the acquisition of Hackpad in April 2014. In October 2015, Dropbox announced the upcoming launch of Dropbox Paper, its collaborative document editor, noted by the media as the result of its development of a Dropbox Notes service earlier in 2015. Dropbox Paper entered open beta in August 2016, allowing anyone to join and test the product. Mobile apps for Android and iOS were also released. In January 2017, Dropbox Paper was officially launched. Aimed for businesses, Dropbox Paper was described as "one part online document, one part collaboration, one part task management tool, one part content hub" by Rob Baesman, Dropbox's head of product, and allows for importing, editing, and collaboration on "a number of other file types from Google, Microsoft, and others".
+
+
+== User-created projects ==
+Users have devised a number of uses for and mashups of the technology that expand Dropbox's functionality. These include: sending files to a Dropbox via Gmail; using Dropbox to sync instant messaging chat logs; BitTorrent management; password management; remote application launching and system monitoring; and as a free web hosting service.
+
+
+== Reception ==
+Dropbox has received several awards, including the Crunchie Award in 2010 for Best Internet Application, and Macworld's 2009 Editor's Choice Award for Software. It was nominated for a 2010 Webby Award, and for the 2010 Mac Design Awards by Ars Technica. Dropbox's mobile iPhone app release in 2010 was among the top 10 "best apps" selected by Alex Ahlund, former CEO of two websites focused on mobile apps, and the company's Android app was also selected as one of the top five "best apps" in a list compiled in 2010 by Jason Hiner for ZDNet. Founders Drew Houston and Arash Ferdowsi were named among the top 30 under 30 entrepreneurs by Inc. in 2011.
+In 2011, Business Insider named Dropbox the world's sixth most valuable startup, and in 2017, the publication ranked Dropbox as the eighth most valuable US startup, with a valuation of $10 billion. It has been described as one of Y Combinator's most successful investments to date. Apple launched its own cloud storage service later in 2011, iCloud, but this did not hold back Dropbox's growth. In January 2012, Dropbox was named startup of the year by TechCrunch.
+Dropbox has been blocked in China since 2014.
+
+
+=== Privacy and security concerns ===
+
+Dropbox has been the subject of criticism and controversy related to multiple incidents, including a June 2011 authentication problem that let accounts be accessed for several hours without passwords; a July 2011 Privacy Policy update with language suggesting Dropbox had ownership of users' data; concerns about Dropbox employee access to users' information; July 2012 email spam with recurrence in February 2013; leaked government documents in June 2013 with information that Dropbox was being considered for inclusion in the National Security Agency's PRISM surveillance program; a July 2014 comment from NSA whistleblower Edward Snowden criticizing Dropbox's encryption keys being available to employees; the leak of 68 million account passwords on the Internet in August 2016; and a January 2017 accidental data restoration incident where years-old supposedly deleted files reappeared in users' accounts.
+While Dropbox uses SSL to encrypt data in transit between itself and customers and stores data in encrypted form, it does not use end-to-end encryption in which the user controls the keys used to encrypt the stored data. As a result, Dropbox can decrypt customers' data if it chooses to.
+
+
+== Offices ==
+The Dropbox headquarters, located in San Francisco, were originally on Market Street, until its expansion to the China Basin Landing building in July 2011, allowing for a significant space increase. As the number of employees grew, the company again needed expansion, and in February 2014, it signed a lease for two buildings on Brannan Street. Not needing the substantial amounts of space after all, the company started shopping the remaining available space to other companies for sublease in November 2015.
+In December 2012, Dropbox set up an office in Dublin, Ireland, its first office outside the United States.
+Dropbox expanded into its second U.S. office in Austin, Texas, in February 2014. The State of Texas and City of Austin provided a $1.7 million performance-based incentives package to Dropbox in exchange for locating their office in Austin. In April, of the same year, Dropbox opened an office in Sydney, Australia.
+
+
+== See also ==
+
+Comparison of file hosting services
+Comparison of file synchronization software
+Comparison of online backup services
+
+
+== References ==
+
+
+== External links ==
+
+Official website 
+Business data for Dropbox, Inc.:

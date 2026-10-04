@@ -1,0 +1,77 @@
+{
+ "facts": 59,
+ "kept": 44,
+ "cut": 15,
+ "labellers": {
+  "A (claude-opus)": {
+   "kept_facts_the_page_states": [
+    44,
+    44
+   ],
+   "page_true_facts_kept": [
+    44,
+    59
+   ],
+   "TPR_quote_states_and_kept": [
+    39,
+    39
+   ],
+   "TNR_quote_does_not_state_and_cut": [
+    15,
+    20
+   ],
+   "kept_although_quote_does_not_state": [
+    "f41",
+    "f43",
+    "f46",
+    "f51",
+    "f56"
+   ],
+   "cut_although_quote_states": []
+  },
+  "B (claude-sonnet)": {
+   "kept_facts_the_page_states": [
+    44,
+    44
+   ],
+   "page_true_facts_kept": [
+    44,
+    59
+   ],
+   "TPR_quote_states_and_kept": [
+    44,
+    50
+   ],
+   "TNR_quote_does_not_state_and_cut": [
+    9,
+    9
+   ],
+   "kept_although_quote_does_not_state": [],
+   "cut_although_quote_states": [
+    "f33",
+    "f34",
+    "f37",
+    "f48",
+    "f50",
+    "f59"
+   ]
+  }
+ },
+ "labellers_agree_on_quote_states": [
+  48,
+  59
+ ],
+ "labellers_disagree": [
+  "f33",
+  "f34",
+  "f37",
+  "f41",
+  "f43",
+  "f46",
+  "f48",
+  "f50",
+  "f51",
+  "f56",
+  "f59"
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "readings": {
+  "rt-001": [
+   true,
+   ""
+  ],
+  "rt-002": [
+   true,
+   ""
+  ],
+  "rt-003": [
+   false,
+   "claim is about Parler, not the company (Twilio) the page is about"
+  ],
+  "rt-004": [
+   false,
+   "which structure (Atlassian's new Sydney headquarters)"
+  ],
+  "rt-005": [
+   true,
+   ""
+  ],
+  "rt-006": [
+   false,
+   "who acquired whom (Salesforce acquired Slack, not vice versa)"
+  ],
+  "rt-007": [
+   false,
+   "who sold to whom (Atlassian sold to Slack, not Slack to Atlassian)"
+  ],
+  "rt-008": [
+   false,
+   "who invested in whom (Dropbox invested in Zoom, not vice versa)"
+  ],
+  "rt-009": [
+   false,
+   "whether this was revenue or losses (claim says revenue, quote says losses)"
+  ],
+  "rt-010": [
+   false,
+   "whether $102M is the increase amount or the total revenue (claim says increase amount, quote says final amount)"
+  ],
+  "rt-011": [
+   false,
+   "Numbers swapped between services (209 vs 93)"
+  ],
+  "rt-012": [
+   false,
+   "Direction reversed (decrease vs increase)"
+  ],
+  "rt-013": [
+   false,
+   "Direction reversed (buying vs selling)"
+  ],
+  "rt-014": [
+   false,
+   "Direction reversed (decreased vs increased)"
+  ],
+  "rt-015": [
+   false,
+   "Action negated (did not lay off vs laid off)"
+  ],
+  "rt-016": [
+   false,
+   "Settlement negated (has not settled vs settled)"
+  ],
+  "rt-017": [
+   false,
+   "Confirmation negated (failed to confirm vs confirmed)"
+  ],
+  "rt-018": [
+   false,
+   "Response reversed (refused vs agreeing)"
+  ],
+  "rt-019": [
+   true,
+   ""
+  ],
+  "rt-020": [
+   false,
+   "What action Zoom takes regarding disruption"
+  ],
+  "rt-021": [
+   false,
+   "storage space amount (100 GB vs 2 GB)"
+  ],
+  "rt-022": [
+   false,
+   "percentage of workforce laid off (50% vs 11%)"
+  ],
+  "rt-023": [
+   false,
+   "ranking in downloads (2nd vs 5th)"
+  ],
+  "rt-024": [
+   false,
+   "number of customers affected (209 million vs 209)"
+  ],
+  "rt-025": [
+   false,
+   "currency of purchase price (\u20ac vs $)"
+  ],
+  "rt-026": [
+   false,
+   "meaning of 250,000 (number of startups vs fund amount in dollars)"
+  ],
+  "rt-027": [
+   true,
+   ""
+  ],
+  "rt-028": [
+   true,
+   ""
+  ],
+  "rt-029": [
+   true,
+   ""
+  ],
+  "rt-030": [
+   true,
+   ""
+  ],
+  "rt-031": [
+   false,
+   "the actor\u2014claims Salesforce but quote on Slack page refers to Slack"
+  ],
+  "rt-032": [
+   false,
+   "the reason\u2014because customers prefer it"
+  ],
+  "rt-033": [
+   false,
+   "has remained profitable every year since 2019"
+  ],
+  "rt-034": [
+   false,
+   "the acquisition amount for Stytch\u2014$32.3 million is attached to Boku, not Stytch"
+  ],
+  "rt-035": [
+   false,
+   "Amazon Web Services is not an acquisition\u2014the quote states Twilio uses it"
+  ],
+  "rt-036": [
+   false,
+   "Burgum became chairman in July 2012, not after Farquhar stepped down in 2024"
+  ],
+  "rt-037": [
+   false,
+   "all employees versus some employees"
+  ],
+  "rt-038": [
+   false,
+   "all of the funding versus majority of the funding"
+  ],
+  "rt-039": [
+   false,
+   "when the confirmation occurred\u2014not clearly connected to August 15"
+  ],
+  "rt-040": [
+   true,
+   ""
+  ]
+ },
+ "cost_usd_list_price": 0.0605
+}

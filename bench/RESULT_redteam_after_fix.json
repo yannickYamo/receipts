@@ -1,0 +1,95 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "n": 40,
+ "past_code": 39,
+ "past_both": 0,
+ "by_technique": {
+  "clipped quote": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "hedge or attribution dropped": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "role swap": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "figure reattached": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "antonym": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "negation outside 3-token window": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "unlisted negator": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "page negation outside context": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "spelled or skipped number": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "unit or scale misread": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "scale word clipped from quote": {
+   "written": 1,
+   "past_code": 0,
+   "past_both": 0
+  },
+  "other entity on page": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "subject field unchecked against claim text": {
+   "written": 1,
+   "past_code": 1,
+   "past_both": 0
+  },
+  "added conclusion": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "ellipsis line stitch": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 0
+  },
+  "quantifier stop-word swap": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "cross-sentence splice": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  }
+ },
+ "past_both_ids": [],
+ "cost_usd_list_price": 0.0615
+}

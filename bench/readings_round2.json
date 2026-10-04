@@ -1,0 +1,311 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "readings": {
+  "r2-inv-053": [
+   false,
+   "numbers of registered and unregistered shares are swapped"
+  ],
+  "r2-clean-035": [
+   true,
+   ""
+  ],
+  "r2-inv-026": [
+   false,
+   "claim says Farquhar left the board, but quote says he remains on the board"
+  ],
+  "r2-clean-004": [
+   true,
+   ""
+  ],
+  "r2-clean-052": [
+   true,
+   ""
+  ],
+  "r2-inv-060": [
+   false,
+   "quote indicates the increase to 1,000 occurred later, not in version 2.5"
+  ],
+  "r2-clean-001": [
+   true,
+   ""
+  ],
+  "r2-clean-002": [
+   true,
+   ""
+  ],
+  "r2-clean-058": [
+   true,
+   ""
+  ],
+  "r2-clean-059": [
+   true,
+   ""
+  ],
+  "r2-inv-028": [
+   false,
+   "reports led to investigation"
+  ],
+  "r2-clean-017": [
+   true,
+   ""
+  ],
+  "r2-clean-044": [
+   true,
+   ""
+  ],
+  "r2-clean-015": [
+   true,
+   ""
+  ],
+  "r2-clean-026": [
+   true,
+   ""
+  ],
+  "r2-inv-048": [
+   false,
+   "deeper than any cloud storage rivals' cuts"
+  ],
+  "r2-clean-023": [
+   true,
+   ""
+  ],
+  "r2-clean-049": [
+   true,
+   ""
+  ],
+  "r2-clean-043": [
+   true,
+   ""
+  ],
+  "r2-inv-051": [
+   false,
+   "dates reversed: sales ending February 2024, support ending February 2021"
+  ],
+  "r2-inv-041": [
+   false,
+   "its largest acquisition to date"
+  ],
+  "r2-clean-003": [
+   true,
+   ""
+  ],
+  "r2-clean-060": [
+   true,
+   ""
+  ],
+  "r2-clean-046": [
+   true,
+   ""
+  ],
+  "r2-inv-055": [
+   false,
+   "the dollar amounts are reversed between the October 2018 and February 2019 deals"
+  ],
+  "r2-clean-053": [
+   true,
+   ""
+  ],
+  "r2-clean-011": [
+   true,
+   ""
+  ],
+  "r2-clean-033": [
+   true,
+   ""
+  ],
+  "r2-inv-054": [
+   false,
+   "57% refers to transactions in the quote, not customers as in the claim"
+  ],
+  "r2-clean-039": [
+   true,
+   ""
+  ],
+  "r2-clean-022": [
+   true,
+   ""
+  ],
+  "r2-clean-032": [
+   true,
+   ""
+  ],
+  "r2-clean-034": [
+   true,
+   ""
+  ],
+  "r2-clean-037": [
+   true,
+   ""
+  ],
+  "r2-inv-057": [
+   false,
+   "the year the $10 billion valuation applies to (2011 in claim, 2017 in quote)"
+  ],
+  "r2-inv-044": [
+   false,
+   "that it is the largest app marketplace of any e-commerce platform"
+  ],
+  "r2-clean-045": [
+   true,
+   ""
+  ],
+  "r2-inv-059": [
+   false,
+   "Zoom company was charged vs. a former Zoom executive was charged"
+  ],
+  "r2-inv-032": [
+   false,
+   "Slack, not Atlassian, paid to assume the user bases"
+  ],
+  "r2-clean-030": [
+   true,
+   ""
+  ],
+  "r2-clean-021": [
+   true,
+   ""
+  ],
+  "r2-clean-050": [
+   true,
+   ""
+  ],
+  "r2-clean-027": [
+   true,
+   ""
+  ],
+  "r2-inv-030": [
+   false,
+   "contradicts whether board seat was retained"
+  ],
+  "r2-inv-052": [
+   false,
+   "contradicts which entity (Softbank vs. Saudi Arabia PIF) received majority share"
+  ],
+  "r2-clean-048": [
+   true,
+   ""
+  ],
+  "r2-clean-025": [
+   true,
+   ""
+  ],
+  "r2-clean-014": [
+   true,
+   ""
+  ],
+  "r2-clean-040": [
+   true,
+   ""
+  ],
+  "r2-inv-029": [
+   false,
+   "contradicts whether revenue share was introduced or removed"
+  ],
+  "r2-clean-019": [
+   true,
+   ""
+  ],
+  "r2-inv-043": [
+   false,
+   "largest deal in Salesforce's history"
+  ],
+  "r2-clean-038": [
+   true,
+   ""
+  ],
+  "r2-clean-006": [
+   true,
+   ""
+  ],
+  "r2-inv-056": [
+   false,
+   "5% reduction specific to that division"
+  ],
+  "r2-inv-058": [
+   false,
+   "that amount was actually raised, not just sought"
+  ],
+  "r2-inv-050": [
+   false,
+   "opened door to wider higher-education market"
+  ],
+  "r2-inv-033": [
+   false,
+   "Zoom invested in Dropbox, not the reverse"
+  ],
+  "r2-inv-049": [
+   false,
+   "faster than any other videoconferencing company"
+  ],
+  "r2-clean-055": [
+   true,
+   ""
+  ],
+  "r2-inv-045": [
+   false,
+   "worst single-day drop of the year"
+  ],
+  "r2-clean-031": [
+   true,
+   ""
+  ],
+  "r2-clean-009": [
+   true,
+   ""
+  ],
+  "r2-clean-054": [
+   true,
+   ""
+  ],
+  "r2-clean-056": [
+   true,
+   ""
+  ],
+  "r2-clean-012": [
+   true,
+   ""
+  ],
+  "r2-clean-005": [
+   true,
+   ""
+  ],
+  "r2-clean-028": [
+   true,
+   ""
+  ],
+  "r2-clean-047": [
+   true,
+   ""
+  ],
+  "r2-clean-013": [
+   true,
+   ""
+  ],
+  "r2-inv-046": [
+   false,
+   "outcome: led to SMS phishing attacks"
+  ],
+  "r2-clean-010": [
+   true,
+   ""
+  ],
+  "r2-clean-007": [
+   true,
+   ""
+  ],
+  "r2-clean-051": [
+   true,
+   ""
+  ],
+  "r2-clean-020": [
+   true,
+   ""
+  ],
+  "r2-clean-042": [
+   true,
+   ""
+  ]
+ },
+ "cost_usd_list_price": 0.1731,
+ "model_calls": 8
+}

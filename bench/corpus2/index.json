@@ -1,0 +1,44 @@
+[
+ {
+  "company": "Slack Technologies",
+  "evidence_id": "ebcd2c344",
+  "url": "https://en.wikipedia.org/wiki/Slack_Technologies",
+  "file": "slack technologies.txt",
+  "chars": 10553
+ },
+ {
+  "company": "Atlassian",
+  "evidence_id": "e50648f04",
+  "url": "https://en.wikipedia.org/wiki/Atlassian",
+  "file": "atlassian.txt",
+  "chars": 10194
+ },
+ {
+  "company": "Shopify",
+  "evidence_id": "efc61a108",
+  "url": "https://en.wikipedia.org/wiki/Shopify",
+  "file": "shopify.txt",
+  "chars": 23446
+ },
+ {
+  "company": "Twilio",
+  "evidence_id": "ec24cd536",
+  "url": "https://en.wikipedia.org/wiki/Twilio",
+  "file": "twilio.txt",
+  "chars": 7038
+ },
+ {
+  "company": "Dropbox",
+  "evidence_id": "eb2d29717",
+  "url": "https://en.wikipedia.org/wiki/Dropbox",
+  "file": "dropbox.txt",
+  "chars": 21305
+ },
+ {
+  "company": "Zoom Communications",
+  "evidence_id": "efcb1354f",
+  "url": "https://en.wikipedia.org/wiki/Zoom_Communications",
+  "file": "zoom communications.txt",
+  "chars": 13424
+ }
+]

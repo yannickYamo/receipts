@@ -1,0 +1,307 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "readings": {
+  "inv-053": [
+   true,
+   ""
+  ],
+  "clean-035": [
+   true,
+   ""
+  ],
+  "inv-026": [
+   false,
+   "that investors approved the deal"
+  ],
+  "clean-004": [
+   true,
+   ""
+  ],
+  "clean-052": [
+   true,
+   ""
+  ],
+  "inv-060": [
+   false,
+   "that funding and product launch occurred together"
+  ],
+  "clean-001": [
+   true,
+   ""
+  ],
+  "clean-002": [
+   true,
+   ""
+  ],
+  "clean-058": [
+   true,
+   ""
+  ],
+  "clean-059": [
+   true,
+   ""
+  ],
+  "clean-041": [
+   true,
+   ""
+  ],
+  "clean-017": [
+   true,
+   ""
+  ],
+  "clean-044": [
+   true,
+   ""
+  ],
+  "clean-015": [
+   true,
+   ""
+  ],
+  "clean-026": [
+   true,
+   ""
+  ],
+  "clean-023": [
+   true,
+   ""
+  ],
+  "clean-049": [
+   true,
+   ""
+  ],
+  "clean-043": [
+   true,
+   ""
+  ],
+  "inv-051": [
+   false,
+   "Zendesk, not Momentive Global, is stated as the acquirer"
+  ],
+  "clean-036": [
+   true,
+   ""
+  ],
+  "clean-003": [
+   true,
+   ""
+  ],
+  "clean-060": [
+   true,
+   ""
+  ],
+  "clean-046": [
+   true,
+   ""
+  ],
+  "inv-055": [
+   false,
+   "rankings reversed: claim says #2 in 2020 and #1 in 2022, quote says #1 in 2020 and #2 in 2022"
+  ],
+  "clean-053": [
+   true,
+   ""
+  ],
+  "clean-011": [
+   true,
+   ""
+  ],
+  "clean-033": [
+   true,
+   ""
+  ],
+  "inv-054": [
+   false,
+   "quote specifies 'support workforce' reduction but claim generalizes to total workforce reduction"
+  ],
+  "clean-039": [
+   true,
+   ""
+  ],
+  "clean-022": [
+   true,
+   ""
+  ],
+  "clean-032": [
+   true,
+   ""
+  ],
+  "clean-034": [
+   true,
+   ""
+  ],
+  "clean-057": [
+   true,
+   ""
+  ],
+  "clean-037": [
+   true,
+   ""
+  ],
+  "inv-057": [
+   false,
+   "GAAP and non-GAAP metrics are reversed\u2014quote shows GAAP loss of $55.4M and non-GAAP income of $48.9M, while claim states the opposite"
+  ],
+  "clean-045": [
+   true,
+   ""
+  ],
+  "inv-059": [
+   false,
+   "the actor is different\u2014claim specifies Y Combinator as organization, quote specifies Sam Altman as individual"
+  ],
+  "clean-030": [
+   true,
+   ""
+  ],
+  "clean-021": [
+   true,
+   ""
+  ],
+  "clean-027": [
+   true,
+   ""
+  ],
+  "inv-052": [
+   false,
+   "Direction of accusation reversed (Freshworks accusing Zoho vs. Zoho accusing Freshworks)"
+  ],
+  "clean-048": [
+   true,
+   ""
+  ],
+  "clean-025": [
+   true,
+   ""
+  ],
+  "clean-014": [
+   true,
+   ""
+  ],
+  "clean-024": [
+   true,
+   ""
+  ],
+  "clean-040": [
+   true,
+   ""
+  ],
+  "inv-029": [
+   false,
+   "Moskovitz stepping down as chairman vs. remaining as chairman"
+  ],
+  "clean-019": [
+   true,
+   ""
+  ],
+  "inv-043": [
+   false,
+   "Comparison that Salesforce has wider global footprint than any other CRM vendor"
+  ],
+  "clean-038": [
+   true,
+   ""
+  ],
+  "clean-018": [
+   true,
+   ""
+  ],
+  "clean-006": [
+   true,
+   ""
+  ],
+  "inv-056": [
+   false,
+   "the amounts are reversed between Series C and D"
+  ],
+  "inv-058": [
+   false,
+   "that Asana 'raised' (rather than was valued at) the amount"
+  ],
+  "inv-031": [
+   false,
+   "the acquirer (Zendesk, not Salesforce)"
+  ],
+  "inv-050": [
+   false,
+   "that this was Freshworks's largest acquisition to date"
+  ],
+  "clean-029": [
+   true,
+   ""
+  ],
+  "clean-016": [
+   true,
+   ""
+  ],
+  "inv-049": [
+   false,
+   "that the restructuring returned the company to profitability"
+  ],
+  "clean-055": [
+   true,
+   ""
+  ],
+  "inv-045": [
+   false,
+   "reason for layoffs (customer growth slowed sharply)"
+  ],
+  "clean-031": [
+   true,
+   ""
+  ],
+  "clean-009": [
+   true,
+   ""
+  ],
+  "clean-054": [
+   true,
+   ""
+  ],
+  "clean-056": [
+   true,
+   ""
+  ],
+  "clean-012": [
+   true,
+   ""
+  ],
+  "clean-005": [
+   true,
+   ""
+  ],
+  "clean-028": [
+   true,
+   ""
+  ],
+  "clean-047": [
+   true,
+   ""
+  ],
+  "clean-013": [
+   true,
+   ""
+  ],
+  "clean-010": [
+   true,
+   ""
+  ],
+  "clean-007": [
+   true,
+   ""
+  ],
+  "clean-051": [
+   true,
+   ""
+  ],
+  "clean-020": [
+   true,
+   ""
+  ],
+  "clean-042": [
+   true,
+   ""
+  ]
+ },
+ "model_calls": 8,
+ "cost_usd_list_price": 0.1722
+}

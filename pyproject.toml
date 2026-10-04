@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claim-receipts"
+version = "0.1.0"
+description = "A guard for agent output: every claim carries a quote from a page that code fetched, or it is cut."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Yannick Maurice" }]
+dependencies = []
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.116"]
+mcp = ["mcp>=1.2"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+receipts = "receipts.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, import order, bugbear, modern syntax, simplifications, and two limits on size:
+# cyclomatic complexity and statements per function.
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "C90", "PLR0915", "D1"]
+ignore = ["D105", "D107", "E501"]  # magic methods explain themselves; the formatter owns line length, and prompts are long lines of prose
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.pylint]
+max-statements = 30
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D1", "E501"]
+"bench/*" = ["D1", "E501", "C901", "PLR0915"]

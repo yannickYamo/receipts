@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+out/
+bench/live/cache/
+# Full page text of third-party sites stays local: the card keeps each page's address, date and hash.
+bench/live/*/ledger.json
+bench/live/*.log
+bench/live/*/run.log
+bench/baseline/pages.json
+# The baseline's card is unverified text about real companies; AUDIT.json keeps the counts.
+bench/baseline/freshdesk-vs-zendesk/
+bench/traces/pages/

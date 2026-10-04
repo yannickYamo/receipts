@@ -1,0 +1,162 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "readings": {
+  "rt-001": [
+   false,
+   "acquisition was rejected by shareholders, not completed"
+  ],
+  "rt-002": [
+   false,
+   "Twilio uses TwiML instead of, not in addition to, industry-standard protocols"
+  ],
+  "rt-003": [
+   false,
+   "Parler refused to agree, not agreed"
+  ],
+  "rt-004": [
+   false,
+   "building is planned to be, not confirmed as being, the structure"
+  ],
+  "rt-005": [
+   false,
+   "this is Slack's allegation, not established fact"
+  ],
+  "rt-006": [
+   false,
+   "Salesforce acquired Slack, not vice versa"
+  ],
+  "rt-007": [
+   false,
+   "Atlassian sold to Slack, not the other way around"
+  ],
+  "rt-008": [
+   false,
+   "Dropbox invested in Zoom, not vice versa"
+  ],
+  "rt-009": [
+   false,
+   "these were losses, not revenue"
+  ],
+  "rt-010": [
+   false,
+   "$102 million is the total revenue, not the amount of increase"
+  ],
+  "rt-011": [
+   false,
+   "numbers reversed: 209 Twilio vs 93 Authy in quote, opposite in claim"
+  ],
+  "rt-012": [
+   false,
+   "92% increase not decrease"
+  ],
+  "rt-013": [
+   false,
+   "selling not buying"
+  ],
+  "rt-014": [
+   false,
+   "usage increased not decreased"
+  ],
+  "rt-015": [
+   false,
+   "Twilio did lay off 11% of its workforce"
+  ],
+  "rt-016": [
+   false,
+   "Zoom did settle the lawsuit for $86 million"
+  ],
+  "rt-017": [
+   false,
+   "Twilio confirmed the breach, did not fail to confirm"
+  ],
+  "rt-018": [
+   false,
+   "Zoom agreed to take added security measures, not refused"
+  ],
+  "rt-019": [
+   false,
+   "whether systems were affected remained unconfirmed"
+  ],
+  "rt-020": [
+   false,
+   "Zoom did not prevent hackers from disrupting sessions"
+  ],
+  "rt-021": [
+   false,
+   "storage amount (100 GB vs 2 GB)"
+  ],
+  "rt-022": [
+   false,
+   "percentage of workforce laid off (50% vs 11%)"
+  ],
+  "rt-023": [
+   false,
+   "app ranking (2nd vs 5th)"
+  ],
+  "rt-024": [
+   false,
+   "number of customers affected (209 million vs 209)"
+  ],
+  "rt-025": [
+   false,
+   "currency (euros vs dollars)"
+  ],
+  "rt-026": [
+   false,
+   "number of startups that received funding"
+  ],
+  "rt-028": [
+   false,
+   "company (Twilio vs GroupMe)"
+  ],
+  "rt-029": [
+   false,
+   "who announced the shutdown (Slack vs Atlassian)"
+  ],
+  "rt-030": [
+   false,
+   "company (Dropbox vs Boxcryptor)"
+  ],
+  "rt-031": [
+   false,
+   "company moving (Salesforce vs Slack)"
+  ],
+  "rt-032": [
+   false,
+   "the reason customers prefer it"
+  ],
+  "rt-033": [
+   false,
+   "continued profitability every year since 2019"
+  ],
+  "rt-034": [
+   false,
+   "the $32.3 million amount is tied to Boku, not Stytch"
+  ],
+  "rt-035": [
+   false,
+   "AWS was used, not acquired"
+  ],
+  "rt-036": [
+   false,
+   "Burgum became chairman in 2012, not after 2024"
+  ],
+  "rt-037": [
+   false,
+   "some, not all, employees were reassigned"
+  ],
+  "rt-038": [
+   false,
+   "not all funds from Softbank; some from Saudi Arabia's public investment fund"
+  ],
+  "rt-039": [
+   false,
+   "the specific date of Twilio's confirmation"
+  ],
+  "rt-040": [
+   false,
+   "the acquisition date was September 4, 2018, not October 2018"
+  ]
+ },
+ "cost_usd_list_price": 0.0615
+}

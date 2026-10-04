@@ -1,0 +1,276 @@
+{
+ "lines": 325,
+ "lines_with_specifics": 109,
+ "specifics": 175,
+ "linked": 0,
+ "traced": 35,
+ "by_kind": {
+  "DATE": 22,
+  "MONEY": 37,
+  "COUNT": 12,
+  "RATING": 12,
+  "ATTRIBUTION": 72,
+  "PERCENT": 1,
+  "QUOTE": 19
+ },
+ "self_flags": {
+  "VERIFY": 23
+ },
+ "pages_traced_against": [
+  "https://www.freshworks.com/freshdesk/pricing/",
+  "https://www.freshworks.com/products/what-is-freshdesk/",
+  "https://www.freshworks.com/freshdesk/integrations/",
+  "https://www.zendesk.com/service/",
+  "https://www.zendesk.com/blog/zendesk-marketplace/",
+  "https://www.zendesk.com/pricing/"
+ ],
+ "sample": {
+  "seed": 11,
+  "n": 40,
+  "checkable": 32,
+  "distinct_checkable": 28,
+  "labelled_by": "the author, reading each line",
+  "items": [
+   {
+    "n": 1,
+    "kind": "PERCENT",
+    "text": "30%",
+    "label": "checkable fact"
+   },
+   {
+    "n": 2,
+    "kind": "MONEY",
+    "text": "$1.50",
+    "label": "checkable fact"
+   },
+   {
+    "n": 3,
+    "kind": "DATE",
+    "text": "2025",
+    "label": "checkable fact"
+   },
+   {
+    "n": 4,
+    "kind": "COUNT",
+    "text": "2,000+ apps",
+    "label": "checkable fact"
+   },
+   {
+    "n": 5,
+    "kind": "ATTRIBUTION",
+    "text": "Gartner",
+    "label": "checkable fact"
+   },
+   {
+    "n": 6,
+    "kind": "MONEY",
+    "text": "$55",
+    "label": "checkable fact"
+   },
+   {
+    "n": 7,
+    "kind": "ATTRIBUTION",
+    "text": "reported",
+    "label": "checkable fact"
+   },
+   {
+    "n": 8,
+    "kind": "ATTRIBUTION",
+    "text": "Analyst",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 9,
+    "kind": "RATING",
+    "text": "5/5",
+    "label": "checkable fact"
+   },
+   {
+    "n": 10,
+    "kind": "ATTRIBUTION",
+    "text": "Forrester",
+    "label": "same fact as the item before"
+   },
+   {
+    "n": 11,
+    "kind": "ATTRIBUTION",
+    "text": "Analyst",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 12,
+    "kind": "ATTRIBUTION",
+    "text": "Forrester",
+    "label": "checkable fact"
+   },
+   {
+    "n": 13,
+    "kind": "ATTRIBUTION",
+    "text": "Gartner",
+    "label": "checkable fact"
+   },
+   {
+    "n": 14,
+    "kind": "ATTRIBUTION",
+    "text": "Forrester",
+    "label": "same fact as the item before"
+   },
+   {
+    "n": 15,
+    "kind": "COUNT",
+    "text": "200 agents",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 16,
+    "kind": "RATING",
+    "text": "5/5",
+    "label": "checkable fact"
+   },
+   {
+    "n": 17,
+    "kind": "COUNT",
+    "text": "2,000+ marketplace apps",
+    "label": "checkable fact"
+   },
+   {
+    "n": 18,
+    "kind": "RATING",
+    "text": "8.7/10",
+    "label": "checkable fact"
+   },
+   {
+    "n": 19,
+    "kind": "ATTRIBUTION",
+    "text": "G2",
+    "label": "checkable fact"
+   },
+   {
+    "n": 20,
+    "kind": "ATTRIBUTION",
+    "text": "Capterra",
+    "label": "checkable fact"
+   },
+   {
+    "n": 21,
+    "kind": "ATTRIBUTION",
+    "text": "reviewers",
+    "label": "checkable fact"
+   },
+   {
+    "n": 22,
+    "kind": "MONEY",
+    "text": "$35",
+    "label": "checkable fact"
+   },
+   {
+    "n": 23,
+    "kind": "ATTRIBUTION",
+    "text": "Gartner",
+    "label": "checkable fact"
+   },
+   {
+    "n": 24,
+    "kind": "DATE",
+    "text": "2026",
+    "label": "checkable fact"
+   },
+   {
+    "n": 25,
+    "kind": "DATE",
+    "text": "2026",
+    "label": "checkable fact"
+   },
+   {
+    "n": 26,
+    "kind": "ATTRIBUTION",
+    "text": "Forrester",
+    "label": "same fact as the item before"
+   },
+   {
+    "n": 27,
+    "kind": "RATING",
+    "text": "5/5",
+    "label": "checkable fact"
+   },
+   {
+    "n": 28,
+    "kind": "ATTRIBUTION",
+    "text": "G2",
+    "label": "checkable fact"
+   },
+   {
+    "n": 29,
+    "kind": "MONEY",
+    "text": "$55",
+    "label": "checkable fact"
+   },
+   {
+    "n": 30,
+    "kind": "ATTRIBUTION",
+    "text": "reported",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 31,
+    "kind": "ATTRIBUTION",
+    "text": "G2",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 32,
+    "kind": "QUOTE",
+    "text": "\"Zendesk is more secure/compliant\"",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 33,
+    "kind": "DATE",
+    "text": "2025",
+    "label": "checkable fact"
+   },
+   {
+    "n": 34,
+    "kind": "ATTRIBUTION",
+    "text": "analysts",
+    "label": "same fact as the item before"
+   },
+   {
+    "n": 35,
+    "kind": "ATTRIBUTION",
+    "text": "Forrester",
+    "label": "checkable fact"
+   },
+   {
+    "n": 36,
+    "kind": "QUOTE",
+    "text": "\"We just renewed with Zendesk\"",
+    "label": "not a checkable fact"
+   },
+   {
+    "n": 37,
+    "kind": "RATING",
+    "text": "5/5",
+    "label": "checkable fact"
+   },
+   {
+    "n": 38,
+    "kind": "ATTRIBUTION",
+    "text": "Gartner",
+    "label": "checkable fact"
+   },
+   {
+    "n": 39,
+    "kind": "ATTRIBUTION",
+    "text": "Forrester",
+    "label": "checkable fact"
+   },
+   {
+    "n": 40,
+    "kind": "ATTRIBUTION",
+    "text": "G2",
+    "label": "not a checkable fact"
+   }
+  ]
+ }
+}

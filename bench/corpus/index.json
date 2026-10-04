@@ -1,0 +1,44 @@
+[
+ {
+  "company": "Salesforce",
+  "evidence_id": "ef50d6e2a",
+  "url": "https://en.wikipedia.org/wiki/Salesforce",
+  "file": "salesforce.txt",
+  "chars": 27214
+ },
+ {
+  "company": "HubSpot",
+  "evidence_id": "ecd3abfaa",
+  "url": "https://en.wikipedia.org/wiki/HubSpot",
+  "file": "hubspot.txt",
+  "chars": 5132
+ },
+ {
+  "company": "Zendesk",
+  "evidence_id": "e5a7b0600",
+  "url": "https://en.wikipedia.org/wiki/Zendesk",
+  "file": "zendesk.txt",
+  "chars": 9826
+ },
+ {
+  "company": "Asana",
+  "evidence_id": "ebec97189",
+  "url": "https://en.wikipedia.org/wiki/Asana%2C_Inc.",
+  "file": "asana.txt",
+  "chars": 4686
+ },
+ {
+  "company": "Monday.com",
+  "evidence_id": "ea9eab658",
+  "url": "https://en.wikipedia.org/wiki/Monday.com",
+  "file": "mondaycom.txt",
+  "chars": 2031
+ },
+ {
+  "company": "Freshworks",
+  "evidence_id": "ef9b5f76d",
+  "url": "https://en.wikipedia.org/wiki/Freshworks",
+  "file": "freshworks.txt",
+  "chars": 2343
+ }
+]

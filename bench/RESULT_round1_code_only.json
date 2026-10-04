@@ -1,0 +1,96 @@
+{
+ "clean": {
+  "n": 60,
+  "left_alone": 58,
+  "false_cuts": [
+   {
+    "id": "clean-008",
+    "reason": "polarity_mismatch",
+    "detail": ""
+   },
+   {
+    "id": "clean-050",
+    "reason": "beyond_quote",
+    "detail": "14% of its words are in the quote"
+   }
+  ]
+ },
+ "invented": {
+  "wrong_figure": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "figure_not_in_quote": 10
+   },
+   "missed": []
+  },
+  "fabricated_quote": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "quote_not_in_source": 10
+   },
+   "missed": []
+  },
+  "polarity": {
+   "n": 10,
+   "caught": 8,
+   "caught_by": {
+    "figure_not_in_quote": 3,
+    "polarity_mismatch": 5
+   },
+   "missed": [
+    "inv-026",
+    "inv-029"
+   ]
+  },
+  "wrong_company": {
+   "n": 10,
+   "caught": 9,
+   "caught_by": {
+    "wrong_subject": 9
+   },
+   "missed": [
+    "inv-031"
+   ]
+  },
+  "beyond_quote": {
+   "n": 10,
+   "caught": 6,
+   "caught_by": {
+    "beyond_quote": 6
+   },
+   "missed": [
+    "inv-043",
+    "inv-045",
+    "inv-049",
+    "inv-050"
+   ]
+  },
+  "meaning_changed": {
+   "n": 10,
+   "caught": 0,
+   "caught_by": {},
+   "missed": [
+    "inv-051",
+    "inv-052",
+    "inv-053",
+    "inv-054",
+    "inv-055",
+    "inv-056",
+    "inv-057",
+    "inv-058",
+    "inv-059",
+    "inv-060"
+   ]
+  }
+ },
+ "mechanical": {
+  "n": 50,
+  "caught": 43
+ },
+ "code": {
+  "core.py": "b3735fcf1c4b134b",
+  "text.py": "d5eb60bdb996d998"
+ }
+}

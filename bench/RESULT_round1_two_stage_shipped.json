@@ -1,0 +1,78 @@
+{
+ "round": "round1",
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "types": {
+  "clean": {
+   "n": 60,
+   "left_alone": 58,
+   "cut_by": {
+    "beyond_quote": 1,
+    "polarity_mismatch": 1
+   },
+   "false_cuts": [
+    "clean-008",
+    "clean-050"
+   ]
+  },
+  "wrong_figure": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "figure_not_in_quote": 10
+   },
+   "missed": []
+  },
+  "fabricated_quote": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "quote_not_in_source": 10
+   },
+   "missed": []
+  },
+  "polarity": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "not_stated": 2,
+    "polarity_mismatch": 5,
+    "figure_not_in_quote": 3
+   },
+   "missed": []
+  },
+  "wrong_company": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "wrong_subject": 9,
+    "not_stated": 1
+   },
+   "missed": []
+  },
+  "beyond_quote": {
+   "n": 10,
+   "caught": 10,
+   "caught_by": {
+    "beyond_quote": 6,
+    "not_stated": 4
+   },
+   "missed": []
+  },
+  "meaning_changed": {
+   "n": 10,
+   "caught": 9,
+   "caught_by": {
+    "not_stated": 9
+   },
+   "missed": [
+    "inv-053"
+   ]
+  }
+ },
+ "cost_usd_list_price": 0.1722,
+ "model_calls": 8,
+ "invented": {
+  "n": 60,
+  "caught": 59
+ }
+}

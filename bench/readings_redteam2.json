@@ -1,0 +1,166 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "readings": {
+  "rt2-001": [
+   false,
+   "PCMag as source of Best Workplace in 2021"
+  ],
+  "rt2-002": [
+   false,
+   "PCMag as source of Brands That Matter in 2022"
+  ],
+  "rt2-003": [
+   true,
+   ""
+  ],
+  "rt2-004": [
+   false,
+   "sex-trafficking allegations"
+  ],
+  "rt2-005": [
+   false,
+   "explicit confirmation of discontinuation"
+  ],
+  "rt2-006": [
+   true,
+   ""
+  ],
+  "rt2-007": [
+   true,
+   ""
+  ],
+  "rt2-008": [
+   true,
+   ""
+  ],
+  "rt2-009": [
+   true,
+   ""
+  ],
+  "rt2-010": [
+   true,
+   ""
+  ],
+  "rt2-011": [
+   true,
+   ""
+  ],
+  "rt2-012": [
+   true,
+   ""
+  ],
+  "rt2-013": [
+   false,
+   "whether the number of developers is currently 1.5 million (data is from 2014)"
+  ],
+  "rt2-014": [
+   false,
+   "whether Asana currently has 131,000 customers (data is from September 2022)"
+  ],
+  "rt2-015": [
+   true,
+   ""
+  ],
+  "rt2-016": [
+   false,
+   "whether half of customers are currently outside the United States (data is from 2011)"
+  ],
+  "rt2-017": [
+   false,
+   "whether Salesforce is currently the largest technology component (quote says was, not is)"
+  ],
+  "rt2-018": [
+   true,
+   ""
+  ],
+  "rt2-019": [
+   false,
+   "whether Zendesk actually follows this policy, or only promised it"
+  ],
+  "rt2-020": [
+   false,
+   "whether Salesforce currently uses AWS for this purpose (quote is a 2016 announcement of future plans)"
+  ],
+  "rt2-021": [
+   false,
+   "whether the listing was actually completed"
+  ],
+  "rt2-022": [
+   false,
+   "acquisition closed January 2026, not December 2025"
+  ],
+  "rt2-023": [
+   false,
+   "whether integration was actually completed"
+  ],
+  "rt2-024": [
+   false,
+   "led by Sam Altman specifically, not Y Combinator entity"
+  ],
+  "rt2-025": [
+   false,
+   "led by Generation Investment Management, not Al Gore directly"
+  ],
+  "rt2-026": [
+   false,
+   "$1.03 billion was raised in IPO, not VC funding rounds"
+  ],
+  "rt2-027": [
+   true,
+   ""
+  ],
+  "rt2-028": [
+   false,
+   "Forethought not identified as Zendesk's technology"
+  ],
+  "rt2-029": [
+   false,
+   "who performed the rebranding"
+  ],
+  "rt2-030": [
+   false,
+   "email marketing software, not marketing software broadly"
+  ],
+  "rt2-031": [
+   false,
+   "\"the top\" rather than \"among the top\""
+  ],
+  "rt2-032": [
+   false,
+   "broader claim of \"best company\" without size or location qualifications"
+  ],
+  "rt2-033": [
+   true,
+   ""
+  ],
+  "rt2-034": [
+   false,
+   "overall workforce reduction versus support workforce only"
+  ],
+  "rt2-035": [
+   true,
+   ""
+  ],
+  "rt2-036": [
+   false,
+   "definite leak versus \"potential leak\""
+  ],
+  "rt2-037": [
+   false,
+   "unqualified claim; quote limits to \"currently\""
+  ],
+  "rt2-038": [
+   false,
+   "companies using Salesforce; breach confirmed not just claimed"
+  ],
+  "rt2-039": [
+   true,
+   ""
+  ],
+  "rt2-040": [
+   true,
+   ""
+  ]
+ },
+ "cost_usd_list_price": 0.1717
+}
