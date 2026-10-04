@@ -29,15 +29,18 @@ class Ledger(Mapping[str, Evidence]):
         return len(self._items)
 
     def add_text(self, url: str, text: str, title: str = "", fetched_at: str | None = None) -> Evidence:
-        """Record a page whose text the caller already holds (a tool result, a file, a test)."""
-        ev = Evidence(
-            id="e" + hashlib.sha256(url.encode()).hexdigest()[:8],
-            url=url,
-            text=text,
-            title=title,
-            fetched_at=fetched_at or datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            sha256=hashlib.sha256(text.encode()).hexdigest(),
-        )
+        """Record a page whose text the caller already holds (a tool result, a file, a test).
+
+        A page read again with different text gets an id of its own. The earlier text stays, so a claim
+        written against it is still checked against what it quoted.
+        """
+        digest = hashlib.sha256(text.encode()).hexdigest()
+        key = "e" + hashlib.sha256(url.encode()).hexdigest()[:8]
+        earlier = self._items.get(key)
+        if earlier is not None and earlier.sha256 != digest:
+            key = f"{key}.{digest[:6]}"
+        when = fetched_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
+        ev = Evidence(id=key, url=url, text=text, title=title, fetched_at=when, sha256=digest)
         self._items[ev.id] = ev
         return ev
 
@@ -52,5 +55,14 @@ class Ledger(Mapping[str, Evidence]):
 
     @classmethod
     def load(cls, path: str | Path) -> Ledger:
-        """Read a ledger from a JSON file written by `save`."""
-        return cls([Evidence(**e) for e in json.loads(Path(path).read_text())])
+        """Read a ledger from a JSON file written by `save`.
+
+        Each page's text must still match its hash. That catches a file edited by hand or damaged. It does
+        not make the file evidence: whoever can edit the text can edit the hash, so a ledger file is
+        trusted input, like the code that reads it.
+        """
+        items = [Evidence(**e) for e in json.loads(Path(path).read_text())]
+        for ev in items:
+            if ev.sha256 and hashlib.sha256(ev.text.encode()).hexdigest() != ev.sha256:
+                raise ValueError(f"{path}: the text of {ev.url} no longer matches its hash; it changed after the fetch")
+        return cls(items)

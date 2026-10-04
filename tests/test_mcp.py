@@ -11,7 +11,7 @@ def test_mcp_server_checks_claims_over_stdio():
     from mcp.client.stdio import stdio_client
 
     async def run():
-        params = StdioServerParameters(command=sys.executable, args=["-m", "receipts.cli", "mcp"])
+        params = StdioServerParameters(command=sys.executable, args=["-m", "receipts.cli", "mcp", "--code-only"])
         async with stdio_client(params) as (read, write), ClientSession(read, write) as session:
             await session.initialize()
             names = {t.name for t in (await session.list_tools()).tools}

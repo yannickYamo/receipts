@@ -1,6 +1,7 @@
 """The command line.
 
-receipts check claims.json --ledger ledger.json     exit 1 when any claim is unsupported
+receipts check claims.json --ledger ledger.json     both stages; exit 1 when any claim is unsupported
+receipts check claims.json --ledger l.json --code-only    the code stage alone: no model, and weaker
 receipts fetch URL... --ledger ledger.json          read pages into a ledger
 receipts audit card.html [--ledger ledger.json]     count the specifics in any text, and how many can be checked
 receipts card --us A --them B --out DIR             build a battle card
@@ -38,21 +39,40 @@ def _load_claims(path: str) -> list[Claim]:
     ]
 
 
+CODE_ONLY_NOTE = (
+    "code check only: the reader did not run. A claim that keeps a quote's words and changes their meaning "
+    "can pass this stage. Drop --code-only to run both."
+)
+
+
+def _backend(kind: str, model: str):
+    """The model backend for a command: the local `claude` command, or the Anthropic API."""
+    from .backends import AnthropicBackend, ClaudeCodeBackend
+
+    return ClaudeCodeBackend(model) if kind == "claude-code" else AnthropicBackend(model)
+
+
 def _check(a: argparse.Namespace) -> int:
     claims = _load_claims(a.claims)
-    report = check_claims(claims, Ledger.load(a.ledger), max_age_days=a.max_age_days)
-    if a.json:
-        print(json.dumps(report.to_dict(), indent=1))
+    ledger = Ledger.load(a.ledger)
+    if a.code_only:
+        report, stages = check_claims(claims, ledger, max_age_days=a.max_age_days), CODE_ONLY_NOTE
     else:
-        text = {c.id: c.text for c in claims}
-        for v in report.verdicts:
-            mark = "PASS" if v.supported else "CUT "
-            print(
-                f"{mark} {v.claim_id}  {text[v.claim_id]}"
-                + ("" if v.supported else f"\n       {v.why}")
-                + ("\n       the page was read more than --max-age-days ago" if v.stale else "")
-            )
-        print(f"\n{len(report.supported)} of {len(report.verdicts)} supported, {len(report.cut)} cut")
+        from .reader import READER_VERSION, check_with_reader
+
+        reader = _backend(a.backend, a.reader_model)
+        report = check_with_reader(claims, ledger, reader, max_age_days=a.max_age_days)
+        stages = f"code check, then reader ({reader.name}, prompt {READER_VERSION})"
+    if a.json:
+        print(json.dumps(report.to_dict() | {"stages": stages}, indent=1))
+        return 1 if report.cut else 0
+    for claim, v in zip(claims, report.verdicts, strict=True):  # by position: two claims may share an id
+        print(f"{'PASS' if v.supported else 'CUT '} {v.claim_id}  {claim.text}")
+        if not v.supported:
+            print(f"       {v.why}")
+        if v.stale:
+            print("       the page was read more than --max-age-days ago")
+    print(f"\n{len(report.supported)} of {len(report.verdicts)} supported, {len(report.cut)} cut\n{stages}")
     return 1 if report.cut else 0
 
 
@@ -87,19 +107,12 @@ def _audit(a: argparse.Namespace) -> int:
 
 
 def _card(a: argparse.Namespace) -> int:
-    from .backends import AnthropicBackend, ClaudeCodeBackend
     from .battlecard import build_card, render_html
     from .battlecard.render import panel_text
 
-    backend = (
-        ClaudeCodeBackend(a.model or "sonnet")
-        if a.backend == "claude-code"
-        else AnthropicBackend(a.model or "claude-opus-5-5")
-    )
+    backend = _backend(a.backend, a.model or ("sonnet" if a.backend == "claude-code" else "claude-opus-5-5"))
     urls = {a.us: a.us_url, a.them: a.them_url}
-    reader = None
-    if a.reader_model != "none":
-        reader = ClaudeCodeBackend(a.reader_model) if a.backend == "claude-code" else AnthropicBackend(a.reader_model)
+    reader = None if a.reader_model == "none" else _backend(a.backend, a.reader_model)
     card = build_card(
         a.us,
         a.them,
@@ -117,6 +130,19 @@ def _card(a: argparse.Namespace) -> int:
     print(panel_text(card))
     print(f"\n{out / 'card.html'}")
     return 0 if card.supported else 1
+
+
+def _add_check_command(sub) -> None:
+    """The `check` command and its options."""
+    c = sub.add_parser("check", help="check claims against a ledger; exit 1 when any is unsupported")
+    c.add_argument("claims", help="a JSON file: a list of {id, text, quote, evidence_id, subject}")
+    c.add_argument("--ledger", required=True)
+    c.add_argument("--max-age-days", type=int, help="flag claims whose page was read longer ago than this")
+    c.add_argument("--json", action="store_true")
+    c.add_argument("--code-only", action="store_true", help="skip the reader: no model, and a weaker check")
+    c.add_argument("--reader-model", default="haiku", help="the model that reads each claim against its sentence")
+    c.add_argument("--backend", choices=["claude-code", "anthropic"], default="claude-code")
+    c.set_defaults(run=_check)
 
 
 def _add_card_command(sub) -> None:
@@ -140,6 +166,12 @@ def _add_card_command(sub) -> None:
     b.set_defaults(run=_card)
 
 
+def _mcp(a: argparse.Namespace) -> int:
+    from .mcp_server import serve
+
+    return serve(None if a.code_only else _backend(a.backend, a.reader_model))
+
+
 def main(argv: list[str] | None = None) -> int:
     """Parse the command line and run the command. Returns the exit code."""
     p = argparse.ArgumentParser(
@@ -147,12 +179,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     sub = p.add_subparsers(dest="command", required=True)
 
-    c = sub.add_parser("check", help="check claims against a ledger; exit 1 when any is unsupported")
-    c.add_argument("claims", help="a JSON file: a list of {id, text, quote, evidence_id, subject}")
-    c.add_argument("--ledger", required=True)
-    c.add_argument("--max-age-days", type=int, help="flag claims whose page was read longer ago than this")
-    c.add_argument("--json", action="store_true")
-    c.set_defaults(run=_check)
+    _add_check_command(sub)
 
     f = sub.add_parser("fetch", help="read pages into a ledger")
     f.add_argument("urls", nargs="+")
@@ -167,7 +194,10 @@ def main(argv: list[str] | None = None) -> int:
 
     _add_card_command(sub)
     m = sub.add_parser("mcp", help="serve the check over MCP (pip install claim-receipts[mcp])")
-    m.set_defaults(run=lambda a: __import__("receipts.mcp_server", fromlist=["serve"]).serve())
+    m.add_argument("--code-only", action="store_true", help="skip the reader: no model, and a weaker check")
+    m.add_argument("--reader-model", default="haiku")
+    m.add_argument("--backend", choices=["claude-code", "anthropic"], default="claude-code")
+    m.set_defaults(run=_mcp)
 
     a = p.parse_args(argv)
     try:

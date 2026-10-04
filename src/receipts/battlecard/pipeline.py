@@ -25,7 +25,7 @@ from ..core import Claim, Evidence, Verdict, check_claim, overlap, polarity_mism
 from ..fetch import FetchError
 from ..ledger import Ledger
 from ..reader import READER_VERSION, answers, as_data, read_pairs
-from ..text import norm, numbers_in
+from ..text import carries, figures_in, norm, numbers_in
 
 TOPICS = ["pricing", "feature", "integration", "limit", "customer", "company", "positioning", "review"]
 MAX_PAGE_CHARS = 40_000
@@ -258,8 +258,10 @@ def check_line(line: Line, facts: dict[str, Claim], names: str) -> Line:
         )
         return line
     basis = " ".join(f"{c.text} {c.quote}" for c in cited)
-    known = set(numbers_in(basis)) | set(numbers_in(names))
-    extra = [n for n in numbers_in(said) if n not in known]
+    # A figure in a line must be the same figure in its facts, kind included: "19 agents" is not "$19".
+    known = figures_in(basis)
+    in_names = set(numbers_in(names))
+    extra = [v for v, k in figures_in(said) if not carries((v, k), known) and not (k == "" and v in in_names)]
     if extra:
         line.kept, line.reason = False, f"it states a figure its facts do not ({', '.join(extra)})"
     elif polarity_mismatch(line.text, " ".join(c.text for c in cited)):

@@ -141,6 +141,6 @@ def test_wrapped_and_multicast_addresses_are_refused(url):
 def test_cli_reports_bad_input_without_a_traceback(tmp_path, capsys, content):
     Ledger().save(tmp_path / "l.json")
     (tmp_path / "c.json").write_text(content)
-    assert main(["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json")]) == 2
-    assert main(["check", str(tmp_path / "missing.json"), "--ledger", str(tmp_path / "l.json")]) == 2
+    assert main(["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json"), "--code-only"]) == 2
+    assert main(["check", str(tmp_path / "missing.json"), "--ledger", str(tmp_path / "l.json"), "--code-only"]) == 2
     assert "receipts:" in capsys.readouterr().err

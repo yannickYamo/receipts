@@ -19,6 +19,7 @@ from __future__ import annotations
 import hashlib
 import json
 from collections.abc import Mapping, Sequence
+from dataclasses import replace
 
 from .backends import Backend, BackendError
 from .core import REASONS, Claim, Evidence, Report, Verdict, check_claim
@@ -113,9 +114,7 @@ def check_with_reader(claims: Sequence[Claim], ledger: Mapping[str, Evidence], b
     """
     verdicts = [check_claim(c, ledger, **kw) for c in claims]
     standing = [i for i, v in enumerate(verdicts) if v.supported]
-    numbered = [
-        Claim(str(i), claims[i].text, claims[i].quote, claims[i].evidence_id, claims[i].subject) for i in standing
-    ]
+    numbered = [replace(claims[i], id=str(i)) for i in standing]
     readings = read_pairs(numbered, ledger, backend)
     for i in standing:
         v = verdicts[i]

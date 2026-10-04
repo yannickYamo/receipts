@@ -216,8 +216,8 @@ def test_cli_check_exit_code(tmp_path, capsys):
     (tmp_path / "bad.json").write_text(
         json.dumps([good, good | {"id": "b", "text": "Acme Starter costs $12 per seat per month"}])
     )
-    assert main(["check", str(tmp_path / "ok.json"), "--ledger", str(tmp_path / "ledger.json")]) == 0
-    assert main(["check", str(tmp_path / "bad.json"), "--ledger", str(tmp_path / "ledger.json")]) == 1
+    assert main(["check", str(tmp_path / "ok.json"), "--ledger", str(tmp_path / "ledger.json"), "--code-only"]) == 0
+    assert main(["check", str(tmp_path / "bad.json"), "--ledger", str(tmp_path / "ledger.json"), "--code-only"]) == 1
     assert "CUT  b" in capsys.readouterr().out
     assert main(["audit", str(tmp_path / "bad.json"), "--ledger", str(tmp_path / "ledger.json")]) == 0
 
@@ -236,4 +236,4 @@ def test_page_text_cannot_close_its_tag(web, monkeypatch):
 def test_cli_check_survives_a_null_quote(tmp_path):
     Ledger().save(tmp_path / "l.json")
     (tmp_path / "c.json").write_text(json.dumps([{"text": "Acme is big", "quote": None, "evidence_id": None}]))
-    assert main(["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json")]) == 1
+    assert main(["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json"), "--code-only"]) == 1

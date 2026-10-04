@@ -176,6 +176,18 @@ The second audit, on the code after those fixes:
 Left as stated limits: the fetcher resolves a host name once before the request and the system
 resolves it again, so a host that changes its answer between the two is not caught.
 
+A third review, by an outside reader after publication:
+
+| Defect | Now |
+|---|---|
+| `receipts check` and the MCP tool ran the code check alone, the stage that failed its bar in section 1. Probe: the page says a plan is offered in Europe and not in India, the claim says India, the quote is five words; the code check passed it | Both stages are the default in the command and the MCP server. `--code-only` has to be asked for, and its output says what it is. With both stages the probe is cut |
+| The battle card's line check dropped the kind of a figure: "19 agents" was kept against a fact that says "$19" | Lines are held to the same figure rule as facts |
+| `receipts check` printed the wrong text when two claims shared an id | Verdicts are printed by position |
+| A ledger file edited after the fetch was accepted | Loading refuses text that no longer matches its hash. The file is still trusted input: whoever can edit the text can edit the hash |
+| A page fetched again silently replaced the earlier text under the same id | A page read again with different text gets its own id; the earlier text stays |
+
+Each has a regression test (`tests/test_review_findings.py`).
+
 ## 6. Live runs, and the example this started from
 
 Request, from the upstream example's own README: "Help me compete against Zendesk, I sell Freshdesk".

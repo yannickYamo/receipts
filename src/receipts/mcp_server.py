@@ -1,7 +1,8 @@
 """The check as an MCP server, so an agent can check its own claims before it answers.
 
     pip install claim-receipts[mcp]
-    receipts mcp          # stdio
+    receipts mcp               # stdio, both stages (the reader runs on the local `claude` command)
+    receipts mcp --code-only   # the code check alone: no model, and weaker
 
 Two tools. `read_page` fetches a page into this session's ledger and returns its id and text.
 `check_claims` decides claims against the pages read. The agent cannot hand in page text of its own:
@@ -11,11 +12,17 @@ evidence is only what this server fetched.
 from __future__ import annotations
 
 from . import Claim, Ledger, check_claims
+from .backends import Backend
 from .fetch import FetchError
+from .reader import READER_VERSION, check_with_reader
 
 
-def build_server():
-    """Build the MCP server with its two tools. The ledger lives for the life of the server."""
+def build_server(reader: Backend | None = None):
+    """Build the MCP server with its two tools. The ledger lives for the life of the server.
+
+    With a `reader`, every check runs both stages. Without one it runs the code check alone, and each
+    result says so: that stage cannot tell a claim that keeps a quote's words and changes their meaning.
+    """
     try:  # mcp 2.x renamed FastMCP to MCPServer; both take the same decorators
         from mcp.server.mcpserver import MCPServer as Server
     except ImportError:
@@ -48,12 +55,15 @@ def build_server():
             )
             for i, c in enumerate(claims)
         ]
-        return check_claims(cs, ledger).to_dict()
+        if reader is None:
+            return check_claims(cs, ledger).to_dict() | {"stages": "code check only: the reader did not run"}
+        report = check_with_reader(cs, ledger, reader)
+        return report.to_dict() | {"stages": f"code check, then reader ({reader.name}, prompt {READER_VERSION})"}
 
     return server
 
 
-def serve() -> int:
-    """Run the MCP server on stdio."""
-    build_server().run()
+def serve(reader: Backend | None = None) -> int:
+    """Run the MCP server on stdio, with `reader` as the second stage when one is given."""
+    build_server(reader).run()
     return 0
