@@ -3,160 +3,152 @@
  "readings": {
   "rt-001": [
    false,
-   "acquisition was rejected by shareholders, not completed"
+   "acquisition was rejected, not completed"
   ],
   "rt-002": [
    false,
-   "Twilio uses TwiML instead of, not in addition to, industry-standard protocols"
+   "Twilio uses customized markup language, not industry-standard protocols"
   ],
   "rt-003": [
    false,
-   "Parler refused to agree, not agreed"
+   "Parler refused to agree, rather than agreed"
   ],
   "rt-004": [
    false,
-   "building is planned to be, not confirmed as being, the structure"
+   "building is planned to be this structure, not confirmed"
   ],
   "rt-005": [
    false,
-   "this is Slack's allegation, not established fact"
+   "this is alleged by Slack, not established fact"
   ],
   "rt-006": [
    false,
-   "Salesforce acquired Slack, not vice versa"
+   "Salesforce acquired Slack, not the reverse"
   ],
   "rt-007": [
    false,
-   "Atlassian sold to Slack, not the other way around"
+   "Atlassian sold the IP to Slack, not the reverse"
   ],
   "rt-008": [
    false,
-   "Dropbox invested in Zoom, not vice versa"
+   "Dropbox invested in Zoom, not the reverse"
   ],
   "rt-009": [
    false,
-   "these were losses, not revenue"
+   "Slack reported losses, not revenue"
   ],
   "rt-010": [
    false,
-   "$102 million is the total revenue, not the amount of increase"
+   "$102 million was the total revenue reached, not the amount of increase"
   ],
   "rt-011": [
    false,
-   "numbers reversed: 209 Twilio vs 93 Authy in quote, opposite in claim"
+   "Numbers reversed - claim states 209 Authy accounts and 93 Twilio customers, but quote states 209 Twilio customers and 93 Authy accounts"
   ],
   "rt-012": [
    false,
-   "92% increase not decrease"
+   "Share price movement reversed - claim says 'decrease' but quote says 'increase'"
   ],
   "rt-013": [
    false,
-   "selling not buying"
+   "Direction of transaction reversed - claim says 'buying' but quote says 'selling'"
   ],
   "rt-014": [
    false,
-   "usage increased not decreased"
+   "Usage direction reversed - claim says 'decreased' but quote says 'increased substantially'"
   ],
   "rt-015": [
    false,
-   "Twilio did lay off 11% of its workforce"
+   "Claim negates the layoff, but quote confirms it occurred"
   ],
   "rt-016": [
    false,
-   "Zoom did settle the lawsuit for $86 million"
+   "Claim states no settlement, but quote states settlement occurred"
   ],
   "rt-017": [
    false,
-   "Twilio confirmed the breach, did not fail to confirm"
+   "Claim says failed to confirm, but quote says confirmed the breach"
   ],
   "rt-018": [
    false,
-   "Zoom agreed to take added security measures, not refused"
+   "Claim says refused, but quote says agreed to take added security measures"
   ],
   "rt-019": [
    false,
-   "whether systems were affected remained unconfirmed"
+   "Claim states systems were affected, but quote states Atlassian could not confirm whether they were"
   ],
   "rt-020": [
    false,
-   "Zoom did not prevent hackers from disrupting sessions"
+   "Claim says Zoom stops disruption, but quote says Zoom did not prevent hackers from disrupting sessions"
   ],
   "rt-021": [
    false,
-   "storage amount (100 GB vs 2 GB)"
+   "storage amount: 100 gigabytes vs 2 gigabytes"
   ],
   "rt-022": [
    false,
-   "percentage of workforce laid off (50% vs 11%)"
+   "layoff percentage: half vs 11%"
   ],
   "rt-023": [
    false,
-   "app ranking (2nd vs 5th)"
+   "ranking: second vs fifth most downloaded"
   ],
   "rt-024": [
    false,
-   "number of customers affected (209 million vs 209)"
-  ],
-  "rt-025": [
-   false,
-   "currency (euros vs dollars)"
-  ],
-  "rt-026": [
-   false,
-   "number of startups that received funding"
+   "customer count: 209 million vs 209"
   ],
   "rt-028": [
    false,
-   "company (Twilio vs GroupMe)"
+   "subject: quote is about GroupMe, not Twilio"
   ],
   "rt-029": [
    false,
-   "who announced the shutdown (Slack vs Atlassian)"
+   "actor: Atlassian announced, not Slack"
   ],
   "rt-030": [
    false,
-   "company (Dropbox vs Boxcryptor)"
+   "subject: quote is about Boxcryptor, not Dropbox"
   ],
   "rt-031": [
    false,
-   "company moving (Salesforce vs Slack)"
+   "actor: Slack moved headquarters, not Salesforce"
   ],
   "rt-032": [
    false,
-   "the reason customers prefer it"
+   "reason: customer preference"
   ],
   "rt-033": [
    false,
-   "continued profitability every year since 2019"
+   "remained profitable every year since 2019"
   ],
   "rt-034": [
    false,
-   "the $32.3 million amount is tied to Boku, not Stytch"
+   "The acquisition amount ($32.3 million) is not stated for Stytch"
   ],
   "rt-035": [
    false,
-   "AWS was used, not acquired"
+   "AWS is mentioned as a service used, not an acquisition"
   ],
   "rt-036": [
    false,
-   "Burgum became chairman in 2012, not after 2024"
+   "Burgum became chairman in 2012, before Farquhar stepped down in 2024, not after"
   ],
   "rt-037": [
    false,
-   "some, not all, employees were reassigned"
+   "The quote says some employees were reassigned, not all"
   ],
   "rt-038": [
    false,
-   "not all funds from Softbank; some from Saudi Arabia's public investment fund"
+   "The quote says the majority came from Softbank, not all, and part came from Saudi Arabia"
   ],
   "rt-039": [
    false,
-   "the specific date of Twilio's confirmation"
+   "The date August 15 is not directly stated for when Twilio confirmed the breach"
   ],
   "rt-040": [
    false,
-   "the acquisition date was September 4, 2018, not October 2018"
+   "The acquisition date was September 4, 2018, not October 2018"
   ]
  },
- "cost_usd_list_price": 0.0615
+ "cost_usd_list_price": 0.0558
 }

@@ -19,9 +19,13 @@ from .audit import audit
 from .fetch import FetchError
 
 
-def _check(a: argparse.Namespace) -> int:
-    raw = json.loads(Path(a.claims).read_text())
-    claims = [
+def _load_claims(path: str) -> list[Claim]:
+    """Read claims from a JSON file: a list of objects, or an object with a "claims" list."""
+    raw = json.loads(Path(path).read_text())
+    items = raw.get("claims") if isinstance(raw, dict) else raw
+    if not isinstance(items, list) or not all(isinstance(c, dict) for c in items):
+        raise ValueError(f"{path}: expected a list of claims, each an object with text, quote, evidence_id and subject")
+    return [
         Claim(
             id=str(c.get("id") or f"c{i + 1}"),
             text=str(c.get("text") or ""),
@@ -30,8 +34,12 @@ def _check(a: argparse.Namespace) -> int:
             subject=str(c.get("subject") or ""),
             topic=str(c.get("topic") or ""),
         )
-        for i, c in enumerate(raw["claims"] if isinstance(raw, dict) else raw)
+        for i, c in enumerate(items)
     ]
+
+
+def _check(a: argparse.Namespace) -> int:
+    claims = _load_claims(a.claims)
     report = check_claims(claims, Ledger.load(a.ledger), max_age_days=a.max_age_days)
     if a.json:
         print(json.dumps(report.to_dict(), indent=1))
@@ -162,7 +170,11 @@ def main(argv: list[str] | None = None) -> int:
     m.set_defaults(run=lambda a: __import__("receipts.mcp_server", fromlist=["serve"]).serve())
 
     a = p.parse_args(argv)
-    return int(a.run(a) or 0)
+    try:
+        return int(a.run(a) or 0)
+    except (OSError, ValueError) as e:  # a missing file, a file that is not the JSON it should be
+        print(f"receipts: {e}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

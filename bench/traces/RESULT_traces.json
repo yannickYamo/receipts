@@ -1,19 +1,19 @@
 {
  "facts": 59,
- "kept": 44,
- "cut": 15,
+ "kept": 43,
+ "cut": 16,
  "labellers": {
   "A (claude-opus)": {
    "kept_facts_the_page_states": [
-    44,
-    44
+    43,
+    43
    ],
    "page_true_facts_kept": [
-    44,
+    43,
     59
    ],
    "TPR_quote_states_and_kept": [
-    39,
+    38,
     39
    ],
    "TNR_quote_does_not_state_and_cut": [
@@ -27,19 +27,21 @@
     "f51",
     "f56"
    ],
-   "cut_although_quote_states": []
+   "cut_although_quote_states": [
+    "f25"
+   ]
   },
   "B (claude-sonnet)": {
    "kept_facts_the_page_states": [
-    44,
-    44
+    43,
+    43
    ],
    "page_true_facts_kept": [
-    44,
+    43,
     59
    ],
    "TPR_quote_states_and_kept": [
-    44,
+    43,
     50
    ],
    "TNR_quote_does_not_state_and_cut": [
@@ -48,6 +50,7 @@
    ],
    "kept_although_quote_does_not_state": [],
    "cut_although_quote_states": [
+    "f25",
     "f33",
     "f34",
     "f37",

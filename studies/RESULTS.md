@@ -13,14 +13,17 @@ claim the check cuts is a true negative. Every judgment is yes or no. There are 
 | True claims kept, written for the test (round 2, 60 claims) | 52 of 60 |
 | Unsupported claims cut, written for the test (round 2, 60 claims) | 60 of 60 |
 | Same reader, three runs: claims whose verdict changed | 0 of 76 |
-| Real pages: of the facts the check kept, how many the page states (two blind labellers) | 44 of 44 |
-| Real pages: of the facts the page states, how many the check kept | 44 of 59 |
+| Real pages: of the facts the check kept, how many the page states (two blind labellers) | 43 of 43 |
+| Real pages: of the facts the page states, how many the check kept | 43 of 59 |
 | Red team with the source code, first set: unsupported claims that got past both stages | 9 of 40, then 0 of 40 after a fix |
-| Red team with the source code, fresh set after the fix | 15 of 40 got past both stages |
+| Red team with the source code, fresh set after the fix | 15 of 40 got past both stages (16 of 40 on the code as shipped) |
 
 Read together: against a careless model the check holds, and on real pages it kept nothing the page did
 not state. It pays for that by cutting a quarter of the true facts. Against someone who writes claims to
 beat it, it does not hold: 15 of 40 got through, and the ways they got through are listed below.
+
+The check changed twice after the first runs (sections 3 and 5). Where a number was measured again on
+the code as shipped, both are given.
 
 ## 1. Two pre-registered rounds on claims written for the test
 
@@ -48,8 +51,9 @@ With 60 claims a side the intervals are wide (Wilson, 95%): 52 of 60 is 76% to 9
 94% to 100%. The bar on true claims was met by one claim.
 
 The check changed after these rounds (sections 3 and 5). Both rounds were run again on the code as
-shipped, with fresh reader calls: round 1 gives 58 of 60 and 59 of 60, round 2 gives 52 of 60 and 60
-of 60. The same tables.
+shipped, with fresh reader calls: round 1 gives 58 of 60 and 58 of 60, round 2 gives 52 of 60 and 60
+of 60. In round 1 the reader passed two meaning changes this time (inv-053, whose label is arguable,
+and inv-059).
 
 ## 2. The reader, repeated
 
@@ -72,8 +76,8 @@ million". A sentence about one company quoted without its subject and claimed fo
 
 **The fix.** The reader no longer sees the quote the model chose. Code widens the quote to the whole
 sentences it sits in on the page (the passage), and both the code check and the reader read that. On
-the same 40 claims afterwards: 0 pass both stages. That is a number on a set the fix was written
-against, so it is a regression test, not a measurement.
+the same 40 claims afterwards: 0 pass both stages (and 3 no longer pass the code check). That is a
+number on a set the fix was written against, so it is a regression test, not a measurement.
 
 **Second set.** A fresh agent, given the fixed code and the reader's prompt, wrote 40 more on a
 different corpus. 40 passed the code check, the reader cut 25, and **15 passed both stages**:
@@ -86,6 +90,10 @@ different corpus. 40 passed the code check, the reader cut 25, and **15 passed b
 | Something the page states as past, claimed as current | 1 of 5 |
 | A figure, a heading, an ambiguous phrase or a relative date read the other way | 4 of 5 |
 | A plan stated as a fact; a hedge dropped; another entity in the same sentence; and others | 0 of 12 |
+
+The same 40 on the code as shipped, after the second audit's fixes: 16 pass both stages. None of those
+fixes was aimed at this set, and it shows: the reader's answers moved by a claim or two and the
+result did not.
 
 What this says: the check verifies that a sentence on a page says what the claim says. It does not
 verify that the page, read whole, still stands behind that sentence. A reader that sees the sentences
@@ -104,23 +112,23 @@ state this fact, and does the quote alone state it. The check as shipped then de
 
 | | Labeller A | Labeller B |
 |---|---|---|
-| Of the 44 facts the check kept, the page states | 44 | 44 |
+| Of the 43 facts the check kept, the page states | 43 | 43 |
 | Of the 59 facts proposed, the page states | 59 | 59 |
-| Of the facts the page states, the check kept | 44 of 59 | 44 of 59 |
-| Check kept it, of the facts whose quote states them | 39 of 39 | 44 of 50 |
+| Of the facts the page states, the check kept | 43 of 59 | 43 of 59 |
+| Check kept it, of the facts whose quote states them | 38 of 39 | 43 of 50 |
 | Check cut it, of the facts whose quote does not state them | 15 of 20 | 9 of 9 |
 
 The promise on the card held: nothing was kept that the page does not state (bar: 95%). But on this
-run the model proposed nothing false, so the check caught no invention here. What it did was cut 15
+run the model proposed nothing false, so the check caught no invention here. What it did was cut 16
 true facts, a quarter of them. For a guard that is the number that matters most: a guard that blocks a
 valid answer has a bug, and this one blocks one true fact in four on pricing pages.
 
-Why the 15 were cut, read one by one and grouped:
+Why the 16 were cut, read one by one and grouped:
 
 | Why a true fact was cut | Count |
 |---|---|
 | The quote holds the value and not what it belongs to (a price without its plan, "add-on" stated elsewhere on the page) | 8 |
-| The fact adds a word the quote lacks ("free" trial, "API" endpoints, "requires") | 5 |
+| The fact adds a word the quote lacks ("free" trial, "API" endpoints, "requires") | 6 |
 | A faithful paraphrase under the word-overlap bar | 1 |
 | The negation rule fired on an unrelated "not" | 1 |
 
@@ -129,10 +137,13 @@ split on are one disagreement: whether a quote that does not name the product co
 about it when the page is the product's own. That is a rule for the owner to set. The labellers are
 models. Until a person has labelled a sample, these labels are provisional.
 
-## 5. A review before publication
+## 5. Two audits before publication
 
-An independent reviewer was given the code and asked for ways past it. It found these, each confirmed
-by running it. Each is fixed and has a regression test.
+Twice, an independent reviewer was given the code and asked for defects and for ways past the check.
+Everything below was confirmed by running it, is fixed, and has a regression test
+(`tests/test_audit_findings.py`, `tests/test_core.py`, `tests/test_fetch.py`).
+
+The first audit:
 
 | Way past the code check | Now |
 |---|---|
@@ -145,6 +156,25 @@ by running it. Each is fixed and has a regression test.
 | "$19" accepted against "19 agents" | Money must match money, and a share a share |
 | Advice lines on the card could state a new fact | A reader reads advice for facts beyond its citations. This use is not measured |
 | The fetcher followed a model-supplied address anywhere | Public http(s) hosts only, checked again on every redirect |
+
+The second audit, on the code after those fixes:
+
+| Defect | Now |
+|---|---|
+| A sentence was cut at an abbreviation ("incl."), hiding a negation from the check | Sentence ends skip abbreviations and initials |
+| "compliant" was found inside "non-compliant" | A hyphen joins a word like a letter does |
+| "19 agents" accepted against "$19"; "$19" accepted against "€19" | A figure's kind must match both ways, and each currency is its own kind |
+| Versions read as numbers ("1.2.3" equal to "1.2.9") | A version is a name, not a figure |
+| A price equal to a number in the product's name was exempt ("Microsoft 365 costs $365") | Only a bare number can be part of a name |
+| Text in other scripts had no words the check could compare, so nothing was ever "beyond the quote" | Words are read in any script |
+| True claims cut: "5M users", "five percent", ranges such as "5-15%", a page's own ellipsis | Each is read as written |
+| Names such as "3M" or "Any.do" could never be a subject; "Com" matched any .com address | Names keep digits and short words; an address ending names nothing |
+| Two claims with one id could take each other's verdict | Claims are read by position |
+| A malformed reply from the reader, a bad input file, a cut-off API reply: a crash | Each is handled: the claim is cut, or the command says what is wrong |
+| A slow server could hold a fetch open past its deadline | The deadline is checked after every packet |
+
+Left as stated limits: the fetcher resolves a host name once before the request and the system
+resolves it again, so a host that changes its answer between the two is not caught.
 
 ## 6. Live runs, and the example this started from
 
@@ -167,18 +197,18 @@ page. It shows a rep cannot tell which are right: prose passes from stage to sta
 survives to the card. Counts and labels are in `bench/baseline/AUDIT.json`. The card itself is not in
 the repository, since it is unverified text about two real companies.
 
-**This pipeline, four runs of the same request.**
+**This pipeline, five runs of the same request.**
 
-| | Run 1 | Run 2 | Run 3 | Run 4 |
-|---|---|---|---|---|
-| Pages read / refused | 5 / 3 | 5 / 2 | 6 / 2 | 5 / 2 |
-| Facts kept, of those proposed | 36 of 58 | 40 of 52 | 44 of 59 | 37 of 48 |
-| Card lines kept | 17 of 21 | 17 of 22 | 18 of 24 | 16 of 22 |
-| Lines on the card without a source | 0 | 0 | 0 | 0 |
+| | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 |
+|---|---|---|---|---|---|
+| Pages read / refused | 5 / 3 | 5 / 2 | 6 / 2 | 5 / 2 | 5 / 2 |
+| Facts kept, of those proposed | 36 of 58 | 40 of 52 | 44 of 59 | 37 of 48 | 34 of 48 |
+| Card lines kept | 17 of 21 | 17 of 22 | 18 of 24 | 16 of 22 | 19 of 23 |
+| Lines on the card without a source | 0 | 0 | 0 | 0 | 0 |
 
 The check changed between runs: after run 1 the extraction prompt was told to quote a name with its
-value; run 3 is on the code after the review; run 4 is on the code as shipped. So the runs are a
-history, not four samples of one thing. G2 and Capterra refused the fetch every time, so no card has
+value; run 3 is on the code after the first audit; run 4 after the red-team fix; run 5 is on the code
+as shipped. So the runs are a history, not five samples of one thing. G2 and Capterra refused the fetch every time, so no card has
 review data, and each says which pages it could not read.
 
 ## What is not measured

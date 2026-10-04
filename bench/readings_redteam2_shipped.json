@@ -1,0 +1,166 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "readings": {
+  "rt2-001": [
+   false,
+   "Best Workplace award in 2021 was from Inc., not PCMag"
+  ],
+  "rt2-002": [
+   false,
+   "Brands That Matter award in 2022 was from Fast Company, not PCMag"
+  ],
+  "rt2-003": [
+   true,
+   ""
+  ],
+  "rt2-004": [
+   true,
+   ""
+  ],
+  "rt2-005": [
+   true,
+   ""
+  ],
+  "rt2-006": [
+   true,
+   ""
+  ],
+  "rt2-007": [
+   true,
+   ""
+  ],
+  "rt2-008": [
+   true,
+   ""
+  ],
+  "rt2-009": [
+   true,
+   ""
+  ],
+  "rt2-010": [
+   true,
+   ""
+  ],
+  "rt2-011": [
+   true,
+   ""
+  ],
+  "rt2-012": [
+   false,
+   "current status of the partnership"
+  ],
+  "rt2-013": [
+   false,
+   "current status of the figures"
+  ],
+  "rt2-014": [
+   false,
+   "timeframe (as of September 2022)"
+  ],
+  "rt2-015": [
+   false,
+   "timeframe (as of 2025)"
+  ],
+  "rt2-016": [
+   false,
+   "current status (quote is from 2011)"
+  ],
+  "rt2-017": [
+   false,
+   "current status (only established at accession)"
+  ],
+  "rt2-018": [
+   true,
+   ""
+  ],
+  "rt2-019": [
+   false,
+   "whether the promise is actually followed"
+  ],
+  "rt2-020": [
+   false,
+   "whether the announced plan was implemented"
+  ],
+  "rt2-021": [
+   false,
+   "Filing for and requesting an IPO listing is not the same as actually being listed"
+  ],
+  "rt2-022": [
+   false,
+   "The acquisition closed in January 2026, not December 2025; December 2025 was when they agreed to it"
+  ],
+  "rt2-023": [
+   false,
+   "The deal called for the integration to happen; whether it actually occurred is not stated"
+  ],
+  "rt2-024": [
+   false,
+   "The financing was led by Sam Altman (an individual), not by Y Combinator as an organization"
+  ],
+  "rt2-025": [
+   false,
+   "The funding was led by Generation Investment Management, not by Al Gore; Al Gore backed the firm"
+  ],
+  "rt2-026": [
+   false,
+   "The $1.03 billion was raised in the IPO, not in the funding rounds; funding rounds are described as earlier"
+  ],
+  "rt2-027": [
+   true,
+   ""
+  ],
+  "rt2-028": [
+   false,
+   "The AI agents are attributed to Forethought's technology, not to Zendesk"
+  ],
+  "rt2-029": [
+   false,
+   "The quote does not state who performed the rebranding"
+  ],
+  "rt2-030": [
+   false,
+   "The award was for best overall email marketing software, not best overall marketing software"
+  ],
+  "rt2-031": [
+   false,
+   "that HubSpot was the single top/number one product, not just among the top products"
+  ],
+  "rt2-032": [
+   false,
+   "geographic scope (Massachusetts) and size category (large company) rather than best overall"
+  ],
+  "rt2-033": [
+   true,
+   ""
+  ],
+  "rt2-034": [
+   false,
+   "that the reduction was specifically in support workforce, not the entire workforce"
+  ],
+  "rt2-035": [
+   true,
+   ""
+  ],
+  "rt2-036": [
+   false,
+   "that the leak was confirmed as actual, not merely potential"
+  ],
+  "rt2-037": [
+   true,
+   ""
+  ],
+  "rt2-038": [
+   false,
+   "that the breached companies were using Salesforce"
+  ],
+  "rt2-039": [
+   true,
+   ""
+  ],
+  "rt2-040": [
+   true,
+   ""
+  ]
+ },
+ "cost_usd_list_price": 0.1358
+}

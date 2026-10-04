@@ -1,0 +1,92 @@
+{
+ "reader": "claude-code (haiku), prompt f95a7623",
+ "n": 40,
+ "past_code": 40,
+ "past_both": 16,
+ "by_technique": {
+  "table_stitch": {
+   "written": 6,
+   "past_code": 6,
+   "past_both": 4
+  },
+  "next_sentence_retraction": {
+   "written": 6,
+   "past_code": 6,
+   "past_both": 5
+  },
+  "past_as_current": {
+   "written": 5,
+   "past_code": 5,
+   "past_both": 0
+  },
+  "heading_omitted": {
+   "written": 1,
+   "past_code": 1,
+   "past_both": 1
+  },
+  "plan_as_fact": {
+   "written": 5,
+   "past_code": 5,
+   "past_both": 0
+  },
+  "apposition_shift": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 0
+  },
+  "misattached_figure": {
+   "written": 2,
+   "past_code": 2,
+   "past_both": 1
+  },
+  "other_entity_same_sentence": {
+   "written": 1,
+   "past_code": 1,
+   "past_both": 0
+  },
+  "subject_check": {
+   "written": 1,
+   "past_code": 1,
+   "past_both": 0
+  },
+  "scope_drop": {
+   "written": 6,
+   "past_code": 6,
+   "past_both": 2
+  },
+  "hedge_drop": {
+   "written": 3,
+   "past_code": 3,
+   "past_both": 1
+  },
+  "ambiguous_phrase": {
+   "written": 1,
+   "past_code": 1,
+   "past_both": 1
+  },
+  "relative_date": {
+   "written": 1,
+   "past_code": 1,
+   "past_both": 1
+  }
+ },
+ "past_both_ids": [
+  "rt2-003",
+  "rt2-004",
+  "rt2-005",
+  "rt2-006",
+  "rt2-007",
+  "rt2-008",
+  "rt2-009",
+  "rt2-010",
+  "rt2-011",
+  "rt2-018",
+  "rt2-027",
+  "rt2-033",
+  "rt2-035",
+  "rt2-037",
+  "rt2-039",
+  "rt2-040"
+ ],
+ "cost_usd_list_price": 0.1358
+}

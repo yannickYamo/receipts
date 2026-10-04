@@ -17,7 +17,7 @@ from receipts.reader import READER_VERSION, read_pairs
 HERE = Path(__file__).parent
 NAME = next((x for x in sys.argv[1:] if not x.startswith("--")), "redteam")  # redteam, redteam2
 CORPUS = {"redteam": "corpus2", "redteam2": "corpus"}[NAME]
-TAG = "_after_fix" if "--after-fix" in sys.argv else ""
+TAG = "_after_fix" if "--after-fix" in sys.argv else "_shipped" if "--shipped" in sys.argv else ""
 rows = [json.loads(x) for x in (HERE / f"{NAME}.jsonl").read_text().splitlines() if x.strip()]
 ledger = Ledger.load(HERE / CORPUS / "ledger.json")
 claims = [Claim(r["id"], r["text"], r["quote"], r["evidence_id"], r["company"]) for r in rows]

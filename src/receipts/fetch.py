@@ -26,6 +26,20 @@ class FetchError(Exception):
     """A page that could not be read, with the reason a person would act on."""
 
 
+_NAT64 = ipaddress.ip_network("64:ff9b::/96")
+
+
+def _is_public(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    """Is this an address on the public internet? An IPv4 address carried inside an IPv6 one is unwrapped first."""
+    if ip.version == 6:
+        inner = ip.ipv4_mapped or (
+            ipaddress.IPv4Address(int(ip) & 0xFFFFFFFF) if ip in _NAT64 or int(ip) >> 32 == 0 else None
+        )
+        if inner is not None:
+            return _is_public(inner)
+    return ip.is_global and not ip.is_multicast
+
+
 def check_address(url: str) -> None:
     """Raise FetchError unless `url` is an http(s) address of a host on the public internet."""
     try:
@@ -40,7 +54,7 @@ def check_address(url: str) -> None:
     except (socket.gaierror, UnicodeError) as e:
         raise FetchError("the host does not resolve") from e
     for info in found:
-        if not ipaddress.ip_address(info[4][0].split("%")[0]).is_global:
+        if not _is_public(ipaddress.ip_address(info[4][0].split("%")[0])):
             raise FetchError("the address is not on the public internet")
 
 
@@ -72,7 +86,7 @@ def _read_body(response, deadline: float) -> bytes:
     """The response body, up to MAX_BYTES and before `deadline`. Raises FetchError past either."""
     chunks: list[bytes] = []
     size = 0
-    while chunk := response.read(65_536):
+    while chunk := response.read1(65_536):  # read1 returns after one packet, so the deadline is checked often
         size += len(chunk)
         if size > MAX_BYTES:
             raise FetchError("the page is larger than 3 MB")

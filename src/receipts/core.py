@@ -23,9 +23,11 @@ replacement for it.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable, Mapping
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
+from urllib.parse import urlsplit
 
 from .text import carries, content_words, figures_in, norm, numbers_in, quote_passage, stem, tokens
 
@@ -165,14 +167,27 @@ def overlap(text: str, support: str, ignore: str = "") -> float:
     return sum(w in have for w in cw) / len(cw)
 
 
+def _names(s: str) -> set[str]:
+    """The words and numbers of a name, in any script: "3M", "Any.do" and "Яндекс" all have some."""
+    return set(re.findall(r"[^\W_]+", norm(s)))
+
+
 def _subject_problem(claim: Claim, ev: Evidence, quote: str) -> str | None:
-    """Why the page cannot be held to this claim's subject, or None when it can."""
-    subject = set(content_words(claim.subject))
+    """Why the page cannot be held to this claim's subject, or None when it can.
+
+    The page is about the subject when its title or its address names it, or when the quote does. The
+    address counts without "www" and without its ending: "com" names nothing.
+    """
+    subject = _names(claim.subject)
     if not subject:
         return "the claim names no product"  # without a subject there is nothing to hold the page to
-    address = ev.url.replace("/", " ").replace(".", " ").replace("-", " ")
-    about = set(content_words(ev.title)) | set(content_words(address))
-    if subject <= about or subject <= set(content_words(quote)):
+    try:
+        address = urlsplit(ev.url)
+        site = set((address.hostname or "").split(".")[:-1]) - {"www"}
+        about = _names(ev.title) | site | _names(address.path)
+    except ValueError:
+        about = _names(ev.title)
+    if subject <= about or subject <= _names(quote):
         return None
     return claim.subject
 
@@ -186,11 +201,12 @@ def _missing_figures(claim: Claim, ev: Evidence, quote: str, passage: str) -> li
     way: the caller cannot exempt a figure by putting it in the subject.
     """
     named = set(numbers_in(claim.subject)) if norm(claim.subject) in norm(f"{ev.title} {ev.text}") else set()
-    in_quote, in_passage = figures_in(quote), figures_in(passage)
+    in_quote, in_passage = figures_in(quote), figures_in(passage, folded=True)
     return [
         value
         for value, kind in figures_in(claim.text)
-        if value not in named and not (carries((value, kind), in_quote) and carries((value, kind), in_passage))
+        if not (kind == "" and value in named)  # only a bare number can be part of a name: "$365" is a price
+        and not (carries((value, kind), in_quote) and carries((value, kind), in_passage))
     ]
 
 

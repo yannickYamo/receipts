@@ -24,7 +24,7 @@ from ..backends import Backend, BackendError
 from ..core import Claim, Evidence, Verdict, check_claim, overlap, polarity_mismatch
 from ..fetch import FetchError
 from ..ledger import Ledger
-from ..reader import READER_VERSION, as_data, read_pairs
+from ..reader import READER_VERSION, answers, as_data, read_pairs
 from ..text import norm, numbers_in
 
 TOPICS = ["pricing", "feature", "integration", "limit", "customer", "company", "positioning", "review"]
@@ -146,10 +146,10 @@ def read_advice(reader: Backend, lines: list[Line], facts: dict[str, Claim]) -> 
             for i, x in enumerate(group)
         )
         try:
-            verdicts = reader.json(ADVICE_SYSTEM, prompt, ADVICE_SCHEMA).get("verdicts", [])
+            reply = reader.json(ADVICE_SYSTEM, prompt, ADVICE_SCHEMA)
         except BackendError:
             continue
-        for v in verdicts:
+        for v in answers(reply):
             if isinstance(v.get("n"), int) and 1 <= v["n"] <= len(group) and isinstance(v.get("adds_fact"), bool):
                 answered[start + v["n"] - 1] = (v["adds_fact"], str(v.get("what", "")))
     for i, x in enumerate(lines):

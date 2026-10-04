@@ -12,10 +12,9 @@ import json
 import random
 from pathlib import Path
 
-from receipts import Claim, Ledger
-from receipts import reader as reader_module
+from receipts import Claim, Ledger, Verdict, check_claim
 from receipts.backends import ClaudeCodeBackend, ScriptedBackend
-from receipts.reader import READER_VERSION, check_with_reader, read_pairs
+from receipts.reader import READER_VERSION, read_pairs
 
 HERE = Path(__file__).parent
 ROUNDS = {
@@ -42,40 +41,27 @@ def main() -> None:
     tag = f"_{a.tag}" if a.tag else ""
     saved = HERE / f"readings_{a.round}{tag}.json"
 
+    # The two stages, spelled out so the reader's answers can be saved and replayed by claim id.
+    verdicts = {c.id: check_claim(c, ledger) for c in claims}
+    standing = [c for c in claims if verdicts[c.id].supported]
     if a.replay:
         stored = json.loads(saved.read_text())
-        reader_module.read_pairs = lambda cs, led, backend, batch=10: {
-            c.id: tuple(stored["readings"][c.id]) for c in cs if c.id in stored["readings"]
-        }
+        readings = {k: tuple(v) for k, v in stored["readings"].items()}
         backend, name = ScriptedBackend([]), stored["reader"]
         backend.calls, backend.cost_usd = stored.get("model_calls", 0), stored.get("cost_usd_list_price", 0.0)
     else:
         backend = ClaudeCodeBackend(a.model)
         name = f"{backend.name}, prompt {READER_VERSION}"
-        calls: dict[str, tuple[bool, str]] = {}
-        original = read_pairs
-
-        def recording(cs, led, b, batch=10):
-            got = original(cs, led, b, batch)
-            calls.update(got)
-            return got
-
-        reader_module.read_pairs = recording
-
-    report = check_with_reader(claims, ledger, backend)
-    if not a.replay:
-        saved.write_text(
-            json.dumps(
-                {
-                    "reader": name,
-                    "readings": calls,
-                    "model_calls": backend.calls,
-                    "cost_usd_list_price": round(backend.cost_usd, 4),
-                },
-                indent=1,
-            )
-        )
-    verdict = {v.claim_id: v for v in report.verdicts}
+        readings = read_pairs(standing, ledger, backend)
+        record = {"reader": name, "readings": readings, "model_calls": backend.calls}
+        saved.write_text(json.dumps(record | {"cost_usd_list_price": round(backend.cost_usd, 4)}, indent=1))
+    for c in standing:
+        v = verdicts[c.id]
+        if c.id not in readings:
+            verdicts[c.id] = Verdict(c.id, False, "unread", match=v.match, url=v.url)
+        elif not readings[c.id][0]:
+            verdicts[c.id] = Verdict(c.id, False, "not_stated", readings[c.id][1], match=v.match, url=v.url)
+    verdict = verdicts
 
     result: dict = {
         "round": a.round,

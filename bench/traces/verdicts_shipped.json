@@ -1,6 +1,6 @@
 {
  "reader": "claude-code (haiku), prompt f95a7623",
- "cost_usd_list_price": 0.1264,
+ "cost_usd_list_price": 0.1319,
  "verdicts": {
   "f1": {
    "kept": true,
@@ -30,7 +30,7 @@
   "f6": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "what product/service the $29 is for (Freddy AI Copilot add-on)"
+   "detail": "what the price is for (Freddy AI Copilot) and that it is an add-on"
   },
   "f7": {
    "kept": true,
@@ -45,7 +45,7 @@
   "f9": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "that this applies on all plans"
+   "detail": "whether this applies to all plans"
   },
   "f10": {
    "kept": false,
@@ -123,9 +123,9 @@
    "detail": ""
   },
   "f25": {
-   "kept": true,
-   "reason": "ok",
-   "detail": ""
+   "kept": false,
+   "reason": "not_stated",
+   "detail": "that the endpoints are API endpoints"
   },
   "f26": {
    "kept": true,
@@ -165,12 +165,12 @@
   "f33": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "that it is an add-on"
+   "detail": "that this is an add-on"
   },
   "f34": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "that it is an add-on"
+   "detail": "that this is an add-on"
   },
   "f35": {
    "kept": true,
@@ -185,7 +185,7 @@
   "f37": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "that the access is provided as part of a free trial"
+   "detail": "explicitly identifies as a free trial"
   },
   "f38": {
    "kept": true,
@@ -240,7 +240,7 @@
   "f48": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "that this is listed as a con"
+   "detail": "that this is listed as a con or disadvantage"
   },
   "f49": {
    "kept": true,
@@ -250,7 +250,7 @@
   "f50": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "the explicit framing that this is what Zendesk is 'best for'"
+   "detail": "that it is the best option for these services"
   },
   "f51": {
    "kept": true,
@@ -295,7 +295,7 @@
   "f59": {
    "kept": false,
    "reason": "not_stated",
-   "detail": "that Zendesk Marketplace requires this; identification of publishers as the subject"
+   "detail": "that Zendesk Marketplace requires this, and that publishers are the subject"
   }
  }
 }

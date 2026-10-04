@@ -159,20 +159,26 @@ class AnthropicBackend:
         messages: list[dict] = [{"role": "user", "content": prompt}]
         for _ in range(4):  # a server-tool turn can pause; resume it a few times at most
             kw: dict[str, Any] = {"tools": tools} if tools else {}
-            response = self.client.messages.create(
-                model=self.model,
-                max_tokens=16000,
-                system=system,
-                messages=messages,
-                output_config={"format": {"type": "json_schema", "schema": schema}},
-                **kw,
-            )
+            try:
+                response = self.client.messages.create(
+                    model=self.model,
+                    max_tokens=16000,
+                    system=system,
+                    messages=messages,
+                    output_config={"format": {"type": "json_schema", "schema": schema}},
+                    **kw,
+                )
+            except Exception as e:  # every failure of the API, typed or not, is one thing to the pipeline
+                raise BackendError(f"the API call failed: {e}") from e
             self.calls += 1
             if response.stop_reason == "refusal":
                 raise BackendError("the model declined the request")
             if response.stop_reason != "pause_turn":
                 texts = [b.text for b in response.content if b.type == "text"]
-                return json.loads(texts[-1]) if texts else {}
+                try:
+                    return json.loads(texts[-1]) if texts else {}
+                except json.JSONDecodeError as e:  # a reply cut short
+                    raise BackendError("the model's reply was not complete JSON") from e
             messages.append({"role": "assistant", "content": response.content})
         raise BackendError("the search did not finish")
 

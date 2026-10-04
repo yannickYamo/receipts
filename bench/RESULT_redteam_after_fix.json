@@ -1,7 +1,7 @@
 {
  "reader": "claude-code (haiku), prompt f95a7623",
  "n": 40,
- "past_code": 39,
+ "past_code": 37,
  "past_both": 0,
  "by_technique": {
   "clipped quote": {
@@ -51,7 +51,7 @@
   },
   "unit or scale misread": {
    "written": 3,
-   "past_code": 3,
+   "past_code": 1,
    "past_both": 0
   },
   "scale word clipped from quote": {
@@ -91,5 +91,5 @@
   }
  },
  "past_both_ids": [],
- "cost_usd_list_price": 0.0615
+ "cost_usd_list_price": 0.0558
 }

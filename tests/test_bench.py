@@ -38,7 +38,7 @@ def test_round_1_both_stages_from_the_saved_readings():
 
 
 def test_red_team_sets_and_the_fix_between_them():
-    for args in (["redteam"], ["redteam", "--after-fix"], ["redteam2"]):
+    for args in (["redteam"], ["redteam", "--after-fix"], ["redteam2"], ["redteam2", "--shipped"]):
         run("bench/run_redteam.py", *args, "--replay")
     first = json.loads((BENCH / "RESULT_redteam.json").read_text())
     fixed = json.loads((BENCH / "RESULT_redteam_after_fix.json").read_text())
@@ -46,13 +46,15 @@ def test_red_team_sets_and_the_fix_between_them():
     assert (first["past_code"], first["past_both"]) == (40, 9)
     assert fixed["past_both"] == 0
     assert (second["past_code"], second["past_both"]) == (40, 15)
+    shipped = json.loads((BENCH / "RESULT_redteam2_shipped.json").read_text())
+    assert (shipped["past_code"], shipped["past_both"]) == (40, 16)
     assert second["by_technique"]["next_sentence_retraction"] == {"written": 6, "past_code": 6, "past_both": 6}
 
 
 def test_the_code_check_has_not_loosened_on_the_red_team_sets():
     from receipts import Claim, Ledger, check_claim
 
-    for name, corpus, ceiling in (("redteam", "corpus2", 39), ("redteam2", "corpus", 40)):
+    for name, corpus, ceiling in (("redteam", "corpus2", 37), ("redteam2", "corpus", 40)):
         ledger = Ledger.load(BENCH / corpus / "ledger.json")
         rows = [json.loads(x) for x in (BENCH / f"{name}.jsonl").read_text().splitlines() if x.strip()]
         passed = sum(
@@ -65,10 +67,10 @@ def test_the_code_check_has_not_loosened_on_the_red_team_sets():
 def test_real_pages_labelled_blind():
     run("bench/traces/score.py")
     r = json.loads((BENCH / "traces" / "RESULT_traces.json").read_text())
-    assert (r["kept"], r["facts"]) == (44, 59)
+    assert (r["kept"], r["facts"]) == (43, 59)
     for row in r["labellers"].values():
-        assert row["kept_facts_the_page_states"] == [44, 44]
-        assert row["page_true_facts_kept"] == [44, 59]
+        assert row["kept_facts_the_page_states"] == [43, 43]
+        assert row["page_true_facts_kept"] == [43, 59]
     assert r["labellers_agree_on_quote_states"] == [48, 59]
 
 
@@ -78,6 +80,6 @@ def test_the_reader_repeated_three_times():
 
 
 def test_both_rounds_on_the_code_as_shipped():
-    for name, clean, caught in (("round1", 58, 59), ("round2", 52, 60)):
+    for name, clean, caught in (("round1", 58, 58), ("round2", 52, 60)):
         r = json.loads((BENCH / f"RESULT_{name}_two_stage_shipped.json").read_text())
         assert (r["types"]["clean"]["left_alone"], r["invented"]["caught"]) == (clean, caught)

@@ -60,19 +60,20 @@
   },
   "meaning_changed": {
    "n": 10,
-   "caught": 9,
+   "caught": 8,
    "caught_by": {
-    "not_stated": 9
+    "not_stated": 8
    },
    "missed": [
-    "inv-053"
+    "inv-053",
+    "inv-059"
    ]
   }
  },
- "cost_usd_list_price": 0.1722,
+ "cost_usd_list_price": 0.1391,
  "model_calls": 8,
  "invented": {
   "n": 60,
-  "caught": 59
+  "caught": 58
  }
 }

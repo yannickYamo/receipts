@@ -7,115 +7,23 @@ these functions, so each one is small and tested on its own.
 from __future__ import annotations
 
 import re
+import unicodedata
 from html.parser import HTMLParser
 
+# fmt: off
 STOP = frozenset(
-    [
-        "a",
-        "an",
-        "the",
-        "and",
-        "or",
-        "but",
-        "if",
-        "so",
-        "of",
-        "to",
-        "in",
-        "on",
-        "at",
-        "by",
-        "for",
-        "from",
-        "with",
-        "as",
-        "is",
-        "are",
-        "was",
-        "were",
-        "be",
-        "been",
-        "being",
-        "it",
-        "its",
-        "this",
-        "that",
-        "these",
-        "those",
-        "there",
-        "here",
-        "than",
-        "then",
-        "when",
-        "what",
-        "which",
-        "who",
-        "whom",
-        "whose",
-        "will",
-        "would",
-        "can",
-        "could",
-        "should",
-        "may",
-        "might",
-        "must",
-        "do",
-        "does",
-        "did",
-        "have",
-        "has",
-        "had",
-        "not",
-        "no",
-        "we",
-        "us",
-        "our",
-        "you",
-        "your",
-        "they",
-        "them",
-        "their",
-        "he",
-        "she",
-        "his",
-        "her",
-        "i",
-        "me",
-        "my",
-        "also",
-        "more",
-        "most",
-        "very",
-        "into",
-        "about",
-        "over",
-        "per",
-        "via",
-        "up",
-        "out",
-        "all",
-        "any",
-        "each",
-        "both",
-        "such",
-        "only",
-        "own",
-        "same",
-        "other",
-        "some",
-        "just",
-        "now",
-        "new",
-    ]
+    ["a", "an", "the", "and", "or", "but", "if", "so", "of", "to", "in", "on", "at", "by", "for", "from", "with", "as", "is", "are", "was", "were", "be", "been", "being", "it", "its", "this", "that", "these", "those", "there", "here", "than", "then", "when", "what", "which", "who", "whom", "whose", "will", "would", "can", "could", "should", "may", "might", "must", "do", "does", "did", "have", "has", "had", "not", "no", "we", "us", "our", "you", "your", "they", "them", "their", "he", "she", "his", "her", "i", "me", "my", "also", "more", "most", "very", "into", "about", "over", "per", "via", "up", "out", "all", "any", "each", "both", "such", "only", "own", "same", "other", "some", "just", "now", "new"]
 )
+# fmt: on
 
-_QUOTES = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-", "‑": "-", " ": " "})
+# An em dash stands between words, so it becomes a spaced hyphen; an en dash sits inside ranges ("5–15").
+_QUOTES = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": " - ", "‑": "-", "\u00a0": " "})
+_ZERO_WIDTH = dict.fromkeys(map(ord, "\u200b\u200c\u200d\u2060\ufeff"))
 
 
 def norm(s: str) -> str:
-    """The text as compared: case, quote style, dash style, spacing and thousands separators aside."""
-    t = s.translate(_QUOTES).lower()
+    """The text as compared: case, quote and dash style, spacing, thousands separators and Unicode form aside."""
+    t = unicodedata.normalize("NFC", s).translate(_ZERO_WIDTH).translate(_QUOTES).lower()
     t = re.sub(r"(\d),(?=\d{3}\b)", r"\1", t)
     return re.sub(r"\s+", " ", t).strip()
 
@@ -139,7 +47,7 @@ def tokens(s: str) -> list[str]:
     """Lowercase word tokens, with contractions opened so a negation is always its own token."""
     t = norm(s).replace("cannot", "can not")
     t = re.sub(r"n't\b", " not", t)
-    return re.findall(r"[a-z][a-z0-9+#]*", t)
+    return re.findall(r"[^\W\d_][\w+#]*", t)  # a letter of any script, then letters, digits, + or #
 
 
 def content_words(s: str) -> list[str]:
@@ -150,16 +58,26 @@ def content_words(s: str) -> list[str]:
 # ── Numbers ───────────────────────────────────────────────────────────────────────────────────────
 #
 # A figure is its value and its kind. "$1.5M", "1.5 million dollars" and "$1,500,000" are one figure;
-# "25" is not "250"; "$19" is not "19 agents". A digit run glued to a letter ("G2", "Q3", "v2") is a
-# name, not a figure, and is not read.
+# "25" is not "250"; "$19" is not "19 agents" and not "€19". A digit run glued to a letter ("G2", "Q3",
+# "v2") and a version ("1.2.3") are names, not figures, and are not read.
 
-_SCALE = {"k": 1e3, "m": 1e6, "b": 1e9, "bn": 1e9, "thousand": 1e3, "million": 1e6, "billion": 1e9, "trillion": 1e12}
-_CURRENCY_CODE = re.compile(r"\b(?:US\$|USD|EUR|GBP|INR|Rs\.?)\s?(?=[\d.])", re.I)
+_SCALE = {"k": 1e3, "thousand": 1e3, "m": 1e6, "million": 1e6, "b": 1e9, "bn": 1e9, "billion": 1e9, "trillion": 1e12}
+_CODE = {"us$": "$", "usd": "$", "eur": "€", "gbp": "£", "inr": "₹", "rs": "₹", "rs.": "₹"}
+_MONEY_WORD = {
+    "dollar": "$",
+    "dollars": "$",
+    "usd": "$",
+    "euro": "€",
+    "euros": "€",
+    "eur": "€",
+    "pounds": "£",
+    "gbp": "£",
+}
+_CODE_BEFORE = re.compile(r"\b(US\$|USD|EUR|GBP|INR|Rs\.?)\s?(?=[\d.])", re.I)
+_KIND_AFTER = r"(\s?%|\s?(?i:percent)\b|\s(?i:dollars?|euros?|pounds|usd|eur|gbp)\b)?"
 _DIGITS = re.compile(
-    r"(?<![\w.])([$€£]\s?)?(\d{1,3}(?:,\d{3})+|\d+)(\.\d+)?"
-    r"(?:\s?(thousand|million|billion|trillion)\b|(k|m|bn|b)\b)?"
-    r"(\s?%|\s?percent\b|\s(?:dollars|euros|pounds)\b)?",
-    re.I,
+    r"(?<![\w.])([$€£₹]\s?)?(\d{1,3}(?:,\d{3})+|\d+)((?:\.\d+)*)"
+    r"(?:[\s-]?((?i:thousand|million|billion|trillion))\b|([kK]|[mMbB]|[bB][nN])\b)?\+?" + _KIND_AFTER
 )
 _UNITS = {
     w: i
@@ -194,34 +112,59 @@ _TENS = {
 }
 _WORD_SCALE = {"hundred": 100, "thousand": 1e3, "million": 1e6, "billion": 1e9, "trillion": 1e12}
 _NUMBER_WORD = "|".join([*_UNITS, *_TENS, *_WORD_SCALE])
-_WORDS = re.compile(rf"\b(?:{_NUMBER_WORD})(?:[\s-]+(?:and\s+)?(?:{_NUMBER_WORD}))*\b", re.I)
+_WORDS = re.compile(rf"\b(?:{_NUMBER_WORD})(?:[\s-]+(?:and\s+)?(?:{_NUMBER_WORD}))*\b" + _KIND_AFTER, re.I)
+_RANGE = re.compile(r"\s?(?:-|to)\s?", re.I)
 
 
 def _canon(v: float) -> str:
     return (f"{v:.6f}").rstrip("0").rstrip(".")
 
 
-def figures_in(s: str) -> list[tuple[str, str]]:
-    """Every figure `s` states, as (value, kind). Kind is "$" for money, "%" for a share, "" otherwise."""
-    t = _CURRENCY_CODE.sub("$", s.translate(_QUOTES))
-    t = re.sub(r"(?<![\w.])\.(?=\d)", "0.", t)  # ".5%" is 0.5%
-    out: list[tuple[str, str]] = []
-    taken: list[tuple[int, int]] = []
+def _kind(before: str | None, after: str | None) -> str:
+    """The kind a figure's surroundings give it: a currency symbol, "%", or "" for a plain count."""
+    if before:
+        return before.strip()
+    word = (after or "").strip().lower()
+    return "%" if word in ("%", "percent") else _MONEY_WORD.get(word, "")
+
+
+def _digit_figures(t: str, folded: bool = False) -> list[dict]:
+    """Figures written with digits, in order, each with where it sits, its value, kind and scale."""
+    out = []
     for m in _DIGITS.finditer(t):
-        value = float(m.group(2).replace(",", "") + (m.group(3) or ""))
-        money = bool(m.group(1)) or (m.group(6) or "").strip().lower() in ("dollars", "euros", "pounds")
-        scale = (m.group(4) or m.group(5) or "").lower()
-        if scale in ("m", "b", "bn") and not money:
-            scale = ""  # "5m" may be metres; a bare letter scales only money ("$5M")
-        kind = "$" if money else "%" if (m.group(6) or "").strip().lower() in ("%", "percent") else ""
-        out.append((_canon(value * _SCALE.get(scale, 1)), kind))
-        taken.append(m.span())
+        if m.group(3).count(".") > 1:
+            continue  # "1.2.3" is a version
+        kind = _kind(m.group(1), m.group(6))
+        letter = m.group(5) or ""
+        # A capital M or B is a scale ("5M users"); a small one may be metres or bytes unless it is money.
+        if letter.islower() and letter != "k" and kind in ("", "%") and not folded:
+            letter = ""
+        scale = (m.group(4) or letter).lower()
+        value = float(m.group(2).replace(",", "") + m.group(3))
+        out.append({"span": m.span(), "value": value, "kind": kind, "scale": _SCALE.get(scale, 1)})
+    return out
+
+
+def _share_across_ranges(t: str, figures: list[dict]) -> None:
+    """In "5-15%", "$5 to 15" and "3 to 5 million", the kind and the scale belong to both ends."""
+    for a, b in zip(figures, figures[1:], strict=False):
+        if not _RANGE.fullmatch(t[a["span"][1] : b["span"][0]]):
+            continue
+        a["kind"] = b["kind"] = a["kind"] or b["kind"]
+        if a["scale"] == 1:
+            a["scale"] = b["scale"]
+
+
+def _word_figures(t: str, taken: list[tuple[int, int]]) -> list[tuple[str, str]]:
+    """Figures spelled out ("twenty-five", "three million dollars"). A lone "one" or "hundred" is idiom, not a figure."""
+    out = []
     for m in _WORDS.finditer(t):
         if any(a <= m.start() < b for a, b in taken):
             continue  # the scale word of "3 million", already read with its digits
-        parts = [p for p in re.split(r"[\s-]+", m.group(0).lower()) if p != "and"]
+        words = m.group(0)[: len(m.group(0)) - len(m.group(1) or "")]
+        parts = [p for p in re.split(r"[\s-]+", words.lower()) if p and p != "and"]
         if all(p in _WORD_SCALE for p in parts) or parts == ["one"]:
-            continue  # "a hundred reasons", "no one": idiom far more often than a figure
+            continue
         total = current = 0.0
         for p in parts:
             if p in _UNITS:
@@ -233,8 +176,21 @@ def figures_in(s: str) -> list[tuple[str, str]]:
             else:
                 total += (current or 1) * _WORD_SCALE[p]
                 current = 0
-        out.append((_canon(total + current), ""))
+        out.append((_canon(total + current), _kind(None, m.group(1))))
     return out
+
+
+def figures_in(s: str, folded: bool = False) -> list[tuple[str, str]]:
+    """Every figure `s` states, as (value, kind). Kind is a currency symbol, "%" for a share, or "" for a count.
+
+    `folded` says the text was lower-cased (a passage is), so "5m" may have been "5M" and is read as a scale.
+    """
+    t = _CODE_BEFORE.sub(lambda m: _CODE[m.group(1).lower()], s.translate(_QUOTES))
+    t = re.sub(r"(?<![\w.])\.(?=\d)", "0.", t)  # ".5%" is 0.5%
+    digits = _digit_figures(t, folded)
+    _share_across_ranges(t, digits)
+    out = [(_canon(f["value"] * f["scale"]), f["kind"]) for f in digits]
+    return out + _word_figures(t, [f["span"] for f in digits])
 
 
 def numbers_in(s: str) -> list[str]:
@@ -243,9 +199,8 @@ def numbers_in(s: str) -> list[str]:
 
 
 def carries(figure: tuple[str, str], figures: list[tuple[str, str]]) -> bool:
-    """Does a text with `figures` carry this one? Same value; and money or a share must stay money or a share."""
-    value, kind = figure
-    return any(value == v and (not kind or kind == k) for v, k in figures)
+    """Does a text with `figures` carry this one? Same value and same kind: "$19" is not "19 agents", either way round."""
+    return figure in figures
 
 
 # ── Passages and quotes ───────────────────────────────────────────────────────────────────────────
@@ -267,14 +222,18 @@ def passages(source: str, span: int) -> list[str]:
 
 
 def _whole(hay: str, i: int, j: int) -> bool:
-    """Is hay[i:j] a run of whole words and whole numbers? "$19" is not found in "$199", nor "supported" in "unsupported"."""
+    """Is hay[i:j] a run of whole words and whole numbers?
+
+    "$19" is not found in "$199", "supported" not in "unsupported", "compliant" not in "non-compliant".
+    """
     before, first = (hay[i - 1] if i else " "), hay[i]
+    earlier = hay[i - 2] if i >= 2 else " "
     last, after = hay[j - 1], (hay[j] if j < len(hay) else " ")
-    if first.isalnum() and before.isalnum():
+    if first.isalnum() and (before.isalnum() or (before == "-" and earlier.isalnum())):
         return False
-    if first.isdigit() and before in ".," and i >= 2 and hay[i - 2].isdigit():
+    if first.isdigit() and before in ".," and earlier.isdigit():
         return False
-    if last.isalnum() and after.isalnum():
+    if last.isalnum() and (after.isalnum() or (after == "-" and j + 1 < len(hay) and hay[j + 1].isalnum())):
         return False
     more_digits = after in ".," and j + 1 < len(hay) and hay[j + 1].isdigit()
     return not (last.isdigit() and (after == "%" or more_digits))
@@ -298,7 +257,43 @@ def _span(hay: str, quote: str) -> tuple[int, int] | None:
 # lines. Every part but the last must be a whole line of the page, the last must start a line, and the
 # lines must be close together. Prose cannot be stitched: "Freshdesk ... was fined" finds nothing.
 ELLIPSIS_LINES = 12
-_SENTENCE_END = re.compile(r"[.!?]\s|\n")
+_STOP_MARK = re.compile(r"[.!?]\s|\n")
+_ABBREVIATION = frozenset(
+    [
+        "inc",
+        "incl",
+        "corp",
+        "ltd",
+        "co",
+        "vs",
+        "etc",
+        "approx",
+        "est",
+        "mr",
+        "mrs",
+        "ms",
+        "dr",
+        "st",
+        "jr",
+        "sr",
+        "e.g",
+        "i.e",
+        "eg",
+        "ie",
+    ]
+)
+
+
+def _sentence_breaks(src: str) -> list[int]:
+    """Where a sentence ends in `src`: after ". ", "! ", "? " or a line break, but not after "Inc." or "U.S."."""
+    out = []
+    for m in _STOP_MARK.finditer(src):
+        if m.group(0)[0] == ".":
+            word = re.search(r"([^\W\d_]+(?:\.[^\W\d_]+)*)$", src[max(0, m.start() - 40) : m.start()])
+            if word and (word.group(1) in _ABBREVIATION or len(word.group(1).split(".")[-1]) == 1):
+                continue
+        out.append(m.start() + 1)
+    return out
 
 
 def _table_passage(fragments: list[str], lines: list[str]) -> str | None:
@@ -310,14 +305,10 @@ def _table_passage(fragments: list[str], lines: list[str]) -> str | None:
         for n, f in enumerate(fragments[1:], start=2):
             last = n == len(fragments)
             reach = range(at + 1, min(at + 1 + ELLIPSIS_LINES, len(lines)))
-            at = next(
-                (
-                    b
-                    for b in reach
-                    if lines[b] == f or (last and lines[b].startswith(f) and _whole(lines[b], 0, len(f)))
-                ),
-                -1,
+            fits = (
+                b for b in reach if lines[b] == f or (last and lines[b].startswith(f) and _whole(lines[b], 0, len(f)))
             )
+            at = next(fits, -1)
             if at == -1:
                 break
             found.append(lines[at])
@@ -334,24 +325,22 @@ def quote_passage(quote: str, source: str) -> str | None:
     denial. So nothing downstream trusts the quote as given. The check and the reader both read the
     passage: the quote widened to the sentence boundaries of the page.
     """
-    q = quote.strip().strip('"').strip()
-    fragments = [f for f in (norm(x).strip() for x in re.split(r"\.{3,}|…|\[\.\.\.\]", q)) if f]
-    if not fragments:
+    q = norm(quote.strip().strip('"'))
+    if not q:
         return None
     src = norm_lines(source)
-    if len(fragments) > 1:
-        return _table_passage(fragments, src.split("\n"))
-    span = _span(src, fragments[0].strip(" .") or fragments[0])
+    span = _span(src, q.strip(" .") or q)  # as written first: the page may have an ellipsis of its own
     if span is None:
-        return None
-    ends = [m.end() for m in _SENTENCE_END.finditer(src, 0, span[0])]
-    nxt = _SENTENCE_END.search(src, max(span[1] - 1, span[0]))
-    start, end = (ends[-1] if ends else 0), (nxt.start() + 1 if nxt else len(src))
+        fragments = [f for f in (x.strip() for x in re.split(r"\.{3,}|…|\[\.\.\.\]", q)) if f]
+        return _table_passage(fragments, src.split("\n")) if len(fragments) > 1 else None
+    breaks = _sentence_breaks(src)
+    start = max((b for b in breaks if b <= span[0]), default=0)
+    end = min((b for b in breaks if b >= span[1]), default=len(src))
     return src[start:end].replace("\n", " ").strip()
 
 
 def quote_match(quote: str, source: str) -> str | None:
-    """ "exact" when the quote is on the page, word for word (case, spacing and quote style aside), else None."""
+    """Return "exact" when the quote is on the page, word for word (case, spacing and quote style aside)."""
     return "exact" if quote_passage(quote, source) is not None else None
 
 

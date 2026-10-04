@@ -11,7 +11,7 @@ Everything the results in `studies/RESULTS.md` were computed from. Nothing here 
 - **`readings_*.json`**: the reader model's saved answers for each run.
 - **`RESULT_*.json`**: the result of each run.
 - **`traces/`**: the 59 facts from live run 3, two sets of blind labels, the verdicts of the check as shipped, and the score.
-- **`live/run1` to `live/run4`**: four runs of the battle card on real pages. Each has the card as HTML and as JSON. The full text of the vendors' pages isn't in the repository; each card keeps every page's address, the date it was read and a hash of its text.
+- **`live/run1` to `live/run5`**: five runs of the battle card on real pages. Each has the card as HTML and as JSON. The full text of the vendors' pages isn't in the repository; each card keeps every page's address, the date it was read and a hash of its text.
 - **`baseline/`**: the script that runs the upstream example's prompts, and `AUDIT.json` with the counts. The card it produced isn't in the repository, because it's unverified text about two real companies.
 
 ## Commands

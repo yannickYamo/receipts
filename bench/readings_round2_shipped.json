@@ -3,7 +3,7 @@
  "readings": {
   "r2-inv-053": [
    false,
-   "The numbers are swapped (164 vs 118 for registered vs unregistered categories)"
+   "numbers swapped between registered and unregistered shares"
   ],
   "r2-clean-035": [
    true,
@@ -11,7 +11,7 @@
   ],
   "r2-inv-026": [
    false,
-   "Whether Farquhar left the board (quote says he remains)"
+   "Farquhar left the board (quote says he remains on it)"
   ],
   "r2-clean-004": [
    true,
@@ -23,7 +23,7 @@
   ],
   "r2-inv-060": [
    false,
-   "Whether the change was from 50 to 1,000 in one step or to 50 then later to 1,000"
+   "increase to 1,000 occurred in version 2.5, not later"
   ],
   "r2-clean-001": [
    true,
@@ -43,7 +43,7 @@
   ],
   "r2-inv-028": [
    false,
-   "whether reports led to investigation (quote says they did NOT)"
+   "that the reports led to an FTC investigation"
   ],
   "r2-clean-017": [
    true,
@@ -63,7 +63,7 @@
   ],
   "r2-inv-048": [
    false,
-   "comparison to cloud storage rivals' layoffs"
+   "that the layoff was deeper than rivals' cuts"
   ],
   "r2-clean-023": [
    true,
@@ -79,11 +79,11 @@
   ],
   "r2-inv-051": [
    false,
-   "sales and support end dates are reversed in the claim"
+   "the correct dates for sales and support ending"
   ],
   "r2-inv-041": [
    false,
-   "its largest acquisition to date"
+   "largest acquisition to date"
   ],
   "r2-clean-003": [
    true,
@@ -99,7 +99,7 @@
   ],
   "r2-inv-055": [
    false,
-   "amounts reversed - quote has $2B for October and $3B for February, opposite of claim"
+   "deal values swapped (quote: $2B Oct 2018, $3B Feb 2019)"
   ],
   "r2-clean-053": [
    true,
@@ -115,7 +115,7 @@
   ],
   "r2-inv-054": [
    false,
-   "57% refers to customer distribution in claim but transaction distribution in quote"
+   "57% refers to transaction amount, not customer count"
   ],
   "r2-clean-039": [
    true,
@@ -139,11 +139,11 @@
   ],
   "r2-inv-057": [
    false,
-   "the year the $10 billion valuation applies to"
+   "which year the $10 billion valuation applied to"
   ],
   "r2-inv-044": [
    false,
-   "that it is the largest app marketplace of any e-commerce platform"
+   "that the app store is the largest app marketplace of any e-commerce platform"
   ],
   "r2-clean-045": [
    true,
@@ -151,11 +151,11 @@
   ],
   "r2-inv-059": [
    false,
-   "that the charges were against an individual executive, not Zoom the company"
+   "that Zoom the company (not a former executive) was charged"
   ],
   "r2-inv-032": [
    false,
-   "that Slack was paying, not Atlassian"
+   "that Slack (not Atlassian) was to pay"
   ],
   "r2-clean-030": [
    true,
@@ -179,7 +179,7 @@
   ],
   "r2-inv-052": [
    false,
-   "Softbank Vision Fund as the majority source"
+   "45% from SBV and majority from PIF, whereas quote attributes majority to SBV and 45% to PIF"
   ],
   "r2-clean-048": [
    true,
@@ -199,7 +199,7 @@
   ],
   "r2-inv-029": [
    false,
-   "introduced (not removed) the revenue share"
+   "introduced rather than removed"
   ],
   "r2-clean-019": [
    true,
@@ -207,7 +207,7 @@
   ],
   "r2-inv-043": [
    false,
-   "largest deal in Salesforce's history"
+   "the largest deal in Salesforce's history"
   ],
   "r2-clean-038": [
    true,
@@ -219,23 +219,23 @@
   ],
   "r2-inv-056": [
    false,
-   "that the reduction was of the Data and Applications division specifically"
+   "whether reduction was limited to the division or company-wide"
   ],
   "r2-inv-058": [
    false,
-   "that Dropbox actually raised the money (quote says looking to raise)"
+   "that money was actually raised (vs. being sought)"
   ],
   "r2-inv-050": [
    false,
-   "that this opened the door to the wider higher-education market"
+   "opening the door to the higher-education market"
   ],
   "r2-inv-033": [
    false,
-   "direction of investment"
+   "direction of investment reversed"
   ],
   "r2-inv-049": [
    false,
-   "faster than any other videoconferencing company"
+   "faster than other videoconferencing companies"
   ],
   "r2-clean-055": [
    true,
@@ -243,7 +243,7 @@
   ],
   "r2-inv-045": [
    false,
-   "worst single-day drop of the year"
+   "its worst single-day drop of the year"
   ],
   "r2-clean-031": [
    true,
@@ -283,7 +283,7 @@
   ],
   "r2-inv-046": [
    false,
-   "led to a wave of SMS phishing attacks against those users"
+   "the resulting SMS phishing attacks"
   ],
   "r2-clean-010": [
    true,
@@ -307,5 +307,5 @@
   ]
  },
  "model_calls": 8,
- "cost_usd_list_price": 0.1834
+ "cost_usd_list_price": 0.2209
 }

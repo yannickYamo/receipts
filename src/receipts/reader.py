@@ -77,6 +77,12 @@ def as_data(text: str) -> str:
 READER_VERSION = hashlib.sha256((READER_SYSTEM + json.dumps(READER_SCHEMA, sort_keys=True)).encode()).hexdigest()[:8]
 
 
+def answers(reply: object) -> list[dict]:
+    """The verdicts in a reader's reply that are shaped like verdicts. Anything else counts as no answer."""
+    verdicts = reply.get("verdicts") if isinstance(reply, dict) else None
+    return [v for v in verdicts if isinstance(v, dict)] if isinstance(verdicts, list) else []
+
+
 def read_pairs(
     claims: Sequence[Claim], ledger: Mapping[str, Evidence], backend: Backend, batch: int = 10
 ) -> dict[str, tuple[bool, str]]:
@@ -90,10 +96,10 @@ def read_pairs(
             for i, c in enumerate(group)
         )
         try:
-            verdicts = backend.json(READER_SYSTEM, prompt, READER_SCHEMA).get("verdicts", [])
+            reply = backend.json(READER_SYSTEM, prompt, READER_SCHEMA)
         except BackendError:
             continue
-        for v in verdicts:
+        for v in answers(reply):
             n = v.get("n")
             if isinstance(n, int) and 1 <= n <= len(group) and isinstance(v.get("stated"), bool):
                 out[group[n - 1].id] = (v["stated"], str(v.get("gap", "")))
@@ -101,14 +107,20 @@ def read_pairs(
 
 
 def check_with_reader(claims: Sequence[Claim], ledger: Mapping[str, Evidence], backend: Backend, **kw) -> Report:
-    """Both stages: the code check, then the reader on what the code check kept."""
-    verdicts = {c.id: check_claim(c, ledger, **kw) for c in claims}
-    standing = [c for c in claims if verdicts[c.id].supported]
-    readings = read_pairs(standing, ledger, backend)
-    for c in standing:
-        v = verdicts[c.id]
-        if c.id not in readings:
-            verdicts[c.id] = Verdict(c.id, False, "unread", match=v.match, url=v.url)
-        elif not readings[c.id][0]:
-            verdicts[c.id] = Verdict(c.id, False, "not_stated", readings[c.id][1], match=v.match, url=v.url)
-    return Report([verdicts[c.id] for c in claims])
+    """Both stages: the code check, then the reader on what the code check kept.
+
+    Claims are read by position, not by id, so two claims that share an id cannot stand in for each other.
+    """
+    verdicts = [check_claim(c, ledger, **kw) for c in claims]
+    standing = [i for i, v in enumerate(verdicts) if v.supported]
+    numbered = [
+        Claim(str(i), claims[i].text, claims[i].quote, claims[i].evidence_id, claims[i].subject) for i in standing
+    ]
+    readings = read_pairs(numbered, ledger, backend)
+    for i in standing:
+        v = verdicts[i]
+        if str(i) not in readings:
+            verdicts[i] = Verdict(v.claim_id, False, "unread", match=v.match, url=v.url)
+        elif not readings[str(i)][0]:
+            verdicts[i] = Verdict(v.claim_id, False, "not_stated", readings[str(i)][1], match=v.match, url=v.url)
+    return Report(verdicts)

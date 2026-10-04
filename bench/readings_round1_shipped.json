@@ -11,7 +11,7 @@
   ],
   "inv-026": [
    false,
-   "that investors approved the deal"
+   "whether investors approved or rejected the deal"
   ],
   "clean-004": [
    true,
@@ -23,7 +23,7 @@
   ],
   "inv-060": [
    false,
-   "that funding and product launch occurred together"
+   "timing of seed funding relative to product launch (as/simultaneous vs. before)"
   ],
   "clean-001": [
    true,
@@ -75,7 +75,7 @@
   ],
   "inv-051": [
    false,
-   "Zendesk, not Momentive Global, is stated as the acquirer"
+   "who is acquiring whom (quote says Zendesk acquiring Momentive, claim says Momentive acquiring Zendesk)"
   ],
   "clean-036": [
    true,
@@ -95,7 +95,7 @@
   ],
   "inv-055": [
    false,
-   "rankings reversed: claim says #2 in 2020 and #1 in 2022, quote says #1 in 2020 and #2 in 2022"
+   "rankings are reversed between years"
   ],
   "clean-053": [
    true,
@@ -111,7 +111,7 @@
   ],
   "inv-054": [
    false,
-   "quote specifies 'support workforce' reduction but claim generalizes to total workforce reduction"
+   "quote refers to support workforce specifically, not total workforce"
   ],
   "clean-039": [
    true,
@@ -139,15 +139,15 @@
   ],
   "inv-057": [
    false,
-   "GAAP and non-GAAP metrics are reversed\u2014quote shows GAAP loss of $55.4M and non-GAAP income of $48.9M, while claim states the opposite"
+   "GAAP and non-GAAP operating income/loss figures are reversed"
   ],
   "clean-045": [
    true,
    ""
   ],
   "inv-059": [
-   false,
-   "the actor is different\u2014claim specifies Y Combinator as organization, quote specifies Sam Altman as individual"
+   true,
+   ""
   ],
   "clean-030": [
    true,
@@ -163,7 +163,7 @@
   ],
   "inv-052": [
    false,
-   "Direction of accusation reversed (Freshworks accusing Zoho vs. Zoho accusing Freshworks)"
+   "The direction of accusation is reversed; quote says Zoho accused Freshworks, not the other way around"
   ],
   "clean-048": [
    true,
@@ -187,7 +187,7 @@
   ],
   "inv-029": [
    false,
-   "Moskovitz stepping down as chairman vs. remaining as chairman"
+   "The claim says Moskovitz stepped down as chairman, but the quote says he remained as chairman"
   ],
   "clean-019": [
    true,
@@ -195,7 +195,7 @@
   ],
   "inv-043": [
    false,
-   "Comparison that Salesforce has wider global footprint than any other CRM vendor"
+   "The claim's comparison that Salesforce has wider global footprint than any other CRM vendor"
   ],
   "clean-038": [
    true,
@@ -211,19 +211,19 @@
   ],
   "inv-056": [
    false,
-   "the amounts are reversed between Series C and D"
+   "amounts reversed: Series C was $19M not $60M, Series D was $60M not $19M"
   ],
   "inv-058": [
    false,
-   "that Asana 'raised' (rather than was valued at) the amount"
+   "quote states company was valued at $5.5 billion, not that it raised that amount"
   ],
   "inv-031": [
    false,
-   "the acquirer (Zendesk, not Salesforce)"
+   "quote says Zendesk acquired Base, not Salesforce"
   ],
   "inv-050": [
    false,
-   "that this was Freshworks's largest acquisition to date"
+   "quote does not state this was Freshworks's largest acquisition to date"
   ],
   "clean-029": [
    true,
@@ -235,7 +235,7 @@
   ],
   "inv-049": [
    false,
-   "that the restructuring returned the company to profitability"
+   "quote does not state that this returned the company to profitability"
   ],
   "clean-055": [
    true,
@@ -243,7 +243,7 @@
   ],
   "inv-045": [
    false,
-   "reason for layoffs (customer growth slowed sharply)"
+   "reason for the layoffs (customer growth slowed)"
   ],
   "clean-031": [
    true,
@@ -303,5 +303,5 @@
   ]
  },
  "model_calls": 8,
- "cost_usd_list_price": 0.1722
+ "cost_usd_list_price": 0.1391
 }

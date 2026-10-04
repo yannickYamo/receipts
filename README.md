@@ -2,63 +2,48 @@
 
 [![CI](https://github.com/yannickYamo/receipts/actions/workflows/ci.yml/badge.svg)](https://github.com/yannickYamo/receipts/actions/workflows/ci.yml)
 
-**receipts is a guard for the output of AI agents that research the web: every claim carries a quote from a page that code fetched, or it gets cut.**
+**A guard for AI agents that research the web. Every claim carries a quote from a page that code fetched, or it is cut.**
 
-An agent that researches the web hands you fluent prose full of prices, ratings and customer counts. Some are right. You can't tell which without redoing the research, so the time the agent saved comes back as checking. The core has no dependencies, needs Python 3.10 or later, and is MIT licensed.
+Give it an agent's claims and the pages they came from → get back only the claims a page really states, each with its quote, its link and the reason anything was cut.
 
-## How it works
+![A battle card where every line opens to its quote and page](docs/card.png)
 
-1. **Code fetches the page.** The text in the ledger is what the site served, with a date and a hash.
-2. **The model may only point.** Each claim names a page and quotes it.
-3. **Code decides what code can decide.** Is the quote on that page, word for word? Does every figure in the claim appear in the quote, money as money? Is the page about the product the claim names?
-4. **A small reader model decides the rest, and may only cut.** It never sees the quote the first model chose. Code widens the quote to the whole sentences it sits in on the page, and the reader answers one question about that passage: does it state everything the claim states? A claim the reader couldn't read is cut too, so a failed call never lets a claim through.
-5. **What fails is cut, never reworded,** and listed with the reason.
+## What it is
 
-The design in one line: a model may point at evidence; only code may vouch for it.
+receipts is a small open-source Python package. It sits between an AI agent and the person who will act on what the agent found.
 
-## The evals: what passes and what fails
+The agent researches the web and writes claims. receipts keeps a claim only when it can point to the sentence on the page that states it. Everything else is cut, and you get the list of what was cut and why.
 
-| Eval | Bar set before the run | Result | |
-|---|---|---|---|
-| True claims kept (60 written for the test, round 2) | at least 51 | 52 | pass |
-| Unsupported claims cut (60 written for the test, round 2) | at least 54 | 60 | pass |
-| The code check alone, with no reader (round 1) | at least 45 of 50 | 43 | **fail** |
-| The reader run three times: verdicts that changed | none set | 0 of 76 | |
-| Real pages: facts the check kept that the page states | at least 95% | 44 of 44 | pass |
-| Real pages: true facts the check kept | none set | 44 of 59 | open |
-| A red team that had the source code: false claims that got through | none set | 15 of 40 | open |
+No dependencies in the core. Python 3.10 or later. MIT license.
 
-I wrote the evals before the runs, set a bar where I could, and kept the failures in. Every judgment is yes or no: there are no scores.
+## Why use it
 
-- **Rounds 1 and 2 were pre-registered.** Each has 60 true claims and 60 unsupported claims of six kinds, written by agents that never saw the check, with Wikipedia articles about software companies as the evidence.
-- **The code check alone failed its bar in round 1.** It stopped every changed figure and every invented quote. It missed claims that keep the quote's words and change what they mean, for example the acquirer and the acquired swapped. I added the reader after that and tested both stages on a fresh set in round 2. All 8 true claims cut in round 2 were cut by the code check, none by the reader. The reader is claude-haiku-4-5, and reading the 120 claims of round 2 cost $0.17 at list price.
-- **Real pages: the check cut true facts.** I took the 59 facts the model proposed in a live run on Freshdesk and Zendesk pages. Two labelers on different models read each fact against the full page without seeing what the check decided. Both said the page states all 59. So on that run the model invented nothing, and the check caught nothing. What the check did was cut 15 true facts, one in four. A guard that blocks a valid answer has a bug, and this is mine. I read the 15 one by one: 8 were cut because the quote held the value and not what it belongs to (a price without its plan name), 5 because the fact added a word the quote lacks, 1 was a faithful paraphrase, 1 tripped the negation rule.
-- **The red team got through 15 of 40.** I gave an agent the source code and asked it for false claims built to get through. The first set got 9 of 40 past both stages, all by cutting a quote out of its sentence ("$425" out of "$425 million"). That's why the reader now reads the whole sentence. A fresh red team against the fixed code got 15 of 40 through. The most reliable way through, 6 of 6: quote a sentence faithfully when the next sentence on the page takes it back (a deal announced, then called off). The check verifies that a sentence on a page says what the claim says. It doesn't verify that the page, read whole, still stands behind that sentence.
-- **An independent reviewer attacked the code before publishing.** It found that a quote of "$19" was accepted on a page that says "$199". That and eight other holes are fixed, each with a regression test.
+- **You can repeat what the agent told you.** Each claim that survives comes with the exact quote, the link and the date the page was read.
+- **You stop re-doing the research.** Checking a claim is one click on its quote, not a new search.
+- **Invented prices and figures don't reach your customer.** A figure that isn't in the quoted sentence is cut, not reworded.
+- **You see what was left out.** Every cut claim is listed with its reason, and every page that could not be read is named.
+- **It works with what you already have.** It checks the output of any agent and takes page text from any fetcher.
+- **It's cheap.** The reader is a small model: reading 120 claims cost $0.17 at list price.
 
-The full record, every miss listed: `studies/RESULTS.md`. The test suite rebuilds every number in this README from the test sets and the saved model answers, with no model call. Both red-team sets run in the suite: a change that lets more of them through fails the build.
+Who it's for: a sales rep or product marketer who has to trust a battle card. An engineer shipping an agent whose answers people will act on. Anyone who has pasted an agent's research into a document and then spent an hour checking it.
 
-**What the numbers don't cover:**
+## How to use it
 
-- People. One model family wrote the check, the reader prompt, the test claims and the labels. A test set and labels from people come first.
-- Whether a page is itself right. A wrong page yields a well-sourced wrong claim.
-- Evidence other than software companies and their pricing pages.
-
-## Use it
+**Step 1, install.**
 
 ```bash
 git clone https://github.com/yannickYamo/receipts && cd receipts
 pip install -e .
 ```
 
-As a check in a pipeline, exit code 1 when any claim is unsupported:
+**Step 2, check claims against a page.** The command exits with code 1 when any claim is unsupported, so it can stop a pipeline.
 
 ```bash
 receipts fetch https://www.freshworks.com/freshdesk/pricing/ --ledger ledger.json
 receipts check claims.json --ledger ledger.json
 ```
 
-Its output:
+What you see:
 
 ```text
 PASS a  Freshdesk Growth plan costs $19/agent/month, billed annually.
@@ -66,7 +51,7 @@ CUT  b  Freshdesk Growth plan costs $15/agent/month, billed annually.
        the claim states a figure the quote does not (15)
 ```
 
-In Python:
+**Step 3, or use it from Python.**
 
 ```python
 from receipts import Claim, Ledger, check_claims
@@ -79,61 +64,121 @@ report = check_claims([claim], ledger)
 report.supported, report.cut, report.by_reason
 ```
 
-The reader stage is added with `receipts.reader.check_with_reader(claims, ledger, backend)`.
+Other ways in:
 
-**As a tool an agent calls on itself:** `receipts mcp` is an MCP server (install with `pip install -e ".[mcp]"`) with two tools, `read_page` and `check_claims_tool`. The agent can't hand in page text of its own. Evidence is only what the server fetched, and the server only fetches public http and https addresses.
+- Add the reader stage: `receipts.reader.check_with_reader(claims, ledger, backend)`.
+- Let an agent check itself: `receipts mcp` is an MCP server (install with `pip install -e ".[mcp]"`) with two tools, `read_page` and `check_claims_tool`. The agent cannot hand in page text of its own.
+- Audit someone else's output: `receipts audit card.html` counts the specifics in any text and how many sit on a line with a link.
 
-**On someone else's output:** `receipts audit card.html` counts the specifics in any text and how many sit on a line with a link. It's a pattern count and it over-counts.
+## How it works
 
-## The worked example: a battle card a rep can check
+**A model may point at evidence; only code may vouch for it.**
+
+```text
+  a web page                     a model's claim
+      |                          "Growth costs $19"  + quote + page id
+      v                                  |
++-------------+                          v
+|   fetch     |   page text      +----------------+     fails     +---------------+
+|  (code)     |----------------->|   code check   |-------------->|  cut, with    |
++-------------+   date, hash     |  quote on page |               |  the reason   |
+                                 |  figures match |               +---------------+
+                                 |  right subject |                       ^
+                                 +----------------+                       |
+                                         | passes                         |
+                                         v                                |
+                                 +----------------+      "no"             |
+                                 |    reader      |-----------------------+
+                                 | (small model)  |   or no answer
+                                 | may only cut   |
+                                 +----------------+
+                                         | "yes"
+                                         v
+                              the claim, its quote, its link
+```
+
+The steps in words:
+
+1. **Code fetches the page.** The text in the ledger is what the site served, with a date and a hash. The model never supplies it.
+2. **The model may only point.** Each claim names a page and quotes it.
+3. **Code decides what code can decide:** the quote is on that page word for word, every figure in the claim is in the quote, and the page is about the right product.
+4. **A small reader model decides the rest, and may only cut.** Code first widens the quote to the whole sentence it sits in on the page, so a clipped quote can't hide the words around it ("$425" cut out of "$425 million"). The reader answers one question: does that sentence state everything the claim states? A claim the reader could not read is cut too.
+5. **What fails is cut, never reworded,** and listed with the reason.
+
+## Example: a battle card a sales rep can check
+
+One command:
 
 ```bash
 receipts card --us Freshdesk --them Zendesk --out out/
 ```
 
-Both products go through the same steps: find pages, fetch them, list facts with quotes, check, write lines that cite the facts, check the lines, lay the page out from a fixed template. No model writes the HTML. Every line on the card opens to its quote, its page and the date the page was read. The top of the card says what was read, what was cut and what wasn't measured. This panel is from a real run on the code as published (bench/live/run4):
+It finds pages about both products, fetches them, lists facts with quotes, checks them, writes the card's lines from the facts that survived, checks the lines, and lays the page out from a fixed template. No model writes the HTML. Every line on the card opens to its quote, its page and the date the page was read. The top of the card says what was read and what was cut.
+
+From a real run (the card is in the repository at bench/live/run5/card.html):
 
 ```text
 sources   5 pages read · 2 could not be read
-facts     37 of 48 supported by a quote on the page it names · 11 cut (7 not stated, 2 figure not in quote, 1 beyond quote, 1 polarity mismatch)
-lines     16 of 22 kept · 6 cut
+facts     34 of 48 supported by a quote on the page it names · 14 cut (4 beyond quote, 8 not stated, 1 polarity mismatch, 1 figure not in quote)
+lines     19 of 23 kept · 4 cut
 on this card: every line links to the page and quote it rests on
-not measured: whether a page is itself right; whether the advice is good
-run       claude-code (sonnet) · 16 model calls
-reader    claude-code (haiku), prompt f95a7623
-          its reading of facts is measured (studies/); its reading of card lines and advice is not
 ```
 
-A response from that card, to the objection "Zendesk AI can automate up to 80%": "That's their claim. With Freshdesk the Freddy AI Agent is on every plan with 500 free sessions, so you can test it on your own tickets. Extra sessions are $49 per 100." The card also says where the competitor is strong, because the facts say so: "Zendesk has built-in QA scoring for 100% of AI interactions."
+Lines from that card. Where we win: "Freshdesk publishes clear per-agent prices, billed annually: Growth $19, Pro $55, Enterprise $89." Where they win, because the facts say so: "Zendesk claims its AI Agents can achieve up to 80% automation. It also includes built-in QA scoring for 100% of AI interactions." A response to the objection "Zendesk says its AI can automate up to 80%": "That is their 'up to' claim. With Freshdesk, the Freddy AI Agent is on every plan with 500 complimentary AI sessions, so you can test it on your own tickets."
 
-The default backend is the local `claude` command, so it runs on a Claude Code login. `--backend anthropic` uses the Anthropic API (install with `pip install -e ".[anthropic]"`). That path hasn't been run yet: I had no API key for it when I built this.
+The card command uses the local `claude` command by default, so it runs on a Claude Code login.
 
-## Known limits
+## Why I built it
 
-- **It cuts true things:** one true fact in four on real pricing pages. Cutting a true line costs a line. Keeping a false one costs the rep the room. The check is built for the second, and the first is the next thing to fix.
-- **It doesn't stop someone who writes claims to beat it:** 15 of 40 got through.
-- **Sites that refuse the fetch aren't read.** G2 and Capterra answered 403 in every live run. The card says which pages it couldn't read. It doesn't fall back to the model's memory.
-- **Pages that need JavaScript aren't read.**
-- **The reader is a model.** Its numbers hold for claude-haiku-4-5 and the prompt version they were measured on.
+I kept hitting the same wall. An agent that researches the web hands me fluent prose full of prices, ratings and customer counts. Some are right. I can't tell which without redoing the research, so the time the agent saved comes back as checking.
 
-## Where this comes from
+The example that made me build this is the AI Sales Intelligence Agent Team by Shubham Saboo in the awesome-llm-apps collection (https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/advanced_ai_agents/multi_agent_apps/agent_teams/ai_sales_intelligence_agent_team). It's a good, clear example of a seven-agent pipeline that writes a sales battle card. I ran its prompts on its own sample request, "Help me compete against Zendesk, I sell Freshdesk" (on Claude Sonnet, not on Gemini as the original does). The card it wrote has 175 specifics that a pattern can find: prices, ratings, counts, dates. Not one sits on a line with a link. The model wrote VERIFY on its own output 23 times.
 
-I took a popular open-source example, a seven-agent sales "battle card" pipeline in the awesome-llm-apps collection, and ran its own prompts on its own sample request: "Help me compete against Zendesk, I sell Freshdesk". I ran the prompts on Claude Sonnet, not on Gemini as the original does, so this shows how the pipeline is built, not how accurate Gemini is. The card it wrote has 175 pattern hits for specifics (prices, ratings, counts, dates, attributions). I read a seeded sample of 40 by hand: 32 were checkable facts, 28 of them distinct. Not one of the 175 sits on a line with a link. The model wrote VERIFY on its own output 23 times. I did not show its figures are wrong: the Zendesk list prices it gave match Zendesk's pricing page.
+I did not show its figures are wrong: the Zendesk list prices it gave match Zendesk's pricing page. The point is that a sales rep can't tell which ones are right, because prose passes from agent to agent and no address survives to the card. A rep who repeats one wrong price in front of a prospect loses the room.
 
-The point is that a sales rep can't tell which ones are right, because the pipeline passes prose from agent to agent and no address survives to the card.
+The check itself comes from my other project, Atelier (https://github.com/yannickYamo/atelier), where an invented-claim check works on the same idea: a small model reads, code decides. receipts applies it to web research, where the evidence is a page instead of the author's own notes.
 
-The invented-claim check in my other project, [Atelier](https://github.com/yannickYamo/atelier), works on the same idea: a small model reads, code decides. receipts applies it to web research, where the evidence is a page instead of the author's own notes.
+## How it compares
 
-## Layout
+receipts isn't a scraper, a search engine or an eval dashboard. It does one job the others leave open: it checks each claim against the page it cites and removes the ones the page doesn't state. What I say about each tool below is from its own documentation as I read it on 2026-10-04.
+
+| Tool | What it is for | Does it check a claim against the page it cites? |
+|---|---|---|
+| [Firecrawl](https://docs.firecrawl.dev/introduction), [Jina Reader](https://jina.ai/reader/) | Getting the page: scrape, crawl, search. They handle JavaScript rendering, proxies and anti-bot | No. They are fetchers, and better ones than the fetcher in receipts |
+| [Tavily](https://docs.tavily.com/documentation/api-reference/endpoint/search), [Exa](https://exa.ai/docs/reference/answer), [Perplexity Sonar](https://docs.perplexity.ai/docs/sonar/quickstart), [OpenAI web search](https://developers.openai.com/api/docs/guides/tools-web-search) | Finding pages and answering with a list of sources | No. A citation is a source the answer used, not a quote that was checked |
+| [Anthropic Citations](https://platform.claude.com/docs/en/build-with-claude/citations) | Claude cites exact passages from documents you supply | Partly. The cited text is guaranteed to be in the document. Whether it supports the claim is not checked, and nothing is removed |
+| [Guardrails AI provenance](https://guardrailsai.com/hub/validator/guardrails/provenance_llm), [NeMo Guardrails fact-checking](https://docs.nvidia.com/nemo/guardrails/configure-guardrails/guardrail-catalog/fact-checking) | A guard in the loop: a model judges whether text is supported by sources | Partly. It is a model's judgment with no verbatim quote. NeMo blocks the whole reply below a score |
+| [Ragas](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/), [DeepEval](https://deepeval.com/docs/metrics-faithfulness) faithfulness | Evaluation: the share of claims an LLM judge finds supported, as a score | Partly. They score the output. They do not edit it |
+| **receipts** | Checking: each claim tied to a verbatim quote on a page that code fetched | Yes. Unsupported claims are cut and listed with the reason |
+
+They work together. Firecrawl gets pages that receipts' own fetcher cannot (pages that need JavaScript, sites that refuse a plain request). Hand its text to the ledger and receipts checks against it.
+
+```python
+ledger = Ledger()
+page = ledger.add_text(url, text_from_any_fetcher, title)   # Firecrawl, Jina Reader, your own crawler
+report = check_claims(claims, ledger)
+```
+
+A search tool finds the pages. A fetcher reads them. receipts decides what the agent is allowed to say about them.
+
+## What it does not do yet
+
+- **It cuts some true facts.** On real pricing pages it cut about one true fact in four, mostly a price quoted without its plan name. Cutting a true line costs a line. Keeping a false one costs the rep the room. It's built for the second.
+- **It doesn't stop someone who writes claims to beat it.**
+- **It doesn't know whether a page is right.** A wrong page gives a well-sourced wrong claim.
+- **Its own fetcher is basic:** no JavaScript, and sites that refuse the request are not read. The card says which pages it couldn't read.
+
+How it was tested, with the failures kept in: [EVALS.md](EVALS.md).
+
+## Project structure
 
 ```text
 src/receipts/core.py         the code check          src/receipts/reader.py      the reader stage
 src/receipts/ledger.py       pages, dates, hashes    src/receipts/audit.py       count specifics in any text
 src/receipts/battlecard/     the worked example      src/receipts/mcp_server.py  the check as an MCP server
 bench/                       test sets, red-team sets, labels, saved model answers, live runs
-studies/                     the pre-registrations, the evaluation plan and the results
+studies/                     the pre-registrations, the evaluation plan and the full results
+EVALS.md                     what was tested, what passed and what failed
 ```
-
-`pytest` runs the suite offline and rebuilds every result table. `ruff check` and `ruff format --check` run in CI with the tests.
 
 License: MIT. The bench corpus is Wikipedia text, CC BY-SA 4.0.
