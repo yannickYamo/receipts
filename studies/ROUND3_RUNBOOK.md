@@ -12,6 +12,15 @@ amendment first. This file is the order of work. Every step that calls a model i
 - The agent that writes the red-team set and the planted-instruction set must not be shown the bars.
 - Hand back every file the steps write. Do not summarise in their place.
 
+## The reader's name
+
+The reader is claude-haiku-4-5. Every script takes its name: `--reader-model=<name>` for the bench
+scripts, `--model` for `run_two_stage.py` and for `study.py read`, `--reader-model` for `receipts`.
+The default is the short name `haiku`. If the `claude` command on the machine does not serve that
+name, pass the full id (`claude-haiku-4-5`) to every step below, the same one each time. Each result
+file names the reader it was read with. Note in the hand-back which route the calls took (a personal
+login, an API key, a gateway): the model behind a name is the route's to decide.
+
 ## Before the freeze: check that every model can be reached
 
 One small call per route. A failure here is plumbing, and it is fixed before anything is measured.
@@ -66,7 +75,8 @@ pytest -q                               # from here this fails if core.py, text.
 python bench/run_two_stage.py round2 --tag v2
 python bench/repeat_reader.py 2 v2
 python bench/run_redteam.py redteam2 --tag=v2
-python bench/traces/recheck.py v2                 # needs bench/live/run3/ledger.json, which is not in the repository
+python bench/traces/recheck.py v2                 # needs bench/live/run3/ledger.json, which is not in the repository;
+                                                  # if it cannot be had, report the row as not run
 
 # Part 2 and the planted instructions
 python bench/run_redteam.py redteam3

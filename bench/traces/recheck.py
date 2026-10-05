@@ -5,6 +5,8 @@ they are other people's web pages. The verdicts it writes are in the repository,
 
     python bench/traces/recheck.py           writes verdicts_shipped.json, the file score.py and the tests read
     python bench/traces/recheck.py v2        writes verdicts_v2.json beside it and leaves the first alone
+
+--reader-model=<name> picks the reader (default haiku). The result names the model it was read with.
 """
 
 import json
@@ -21,12 +23,15 @@ RUN = HERE.parent / "live" / "run3"
 card = json.loads((RUN / "card.json").read_text())
 ledger = Ledger.load(RUN / "ledger.json")
 claims = [Claim(f["id"], f["text"], f["quote"], f["evidence_id"], f["subject"]) for f in card["facts"]]
-backend = ClaudeCodeBackend("haiku")
+ARGS = [x for x in sys.argv[1:] if not x.startswith("--")]
+backend = ClaudeCodeBackend(
+    next((x.split("=", 1)[1] for x in sys.argv[1:] if x.startswith("--reader-model=")), "haiku")
+)
 report = check_with_reader(claims, ledger, backend)
 out = {
     "reader": f"{backend.name}, prompt {READER_VERSION}",
     "cost_usd_list_price": round(backend.cost_usd, 4),
     "verdicts": {v.claim_id: {"kept": v.supported, "reason": v.reason, "detail": v.detail} for v in report.verdicts},
 }
-(HERE / f"verdicts_{sys.argv[1] if len(sys.argv) > 1 else 'shipped'}.json").write_text(json.dumps(out, indent=1))
+(HERE / f"verdicts_{ARGS[0] if ARGS else 'shipped'}.json").write_text(json.dumps(out, indent=1))
 print(len(report.supported), "kept of", len(claims), report.by_reason)

@@ -298,3 +298,51 @@ def test_a_backend_and_a_model_that_do_not_go_together_stop_the_command(tmp_path
     args = ["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json"), "--backend", "openai"]
     assert main(args) == 2 and "is a Claude model" in capsys.readouterr().err  # the default reader is "haiku"
     assert main([*args, "--reader-model", "some-model"]) == 2 and "OPENAI_API_KEY" in capsys.readouterr().err
+
+
+# ── Found by running it end to end ──────────────────────────────────────────────────────────────────
+
+
+def test_every_bench_script_takes_the_reader_model_and_none_has_one_built_in(tmp_path):
+    import subprocess
+    import sys
+
+    bench = Path(__file__).parent.parent / "bench"
+    scripts = [*bench.glob("*.py"), *bench.glob("traces/*.py"), *bench.glob("study/*.py")]
+    assert not [p.name for p in scripts if 'ClaudeCodeBackend("haiku")' in p.read_text()]
+    run = subprocess.run(
+        [sys.executable, str(bench / "run_redteam.py"), "redteam2", "--replay", "--reader-model=claude-haiku-4-5"],
+        capture_output=True,
+        text=True,
+        cwd=bench.parent,
+    )
+    assert run.returncode == 0 and "past the reader too: 15" in run.stdout  # a replay names the reader of that run
+
+
+def test_the_mcp_command_without_its_package_says_so(monkeypatch, capsys):
+    import builtins
+
+    real = builtins.__import__
+
+    def no_mcp(name, *a, **kw):
+        if name.split(".")[0] == "mcp":
+            raise ImportError("No module named 'mcp'")
+        return real(name, *a, **kw)
+
+    monkeypatch.setattr(builtins, "__import__", no_mcp)
+    assert main(["mcp", "--code-only"]) == 2 and "the mcp package is not installed" in capsys.readouterr().err
+
+
+def test_a_table_quote_follows_the_order_of_the_page_whichever_comes_first():
+    from receipts import check_claim
+    from receipts.battlecard.pipeline import EXTRACT_SYSTEM, REQUOTE_SYSTEM
+
+    page = "Plans\n$15 /agent/month, billed annually\nGrowth\nEverything in Free\n" + "Freshdesk is a help desk. " * 8
+    led = Ledger()
+    ev = led.add_text("https://www.freshworks.com/freshdesk/pricing/", page, "Freshdesk pricing")
+    text = "Freshdesk Growth costs $15 per agent per month, billed annually"
+    price_first = Claim("a", text, "$15 /agent/month, billed annually ... Growth", ev.id, "Freshdesk")
+    name_first = Claim("a", text, "Growth ... $15 /agent/month, billed annually", ev.id, "Freshdesk")
+    assert check_claim(price_first, led).supported and not check_claim(name_first, led).supported
+    for prompt in (EXTRACT_SYSTEM, REQUOTE_SYSTEM):  # the prompts used to say "name first"
+        assert "in the order they have on the page" in prompt and "name first" not in prompt

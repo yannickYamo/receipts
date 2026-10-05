@@ -152,7 +152,11 @@ API_MODELS = {"haiku": "claude-haiku-4-5-20251001", "sonnet": "claude-sonnet-5-5
 
 
 def api_model(name: str) -> str:
-    """The API's id for a model name. Raises ValueError for a name the API would refuse, before any work starts."""
+    """The API's id for a model name. A name that is not a Claude model at all raises ValueError before any work.
+
+    A full id is passed as given: which ids exist changes with every model release and with the route
+    to the API, so a mistyped one comes back as the API's own error, with exit code 3.
+    """
     if name in API_MODELS:
         return API_MODELS[name]
     if name.startswith("claude-"):
