@@ -50,10 +50,17 @@ CODE_ONLY_NOTE = (
 )
 
 
-def _backend(kind: str, model: str):
-    """The model backend for a command: the local `claude` command, or the Anthropic API."""
-    from .backends import AnthropicBackend, ClaudeCodeBackend
+BACKENDS = ["claude-code", "anthropic", "openai"]
 
+
+def _backend(kind: str, model: str):
+    """The model backend for a command: the local `claude` command, the Anthropic API, or an OpenAI-compatible API."""
+    from .backends import AnthropicBackend, ClaudeCodeBackend, OpenAIBackend
+
+    if kind == "openai":
+        if model in ("haiku", "sonnet", "opus"):
+            raise ValueError(f'"{model}" is a Claude model: with --backend openai, name a model of that API')
+        return OpenAIBackend(model)
     return ClaudeCodeBackend(model) if kind == "claude-code" else AnthropicBackend(model)
 
 
@@ -127,6 +134,8 @@ def _card(a: argparse.Namespace) -> int:
     from .battlecard import build_card, render_html
     from .battlecard.render import panel_text
 
+    if a.backend == "openai" and not a.model:
+        raise ValueError("with --backend openai, name the model with --model and the reader with --reader-model")
     backend = _backend(a.backend, a.model or ("sonnet" if a.backend == "claude-code" else "opus"))
     urls = {a.us: a.us_url, a.them: a.them_url}
     reader = None if a.reader_model == "none" else _backend(a.backend, a.reader_model)
@@ -158,7 +167,7 @@ def _add_check_command(sub) -> None:
     c.add_argument("--json", action="store_true")
     c.add_argument("--code-only", action="store_true", help="skip the reader: no model, and a weaker check")
     c.add_argument("--reader-model", default="haiku", help="the model that reads each claim against its sentence")
-    c.add_argument("--backend", choices=["claude-code", "anthropic"], default="claude-code")
+    c.add_argument("--backend", choices=BACKENDS, default="claude-code")
     c.set_defaults(run=_check)
 
 
@@ -172,7 +181,7 @@ def _add_card_command(sub) -> None:
     )
     b.add_argument("--them-url", action="append", help="a page about the competitor (repeatable)")
     b.add_argument("--pages", type=int, default=4, help="pages per product (default 4)")
-    b.add_argument("--backend", choices=["claude-code", "anthropic"], default="claude-code")
+    b.add_argument("--backend", choices=BACKENDS, default="claude-code")
     b.add_argument("--model")
     b.add_argument(
         "--reader-model",
@@ -213,7 +222,7 @@ def main(argv: list[str] | None = None) -> int:
     m = sub.add_parser("mcp", help='serve the check over MCP (pip install -e ".[mcp]")')
     m.add_argument("--code-only", action="store_true", help="skip the reader: no model, and a weaker check")
     m.add_argument("--reader-model", default="haiku")
-    m.add_argument("--backend", choices=["claude-code", "anthropic"], default="claude-code")
+    m.add_argument("--backend", choices=BACKENDS, default="claude-code")
     m.set_defaults(run=_mcp)
 
     a = p.parse_args(argv)

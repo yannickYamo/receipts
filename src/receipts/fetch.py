@@ -4,10 +4,12 @@ The addresses come from a model, so the fetcher treats them as hostile: only htt
 hosts on the public internet (no localhost, no private or link-local ranges, checked again on every
 redirect), a size cap, one overall deadline, and every failure comes back as a FetchError.
 
-The connection goes to the address that was checked. The host name is looked up once, every address
-it gives is checked, and the socket is opened to one of those: a name that answers "public" to a
-check and "127.0.0.1" to the connection a moment later gets no second lookup to answer. Proxies from
-the environment are not used, since a proxy would do its own lookup.
+Every connection checks the address it dials. When a socket is opened, the host name is looked up,
+every address it gives is checked, and the socket goes to one of those addresses, never to the name
+again. An earlier look at the address (before the fetch, and on each redirect) only fails fast: it is
+not what the connection relies on. So a name that answers "public" to one lookup and "127.0.0.1" to
+the next gains nothing. Proxies from the environment are not used, since a proxy would do its own
+lookup.
 """
 
 from __future__ import annotations
@@ -60,7 +62,7 @@ def check_address(url: str) -> None:
     except (socket.gaierror, UnicodeError) as e:
         raise FetchError("the host does not resolve") from e
     for info in found:
-        if not _is_public(ipaddress.ip_address(info[4][0].split("%")[0])):
+        if not _is_public(ipaddress.ip_address(str(info[4][0]).split("%")[0])):
             raise FetchError("the address is not on the public internet")
 
 
@@ -70,7 +72,7 @@ def _connect_checked(host: str, port: int, timeout: float | None) -> socket.sock
         found = socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
     except (socket.gaierror, UnicodeError) as e:
         raise FetchError("the host does not resolve") from e
-    if not found or not all(_is_public(ipaddress.ip_address(info[4][0].split("%")[0])) for info in found):
+    if not found or not all(_is_public(ipaddress.ip_address(str(info[4][0]).split("%")[0])) for info in found):
         raise FetchError("the address is not on the public internet")
     last: OSError | None = None
     for family, kind, proto, _, address in found:

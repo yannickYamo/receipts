@@ -508,7 +508,7 @@ def build_card(
             _read_lines(card, reader, facts)
     else:
         card.notes.append("no lines were written: supported facts are needed about both products")
-    apart = reader is not None and reader is not backend
-    card.calls = backend.calls + (reader.calls if apart else 0)
-    card.cost_usd = backend.cost_usd + (reader.cost_usd if apart else 0)
+    other = reader if reader is not None and reader is not backend else None
+    card.calls = backend.calls + (other.calls if other else 0)
+    card.cost_usd = backend.cost_usd + (other.cost_usd if other else 0)
     return card

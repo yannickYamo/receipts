@@ -40,9 +40,9 @@ def build_server(reader: Backend | None = None):
     result says so: that stage cannot tell a claim that keeps a quote's words and changes their meaning.
     """
     try:  # mcp 2.x renamed FastMCP to MCPServer; both take the same decorators
-        from mcp.server.mcpserver import MCPServer as Server
+        from mcp.server.mcpserver import MCPServer as Server  # pyright: ignore[reportMissingImports]
     except ImportError:
-        from mcp.server.fastmcp import FastMCP as Server
+        from mcp.server.fastmcp import FastMCP as Server  # pyright: ignore[reportMissingImports]
 
     server = Server("receipts")
     ledger = Ledger()

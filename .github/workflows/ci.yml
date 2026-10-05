@@ -19,4 +19,9 @@ jobs:
       - run: pip install -e ".[dev,mcp]"
       - run: ruff check src tests bench
       - run: ruff format --check src tests bench
+      - run: pyright src
       - run: pytest -q
+      - name: the suite also passes from a checkout that was never installed
+        run: |
+          pip uninstall -y claim-receipts
+          PYTHONPATH=src pytest -q
