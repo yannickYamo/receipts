@@ -48,7 +48,7 @@ def test_check_runs_both_stages_by_default(files, capsys, monkeypatch):
 
 def test_check_fails_closed_when_the_reader_cannot_run(files, monkeypatch):
     monkeypatch.setattr("receipts.cli._backend", lambda kind, model: ScriptedBackend([None]))
-    assert main(["check", str(files / "c.json"), "--ledger", str(files / "l.json")]) == 1
+    assert main(["check", str(files / "c.json"), "--ledger", str(files / "l.json")]) == 3  # cut, and said why
 
 
 def test_the_reader_is_shown_the_whole_sentence_not_the_clipped_quote(files):

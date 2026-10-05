@@ -6,6 +6,9 @@ receipts fetch URL... --ledger ledger.json          read pages into a ledger
 receipts audit card.html [--ledger ledger.json]     count the specifics in any text, and how many can be checked
 receipts card --us A --them B --out DIR             build a battle card
 receipts mcp                                        serve the check to an agent over MCP
+
+Exit codes of `check`: 0 every claim is supported; 1 at least one was cut; 2 a file or an option is
+wrong; 3 the reader gave no answer for at least one claim (those claims are cut, and the reason is printed).
 """
 
 from __future__ import annotations
@@ -17,6 +20,8 @@ from pathlib import Path
 
 from . import Claim, Ledger, check_claims
 from .audit import audit
+from .backends import BackendError
+from .core import Report
 from .fetch import FetchError
 
 
@@ -65,7 +70,7 @@ def _check(a: argparse.Namespace) -> int:
         stages = f"code check, then reader ({reader.name}, prompt {READER_VERSION})"
     if a.json:
         print(json.dumps(report.to_dict() | {"stages": stages}, indent=1))
-        return 1 if report.cut else 0
+        return _exit_code(report)
     for claim, v in zip(claims, report.verdicts, strict=True):  # by position: two claims may share an id
         print(f"{'PASS' if v.supported else 'CUT '} {v.claim_id}  {claim.text}")
         if not v.supported:
@@ -73,6 +78,18 @@ def _check(a: argparse.Namespace) -> int:
         if v.stale:
             print("       the page was read more than --max-age-days ago")
     print(f"\n{len(report.supported)} of {len(report.verdicts)} supported, {len(report.cut)} cut\n{stages}")
+    return _exit_code(report)
+
+
+def _exit_code(report: Report) -> int:
+    """0 all supported, 1 some cut, 3 some cut because the reader gave no answer (said on stderr)."""
+    unread = [v for v in report.verdicts if v.reason == "unread"]
+    if unread:
+        why = next((v.detail for v in unread if v.detail), "it returned nothing usable")
+        print(
+            f"receipts: the reader gave no answer for {len(unread)} claim(s), so they are cut: {why}", file=sys.stderr
+        )
+        return 3
     return 1 if report.cut else 0
 
 
@@ -110,7 +127,7 @@ def _card(a: argparse.Namespace) -> int:
     from .battlecard import build_card, render_html
     from .battlecard.render import panel_text
 
-    backend = _backend(a.backend, a.model or ("sonnet" if a.backend == "claude-code" else "claude-opus-5-5"))
+    backend = _backend(a.backend, a.model or ("sonnet" if a.backend == "claude-code" else "opus"))
     urls = {a.us: a.us_url, a.them: a.them_url}
     reader = None if a.reader_model == "none" else _backend(a.backend, a.reader_model)
     card = build_card(
@@ -193,7 +210,7 @@ def main(argv: list[str] | None = None) -> int:
     u.set_defaults(run=_audit)
 
     _add_card_command(sub)
-    m = sub.add_parser("mcp", help="serve the check over MCP (pip install claim-receipts[mcp])")
+    m = sub.add_parser("mcp", help='serve the check over MCP (pip install -e ".[mcp]")')
     m.add_argument("--code-only", action="store_true", help="skip the reader: no model, and a weaker check")
     m.add_argument("--reader-model", default="haiku")
     m.add_argument("--backend", choices=["claude-code", "anthropic"], default="claude-code")
@@ -202,7 +219,7 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     try:
         return int(a.run(a) or 0)
-    except (OSError, ValueError) as e:  # a missing file, a file that is not the JSON it should be
+    except (OSError, ValueError, BackendError) as e:  # a missing or malformed file, a model that cannot be reached
         print(f"receipts: {e}", file=sys.stderr)
         return 2
 

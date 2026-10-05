@@ -2,7 +2,7 @@
 
   ScriptedBackend     answers from a list, for tests: no model, no network
   ClaudeCodeBackend   the local `claude` command in print mode, for running on a Claude Code login
-  AnthropicBackend    the Anthropic API (pip install claim-receipts[anthropic]); needs credentials
+  AnthropicBackend    the Anthropic API (pip install -e ".[anthropic]"); needs credentials
 
 A backend never supplies evidence. It may name addresses; code fetches them (fetch.py).
 """
@@ -141,17 +141,38 @@ class ClaudeCodeBackend:
         return [u for u in out.get("urls", []) if isinstance(u, str)][:limit]
 
 
+# The short names the `claude` command takes, as the API's model ids. The API does not know "haiku".
+API_MODELS = {"haiku": "claude-haiku-4-5-20251001", "sonnet": "claude-sonnet-5-5", "opus": "claude-opus-5-5"}
+
+
+def api_model(name: str) -> str:
+    """The API's id for a model name. Raises ValueError for a name the API would refuse, before any work starts."""
+    if name in API_MODELS:
+        return API_MODELS[name]
+    if name.startswith("claude-"):
+        return name
+    known = ", ".join(API_MODELS)
+    raise ValueError(
+        f'"{name}" is not a model the Anthropic API takes: use {known}, or a full id such as claude-opus-5-5'
+    )
+
+
 class AnthropicBackend:
-    """The Anthropic API, with structured output. Not exercised by the test suite: it needs credentials."""
+    """The Anthropic API, with structured output. The tests run it against a stand-in client, never the live API."""
 
-    def __init__(self, model: str = "claude-opus-5-5", client: Any = None) -> None:
+    def __init__(self, model: str = "opus", client: Any = None) -> None:
+        self.model = api_model(model)
         if client is None:
-            import anthropic  # an optional dependency
-
-            client = anthropic.Anthropic()
+            try:
+                import anthropic  # an optional dependency
+            except ImportError as e:
+                raise BackendError('the anthropic package is not installed: pip install -e ".[anthropic]"') from e
+            try:
+                client = anthropic.Anthropic()
+            except Exception as e:  # no credentials
+                raise BackendError(f"the Anthropic client could not start: {e}") from e
         self.client = client
-        self.model = model
-        self.name = f"anthropic ({model})"
+        self.name = f"anthropic ({self.model})"
         self.calls = 0
         self.cost_usd = 0.0  # not computed here: read it from the Console
 

@@ -80,7 +80,7 @@ def scripted(extra_lines=()):
         "Acme": ["https://acme.example/pricing", "https://acme.example/blocked"],
         "Globex": ["https://globex.example/pricing"],
     }
-    return ScriptedBackend([acme, globex, card], urls)
+    return ScriptedBackend([acme, globex, {"quotes": []}, card], urls)  # no second quote for Acme's two cut facts
 
 
 def test_card_keeps_only_what_the_pages_support(web):
@@ -102,7 +102,7 @@ def test_page_text_is_data_and_only_the_fetched_text_reaches_the_model(web):
     backend = scripted()
     build_card("Acme", "Globex", backend)
     assert "<page>" in backend.prompts[0] and "Acme Starter costs $20" in backend.prompts[0]
-    assert "f3" not in backend.prompts[2]  # a cut fact is never shown to the writer
+    assert "f3" not in backend.prompts[3]  # a cut fact is never shown to the writer
 
 
 def test_render_escapes_and_links_every_kept_line(web):
@@ -165,8 +165,10 @@ def test_card_with_reader_cuts_a_line_the_facts_do_not_state(web):
         }
 
     backend = scripted(extra)
-    backend._replies[2]["questions"].append({"text": "Did you know Globex was breached last year?", "cites": ["f5"]})
-    card = build_card("Acme", "Globex", backend, reader=ScriptedBackend([reader_reply, reader_reply, advice_reply]))
+    backend._replies[3]["questions"].append({"text": "Did you know Globex was breached last year?", "cites": ["f5"]})
+    card = build_card(
+        "Acme", "Globex", backend, reader=ScriptedBackend([reader_reply, reader_reply, reader_reply, advice_reply])
+    )  # a call per page, then lines
     assert any("breached" in x.text and "adds a fact" in x.reason for x in card.lines if not x.kept)
     assert any(x.kept and x.section == "questions" for x in card.lines)
     cut = {x.text: x.reason for x in card.lines if not x.kept}
@@ -237,3 +239,66 @@ def test_cli_check_survives_a_null_quote(tmp_path):
     Ledger().save(tmp_path / "l.json")
     (tmp_path / "c.json").write_text(json.dumps([{"text": "Acme is big", "quote": None, "evidence_id": None}]))
     assert main(["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json"), "--code-only"]) == 1
+
+
+# ── One more quote for a fact whose quote did not carry it ──────────────────────────────────────────
+
+SECOND = {"quotes": [{"n": 1, "quote": "Acme includes 500 integrations on every plan."}, {"n": 2, "quote": ""}]}
+
+
+def with_a_weak_quote(second=SECOND):
+    """Acme's page states 500 integrations; the first quote for that fact is a line that does not carry the figure."""
+    backend = scripted()
+    backend._replies[0]["facts"][1] = {
+        "text": "Acme includes 500 integrations on every plan",
+        "quote": "Acme Starter costs $20 per seat per month.",
+        "topic": "integration",
+    }
+    backend._replies[2] = second
+    return backend
+
+
+def test_a_fact_with_a_weak_quote_is_kept_on_a_second_quote_and_its_words_do_not_change(web):
+    backend = with_a_weak_quote()
+    card = build_card("Acme", "Globex", backend)
+    f2 = next(c for c in card.claims if c.id == "f2")
+    assert card.verdicts["f2"].supported and card.requoted == ["f2"]
+    assert f2.text == "Acme includes 500 integrations on every plan" and f2.quote == SECOND["quotes"][0]["quote"]
+    assert not card.verdicts["f3"].supported  # no place on the page states it: it stays cut
+    assert card.stats()["facts_kept_on_a_second_quote"] == 1 and "second quote" in panel_text(card)
+    asked = backend.prompts[2]
+    assert "500 integrations" in asked and "Why it was cut" in asked and "Globex" not in asked  # one page to a call
+
+
+def test_a_second_quote_passes_the_same_checks_as_a_first(web):
+    not_on_page = {"quotes": [{"n": 1, "quote": "Acme includes 500 integrations and 40 partner apps."}]}
+    card = build_card("Acme", "Globex", with_a_weak_quote(not_on_page))
+    assert not card.verdicts["f2"].supported and card.verdicts["f2"].reason == "figure_not_in_quote"  # its first reason
+    assert card.requoted == []
+
+    def refuses_the_second(prompt):
+        return {
+            "verdicts": [
+                {"n": i + 1, "stated": "500 integrations" not in p, "gap": "x"}
+                for i, p in enumerate(prompt.split("</pair>")[:-1])
+            ]
+        }
+
+    reader = ScriptedBackend([refuses_the_second] * 4 + [{"verdicts": []}])
+    card = build_card("Acme", "Globex", with_a_weak_quote(), reader=reader)
+    assert not card.verdicts["f2"].supported and card.requoted == []  # the reader reads a second quote too
+    assert any("500 integrations" in p for p in reader.prompts)
+
+
+def test_only_a_cut_a_better_quote_could_answer_gets_one(web):
+    backend = scripted()
+    backend._replies[0]["facts"] = [backend._replies[0]["facts"][0]]  # Acme: nothing cut
+    backend._replies[1]["facts"].append(
+        {"text": "Globex offers a free plan", "quote": "Globex does not offer a free plan.", "topic": "pricing"}
+    )
+    del backend._replies[2]  # so no call for second quotes may be made
+    card = build_card("Acme", "Globex", backend)
+    assert card.verdicts["f4"].reason == "polarity_mismatch" and backend.calls == 3
+    off = with_a_weak_quote()
+    del off._replies[2]
+    assert not build_card("Acme", "Globex", off, requote=False).verdicts["f2"].supported and off.calls == 3

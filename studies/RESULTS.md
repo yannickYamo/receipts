@@ -173,8 +173,9 @@ The second audit, on the code after those fixes:
 | A malformed reply from the reader, a bad input file, a cut-off API reply: a crash | Each is handled: the claim is cut, or the command says what is wrong |
 | A slow server could hold a fetch open past its deadline | The deadline is checked after every packet |
 
-Left as stated limits: the fetcher resolves a host name once before the request and the system
-resolves it again, so a host that changes its answer between the two is not caught.
+Left as a stated limit at the time: the fetcher resolved a host name once before the request and the
+system resolved it again, so a host that changed its answer between the two was not caught. It was
+closed later (section 7): the connection now goes to the address that was checked.
 
 A third review, by an outside reader after publication:
 
@@ -222,6 +223,18 @@ The check changed between runs: after run 1 the extraction prompt was told to qu
 value; run 3 is on the code after the first audit; run 4 after the red-team fix; run 5 is on the code
 as shipped. So the runs are a history, not five samples of one thing. G2 and Capterra refused the fetch every time, so no card has
 review data, and each says which pages it could not read.
+
+## 7. After these runs
+
+Everything above was measured on reader prompt f95a7623. Two things were built afterwards and have not
+been measured: the reader is shown the page on either side of the passage (prompt 3e63cca8), and the
+battle card gives a fact one more quote when its first quote did not carry it. A second outside review
+also found ten defects outside the check's decisions (the API backend's model name, a reader reply that
+answers a claim twice, a malformed ledger, the fetcher's second lookup of a host name, and others);
+each is fixed with a regression test in `tests/test_second_review_findings.py`. The code check's
+decisions did not change: sections 1 and 3 still rebuild from it.
+
+The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRATION.md`.
 
 ## What is not measured
 

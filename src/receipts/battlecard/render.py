@@ -88,6 +88,10 @@ def panel_text(card: Card) -> str:
         rows.append(
             "          its reading of facts is measured (studies/); its reading of card lines and advice is not"
         )
+    if card.requoted:
+        rows.insert(
+            2, f"          {len(card.requoted)} of the supported facts were kept on a second quote from the same page"
+        )
     if card.partial:
         rows.insert(1, f"          {len(card.partial)} long pages were read only to {40_000:,} characters")
     return "\n".join(rows)

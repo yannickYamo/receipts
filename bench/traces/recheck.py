@@ -3,10 +3,12 @@
 Needs the pages of run 3 (bench/live/run3/ledger.json), which are kept out of the repository because
 they are other people's web pages. The verdicts it writes are in the repository, and score.py reads them.
 
-    python bench/traces/recheck.py
+    python bench/traces/recheck.py           writes verdicts_shipped.json, the file score.py and the tests read
+    python bench/traces/recheck.py v2        writes verdicts_v2.json beside it and leaves the first alone
 """
 
 import json
+import sys
 from pathlib import Path
 
 from receipts import Claim, Ledger
@@ -26,5 +28,5 @@ out = {
     "cost_usd_list_price": round(backend.cost_usd, 4),
     "verdicts": {v.claim_id: {"kept": v.supported, "reason": v.reason, "detail": v.detail} for v in report.verdicts},
 }
-(HERE / "verdicts_shipped.json").write_text(json.dumps(out, indent=1))
+(HERE / f"verdicts_{sys.argv[1] if len(sys.argv) > 1 else 'shipped'}.json").write_text(json.dumps(out, indent=1))
 print(len(report.supported), "kept of", len(claims), report.by_reason)

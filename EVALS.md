@@ -8,9 +8,13 @@
 | Unsupported claims cut (60 written for the test, round 2) | at least 54 | 60 | pass |
 | The code check alone, with no reader (round 1) | at least 45 of 50 | 43 | **fail** |
 | The reader run three times: verdicts that changed | none set | 0 of 76 | |
-| Real pages: facts the check kept that the page states | at least 95% | 43 of 43 | pass |
+| Real pages: facts the check kept that the page states | at least 95% | 43 of 43 | pass, on a run where the model proposed nothing false |
 | Real pages: true facts the check kept | none set | 43 of 59 | open |
 | A red team that had the source code: false claims that got through | none set | 15 of 40 | open |
+
+## Which reader these numbers are for
+
+Every number in the table was measured on reader prompt f95a7623. The reader in the code now is 3e63cca8: it also sees the page on either side of the quote, and that text can only cut. It has not been measured. The plan, the bars and the run order for measuring it were written before any run, in `studies/ROUND3_PREREGISTRATION.md`, and until those runs are in, the table describes the earlier reader.
 
 ## How I ran these
 
@@ -52,6 +56,8 @@ Two independent audits attacked the code before I published. The first found a q
 
 After publishing, an outside review found four more. The worst one: `receipts check` and the MCP tool were running the code stage alone - the stage that failed its bar in round 1. The reviewer's probe was a page saying "Zendesk offers the Suite Team plan in Europe. Zendesk does not offer it in India," a claim that Zendesk offers it in India, and the quote "the Suite Team plan in." Code stage passed it. Both stages cut it. Both stages are now the default everywhere, and `--code-only` has to be asked for and tells you what it is. The other three: the battle card's line check accepted "19 agents" against "$19"; the command printed the wrong text when two claims shared an id; a ledger file edited after the fetch was accepted. All fixed, each with a regression test.
 
+A second outside review found ten more, none in the check's decisions: the API backend sent a model name the API refuses, a reader reply that answered a claim twice kept the last answer, a malformed ledger crashed, the fetcher looked a host name up twice. The list is in `studies/RESULTS.md`, section 7. All fixed, each with a regression test.
+
 ## What these evals don't cover
 
 No people. One model family wrote the check, the reader prompt, the test claims, and the labels. A test set and labels written by people is the thing I most need and don't have.
@@ -69,9 +75,10 @@ python bench/run_redteam.py redteam2 --replay    # the red team, every claim tha
 
 ## Next, in order
 
-1. Stop cutting true facts on pricing pages: keep a value with the name it belongs to.
-2. Let the reader see the sentences on either side, so a claim the next sentence takes back gets cut. Then a fresh round.
-3. A test set and labels written by people.
+1. Run round 3 as pre-registered (`studies/ROUND3_PREREGISTRATION.md`). It measures the two changes below and, for the first time, how often a model told to quote states something the page doesn't.
+2. Built, not measured: the reader sees the sentences on either side, so a claim the next sentence takes back can be cut.
+3. Built, not measured: on the battle card, a fact whose quote didn't carry it gets one more quote from the same page. Its words can't change.
+4. A test set and labels written by people. Round 3 has a person settle the labels; it does not have a person write the set.
 
 ## What to trust it for
 

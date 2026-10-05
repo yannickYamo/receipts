@@ -1,0 +1,194 @@
+[
+ {
+  "kind": "pricing",
+  "subject": "Linear",
+  "url": "https://linear.app/pricing",
+  "evidence_id": "e7e33d38a",
+  "characters": 3011,
+  "sha256": "ed69c930eca22d011d8aadb12473cd8174535a69281edd60c19003a741d5e828"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Notion",
+  "url": "https://www.notion.com/pricing",
+  "evidence_id": "e7003cf13",
+  "characters": 22867,
+  "sha256": "f1b3e743bad4eb9d6d8dfec31ebc912809572f5e28bdb9f483878d0e1052efed"
+ },
+ {
+  "kind": "pricing",
+  "subject": "GitLab",
+  "url": "https://about.gitlab.com/pricing/",
+  "evidence_id": "e24062362",
+  "characters": 30413,
+  "sha256": "fee974b330c34321c6d76b5515387eef69c403d7d37e042a33d78cfb20bf8def"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Sentry",
+  "url": "https://sentry.io/pricing/",
+  "evidence_id": "e10ebc9eb",
+  "characters": 8945,
+  "sha256": "22d13473ed045ccb8ba652b126ca55fd6ffc802443bb1e3c6bc2fa2db1dc1932"
+ },
+ {
+  "kind": "pricing",
+  "subject": "PostHog",
+  "url": "https://posthog.com/pricing",
+  "evidence_id": "eacc8fbf6",
+  "characters": 12976,
+  "sha256": "e7b8f4dc8aa1cd63dcd472c3df5251340c059afa0e396a9ef0472e8223e6bebd"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Plausible",
+  "url": "https://plausible.io/#pricing",
+  "evidence_id": "e2f3d143b",
+  "characters": 8875,
+  "sha256": "272488f96a04e0a54425508bacd0603c3579bc779ecf75f3c217fedf775cc724"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Fastmail",
+  "url": "https://www.fastmail.com/pricing/",
+  "evidence_id": "eba032932",
+  "characters": 23019,
+  "sha256": "60e3e8e1f2de31c3a1b5ccf723d776dc2628843f602c319cf14ce4100adf6279"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Tailscale",
+  "url": "https://tailscale.com/pricing",
+  "evidence_id": "ed13ce0d4",
+  "characters": 30326,
+  "sha256": "4150e39853e9c8bb588d3a8af3182c56c4a53542489cb8c12dd569be555b4bb5"
+ },
+ {
+  "kind": "docs",
+  "subject": "Stripe",
+  "url": "https://docs.stripe.com/rate-limits",
+  "evidence_id": "efef46bba",
+  "characters": 11535,
+  "sha256": "f5461bd456246b0ef8620174d8cd53e33cbe38729e4571c2ad46d8ee6d8c3bcf"
+ },
+ {
+  "kind": "docs",
+  "subject": "GitHub",
+  "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+  "evidence_id": "e4a04a6e2",
+  "characters": 15807,
+  "sha256": "4efccd4ebf142e27b9ec6123bbbfc45153141aad4afd4e01192b547506e08215"
+ },
+ {
+  "kind": "docs",
+  "subject": "PostgreSQL",
+  "url": "https://www.postgresql.org/docs/current/limits.html",
+  "evidence_id": "eba5c1b03",
+  "characters": 3418,
+  "sha256": "05e65ce9d25305a80d43a3be044b189dc57c065cd88826db83feebb2d6d64ec5"
+ },
+ {
+  "kind": "docs",
+  "subject": "SQLite",
+  "url": "https://www.sqlite.org/limits.html",
+  "evidence_id": "e418818e4",
+  "characters": 14987,
+  "sha256": "660f219d9dc1e75cdc769b94e08a50b8c4d9eb8193016c1b33f61fff00a39c51"
+ },
+ {
+  "kind": "docs",
+  "subject": "Let's Encrypt",
+  "url": "https://letsencrypt.org/docs/rate-limits/",
+  "evidence_id": "e7e186c68",
+  "characters": 14095,
+  "sha256": "c6a1106f90920c9f1274e03d8e83a3ba447553601b7a64471812031f8424399a"
+ },
+ {
+  "kind": "docs",
+  "subject": "Python",
+  "url": "https://docs.python.org/3/whatsnew/3.13.html",
+  "evidence_id": "ee9820dbd",
+  "characters": 115453,
+  "sha256": "48d41ec4f98886c4d1534bcb23772313fada2869b1f3f136d610d0cd84de44dc"
+ },
+ {
+  "kind": "docs",
+  "subject": "Redis",
+  "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
+  "evidence_id": "e7a50f55d",
+  "characters": 28718,
+  "sha256": "aecca91021de2a36900eb435fa665774d67ffb0d1982bc78011d0d1d47754217"
+ },
+ {
+  "kind": "docs",
+  "subject": "Cloudflare",
+  "url": "https://developers.cloudflare.com/workers/platform/limits/",
+  "evidence_id": "ef7177cb6",
+  "characters": 26486,
+  "sha256": "bb1480499740b2ba78847458ca058fc74a9ce0f743d5448d75cab3dec60c13d0"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "GitLab",
+  "url": "https://en.wikipedia.org/wiki/GitLab",
+  "evidence_id": "ec92f9ce5",
+  "characters": 5501,
+  "sha256": "b27481647410a92012aa3b4fefb46fb55645d1f9cc018e2f7835ed69e861bec8"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "Stripe",
+  "url": "https://en.wikipedia.org/wiki/Stripe,_Inc.",
+  "evidence_id": "eb36668fb",
+  "characters": 40657,
+  "sha256": "c6e64e2581c748615b13eb46ca81c64d2cb2aa330a0c1bdad60a001677d39e1f"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "Figma",
+  "url": "https://en.wikipedia.org/wiki/Figma",
+  "evidence_id": "e1a4efe10",
+  "characters": 24422,
+  "sha256": "1ef6443916c44bf6e4114709674115a8ef7738876b8f09f58d20bf5587c93ccd"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "Palantir",
+  "url": "https://en.wikipedia.org/wiki/Palantir_Technologies",
+  "evidence_id": "e2e84d547",
+  "characters": 173902,
+  "sha256": "3d633b53500001129d5cb4151fa974f2a911a60032bba7f80d198a76a45cbe63"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "Unity",
+  "url": "https://en.wikipedia.org/wiki/Unity_Technologies",
+  "evidence_id": "e17d15362",
+  "characters": 43276,
+  "sha256": "b604a2ecf296fe71fe63fc01549097c4376bc10a82c947c17cdac6d00f17f1ab"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "WeWork",
+  "url": "https://en.wikipedia.org/wiki/WeWork",
+  "evidence_id": "e07688b00",
+  "characters": 53287,
+  "sha256": "20f4071fb5f2c94d163e5d8ee0c0f677712eddfe450c33f6a67d87c54bcf8143"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "Theranos",
+  "url": "https://en.wikipedia.org/wiki/Theranos",
+  "evidence_id": "e1410edb0",
+  "characters": 67153,
+  "sha256": "0d4f3016e538ce1dbd46bfec4e8be61fa02c20300e3a5d427007585b6481f45c"
+ },
+ {
+  "kind": "encyclopedia",
+  "subject": "FTX",
+  "url": "https://en.wikipedia.org/wiki/FTX",
+  "evidence_id": "e43bc2ad5",
+  "characters": 67917,
+  "sha256": "c3553d553d87ed4d27cd83166ad66549f6e77f14894c57989b2596a743528451"
+ }
+]

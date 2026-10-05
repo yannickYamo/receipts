@@ -4,6 +4,8 @@ python bench/run_redteam.py redteam              reads them with the reader (cal
 python bench/run_redteam.py redteam --replay     rebuilds the table from the saved readings
 python bench/run_redteam.py redteam --after-fix  the same set again, kept beside the first run
 python bench/run_redteam.py redteam2             the second red team, written against the fixed check
+python bench/run_redteam.py redteam2 --tag=v2    any set again, kept beside the earlier runs under that name
+python bench/run_redteam.py redteam3             the third red team (studies/ROUND3_PREREGISTRATION.md)
 """
 
 import json
@@ -16,8 +18,17 @@ from receipts.reader import READER_VERSION, read_pairs
 
 HERE = Path(__file__).parent
 NAME = next((x for x in sys.argv[1:] if not x.startswith("--")), "redteam")  # redteam, redteam2
-CORPUS = {"redteam": "corpus2", "redteam2": "corpus"}[NAME]
-TAG = "_after_fix" if "--after-fix" in sys.argv else "_shipped" if "--shipped" in sys.argv else ""
+CORPUS = {"redteam": "corpus2", "redteam2": "corpus", "redteam3": "corpus3"}[NAME]
+NAMED = next((x.split("=", 1)[1] for x in sys.argv[1:] if x.startswith("--tag=")), "")
+TAG = (
+    "_after_fix"
+    if "--after-fix" in sys.argv
+    else "_shipped"
+    if "--shipped" in sys.argv
+    else f"_{NAMED}"
+    if NAMED
+    else ""
+)
 rows = [json.loads(x) for x in (HERE / f"{NAME}.jsonl").read_text().splitlines() if x.strip()]
 ledger = Ledger.load(HERE / CORPUS / "ledger.json")
 claims = [Claim(r["id"], r["text"], r["quote"], r["evidence_id"], r["company"]) for r in rows]
