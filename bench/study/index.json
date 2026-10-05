@@ -1,11 +1,11 @@
 [
  {
   "kind": "pricing",
-  "subject": "Linear",
-  "url": "https://linear.app/pricing",
-  "evidence_id": "e7e33d38a",
-  "characters": 3011,
-  "sha256": "ed69c930eca22d011d8aadb12473cd8174535a69281edd60c19003a741d5e828"
+  "subject": "Buttondown",
+  "url": "https://buttondown.com/pricing",
+  "evidence_id": "edbb075a8",
+  "characters": 4029,
+  "sha256": "56af0a2bcef3051faaea0a9e84c9991bce84ac32a57b32d86535f45ed5d0cff7"
  },
  {
   "kind": "pricing",

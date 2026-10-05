@@ -23,6 +23,9 @@
 - `receipts check` exits 3, and says why, when the reader gave no answer. 1 still means a claim was cut.
 - A file that is not a ledger is refused in words. A page with its hash removed is refused.
 - `read_page` returns a long page in parts and says when there is more.
+- `receipts mcp` without the mcp package says so in one line.
+- The battle card's prompts ask for table lines in the order the page has them. They used to ask for
+  the name first, and a page that puts the price above the plan name could not be quoted that way.
 
 - `--backend openai` runs the reader on any API that speaks OpenAI's chat completions, such as OpenAI
   or xAI. Only the reader on claude-haiku-4-5 is measured.

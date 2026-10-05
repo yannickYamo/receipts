@@ -6,6 +6,8 @@ python bench/run_redteam.py redteam --after-fix  the same set again, kept beside
 python bench/run_redteam.py redteam2             the second red team, written against the fixed check
 python bench/run_redteam.py redteam2 --tag=v2    any set again, kept beside the earlier runs under that name
 python bench/run_redteam.py redteam3             the third red team (studies/ROUND3_PREREGISTRATION.md)
+
+--reader-model=<name> picks the reader (default haiku). The result names the model it was read with.
 """
 
 import json
@@ -33,6 +35,7 @@ rows = [json.loads(x) for x in (HERE / f"{NAME}.jsonl").read_text().splitlines()
 ledger = Ledger.load(HERE / CORPUS / "ledger.json")
 claims = [Claim(r["id"], r["text"], r["quote"], r["evidence_id"], r["company"]) for r in rows]
 REPLAY = "--replay" in sys.argv
+READER = next((x.split("=", 1)[1] for x in sys.argv[1:] if x.startswith("--reader-model=")), "haiku")
 past_code = [c for c in claims if check_claim(c, ledger).supported]
 saved = HERE / f"readings_{NAME}{TAG}.json"
 if REPLAY:
@@ -42,7 +45,7 @@ if REPLAY:
     name, cost = stored["reader"], stored["cost_usd_list_price"]
     past_code = [c for c in claims if c.id in readings]
 else:
-    backend = ClaudeCodeBackend("haiku")
+    backend = ClaudeCodeBackend(READER)
     readings = read_pairs(past_code, ledger, backend)
     name, cost = f"{backend.name}, prompt {READER_VERSION}", round(backend.cost_usd, 4)
     saved.write_text(json.dumps({"reader": name, "readings": readings, "cost_usd_list_price": cost}, indent=1))

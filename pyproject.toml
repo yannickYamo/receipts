@@ -11,6 +11,22 @@ requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Yannick Maurice" }]
 dependencies = []
+keywords = ["llm", "agents", "citations", "grounding", "hallucination", "guardrails", "mcp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Repository = "https://github.com/yannickYamo/receipts"
+Changelog = "https://github.com/yannickYamo/receipts/blob/main/CHANGELOG.md"
+Evals = "https://github.com/yannickYamo/receipts/blob/main/EVALS.md"
 
 [project.optional-dependencies]
 anthropic = ["anthropic>=0.116"]

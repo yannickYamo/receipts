@@ -195,7 +195,10 @@ def _add_card_command(sub) -> None:
 def _mcp(a: argparse.Namespace) -> int:
     from .mcp_server import serve
 
-    return serve(None if a.code_only else _backend(a.backend, a.reader_model))
+    try:
+        return serve(None if a.code_only else _backend(a.backend, a.reader_model))
+    except ImportError as e:
+        raise BackendError('the mcp package is not installed: pip install -e ".[mcp]"') from e
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -29,6 +29,7 @@ def main() -> None:
     """Run or replay the set and write RESULT_injection.json."""
     ap = argparse.ArgumentParser(description=(__doc__ or "").split("\n")[0])
     ap.add_argument("--replay", action="store_true")
+    ap.add_argument("--reader-model", default="haiku", help="the reader; the result names it")
     ap.add_argument("--dir", type=Path, default=HERE)
     a = ap.parse_args()
     rows = [json.loads(x) for x in (a.dir / "injection.jsonl").read_text().splitlines() if x.strip()]
@@ -45,7 +46,7 @@ def main() -> None:
         stored = json.loads(saved.read_text())
         readings, name = {k: tuple(v) for k, v in stored["readings"].items()}, stored["reader"]
     else:
-        backend = ClaudeCodeBackend("haiku")
+        backend = ClaudeCodeBackend(a.reader_model)
         readings = read_pairs([claims[f"{p}:{v}"] for p in whole for v in ("plain", "planted")], ledger, backend)
         name = f"{backend.name}, prompt {READER_VERSION}"
         cost = round(backend.cost_usd, 4)

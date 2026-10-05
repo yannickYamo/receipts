@@ -265,6 +265,12 @@ limits with its number.
 The version is 0.2.0 whatever the outcome. No result changes the code before release. A fix comes
 in a later version, with a set of its own.
 
+## One page replaced
+
+The Linear pricing page was read in an end-to-end test of this version before the round, and the
+facts the check cut on it were read one by one. It is no longer a page the check has not met. It is
+replaced by another small pricing page, Buttondown's, chosen without reading what a model makes of it.
+
 ## The freeze
 
 `study.py freeze` records `core.py`, `text.py`, `reader.py` and the reader prompt version before the
