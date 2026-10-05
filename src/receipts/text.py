@@ -296,25 +296,58 @@ def _sentence_breaks(src: str) -> list[int]:
     return out
 
 
-def _table_passage(fragments: list[str], lines: list[str]) -> str | None:
-    """The lines an ellipsis quote names, when each part is a line of the page and they sit close together."""
+def _table_lines(fragments: list[str], lines: list[str]) -> list[int] | None:
+    """Which lines an ellipsis quote names, when each part is a line of the page and they sit close together."""
     for a, line in enumerate(lines):
         if line != fragments[0]:
             continue
-        at, found = a, [line]
+        found = [a]
         for n, f in enumerate(fragments[1:], start=2):
             last = n == len(fragments)
-            reach = range(at + 1, min(at + 1 + ELLIPSIS_LINES, len(lines)))
+            reach = range(found[-1] + 1, min(found[-1] + 1 + ELLIPSIS_LINES, len(lines)))
             fits = (
                 b for b in reach if lines[b] == f or (last and lines[b].startswith(f) and _whole(lines[b], 0, len(f)))
             )
             at = next(fits, -1)
             if at == -1:
                 break
-            found.append(lines[at])
+            found.append(at)
         else:
-            return " ".join(found)
+            return found
     return None
+
+
+def _table_passage(fragments: list[str], lines: list[str]) -> str | None:
+    """The lines an ellipsis quote names, joined, or None when the page has no such lines."""
+    found = _table_lines(fragments, lines)
+    return " ".join(lines[i] for i in found) if found else None
+
+
+def _locate(quote: str, source: str) -> tuple[str, int, int, str] | None:
+    """Where a quote sits: (the page as compared, start, end, passage), or None when it is not on the page.
+
+    For a quote in prose, start and end are the bounds of its whole sentences. For lines joined by an
+    ellipsis they run from the first quoted line to the last, the lines between them included.
+    """
+    q = norm(quote.strip().strip('"'))
+    if not q:
+        return None
+    src = norm_lines(source)
+    span = _span(src, q.strip(" .") or q)  # as written first: the page may have an ellipsis of its own
+    if span is None:
+        fragments = [f for f in (x.strip() for x in re.split(r"\.{3,}|…|\[\.\.\.\]", q)) if f]
+        lines = src.split("\n")
+        found = _table_lines(fragments, lines) if len(fragments) > 1 else None
+        if not found:
+            return None
+        starts = [0]
+        for line in lines:
+            starts.append(starts[-1] + len(line) + 1)
+        return src, starts[found[0]], starts[found[-1] + 1] - 1, " ".join(lines[i] for i in found)
+    breaks = _sentence_breaks(src)
+    start = max((b for b in breaks if b <= span[0]), default=0)
+    end = min((b for b in breaks if b >= span[1]), default=len(src))
+    return src, start, end, src[start:end].replace("\n", " ").strip()
 
 
 def quote_passage(quote: str, source: str) -> str | None:
@@ -325,18 +358,39 @@ def quote_passage(quote: str, source: str) -> str | None:
     denial. So nothing downstream trusts the quote as given. The check and the reader both read the
     passage: the quote widened to the sentence boundaries of the page.
     """
-    q = norm(quote.strip().strip('"'))
-    if not q:
+    found = _locate(quote, source)
+    return found[3] if found else None
+
+
+LINE_BREAK = " | "  # how a line break of the page is shown in the text around a quote
+
+
+def quote_context(quote: str, source: str, around: int = 3, limit: int = 400) -> tuple[str, str, str] | None:
+    """What the page says around a quote: (before, between, after), or None when the quote is not on the page.
+
+    `before` and `after` are up to `around` sentences or lines on each side, and at most `limit`
+    characters. `between` is every line from the first quoted line to the last when the quote joins
+    table lines and skips some; otherwise it is empty. Line breaks are shown as " | ".
+
+    A passage can be faithful and still mislead by what it leaves out: the next sentence calls the deal
+    off, or the "$49" two lines under "Starter" sits in the row of "Pro". The reader is shown this text
+    so it can cut such a claim. It is never evidence for a claim.
+    """
+    found = _locate(quote, source)
+    if found is None:
         return None
-    src = norm_lines(source)
-    span = _span(src, q.strip(" .") or q)  # as written first: the page may have an ellipsis of its own
-    if span is None:
-        fragments = [f for f in (x.strip() for x in re.split(r"\.{3,}|…|\[\.\.\.\]", q)) if f]
-        return _table_passage(fragments, src.split("\n")) if len(fragments) > 1 else None
-    breaks = _sentence_breaks(src)
-    start = max((b for b in breaks if b <= span[0]), default=0)
-    end = min((b for b in breaks if b >= span[1]), default=len(src))
-    return src[start:end].replace("\n", " ").strip()
+    src, start, end, passage = found
+    breaks = [0, *_sentence_breaks(src), len(src)]
+    first = ([b for b in breaks if b < start][-around:] or [start])[0]
+    last = ([b for b in breaks if b > end][:around] or [end])[-1]
+    before, whole, after = (
+        x.strip().replace("\n", LINE_BREAK) for x in (src[first:start], src[start:end], src[end:last])
+    )
+    if len(before) > limit:
+        before = before[-limit:].split(" ", 1)[-1]
+    if len(after) > limit:
+        after = after[:limit].rsplit(" ", 1)[0]
+    return before, (whole if LINE_BREAK in whole and whole.replace(LINE_BREAK, " ") != passage else ""), after
 
 
 def quote_match(quote: str, source: str) -> str | None:

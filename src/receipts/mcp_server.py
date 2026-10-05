@@ -66,7 +66,8 @@ def build_server(reader: Backend | None = None):
     def check_claims_tool(claims: list[dict]) -> dict:
         """Check claims before stating them. Each claim: {text, quote, evidence_id, subject}. The quote must be
         copied exactly from a page returned by read_page. Returns, per claim, supported or the reason it is
-        not. State only the supported ones; drop the rest, do not reword them."""
+        not. State only the supported ones; drop the rest, do not reword them. A claim cut because its quote
+        does not carry it may be sent once more with another quote from the same page, its text unchanged."""
         cs = [
             Claim(
                 str(c.get("id") or f"c{i + 1}"),

@@ -99,10 +99,12 @@ class _CheckedHTTPS(http.client.HTTPSConnection):
 _TLS = ssl.create_default_context()
 
 
-class _CheckedHandler(urllib.request.HTTPHandler, urllib.request.HTTPSHandler):
+class _CheckedHTTPHandler(urllib.request.HTTPHandler):
     def http_open(self, req):
         return self.do_open(_CheckedHTTP, req)
 
+
+class _CheckedHTTPSHandler(urllib.request.HTTPSHandler):
     def https_open(self, req):
         return self.do_open(_CheckedHTTPS, req)
 
@@ -114,7 +116,9 @@ class _CheckedRedirects(urllib.request.HTTPRedirectHandler):
 
 
 # No proxy from the environment: a proxy looks the name up itself, past the check.
-_opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), _CheckedHandler, _CheckedRedirects)
+_opener = urllib.request.build_opener(
+    urllib.request.ProxyHandler({}), _CheckedHTTPHandler, _CheckedHTTPSHandler, _CheckedRedirects
+)
 
 
 def allowed_by_robots(url: str, timeout: float = 10) -> bool:

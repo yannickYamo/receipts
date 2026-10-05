@@ -69,7 +69,7 @@ class Ledger(Mapping[str, Evidence]):
         items = []
         for e in raw:
             page = {k: e.get(k, "") for k in fields}  # fields this version does not know are left alone
-            if not all(isinstance(v, str) for v in page.values()) or not page["id"] or not page["text"]:
+            if not all(isinstance(v, str) for v in page.values()) or not page["id"] or "text" not in e:
                 raise ValueError(f"{path}: not a ledger: a page needs an id and its text, and every field is text")
             if not page["sha256"]:
                 raise ValueError(f"{path}: {page['url'] or page['id']} has no hash, so its text cannot be checked")

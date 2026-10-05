@@ -15,7 +15,7 @@ dependencies = []
 [project.optional-dependencies]
 anthropic = ["anthropic>=0.116"]
 mcp = ["mcp>=1.2"]
-dev = ["pytest>=8", "ruff>=0.6"]
+dev = ["pytest>=8", "ruff>=0.6", "hypothesis>=6"]
 
 [project.scripts]
 receipts = "receipts.cli:main"
