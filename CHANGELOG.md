@@ -24,6 +24,9 @@
 - A file that is not a ledger is refused in words. A page with its hash removed is refused.
 - `read_page` returns a long page in parts and says when there is more.
 
+- `--backend openai` runs the reader on any API that speaks OpenAI's chat completions, such as OpenAI
+  or xAI. Only the reader on claude-haiku-4-5 is measured.
+
 ### The fetcher
 
 - The connection goes to the address that was checked: one lookup of the host name, not two.
@@ -34,7 +37,11 @@
 - Round 3 is pre-registered in `studies/ROUND3_PREREGISTRATION.md`: the changed reader on the earlier
   sets, a third red team on fresh pages, and a study of how often a model told to quote states
   something the page does not, with five arms scored on the same claims (`bench/study/`).
-- Property tests on the text functions the code check stands on.
+- An amendment to that plan, written before any run: extractors from three model families, a second
+  error measure (a kept claim whose quote does not state it), intervals drawn over pages, the Citations
+  API as a reported arm, a planted-instruction set, and the sentence each outcome puts in the README.
+- `study.py freeze` records the code that decides a claim, and the suite fails if it changes mid-round.
+- Property tests on the text functions the code check stands on, and a type check in CI.
 
 ## 0.1.0
 

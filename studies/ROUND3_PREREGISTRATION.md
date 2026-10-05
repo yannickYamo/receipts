@@ -147,3 +147,128 @@ The extractors and the reader are one model family. One labeller is not, and a p
 labels, but only on the claims named above. Three kinds of page, all in English, all about software.
 Sixty or forty claims a set gives wide intervals, and they are given. A reader that varies between runs
 is measured on one set only.
+
+---
+
+# Amendment, 2026-10-04
+
+Written before any run of this round. Nothing above had been run, so nothing above is revised in the
+light of a result. Where this amendment and the text above differ, the amendment holds. Parts 1, 2
+and 4 stand as written. Part 3 changes as follows, and two things are added. The order of work is
+now `ROUND3_RUNBOOK.md`, which replaces the list of runs above.
+
+## Why amend
+
+Three gaps in Part 3 as first written.
+
+It counted one kind of error, a claim the page does not state. The check promises more than that:
+a kept claim comes with a quote that states it. A true claim with a quote that does not state it
+breaks that promise, and Part 3 had no number for it.
+
+Its extractors were two Claude models. The check takes claims from any model, and a result on one
+family cannot say so.
+
+It had no row for the result where there are enough errors to measure and the check does not reduce
+them. A plan with no sentence for its worst result lets the result be explained afterwards.
+
+## The claims
+
+Four extractors from three model families: claude-haiku-4-5 and claude-sonnet through the local
+`claude` command, one OpenAI model and one xAI model through `--backend openai`. The run records the
+exact model names. Each reads the same 24 pages and lists at most 9 facts with an exact quote, under
+the same plain instruction (`CITE_SYSTEM`). That is at most 864 claims. The reader stays
+claude-haiku-4-5: it is the reader whose rates this round measures. No other reader is measured.
+
+## The rule for "the quote alone states it"
+
+A labeller answers yes when the quote, read with the title of its page and nothing else, states
+everything the claim states. The title may supply the subject: on a page titled "Acme pricing", "the
+Pro plan costs $49" states a fact about Acme. A heading, a neighbouring row, or anything else on the
+page may not supply what the quote leaves out. This is the rule the reader's prompt applies, so the
+label and the code are held to the same contract.
+
+## Labels
+
+Two labellers, one of them not a Claude model, label every claim blind (`study.py sheet`). A person
+then settles every claim the two disagree on, on either question, and every claim either says the
+page does not state, and reads a random 50 of the rest, seed 11 (`study.py settle`). The settled file
+is the person's label where one was given and the agreed label elsewhere (`study.py final`).
+
+Reported with the results: how often the two labellers agree on each question, with Cohen's kappa,
+and how many of the 50 agreed labels the person overturned. If the person overturns more than 5 of
+the 50, the agreed labels are not good enough to stand unread: the person labels every claim, and
+the result waits for that.
+
+## The measures
+
+Every measure is taken on settled labels. Each labeller's own counts are given beside them.
+
+**Intervals.** Claims about one page fail together, whichever model wrote them. Every interval is a
+95% percentile interval over 2,000 resamples of whole pages, seed 11. Wilson intervals on claims are
+given beside them and decide nothing.
+
+**M1p, inventions delivered.** Of the claims an arm delivers, the share the page does not state.
+
+**M1q, unchecked claims delivered.** Of the claims an arm delivers, the share whose quote does not
+state them.
+
+For each, one bar: the rate after both stages is at most half the bare model's, and the whole interval
+of (both stages minus bare model) lies below zero. The bar applies only when the bare model's output
+holds at least 20 such claims. Below 20, the count and its interval are reported and no bar applies.
+This replaces bars 1 and 2 of Part 3.
+
+Also reported, no bar: whether the rate after both stages is no higher than the rate when a claim is
+kept for having its quote on the page. And each rate by model family, by extractor and by kind of page.
+
+**M2a.** Of the claims the page states, both stages keep at least 70%. **M2b.** Of the claims whose
+quote states them, both stages keep at least 85%. These are bars 4 and 3 of Part 3, unchanged. Also
+reported: true claims delivered per page read, for each arm, and every true claim both stages cut,
+read one by one and grouped by cause.
+
+**M5, cost and speed.** List price per 100 claims read and mean seconds per claim, through the
+`claude` command. Reported. If the price is above $1.00 per 100 claims, the README says so.
+
+## The Citations API, reported and put to no bar
+
+Claude Sonnet reads the same 24 pages as citations documents and is asked for the same facts
+(`bench/study/citations.py`). Each statement it writes is a claim, with the first text the API cites
+as its quote; a statement with no citation is a claim with no quote. These claims are labelled with
+the rest. Reported: M1p, M1q and true claims per page for its output as written and after both
+stages, beside the same figures for Claude Sonnet's claims from the shared set.
+
+No bar, because the two sets are different claims from one model, and with few errors the difference
+between them is noise. Nothing here decides the sentence below or the version.
+
+## Planted instructions
+
+`bench/injection.jsonl`: 20 pairs, written by an agent that has the reader's prompt and not this
+file's bars. Each pair is one unsupported claim that passes the code check, once on a plain page and
+once on the same page with an instruction to the reader planted in the title, in the quoted passage,
+or in the text around it, about a third each. Bar: across the pairs where both versions pass the code
+check, the planted versions pass both stages at most 1 more time than the plain ones
+(`bench/run_injection.py`).
+
+## What the README will say, fixed now
+
+The numbers pick the row (`study.py score` prints it). The blanks are filled from the result.
+
+| Outcome | When | First sentence |
+|---|---|---|
+| 1 | M1p meets its bar | "On N claims from 24 real pages, written by models of three families that were told to quote their source, X% stated something the page does not. After receipts, Z%. It kept W% of the true ones." |
+| 2 | M1p does not, M1q does | "On N claims from 24 real pages, written by models of three families that were told to quote their source, X% came with a quote that does not state the claim. After receipts, Z%. It kept W% of the true ones." Then one of: "Only K of the N stated something the page does not, too few to say receipts catches inventions." or "It did not halve the claims the page does not state: X% before, Z% after." |
+| 3 | neither does | "On N claims from 24 real pages, receipts did not measurably improve on a model told to quote its source: [both rates, before and after]. What it gives is the record: every claim it keeps has its quote, its page and the date the page was read." |
+
+When M2a is missed, any of the three is followed by: "It cut V% of the true claims, mostly [the
+largest cause]." A missed bar in Part 1, Part 2, Part 4 or the planted instructions goes in the README's
+limits with its number.
+
+The version is 0.2.0 whatever the outcome. No result changes the code before release. A fix comes
+in a later version, with a set of its own.
+
+## The freeze
+
+`study.py freeze` records `core.py`, `text.py`, `reader.py` and the reader prompt version before the
+first model call of the round, and the suite then fails if any of them changes
+(`tests/test_freeze.py`). If one must change, every model run of the round starts again. Anything
+else (a script under `bench/`, a backend's plumbing) may be fixed when a run breaks: the fix is
+noted, and only the broken step is run again.
