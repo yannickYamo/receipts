@@ -31,7 +31,7 @@ git clone https://github.com/yannickYamo/receipts && cd receipts
 pip install -e .
 ```
 
-`check` runs **both** stages by default: the code check, then the reader. The reader runs on the local `claude` command (a Claude Code login), or against the Anthropic API with `--backend anthropic`. If the reader can't run, the claim is cut, not passed.
+`check` runs **both** stages by default: the code check, then the reader. The reader runs on the local `claude` command (a Claude Code login), against the Anthropic API with `--backend anthropic`, or against any API that speaks OpenAI's chat completions, such as OpenAI or xAI, with `--backend openai --reader-model <model>`. The claims themselves can come from any model. The reader's measured rates are for claude-haiku-4-5 only. If the reader can't run, the claim is cut, not passed.
 
 There's a `--code-only` flag: no model, runs anywhere, free. It's weaker, and that stage alone failed its own test, so the output says so when you use it.
 
@@ -183,6 +183,7 @@ bench/                       test sets, red-team sets, labels, saved model answe
 studies/                     the pre-registrations, the evaluation plan and the full results
 EVALS.md                     what was tested, what passed and what failed
 CHANGELOG.md                 what changed in each version
+BACKLOG.md                   what is left out on purpose
 ```
 
 Licensed MIT. The bench corpus is Wikipedia text, CC BY-SA 4.0.

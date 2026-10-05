@@ -254,4 +254,47 @@ def test_the_connection_goes_to_the_address_that_was_checked(monkeypatch):
 
 def test_the_version_is_written_once():
     pyproject = (Path(__file__).parent.parent / "pyproject.toml").read_text()
-    assert f'version = "{receipts.__version__}"' in pyproject
+    assert pyproject.count('\nversion = "') == 1 and '__version__ = "0.' not in Path(receipts.__file__).read_text()
+    if receipts.__version__ != "0+unknown":  # installed: the package reports what pyproject.toml says
+        assert f'version = "{receipts.__version__}"' in pyproject
+
+
+# ── The check takes claims from any model; the reader could only be a Claude model ──────────────────
+
+
+def test_an_openai_compatible_api_can_be_the_reader_and_its_failures_cut(monkeypatch):
+    from receipts.backends import OpenAIBackend
+
+    sent = []
+
+    def post(url, headers, body):
+        sent.append((url, headers, body))
+        return {
+            "choices": [{"message": {"content": json.dumps(yes())}}],
+            "usage": {"prompt_tokens": 120, "completion_tokens": 9},
+        }
+
+    led, claim = one_claim()
+    backend = OpenAIBackend("some-model", base_url="https://api.x.ai/v1/", api_key="k", post=post)
+    assert check_with_reader([claim], led, backend).verdicts[0].supported
+    url, headers, body = sent[0]
+    assert url == "https://api.x.ai/v1/chat/completions" and headers["Authorization"] == "Bearer k"
+    assert body["model"] == "some-model" and body["response_format"]["json_schema"]["strict"] is True
+    assert backend.tokens == {"input": 120, "output": 9} and "api.x.ai" in backend.name
+
+    for reply in ({"choices": []}, {"choices": [{"message": {"refusal": "no", "content": None}}]}, {"error": "x"}):
+        refused = OpenAIBackend("some-model", api_key="k", post=lambda u, h, b, r=reply: r)
+        v = check_with_reader([claim], led, refused).verdicts[0]
+        assert (v.supported, v.reason) == (False, "unread") and v.detail  # cut, with the reason
+
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    with pytest.raises(BackendError, match="OPENAI_API_KEY"):
+        OpenAIBackend("some-model")
+
+
+def test_a_backend_and_a_model_that_do_not_go_together_stop_the_command(tmp_path, capsys, monkeypatch):
+    one_claim(tmp_path)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    args = ["check", str(tmp_path / "c.json"), "--ledger", str(tmp_path / "l.json"), "--backend", "openai"]
+    assert main(args) == 2 and "is a Claude model" in capsys.readouterr().err  # the default reader is "haiku"
+    assert main([*args, "--reader-model", "some-model"]) == 2 and "OPENAI_API_KEY" in capsys.readouterr().err

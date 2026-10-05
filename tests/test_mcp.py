@@ -1,5 +1,7 @@
 import asyncio
+import os
 import sys
+from pathlib import Path
 
 import pytest
 
@@ -11,7 +13,11 @@ def test_mcp_server_checks_claims_over_stdio():
     from mcp.client.stdio import stdio_client
 
     async def run():
-        params = StdioServerParameters(command=sys.executable, args=["-m", "receipts.cli", "mcp", "--code-only"])
+        src = str(Path(__file__).parent.parent / "src")  # the server must import this checkout, installed or not
+        env = dict(os.environ) | {"PYTHONPATH": src + os.pathsep + os.environ.get("PYTHONPATH", "")}
+        params = StdioServerParameters(
+            command=sys.executable, args=["-m", "receipts.cli", "mcp", "--code-only"], env=env
+        )
         async with stdio_client(params) as (read, write), ClientSession(read, write) as session:
             await session.initialize()
             names = {t.name for t in (await session.list_tools()).tools}

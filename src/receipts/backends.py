@@ -3,6 +3,10 @@
   ScriptedBackend     answers from a list, for tests: no model, no network
   ClaudeCodeBackend   the local `claude` command in print mode, for running on a Claude Code login
   AnthropicBackend    the Anthropic API (pip install -e ".[anthropic]"); needs credentials
+  OpenAIBackend       any API that speaks OpenAI's chat completions: OpenAI, xAI and others; needs a key
+
+The check does not care which model wrote a claim, and the reader can be any of these. The reader's
+measured rates hold only for the model and prompt version they were measured on (bench/).
 
 A backend never supplies evidence. It may name addresses; code fetches them (fetch.py).
 """
@@ -12,6 +16,8 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+import urllib.error
+import urllib.request
 from collections.abc import Callable
 from typing import Any, Protocol
 
@@ -164,7 +170,7 @@ class AnthropicBackend:
         self.model = api_model(model)
         if client is None:
             try:
-                import anthropic  # an optional dependency
+                import anthropic  # an optional dependency  # pyright: ignore[reportMissingImports]
             except ImportError as e:
                 raise BackendError('the anthropic package is not installed: pip install -e ".[anthropic]"') from e
             try:
@@ -216,3 +222,73 @@ class AnthropicBackend:
             tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 4}],
         )
         return [u for u in out.get("urls", []) if isinstance(u, str)][:limit]
+
+
+class OpenAIBackend:
+    """An API that speaks OpenAI's chat completions with a JSON schema: OpenAI itself, xAI, and others.
+
+    The key is read from OPENAI_API_KEY and the address from OPENAI_BASE_URL (default: OpenAI's). For
+    xAI, set OPENAI_BASE_URL=https://api.x.ai/v1 and put the xAI key in OPENAI_API_KEY. The model name
+    is passed as given: a name the API does not know comes back as that API's own error.
+    """
+
+    def __init__(
+        self,
+        model: str,
+        base_url: str | None = None,
+        api_key: str | None = None,
+        timeout: int = 300,
+        post: Callable[[str, dict, dict], dict] | None = None,
+    ) -> None:
+        self.model = model
+        self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL") or "https://api.openai.com/v1").rstrip("/")
+        self.api_key = api_key or os.environ.get("OPENAI_API_KEY") or ""
+        if not self.api_key and post is None:
+            raise BackendError("no key for the OpenAI-compatible API: set OPENAI_API_KEY")
+        self.timeout = timeout
+        self.name = f"openai-compatible ({model} at {self.base_url.split('//')[-1]})"
+        self.calls = 0
+        self.cost_usd = 0.0  # not computed here: prices differ by provider
+        self.tokens = {"input": 0, "output": 0}
+        self._post = post or self._http_post
+
+    def _http_post(self, url: str, headers: dict, body: dict) -> dict:
+        req = urllib.request.Request(url, data=json.dumps(body).encode(), headers=headers, method="POST")
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout) as r:  # noqa: S310 - the operator's own API address
+                return json.loads(r.read().decode("utf-8", "replace"))
+        except urllib.error.HTTPError as e:
+            raise BackendError(f"the API answered {e.code}: {e.read().decode('utf-8', 'replace')[:300]}") from e
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError) as e:
+            raise BackendError(f"the API call failed: {e}") from e
+
+    def json(self, system: str, prompt: str, schema: dict) -> dict:
+        """Answer `prompt` as JSON that fits `schema`."""
+        body = {
+            "model": self.model,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
+            "response_format": {
+                "type": "json_schema",
+                "json_schema": {"name": "reply", "strict": True, "schema": schema},
+            },
+        }
+        headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+        reply = self._post(f"{self.base_url}/chat/completions", headers, body)
+        self.calls += 1
+        try:
+            message = reply["choices"][0]["message"]
+            usage = reply.get("usage") or {}
+            self.tokens["input"] += int(usage.get("prompt_tokens") or 0)
+            self.tokens["output"] += int(usage.get("completion_tokens") or 0)
+            if message.get("refusal"):
+                raise BackendError("the model declined the request")
+            out = json.loads(message["content"])
+        except (KeyError, IndexError, TypeError, ValueError) as e:
+            raise BackendError(f"the API returned no usable JSON: {str(reply)[:300]}") from e
+        if not isinstance(out, dict):
+            raise BackendError("the API returned JSON that is not an object")
+        return out
+
+    def find_urls(self, product: str, limit: int) -> list[str]:
+        """This backend has no web search: the caller passes the pages."""
+        raise BackendError("this backend cannot search the web: pass the pages with --us-url and --them-url")
