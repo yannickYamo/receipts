@@ -1,0 +1,42 @@
+Snowflake Inc. is an American cloud-based artificial intelligence (AI) data platform company founded in San Mateo, California, and headquartered in Menlo Park. It operates a platform that supports data analysis and simultaneous access to data sets with minimal latency. It operates on Amazon Web Services, Microsoft Azure, and Google Cloud Platform.
+
+
+== History ==
+Snowflake Inc. was founded on July 23, 2012, in San Mateo, California, by Benoît Dageville, Thierry Cruanes, and Marcin Żukowski. Dageville and Cruanes previously worked as data architects at Oracle Corporation; Żukowski was a co-founder of Vectorwise. Mike Speiser, a venture capitalist at Sutter Hill Ventures, which provided early funding to the company, served as its first CEO.
+In June 2014, Bob Muglia, formerly of Microsoft, was named CEO. In October 2014, Snowflake came out of stealth mode; at that time, it was used by 80 organizations. Snowflake has run on Amazon Web Services since 2014, on Microsoft Azure since 2018, and on the Google Cloud Platform since 2019. In June 2015, Snowflake launched its first product, its cloud data warehouse.
+In May 2019, Frank Slootman, formerly CEO of ServiceNow, joined Snowflake as its CEO. In June 2019, the company launched Snowflake Data Exchange. In December 2020, the company added Knoema as a data provider in the Snowflake Data Marketplace. In May 2021, the company became a distributed company, with a principal executive office in Bozeman, Montana.
+On February 28, 2024, Frank Slootman retired as CEO and was replaced by Neeva's cofounder Sridhar Ramaswamy. In February 2026, Snowflake reported Q4 fiscal 2026 product revenue of $1.23 billion, up 30% year-over-year, with full-year product revenue reaching $4.72 billion. Remaining performance obligations totaled $9.77 billion, a 42% increase, reflecting strong demand for AI infrastructure. The company reported over 9,100 accounts using Snowflake AI features.
+
+
+== Products ==
+Snowflake develops and sells a cloud-based data platform known as the Data Cloud. The platform allows organizations to unify data warehousing, data lakes, data engineering, and data sharing into a single service. Snowflake runs on public cloud infrastructure such as Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP), and separates compute from storage for scalable, on-demand analytics.
+In 2020, Snowflake introduced Snowpark, a developer framework that enables writing data pipelines and business logic using Java, Scala, and Python directly within Snowflake. In 2021, Snowflake launched Unistore, a hybrid workload that combines transactional and analytical operations within the same platform, enabling real-time applications to be built directly on Snowflake. In 2023, the company introduced the Native App Framework, which allows developers to build, distribute, and monetize applications that run securely within a customer’s Snowflake account. Snowflake also provides services including Snowpipe for continuous data ingestion and the Snowflake Marketplace, where organizations can access and share live, query-ready datasets.
+In 2024, Snowflake launched Cortex, a set of generative AI services embedded into the platform. Cortex includes access to large language models, vector search, and model deployment capabilities, allowing users to build AI-powered applications using SQL or Python. Recently, it has introduced Snowflake Intelligence. In June 2025, Snowflake introduced Snowflake Openflow, a managed data integration service built on Apache NiFi that enable organizations to ingest and move structured and unstructured data between enterprise applications, databases, streaming platform, and the Snowflake AI Data Cloud. The service supports both Snowflake-managed and bring-your-own-cloud (BYOC) deployments and provides enterprise governance, observability, and security features.
+Snowflake supports workloads such as machine learning, streaming analytics, business intelligence, and unstructured data processing, with integrations for tools like Tableau, Power BI, and Sigma Computing. In July 2026, Snowflake introduced Snowflake Intelligence, an enterprise AI assistant that enables users to query structured and unstructured organizational data using natural language. The service incorporates agentic AI capabilities with governance, security, and Model Context Protocol (MCP) support, allowing organizations to securely connect AI agents to enterprise data and applications.
+
+
+== Acquisitions ==
+In October 2022, the company acquired a 5% stake in advanced TV advertising firm OpenAP. In May 2023, Snowflake agreed to acquire privacy-focused search startup, Neeva, for $185 million. In June 2025, Snowflake announced its acquisition of Crunchy Data, a provider of cloud-based PostgreSQL services and distributor of certified Postgres, for approximately $250 million. Later that year, Snowflake relocated its headquarters back to California, in Menlo Park. In January 2026, Snowflake announced an agreement to acquire Observe, an AI-powered observability company.
+
+
+== 2024 data breach ==
+In 2024, hundreds of customers of Snowflake were targeted as part of a mass customer data theft and extortion campaign by the ShinyHunters hacking group. Data breaches affected Ticketmaster, Advance Auto Parts, Santander Bank, Neiman Marcus, LendingTree, AT&T, Pure Storage, and Bausch Health. In May 2024, Snowflake collaborated with Mandiant in an investigation which found no evidence of Snowflake’s environment being breached but rather customer credentials being compromised.
+Two men were involved in the hacking conspiracy that were a part of the ShinyHunters hacking group. Connor Riley Moucka aka Waifu/Catist, 25, of Kitchener, Ontario, and John Erin Binns aka IRDev. Moucka was arrested on October 30, 2024; a Washington state court has issued an indictment on charges of conspiracy, computer fraud and abuse, extortion, and aggravated identity theft. In August 2026, Moucka pleaded guilty in U.S. federal court to computer fraud, wire fraud, aggravated identity theft and conspiracy charges. He is scheduled to be sentenced on October 27, 2026. The aggravated identity theft charge carries a mandatory minimum two-year prison term.
+
+
+== Funding ==
+In 2012, Snowflake raised $5 million in a Series A round. In October 2014, it raised $26 million. In June 2015, the company raised $45 million. It raised $100 million in April 2017. In January 2018, the company raised $263 million at a $1.5 billion valuation, making it a unicorn. In October of that same year, the company raised $450 million in a round led by Sequoia Capital, at a $3.5 billion valuation. On February 7, 2020, the company raised $479 million. The company went public in September via an initial public offering, raising $3.4 billion in one of the largest software IPOs and the largest to double on its first day of trading.
+
+
+== See also ==
+List of data science software
+
+
+== References ==
+
+
+== External links ==
+
+Official website 
+
+Business data for Snowflake Inc.:

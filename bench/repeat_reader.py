@@ -1,6 +1,7 @@
 """Run round 2's reader stage again and compare with the saved first run. Calls a model.
 
 python bench/repeat_reader.py 2      # two more runs; writes bench/RESULT_round2_repeats.json
+python bench/repeat_reader.py 2 v2   # against readings_round2_v2.json; writes RESULT_round2_repeats_v2.json
 """
 
 import json
@@ -21,7 +22,8 @@ claims = [Claim(r["id"], r["text"], r["quote"], r["evidence_id"], r["company"]) 
 standing = [c for c in claims if check_claim(c, ledger).supported]
 kind = {r["id"]: r["type"] for r in rows}
 
-first = json.loads((HERE / "readings_round2.json").read_text())["readings"]
+TAG = f"_{sys.argv[2]}" if len(sys.argv) > 2 else ""
+first = json.loads((HERE / f"readings_round2{TAG}.json").read_text())["readings"]
 runs = [{cid: v[0] for cid, v in first.items()}]
 cost = 0.0
 for _ in range(int(sys.argv[1]) if len(sys.argv) > 1 else 2):
@@ -43,5 +45,5 @@ summary["claims_with_a_different_verdict_in_any_run"] = [
     {"id": i, "type": kind[i], "verdicts": [run.get(i) for run in runs]} for i in changed
 ]
 summary["cost_usd_list_price_of_repeats"] = round(cost, 4)
-(HERE / "RESULT_round2_repeats.json").write_text(json.dumps(summary, indent=1))
+(HERE / f"RESULT_round2_repeats{TAG}.json").write_text(json.dumps(summary, indent=1))
 print(json.dumps(summary, indent=1))

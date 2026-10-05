@@ -1,0 +1,44 @@
+[
+ {
+  "company": "Datadog",
+  "evidence_id": "e992318e5",
+  "url": "https://en.wikipedia.org/wiki/Datadog",
+  "file": "datadog.txt",
+  "chars": 4965
+ },
+ {
+  "company": "Snowflake Inc.",
+  "evidence_id": "ea3c1e474",
+  "url": "https://en.wikipedia.org/wiki/Snowflake_Inc.",
+  "file": "snowflake inc.txt",
+  "chars": 7034
+ },
+ {
+  "company": "Okta",
+  "evidence_id": "e97f1eee1",
+  "url": "https://en.wikipedia.org/wiki/Okta%2C_Inc.",
+  "file": "okta.txt",
+  "chars": 4630
+ },
+ {
+  "company": "Docusign",
+  "evidence_id": "efd6fcf48",
+  "url": "https://en.wikipedia.org/wiki/Docusign",
+  "file": "docusign.txt",
+  "chars": 7910
+ },
+ {
+  "company": "Box",
+  "evidence_id": "ef2804e4f",
+  "url": "https://en.wikipedia.org/wiki/Box%2C_Inc.",
+  "file": "box.txt",
+  "chars": 7057
+ },
+ {
+  "company": "Cloudflare",
+  "evidence_id": "e8c571532",
+  "url": "https://en.wikipedia.org/wiki/Cloudflare",
+  "file": "cloudflare.txt",
+  "chars": 31918
+ }
+]
