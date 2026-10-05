@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "claim-receipts"
-version = "0.1.0"
+version = "0.2.0"
 description = "A guard for agent output: every claim carries a quote from a page that code fetched, or it is cut."
 readme = "README.md"
 requires-python = ">=3.10"

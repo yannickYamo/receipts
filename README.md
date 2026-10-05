@@ -35,7 +35,7 @@ pip install -e .
 
 There's a `--code-only` flag: no model, runs anywhere, free. It's weaker, and that stage alone failed its own test, so the output says so when you use it.
 
-The CLI exits 1 when any claim is unsupported, so it can stop a pipeline:
+The CLI exits 1 when any claim is unsupported, so it can stop a pipeline. It exits 3, and says why, when the reader gave no answer:
 
 ```bash
 receipts fetch https://www.freshworks.com/freshdesk/pricing/ --ledger ledger.json
@@ -48,7 +48,7 @@ CUT  b  Freshdesk Growth plan costs $15/agent/month, billed annually.
        the claim states a figure the quote does not (15)
 
 1 of 2 supported, 1 cut
-code check, then reader (claude-code (haiku), prompt f95a7623)
+code check, then reader (claude-code (haiku), prompt 3e63cca8)
 ```
 
 From Python:
@@ -77,7 +77,7 @@ Five steps, and the split between them is the whole design.
 1. Code fetches the page into a ledger: the text as served, the date, a hash. The model never supplies the evidence.
 2. The model may only point. Each claim names a page and quotes it.
 3. The code check: is the quote on that page word for word, is every figure in the claim present in the quote, is the page about the right product.
-4. The reader, a small model, may only cut. It reads the claim against the whole sentence the quote sits in and answers one question: does the sentence state everything the claim states? No answer counts as no.
+4. The reader, a small model, may only cut. It reads the claim against the whole sentence the quote sits in and answers one question: does the sentence state everything the claim states? It also sees the page on either side of that sentence, which can only count against the claim: the next sentence takes it back, or the price sits in another plan's row. No answer counts as no.
 5. A failure is a cut. Never a rewrite. Always listed with its reason.
 
 ```text
@@ -169,9 +169,9 @@ It doesn't stop someone who writes claims specifically to beat it. It doesn't kn
 
 The built-in fetcher is basic. No JavaScript, and sites that refuse don't get read; G2 and Capterra answered 403 in every live run. The card names the pages it couldn't read, which is the point.
 
-A ledger file is trusted input. Loading refuses page text that no longer matches its hash, which catches an edit or a damaged file, but whoever can edit the text can edit the hash. The MCP server fetches addresses a model chose; private and local addresses are refused, and one gap remains, which is that the host name is looked up twice, so a host that changes its answer between the two lookups isn't caught.
+A ledger file is trusted input. Loading refuses page text that no longer matches its hash, which catches an edit or a damaged file, but whoever can edit the text can edit the hash. The MCP server fetches addresses a model chose; private and local addresses are refused, and the connection goes to the address that was checked, so a host can't answer one thing to the check and another to the fetch.
 
-What was tested, what passed and what failed, with the failures kept in, is in [EVALS.md](EVALS.md).
+What was tested, what passed and what failed, with the failures kept in, is in [EVALS.md](EVALS.md). The reader changed after those runs; the rates for the reader in this version are not measured yet, and EVALS.md says which is which.
 
 ## Structure
 

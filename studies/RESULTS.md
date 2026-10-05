@@ -223,6 +223,18 @@ value; run 3 is on the code after the first audit; run 4 after the red-team fix;
 as shipped. So the runs are a history, not five samples of one thing. G2 and Capterra refused the fetch every time, so no card has
 review data, and each says which pages it could not read.
 
+## 7. After these runs
+
+Everything above was measured on reader prompt f95a7623. Two things were built afterwards and have not
+been measured: the reader is shown the page on either side of the passage (prompt 3e63cca8), and the
+battle card gives a fact one more quote when its first quote did not carry it. A second outside review
+also found ten defects outside the check's decisions (the API backend's model name, a reader reply that
+answers a claim twice, a malformed ledger, the fetcher's second lookup of a host name, and others);
+each is fixed with a regression test in `tests/test_second_review_findings.py`. The code check's
+decisions did not change: sections 1 and 3 still rebuild from it.
+
+The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRATION.md`.
+
 ## What is not measured
 
 - **People.** One model family wrote the check, the reader prompt, the test claims and the labels. A
