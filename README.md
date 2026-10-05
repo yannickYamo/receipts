@@ -18,7 +18,7 @@ It isn't a scraper, a search engine, or an eval dashboard. It's the step after t
 
 You can repeat what the agent said, because every surviving claim is an exact quote plus a link. You don't redo the research, because checking a line is one click on the quote. An invented price never reaches the customer: if a figure in the claim isn't in the quoted sentence, the claim is cut, never quietly reworded into something softer. And you see the shape of what's missing - every cut is listed with a reason, and every page that couldn't be read is named.
 
-It's cheap. The reader stage is a small model (claude-haiku-4-5): 120 claims read for $0.17 at list price.
+It's cheap. The reader stage is a small model (claude-haiku-4-5): 120 claims read for $0.17 at list price. That was measured before the reader was shown the text around each quote, which makes its prompts longer.
 
 **Three people keep showing up as the ones who need this.** A sales rep or product marketer who has to trust a battle card in front of a prospect. An engineer shipping an agent whose answers people act on. Anyone who has pasted agent research into a doc and then spent an hour checking it.
 
@@ -182,6 +182,7 @@ src/receipts/battlecard/     the worked example      src/receipts/mcp_server.py 
 bench/                       test sets, red-team sets, labels, saved model answers, live runs
 studies/                     the pre-registrations, the evaluation plan and the full results
 EVALS.md                     what was tested, what passed and what failed
+CHANGELOG.md                 what changed in each version
 ```
 
 Licensed MIT. The bench corpus is Wikipedia text, CC BY-SA 4.0.

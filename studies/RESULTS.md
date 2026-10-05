@@ -173,8 +173,9 @@ The second audit, on the code after those fixes:
 | A malformed reply from the reader, a bad input file, a cut-off API reply: a crash | Each is handled: the claim is cut, or the command says what is wrong |
 | A slow server could hold a fetch open past its deadline | The deadline is checked after every packet |
 
-Left as stated limits: the fetcher resolves a host name once before the request and the system
-resolves it again, so a host that changes its answer between the two is not caught.
+Left as a stated limit at the time: the fetcher resolved a host name once before the request and the
+system resolved it again, so a host that changed its answer between the two was not caught. It was
+closed later (section 7): the connection now goes to the address that was checked.
 
 A third review, by an outside reader after publication:
 

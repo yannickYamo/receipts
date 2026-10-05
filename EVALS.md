@@ -56,6 +56,8 @@ Two independent audits attacked the code before I published. The first found a q
 
 After publishing, an outside review found four more. The worst one: `receipts check` and the MCP tool were running the code stage alone - the stage that failed its bar in round 1. The reviewer's probe was a page saying "Zendesk offers the Suite Team plan in Europe. Zendesk does not offer it in India," a claim that Zendesk offers it in India, and the quote "the Suite Team plan in." Code stage passed it. Both stages cut it. Both stages are now the default everywhere, and `--code-only` has to be asked for and tells you what it is. The other three: the battle card's line check accepted "19 agents" against "$19"; the command printed the wrong text when two claims shared an id; a ledger file edited after the fetch was accepted. All fixed, each with a regression test.
 
+A second outside review found ten more, none in the check's decisions: the API backend sent a model name the API refuses, a reader reply that answered a claim twice kept the last answer, a malformed ledger crashed, the fetcher looked a host name up twice. The list is in `studies/RESULTS.md`, section 7. All fixed, each with a regression test.
+
 ## What these evals don't cover
 
 No people. One model family wrote the check, the reader prompt, the test claims, and the labels. A test set and labels written by people is the thing I most need and don't have.
