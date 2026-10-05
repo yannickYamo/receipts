@@ -57,12 +57,25 @@ class Ledger(Mapping[str, Evidence]):
     def load(cls, path: str | Path) -> Ledger:
         """Read a ledger from a JSON file written by `save`.
 
-        Each page's text must still match its hash. That catches a file edited by hand or damaged. It does
+        Each page must carry a hash and its text must still match it: a page with the hash removed is
+        refused like one with the text changed. That catches a file edited by hand or damaged. It does
         not make the file evidence: whoever can edit the text can edit the hash, so a ledger file is
         trusted input, like the code that reads it.
         """
-        items = [Evidence(**e) for e in json.loads(Path(path).read_text())]
-        for ev in items:
-            if ev.sha256 and hashlib.sha256(ev.text.encode()).hexdigest() != ev.sha256:
-                raise ValueError(f"{path}: the text of {ev.url} no longer matches its hash; it changed after the fetch")
+        raw = json.loads(Path(path).read_text())
+        fields = ("id", "url", "text", "title", "fetched_at", "sha256")
+        if not isinstance(raw, list) or not all(isinstance(e, dict) for e in raw):
+            raise ValueError(f"{path}: not a ledger: expected a list of pages, each with id, url, text and sha256")
+        items = []
+        for e in raw:
+            page = {k: e.get(k, "") for k in fields}  # fields this version does not know are left alone
+            if not all(isinstance(v, str) for v in page.values()) or not page["id"] or not page["text"]:
+                raise ValueError(f"{path}: not a ledger: a page needs an id and its text, and every field is text")
+            if not page["sha256"]:
+                raise ValueError(f"{path}: {page['url'] or page['id']} has no hash, so its text cannot be checked")
+            if hashlib.sha256(page["text"].encode()).hexdigest() != page["sha256"]:
+                raise ValueError(
+                    f"{path}: the text of {page['url']} no longer matches its hash; it changed after the fetch"
+                )
+            items.append(Evidence(**page))
         return cls(items)

@@ -24,7 +24,7 @@ from ..backends import Backend, BackendError
 from ..core import Claim, Evidence, Verdict, check_claim, overlap, polarity_mismatch
 from ..fetch import FetchError
 from ..ledger import Ledger
-from ..reader import READER_VERSION, answers, as_data, read_pairs
+from ..reader import READER_VERSION, as_data, ask, one_answer_each, read_pairs
 from ..text import carries, figures_in, norm, numbers_in
 
 TOPICS = ["pricing", "feature", "integration", "limit", "customer", "company", "positioning", "review"]
@@ -145,13 +145,9 @@ def read_advice(reader: Backend, lines: list[Line], facts: dict[str, Claim]) -> 
             f"{as_data(' '.join(facts[c].text for c in x.cites))}\n</item>"
             for i, x in enumerate(group)
         )
-        try:
-            reply = reader.json(ADVICE_SYSTEM, prompt, ADVICE_SCHEMA)
-        except BackendError:
-            continue
-        for v in answers(reply):
-            if isinstance(v.get("n"), int) and 1 <= v["n"] <= len(group) and isinstance(v.get("adds_fact"), bool):
-                answered[start + v["n"] - 1] = (v["adds_fact"], str(v.get("what", "")))
+        reply = ask(reader, ADVICE_SYSTEM, prompt, ADVICE_SCHEMA)
+        for i, v in one_answer_each(reply, len(group), "adds_fact").items():
+            answered[start + i] = (v["adds_fact"], str(v.get("what", "")))
     for i, x in enumerate(lines):
         if i not in answered:
             x.kept, x.reason = False, "the reader could not be run on it"
@@ -371,8 +367,8 @@ def _read_lines(card: Card, reader: Backend, facts: dict[str, Claim]) -> None:
     wins = [x for x in card.lines if x.kept and x.section in ("they_win", "we_win")]
     if wins:
         title = f"checked facts about {card.us} and {card.them}"
-        basis = {f"l{i}": Evidence(f"l{i}", url="", text="", title=title) for i in range(len(wins))}
-        pairs = [Claim(f"l{i}", x.text, " ".join(facts[c].text for c in x.cites), f"l{i}") for i, x in enumerate(wins)]
+        basis = {"facts": Evidence("facts", url="", text="", title=title)}  # one source: the checked facts
+        pairs = [Claim(f"l{i}", x.text, " ".join(facts[c].text for c in x.cites), "facts") for i, x in enumerate(wins)]
         for lid, gap in _not_confirmed(reader, pairs, basis).items():
             wins[int(lid[1:])].kept, wins[int(lid[1:])].reason = False, f"the reader: {gap}"
     advice = [x for x in card.lines if x.kept and x.section in ("objections", "questions")]

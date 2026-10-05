@@ -166,7 +166,9 @@ def test_card_with_reader_cuts_a_line_the_facts_do_not_state(web):
 
     backend = scripted(extra)
     backend._replies[2]["questions"].append({"text": "Did you know Globex was breached last year?", "cites": ["f5"]})
-    card = build_card("Acme", "Globex", backend, reader=ScriptedBackend([reader_reply, reader_reply, advice_reply]))
+    card = build_card(
+        "Acme", "Globex", backend, reader=ScriptedBackend([reader_reply, reader_reply, reader_reply, advice_reply])
+    )  # a call per page, then lines
     assert any("breached" in x.text and "adds a fact" in x.reason for x in card.lines if not x.kept)
     assert any(x.kept and x.section == "questions" for x in card.lines)
     cut = {x.text: x.reason for x in card.lines if not x.kept}

@@ -3,6 +3,11 @@
 The addresses come from a model, so the fetcher treats them as hostile: only http and https, only
 hosts on the public internet (no localhost, no private or link-local ranges, checked again on every
 redirect), a size cap, one overall deadline, and every failure comes back as a FetchError.
+
+The connection goes to the address that was checked. The host name is looked up once, every address
+it gives is checked, and the socket is opened to one of those: a name that answers "public" to a
+check and "127.0.0.1" to the connection a moment later gets no second lookup to answer. Proxies from
+the environment are not used, since a proxy would do its own lookup.
 """
 
 from __future__ import annotations
@@ -10,6 +15,7 @@ from __future__ import annotations
 import http.client
 import ipaddress
 import socket
+import ssl
 import time
 import urllib.error
 import urllib.request
@@ -58,13 +64,57 @@ def check_address(url: str) -> None:
             raise FetchError("the address is not on the public internet")
 
 
+def _connect_checked(host: str, port: int, timeout: float | None) -> socket.socket:
+    """A socket to `host`, opened to an address that was checked. One lookup: what is checked is what is dialled."""
+    try:
+        found = socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
+    except (socket.gaierror, UnicodeError) as e:
+        raise FetchError("the host does not resolve") from e
+    if not found or not all(_is_public(ipaddress.ip_address(info[4][0].split("%")[0])) for info in found):
+        raise FetchError("the address is not on the public internet")
+    last: OSError | None = None
+    for family, kind, proto, _, address in found:
+        sock = socket.socket(family, kind, proto)
+        try:
+            sock.settimeout(timeout)
+            sock.connect(address)  # an address, never the name
+            return sock
+        except OSError as e:
+            sock.close()
+            last = e
+    raise last or OSError("no address to connect to")
+
+
+class _CheckedHTTP(http.client.HTTPConnection):
+    def connect(self):
+        self.sock = _connect_checked(self.host, self.port, self.timeout)
+
+
+class _CheckedHTTPS(http.client.HTTPSConnection):
+    def connect(self):
+        plain = _connect_checked(self.host, self.port, self.timeout)
+        self.sock = _TLS.wrap_socket(plain, server_hostname=self.host)  # the certificate is still the name's
+
+
+_TLS = ssl.create_default_context()
+
+
+class _CheckedHandler(urllib.request.HTTPHandler, urllib.request.HTTPSHandler):
+    def http_open(self, req):
+        return self.do_open(_CheckedHTTP, req)
+
+    def https_open(self, req):
+        return self.do_open(_CheckedHTTPS, req)
+
+
 class _CheckedRedirects(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         check_address(newurl)
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
-_opener = urllib.request.build_opener(_CheckedRedirects)
+# No proxy from the environment: a proxy looks the name up itself, past the check.
+_opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), _CheckedHandler, _CheckedRedirects)
 
 
 def allowed_by_robots(url: str, timeout: float = 10) -> bool:

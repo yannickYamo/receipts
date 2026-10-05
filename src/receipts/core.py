@@ -40,6 +40,9 @@ REASONS: dict[str, str] = {
     "figure_not_in_quote": "the claim states a figure the quote does not",
     "polarity_mismatch": "the claim and the quote disagree on a negation",
     "beyond_quote": "the claim says more than the quote does",
+    # The reader's two (reader.py). They live here so every reason a verdict can carry is in one place.
+    "not_stated": "the reader found a part of the claim the quote does not state",
+    "unread": "the reader gave no usable answer for this claim, so it is not kept",
 }
 
 _NEGATORS = frozenset(
