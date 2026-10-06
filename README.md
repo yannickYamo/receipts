@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/yannickYamo/receipts/actions/workflows/ci.yml/badge.svg)](https://github.com/yannickYamo/receipts/actions/workflows/ci.yml)
 
-**receipts is a small Python package that sits between a research agent and the document a human will act on. Every claim the agent makes has to carry a verbatim quote from a page that code fetched, with a link and the date it was read. Anything the page doesn't state gets cut, and the cut is listed with a reason. A model may point at evidence; only code may vouch for it.**
+**receipts is a small Python package that sits between a research agent and the document a human will act on. Every claim the agent makes has to carry a verbatim quote from a page that code fetched, with a link and the date it was read. A claim the check can't tie to its quote gets cut, and the cut is listed with a reason. A model may point at evidence; only code may vouch for it.**
 
 ![A battle card where every line opens to its quote and page](docs/card.png)
 
@@ -10,13 +10,13 @@ Core has no dependencies, needs Python 3.10+, and is MIT licensed. Repo: https:/
 
 ## What it is
 
-You hand it an agent's claims and the pages those claims name. You get back only the claims a page actually states, each with its quote, its link, and the date it was read, plus a list of everything that was cut and why. It works with any agent's output and with page text from any fetcher.
+You hand it an agent's claims and the pages those claims name. You get back the claims that passed the check, each with its quote, its link, and the date it was read, plus a list of everything that was cut and why. It works with any agent's output and with page text from any fetcher.
 
 It isn't a scraper, a search engine, or an eval dashboard. It's the step after those.
 
 ## Why you'd use it
 
-You can repeat what the agent said, because every surviving claim is an exact quote plus a link. You don't redo the research, because checking a line is one click on the quote. An invented price never reaches the customer: if a figure in the claim isn't in the quoted sentence, the claim is cut, never quietly reworded into something softer. And you see the shape of what's missing - every cut is listed with a reason, and every page that couldn't be read is named.
+You can repeat what the agent said, because every surviving claim is an exact quote plus a link. You don't redo the research, because checking a line is one click on the quote. A changed price is stopped by code, not by a model's judgment: if a figure in the claim isn't in the quoted sentence, the claim is cut, never quietly reworded into something softer. And you see the shape of what's missing - every cut is listed with a reason, and every page that couldn't be read is named.
 
 It's cheap. The reader stage is a small model (claude-haiku-4-5): 120 claims read for $0.17 at list price. That was measured before the reader was shown the text around each quote, which makes its prompts longer.
 

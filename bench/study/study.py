@@ -25,7 +25,7 @@ The steps, in order. Only `extract` and `read` call a model.
     python bench/study/study.py extract --backend openai --model <a model> --family gpt
     python bench/study/study.py sheet                          a blind sheet for the labellers
     python bench/study/study.py settle --labellers a,b         the claims a person has to settle
-    python bench/study/study.py final --labellers a,b          labels_final.jsonl, and how far the labellers agree
+    python bench/study/study.py final --labellers a,b --settled-by "a person"     labels_final.jsonl
     python bench/study/study.py read                           the reader on every claim
     python bench/study/study.py score                          the table, the bars and the outcome
 
@@ -53,6 +53,7 @@ SEED = 11
 RESAMPLES = 2000
 ARMS = ["keep_all", "quote_on_page", "both", "code_only", "reader_only"]
 ENOUGH = 20  # claims of a kind arm A must hold before a share of them is put to a bar (the fork)
+OVERTURN_LIMIT = 5  # more agreed labels overturned than this, and every claim has to be read
 SETTLE_SAMPLE = 50  # agreed claims a person reads anyway, to see how far agreed labels can be trusted
 QUESTIONS = ("page_states", "quote_states")
 
@@ -252,18 +253,18 @@ def final(a: argparse.Namespace) -> None:
     missing = [i for i in must + sample if i not in person]
     if missing:
         raise SystemExit(f"settled.jsonl has no row for {len(missing)} claims, the first is {missing[0]}")
+    if not a.settled_by:
+        raise SystemExit('say who wrote settled.jsonl with --settled-by, for example --settled-by "a person"')
     ids = [c["id"] for c in claims]
-    write_rows(
-        a.dir / "labels_final.jsonl",
-        [{"id": i} | {q: bool((person[i] if i in person else one[i])[q]) for q in QUESTIONS} for i in ids],
-    )
     overturned = [i for i in sample if any(bool(person[i][q]) != one[i][q] for q in QUESTIONS)]
+    every_claim_read = all(i in person for i in ids)
     stats = {
         "claims": len(ids),
-        "settled_by_a_person": len(must) + len(sample),
+        "settled_by": a.settled_by,
+        "settled": len(must) + len(sample) if not every_claim_read else len(ids),
         "disputed_or_unsupported": len(must),
         "agreed_and_sampled": len(sample),
-        "agreed_labels_the_person_overturned": [len(overturned), len(sample)],
+        "agreed_labels_overturned": [len(overturned), len(sample)],
         "agreement": {
             q: {
                 "agree": [sum(one[i][q] == two[i][q] for i in ids), len(ids)],
@@ -274,9 +275,16 @@ def final(a: argparse.Namespace) -> None:
     }
     (a.dir / "label_stats.json").write_text(json.dumps(stats, indent=1))
     print(json.dumps(stats, indent=1))
-    if len(overturned) > 5:  # the pre-registered limit
-        print(f"The person overturned {len(overturned)} of {len(sample)} agreed labels, more than 5:")
-        print("the agreed labels cannot stand unread. The person labels every claim before anything is scored.")
+    if len(overturned) > OVERTURN_LIMIT and not every_claim_read:  # the pre-registered limit, enforced
+        (a.dir / "labels_final.jsonl").unlink(missing_ok=True)
+        raise SystemExit(
+            f"{len(overturned)} of {len(sample)} agreed labels were overturned, more than {OVERTURN_LIMIT}: the agreed "
+            "labels cannot stand unread. No labels_final.jsonl was written. Label every claim in settled.jsonl, then run this again."
+        )
+    write_rows(
+        a.dir / "labels_final.jsonl",
+        [{"id": i} | {q: bool((person[i] if i in person else one[i])[q]) for q in QUESTIONS} for i in ids],
+    )
 
 
 def read(a: argparse.Namespace) -> None:
@@ -577,6 +585,7 @@ def main() -> None:
     ap.add_argument("--model", default="haiku", help="the extractor (extract) or the reader (read)")
     ap.add_argument("--family", default="", help="extract: the model family the results are grouped by")
     ap.add_argument("--labellers", default="", help="settle and final: the two labellers' names, as a,b")
+    ap.add_argument("--settled-by", default="", help="final: who wrote settled.jsonl; it is recorded with the labels")
     ap.add_argument("--labels", default="labels_final.jsonl", help="score: the labels file to score against")
     ap.add_argument("--dir", type=Path, default=HERE, help="where the study files are")
     a = ap.parse_args()

@@ -109,11 +109,23 @@ the pages, and nothing else: not `claims.jsonl`, not the readings, not the other
 ```bash
 python bench/study/study.py settle --labellers <a>,<b>    # writes settle_sheet.jsonl for the person
 # the person writes settled.jsonl
-python bench/study/study.py final  --labellers <a>,<b>    # writes labels_final.jsonl and label_stats.json
+python bench/study/study.py final  --labellers <a>,<b> --settled-by "<who wrote settled.jsonl>"
+                                                           # writes labels_final.jsonl and label_stats.json; stops, and
+                                                           # writes no labels, when more than 5 sampled labels were overturned
 python bench/study/study.py score                          # the table, the bars, the outcome
 ```
 
-The facts of Part 4's card are labelled the same way.
+The facts of Part 4's card are labelled the same way. Their settled labels go beside the card, in
+`bench/live/run6/labels_final.jsonl`, one row for each fact id.
+
+## The page of results
+
+```bash
+python bench/round3_report.py --write     # writes studies/ROUND3_RESULTS.md from the files; no model
+pytest -q                                 # fails if that page says anything the files do not
+```
+
+A run whose file is absent shows as "not run". Commit the page with the files it was written from.
 
 ## What to hand back
 

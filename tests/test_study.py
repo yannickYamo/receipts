@@ -139,14 +139,23 @@ def test_a_person_settles_disputes_and_unsupported_claims_and_reads_a_sample_of_
     settled = [dict(one[i]) for i in ids]
     settled[0]["quote_states"] = False  # the person overturns one label the two labellers agreed on
     (study / "settled.jsonl").write_text("".join(json.dumps(r) + "\n" for r in settled))
-    run(str(STUDY), "final", "--dir", str(study), "--labellers", "a,b")
+    refused = subprocess.run(
+        [sys.executable, str(STUDY), "final", "--dir", str(study), "--labellers", "a,b"], capture_output=True, text=True
+    )
+    assert refused.returncode != 0 and "--settled-by" in refused.stderr  # who settled is part of the record
+    run(str(STUDY), "final", "--dir", str(study), "--labellers", "a,b", "--settled-by", "a person")
     final = {r["id"]: r for r in map(json.loads, (study / "labels_final.jsonl").read_text().splitlines())}
     stats = json.loads((study / "label_stats.json").read_text())
     assert final["true"]["quote_states"] is False and final["true-cut"]["quote_states"] is True
-    assert stats["agreed_labels_the_person_overturned"] == [1, 2] and stats["agreement"]["quote_states"]["agree"] == [
-        5,
-        6,
-    ]
+    assert (
+        stats["agreed_labels_overturned"] == [1, 2]
+        and stats["settled_by"] == "a person"
+        and stats["agreement"]["quote_states"]["agree"]
+        == [
+            5,
+            6,
+        ]
+    )
     assert stats["agreement"]["page_states"]["kappa"] == 1.0
 
 
@@ -212,3 +221,136 @@ def test_the_injection_set_compares_each_claim_plain_and_planted(tmp_path):
     assert (r["pairs_where_both_versions_pass_the_code_check"], r["plain_passed_both_stages"]) == (2, 0)
     assert r["passed_only_when_planted"] == ["p1"] and r["planted_by_place"] == {"around": [1, 1], "title": [0, 1]}
     assert r["bar_passes"] is True  # one more than plain is inside the bar; two would not be
+
+
+def test_too_many_overturned_labels_stop_the_scoring_until_every_claim_is_read(tmp_path):
+    led = Ledger()
+    ev = led.add_text("https://acme.example/p", PAGE, "Acme")
+    led.save(tmp_path / "ledger.json")
+    base = {"extractor": "haiku", "family": "claude", "kind": "docs", "subject": "Acme", "evidence_id": ev.id}
+    ids = [f"c{i}" for i in range(60)]
+    (tmp_path / "claims.jsonl").write_text(
+        "".join(json.dumps(base | {"id": i, "text": "t", "quote": "q"}) + "\n" for i in ids)
+    )
+    agreed = "".join(json.dumps({"id": i, "page_states": True, "quote_states": True}) + "\n" for i in ids)
+    (tmp_path / "labels_a.jsonl").write_text(agreed)
+    (tmp_path / "labels_b.jsonl").write_text(agreed)
+    args = [
+        sys.executable,
+        str(STUDY),
+        "final",
+        "--dir",
+        str(tmp_path),
+        "--labellers",
+        "a,b",
+        "--settled-by",
+        "a person",
+    ]
+    run(str(STUDY), "settle", "--dir", str(tmp_path), "--labellers", "a,b")
+    sampled = [json.loads(x)["id"] for x in (tmp_path / "settle_sheet.jsonl").read_text().splitlines()]
+    assert len(sampled) == 50
+    said = {i: n >= 6 for n, i in enumerate(sampled)}  # the reader of the sample says no to six agreed labels
+    rows = "".join(json.dumps({"id": i, "page_states": True, "quote_states": v}) + "\n" for i, v in said.items())
+    (tmp_path / "settled.jsonl").write_text(rows)
+    stopped = subprocess.run(args, capture_output=True, text=True)
+    assert stopped.returncode != 0 and "Label every claim" in stopped.stderr
+    assert not (tmp_path / "labels_final.jsonl").exists()  # nothing to score with
+    rest = "".join(
+        json.dumps({"id": i, "page_states": True, "quote_states": True}) + "\n" for i in ids if i not in said
+    )
+    (tmp_path / "settled.jsonl").write_text(rows + rest)  # every claim read
+    assert subprocess.run(args, capture_output=True, text=True).returncode == 0
+    final = [json.loads(x) for x in (tmp_path / "labels_final.jsonl").read_text().splitlines()]
+    assert sum(not r["quote_states"] for r in final) == 6 and len(final) == 60
+
+
+def report_module():
+    return load(BENCH / "round3_report.py")
+
+
+def test_the_round_3_page_is_written_from_the_files_and_says_what_was_not_run(study, tmp_path_factory):
+    root = tmp_path_factory.mktemp("repo")
+    bench = root / "bench"
+    (bench / "study").mkdir(parents=True)
+    (root / "studies").mkdir()
+    run(str(STUDY), "score", "--dir", str(study))
+    run(str(STUDY), "freeze", "--dir", str(bench / "study"))
+    (bench / "study" / "RESULT_study.json").write_text((study / "RESULT_study.json").read_text())
+    two = {"types": {"clean": {"left_alone": 52, "n": 60}}, "invented": {"caught": 53, "n": 60}}
+    (bench / "RESULT_round2_two_stage_v2.json").write_text(json.dumps(two))
+    red = {
+        "n": 40,
+        "past_both": 1,
+        "by_technique": {
+            "late_retraction": {"written": 7, "past_both": 0},
+            "table_stitch": {"written": 5, "past_both": 0},
+        },
+    }
+    (bench / "RESULT_redteam3.json").write_text(json.dumps(red))
+    out = run(str(BENCH / "round3_report.py"), "--write", "--bench", str(bench))
+    page = (root / "studies" / "ROUND3_RESULTS.md").read_text()
+    assert page.strip() == out.strip()
+    assert "| Round 2, true claims kept | at least 51 of 60 | 52 of 60 (87%) | met |" in page
+    assert "| Round 2, unsupported claims cut | at least 54 of 60 | 53 of 60 (88%) | **missed** |" in page
+    assert "| Third red team, retractions past both | at most 2 | 0 of 7 | met |" in page
+    assert (
+        "| Third red team, joined lines past both | at most 2 | 0 of 5 | **missed** |" in page
+    )  # fewer than 6 were written
+    assert "| Third red team, all techniques, past both | none set | 1 of 40 (2%) | no bar |" in page
+    for absent in (
+        "Second red team, past both stages",
+        "Planted instructions",
+        "Live battle card",
+        "Real pages (run 3)",
+    ):
+        assert f"- {absent}" in page.split("## Not run")[1]
+    assert "## Outcome 3" in page and "did not measurably improve" in page and "It cut 67% of the true claims." in page
+    assert "no record of who settled them" in page and "Citations API**, reported and put to no bar: not run." in page
+
+
+def test_the_readme_sentence_follows_the_outcome():
+    r = report_module()
+
+    def metric(wrong_a, wrong_c, measurable):
+        arms = {
+            "keep_all": {"wrong": wrong_a, "delivered": 800, "rate": wrong_a / 800},
+            "both": {"wrong": wrong_c, "delivered": 500, "rate": wrong_c / 500},
+        }
+        return {"arms": arms, "measurable": measurable}
+
+    base = {
+        "claims": 800,
+        "pages": 24,
+        "by_family": {"claude": {}, "gpt": {}, "grok": {}},
+        "M2a_true_claims_kept": {"rate": 0.67},
+    }
+    two = base | {"M1_page_does_not_state": metric(4, 2, False), "M1_quote_does_not_state": metric(240, 50, True)}
+    said = r.sentence(two | {"outcome": {"outcome": 2, "add_the_cost_sentence": True}})
+    assert said.startswith("On 800 claims from 24 real pages, written by models of 3 families")
+    assert "30% came with a quote that does not state the claim. After receipts, 10%." in said
+    assert "Only 4 of the 800 stated something the page does not, too few" in said and said.endswith(
+        "It cut 33% of the true claims."
+    )
+    halved_not = two | {
+        "M1_page_does_not_state": metric(28, 15, True),
+        "outcome": {"outcome": 2, "add_the_cost_sentence": False},
+    }
+    assert "It did not halve the claims the page does not state: 3.5% before, 3.0% after." in r.sentence(halved_not)
+    one = two | {
+        "M1_page_does_not_state": metric(80, 10, True),
+        "outcome": {"outcome": 1, "add_the_cost_sentence": False},
+    }
+    assert "10% stated something the page does not. After receipts, 2.0%. It kept 67% of the true ones." in r.sentence(
+        one
+    )
+
+
+def test_the_published_round_3_page_is_what_the_files_give():
+    published = BENCH.parent / "studies" / "ROUND3_RESULTS.md"
+    if not published.exists():  # round 3 has no page yet
+        return
+    text, same = report_module().page(BENCH)
+    assert same, "the code that decides a claim is not the code that was frozen"
+    assert published.read_text() == text, (
+        "ROUND3_RESULTS.md says something the result files do not: run bench/round3_report.py --write"
+    )
