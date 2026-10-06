@@ -127,6 +127,14 @@ on this card: every line links to the page and quote it rests on
 
 A line about us from that run: "Freshdesk publishes clear per-agent prices, billed annually: Growth $19, Pro $55, Enterprise $89." A line about them, which is there because the facts say so: "Zendesk claims its AI Agents can achieve up to 80% automation. It also includes built-in QA scoring for 100% of AI interactions." And the objection handling that follows from it - "That is their 'up to' claim. With Freshdesk, the Freddy AI Agent is on every plan with 500 complimentary AI sessions, so you can test it on your own tickets."
 
+A second example is a brief on a company before you write to it:
+
+```bash
+receipts brief --sell "a help desk for support teams" --company https://example.com --out out/
+```
+
+Code reads the company's home page and follows its own links to its news, careers and about pages. A model lists signals from them, such as a new office, open roles or a launch, and each signal goes through the same check. You get what the company's own pages say, why that might matter to you now, and a draft first message in which every sentence about the company opens to its quote. What you sell is taken in your own words and isn't checked. Facts about a named person are left out. This example hasn't been measured yet; the plan is in `studies/BRIEF_PREREGISTRATION.md`.
+
 ## Why I built it
 
 My agents hand me fluent prose full of prices, ratings and customer counts. Some of it is right. I can't tell which parts without redoing the research, so the time I saved comes straight back as checking.
@@ -180,6 +188,7 @@ What was tested, what passed and what failed, with the failures kept in, is in [
 src/receipts/core.py         the code check          src/receipts/reader.py      the reader stage
 src/receipts/ledger.py       pages, dates, hashes    src/receipts/audit.py       count specifics in any text
 src/receipts/battlecard/     the worked example      src/receipts/mcp_server.py  the check as an MCP server
+src/receipts/brief/          a second example: a brief on a company before you write to it
 bench/                       test sets, red-team sets, labels, saved model answers, live runs
 studies/                     the pre-registrations, the evaluation plan and the full results
 EVALS.md                     what was tested, what passed and what failed

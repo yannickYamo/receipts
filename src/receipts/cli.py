@@ -5,6 +5,7 @@ receipts check claims.json --ledger l.json --code-only    the code stage alone: 
 receipts fetch URL... --ledger ledger.json          read pages into a ledger
 receipts audit card.html [--ledger ledger.json]     count the specifics in any text, and how many can be checked
 receipts card --us A --them B --out DIR             build a battle card
+receipts brief --sell TEXT --company URL --out DIR  brief on a company before you write to it
 receipts mcp                                        serve the check to an agent over MCP
 
 Exit codes of `check`: 0 every claim is supported; 1 at least one was cut; 2 a file or an option is
@@ -158,6 +159,68 @@ def _card(a: argparse.Namespace) -> int:
     return 0 if card.supported else 1
 
 
+def _company(spec: str) -> tuple[str, str, list[str]]:
+    """(name, home page, further pages) from "Name=https://site,https://site/press" or a bare address."""
+    name, _, rest = spec.partition("=") if "=" in spec.split("//")[0] else ("", "", spec)
+    urls = [u.strip() for u in rest.split(",") if u.strip()]
+    if not urls or not all(u.startswith(("http://", "https://")) for u in urls):
+        raise ValueError(f'--company takes an address, or Name=address: "{spec}" has none')
+    return name.strip(), urls[0], urls[1:]
+
+
+def _brief(a: argparse.Namespace) -> int:
+    from .brief import build_brief, panel_text, render_html
+
+    if a.backend == "openai" and not a.model:
+        raise ValueError("with --backend openai, name the model with --model and the reader with --reader-model")
+    companies = [_company(c) for c in a.company]
+    backend = _backend(a.backend, a.model or ("sonnet" if a.backend == "claude-code" else "opus"))
+    reader = None if a.reader_model == "none" else _backend(a.backend, a.reader_model)
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    briefs = []
+    for name, url, pages in companies:
+        brief = build_brief(
+            a.sell,
+            url,
+            backend,
+            company=name,
+            pages=pages,
+            max_pages=a.pages,
+            reader=reader,
+            log=lambda s: print(s, file=sys.stderr),
+        )
+        briefs.append(brief)
+        brief.card.ledger.save(out / f"ledger-{len(briefs)}.json")
+        print(panel_text(brief) + "\n")
+    (out / "brief.html").write_text(render_html(briefs))
+    (out / "brief.json").write_text(json.dumps([b.to_dict() for b in briefs], indent=1, ensure_ascii=False))
+    print(out / "brief.html")
+    return 0 if any(b.signals for b in briefs) else 1
+
+
+def _add_brief_command(sub) -> None:
+    """The `brief` command and its options."""
+    b = sub.add_parser("brief", help="brief on a company before you write to it, from its own pages")
+    b.add_argument("--sell", required=True, help="what you sell, in a sentence; it is used as written and not checked")
+    b.add_argument(
+        "--company",
+        action="append",
+        required=True,
+        help="the company's home page, or Name=address; add further pages after commas (repeatable)",
+    )
+    b.add_argument("--pages", type=int, default=4, help="pages to read for each company (default 4)")
+    b.add_argument("--backend", choices=BACKENDS, default="claude-code")
+    b.add_argument("--model")
+    b.add_argument(
+        "--reader-model",
+        default="haiku",
+        help='the model that reads signals against quotes; "none" for the code check only',
+    )
+    b.add_argument("--out", default="out")
+    b.set_defaults(run=_brief)
+
+
 def _add_check_command(sub) -> None:
     """The `check` command and its options."""
     c = sub.add_parser("check", help="check claims against a ledger; exit 1 when any is unsupported")
@@ -222,6 +285,7 @@ def main(argv: list[str] | None = None) -> int:
     u.set_defaults(run=_audit)
 
     _add_card_command(sub)
+    _add_brief_command(sub)
     m = sub.add_parser("mcp", help='serve the check over MCP (pip install -e ".[mcp]")')
     m.add_argument("--code-only", action="store_true", help="skip the reader: no model, and a weaker check")
     m.add_argument("--reader-model", default="haiku")

@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- `receipts brief`: a brief on a company before you write to it. Code picks the pages from the
+  company's own site, a model lists signals with quotes, and each signal goes through the code check
+  and the reader. The reasons and the draft message cite the signals they rest on; a line that adds a
+  fact, a figure or a person's name is cut. Not measured yet: the plan is
+  `studies/BRIEF_PREREGISTRATION.md`, the harness `bench/brief/`.
+- The fetcher can return a page's links, so further pages of a site are found in code.
+
 ## 0.2.0 (2026-10-06)
 
 The rates in `EVALS.md` were measured on the reader of 0.1.0 (prompt f95a7623). The reader in this

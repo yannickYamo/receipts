@@ -22,7 +22,8 @@ import time
 import urllib.error
 import urllib.request
 import urllib.robotparser
-from urllib.parse import urlsplit
+from html.parser import HTMLParser
+from urllib.parse import urldefrag, urljoin, urlsplit
 
 from .text import html_to_text
 
@@ -159,8 +160,8 @@ def _decode(raw: bytes, charset: str) -> str:
         return raw.decode("utf-8", "replace")
 
 
-def fetch(url: str, *, timeout: float = 20, respect_robots: bool = True) -> tuple[str, str]:
-    """(title, text) of the page at `url`. Raises FetchError when it cannot be read as text."""
+def _get(url: str, timeout: float, respect_robots: bool) -> tuple[str, str]:
+    """(content type, body) of the page at `url`, through every check. Raises FetchError when it cannot be read."""
     check_address(url)
     if respect_robots and not allowed_by_robots(url):
         raise FetchError("the site's robots.txt does not allow it")
@@ -171,12 +172,69 @@ def fetch(url: str, *, timeout: float = 20, respect_robots: bool = True) -> tupl
             kind = r.headers.get_content_type()
             if kind not in ("text/html", "text/plain", "application/xhtml+xml"):
                 raise FetchError(f"not a text page ({kind})")
-            body = _decode(_read_body(r, deadline), r.headers.get_content_charset() or "utf-8")
+            return kind, _decode(_read_body(r, deadline), r.headers.get_content_charset() or "utf-8")
     except urllib.error.HTTPError as e:
         raise FetchError(f"the site answered {e.code}") from e
     except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError, ValueError) as e:
         raise FetchError(f"could not connect ({getattr(e, 'reason', e)})") from e
+
+
+def _as_text(kind: str, body: str) -> tuple[str, str]:
     title, text = html_to_text(body) if kind != "text/plain" else ("", body.strip())
     if len(text) < 200:
         raise FetchError("the page has almost no text without JavaScript")
     return title, text
+
+
+def fetch(url: str, *, timeout: float = 20, respect_robots: bool = True) -> tuple[str, str]:
+    """(title, text) of the page at `url`. Raises FetchError when it cannot be read as text."""
+    return _as_text(*_get(url, timeout, respect_robots))
+
+
+class _Links(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.found: list[tuple[str, str]] = []
+        self._href: str | None = None
+        self._words: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self._href, self._words = dict(attrs).get("href"), []
+
+    def handle_data(self, data):
+        if self._href is not None:
+            self._words.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._href is not None:
+            self.found.append((self._href, " ".join("".join(self._words).split())))
+            self._href = None
+
+
+def links_in(html: str, base: str) -> list[tuple[str, str]]:
+    """The http(s) links of a page as (address, link text), made absolute against `base`, fragments dropped."""
+    parser = _Links()
+    parser.feed(html)
+    out = []
+    for href, words in parser.found:
+        try:
+            address = urldefrag(urljoin(base, href.strip())).url
+        except ValueError:
+            continue
+        if urlsplit(address).scheme in ("http", "https"):
+            out.append((address, words))
+    return out
+
+
+def fetch_with_links(
+    url: str, *, timeout: float = 20, respect_robots: bool = True
+) -> tuple[str, str, list[tuple[str, str]]]:
+    """(title, text, links) of the page at `url`: what `fetch` returns, and the links the page carries.
+
+    The links are for finding more pages of the same site in code, without asking a model for addresses.
+    Each one still goes through every check when it is fetched.
+    """
+    kind, body = _get(url, timeout, respect_robots)
+    title, text = _as_text(kind, body)
+    return title, text, links_in(body, url) if kind != "text/plain" else []
