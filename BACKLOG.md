@@ -14,4 +14,6 @@ What is deliberately not in 0.2.0. Each needs a measurement of its own before it
 - The reader at volume: calls in parallel, a cache keyed on claim, passage and prompt version,
   rate-limit handling.
 - Pages that are not in English, and pages that are not about software.
+- The brief on more than one seller, and on companies whose news lives on another site (a job board,
+  a press wire): today only the company's own pages are read.
 - A fetcher for pages that need JavaScript, or a documented hand-off to one.

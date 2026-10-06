@@ -345,8 +345,23 @@ def _fetch_pages(card: Card, backend: Backend, urls: dict[str, list[str]], limit
     return page_of
 
 
-def _extract_facts(card: Card, backend: Backend, page_of: dict[str, str], per_page: int, log: Log) -> None:
-    """Ask the model for facts one page at a time, and run the code check on each as it arrives."""
+def extract_facts(
+    card: Card,
+    backend: Backend,
+    page_of: dict[str, str],
+    per_page: int,
+    log: Log,
+    *,
+    system: str | None = None,
+    schema: dict | None = None,
+    topics: list[str] | None = None,
+) -> None:
+    """Ask the model for facts one page at a time, and run the code check on each as it arrives.
+
+    `system`, `schema` and `topics` let another example ask for its own kind of fact (brief/ does). The
+    checks that follow are the same for every example.
+    """
+    system, schema, topics = system or EXTRACT_SYSTEM, schema or EXTRACT_SCHEMA, topics or TOPICS
     seen: set[str] = set()
     for ev_id, product in page_of.items():
         ev = card.ledger[ev_id]
@@ -357,7 +372,7 @@ def _extract_facts(card: Card, backend: Backend, page_of: dict[str, str], per_pa
             f"List at most {per_page} facts.\n\n<page>\n{as_data(ev.text[:MAX_PAGE_CHARS])}\n</page>"
         )
         try:
-            facts = backend.json(EXTRACT_SYSTEM, prompt, EXTRACT_SCHEMA).get("facts", [])
+            facts = backend.json(system, prompt, schema).get("facts", [])
         except BackendError as e:
             card.notes.append(f"{ev.url} was read but no facts were listed: {e}")
             continue
@@ -367,7 +382,7 @@ def _extract_facts(card: Card, backend: Backend, page_of: dict[str, str], per_pa
             if not text or norm(text) in seen:
                 continue
             seen.add(norm(text))
-            topic = f.get("topic") if f.get("topic") in TOPICS else "feature"
+            topic = f.get("topic") if f.get("topic") in topics else topics[-1] if topics is not TOPICS else "feature"
             c = Claim(f"f{len(card.claims) + 1}", text, str(f.get("quote", "")), ev_id, product, topic)
             card.claims.append(c)
             card.verdicts[c.id] = check_claim(c, card.ledger)
@@ -375,7 +390,7 @@ def _extract_facts(card: Card, backend: Backend, page_of: dict[str, str], per_pa
         log(f"{ev.url}: {kept} facts passed the code check")
 
 
-def _read_facts(card: Card, reader: Backend, log: Log) -> None:
+def read_facts(card: Card, reader: Backend, log: Log) -> None:
     """The reader reads every fact the code check kept against its passage, and may cut."""
     log(f"the reader is reading {len(card.supported)} facts against their passages")
     for cid, gap in _not_confirmed(reader, card.supported, card.ledger).items():
@@ -411,7 +426,7 @@ def _second_quotes(card: Card, backend: Backend, ev: Evidence, cut: list[Claim])
     ]
 
 
-def _requote(card: Card, backend: Backend, reader: Backend | None, log: Log) -> None:
+def requote_cut_facts(card: Card, backend: Backend, reader: Backend | None, log: Log) -> None:
     """One more quote for each fact whose quote did not carry it, then the same checks again.
 
     The fact's words are fixed: the model may point at another place on the page, never say something
@@ -496,11 +511,11 @@ def build_card(
         reader=f"{reader.name}, prompt {READER_VERSION}" if reader else "",
     )
     page_of = _fetch_pages(card, backend, urls or {}, pages_per_product, log)
-    _extract_facts(card, backend, page_of, facts_per_page, log)
+    extract_facts(card, backend, page_of, facts_per_page, log)
     if reader and card.supported:
-        _read_facts(card, reader, log)
+        read_facts(card, reader, log)
     if requote:
-        _requote(card, backend, reader, log)
+        requote_cut_facts(card, backend, reader, log)
     facts = {c.id: c for c in card.supported}
     if facts and {c.subject for c in facts.values()} == {us, them}:
         _write_lines(card, backend, facts)

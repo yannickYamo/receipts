@@ -14,3 +14,5 @@ bench/baseline/freshdesk-vs-zendesk/
 bench/traces/pages/
 # Pages of other sites, fetched for the study: kept local like the live runs.
 bench/study/ledger.json
+# Pages of other sites read for the brief study stay local.
+bench/brief/*/ledger-*.json

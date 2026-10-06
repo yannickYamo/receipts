@@ -1,0 +1,17 @@
+{
+ "seller": "Deskly, a help desk for support teams of 10 to 200 agents",
+ "companies": [
+  {"name": "Zulip", "url": "https://zulip.com/"},
+  {"name": "Plausible", "url": "https://plausible.io/"},
+  {"name": "Sentry", "url": "https://sentry.io/"},
+  {"name": "PostHog", "url": "https://posthog.com/"},
+  {"name": "Tailscale", "url": "https://tailscale.com/"},
+  {"name": "Cal", "url": "https://cal.com/"},
+  {"name": "Ghost", "url": "https://ghost.org/"},
+  {"name": "Fastmail", "url": "https://www.fastmail.com/"},
+  {"name": "Render", "url": "https://render.com/"},
+  {"name": "Fly", "url": "https://fly.io/"},
+  {"name": "Cockroach Labs", "url": "https://www.cockroachlabs.com/"},
+  {"name": "Grafana", "url": "https://grafana.com/"}
+ ]
+}
