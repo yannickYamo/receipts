@@ -139,14 +139,23 @@ def test_a_person_settles_disputes_and_unsupported_claims_and_reads_a_sample_of_
     settled = [dict(one[i]) for i in ids]
     settled[0]["quote_states"] = False  # the person overturns one label the two labellers agreed on
     (study / "settled.jsonl").write_text("".join(json.dumps(r) + "\n" for r in settled))
-    run(str(STUDY), "final", "--dir", str(study), "--labellers", "a,b")
+    refused = subprocess.run(
+        [sys.executable, str(STUDY), "final", "--dir", str(study), "--labellers", "a,b"], capture_output=True, text=True
+    )
+    assert refused.returncode != 0 and "--settled-by" in refused.stderr  # who settled is part of the record
+    run(str(STUDY), "final", "--dir", str(study), "--labellers", "a,b", "--settled-by", "a person")
     final = {r["id"]: r for r in map(json.loads, (study / "labels_final.jsonl").read_text().splitlines())}
     stats = json.loads((study / "label_stats.json").read_text())
     assert final["true"]["quote_states"] is False and final["true-cut"]["quote_states"] is True
-    assert stats["agreed_labels_the_person_overturned"] == [1, 2] and stats["agreement"]["quote_states"]["agree"] == [
-        5,
-        6,
-    ]
+    assert (
+        stats["agreed_labels_overturned"] == [1, 2]
+        and stats["settled_by"] == "a person"
+        and stats["agreement"]["quote_states"]["agree"]
+        == [
+            5,
+            6,
+        ]
+    )
     assert stats["agreement"]["page_states"]["kappa"] == 1.0
 
 
@@ -212,3 +221,44 @@ def test_the_injection_set_compares_each_claim_plain_and_planted(tmp_path):
     assert (r["pairs_where_both_versions_pass_the_code_check"], r["plain_passed_both_stages"]) == (2, 0)
     assert r["passed_only_when_planted"] == ["p1"] and r["planted_by_place"] == {"around": [1, 1], "title": [0, 1]}
     assert r["bar_passes"] is True  # one more than plain is inside the bar; two would not be
+
+
+def test_too_many_overturned_labels_stop_the_scoring_until_every_claim_is_read(tmp_path):
+    led = Ledger()
+    ev = led.add_text("https://acme.example/p", PAGE, "Acme")
+    led.save(tmp_path / "ledger.json")
+    base = {"extractor": "haiku", "family": "claude", "kind": "docs", "subject": "Acme", "evidence_id": ev.id}
+    ids = [f"c{i}" for i in range(60)]
+    (tmp_path / "claims.jsonl").write_text(
+        "".join(json.dumps(base | {"id": i, "text": "t", "quote": "q"}) + "\n" for i in ids)
+    )
+    agreed = "".join(json.dumps({"id": i, "page_states": True, "quote_states": True}) + "\n" for i in ids)
+    (tmp_path / "labels_a.jsonl").write_text(agreed)
+    (tmp_path / "labels_b.jsonl").write_text(agreed)
+    args = [
+        sys.executable,
+        str(STUDY),
+        "final",
+        "--dir",
+        str(tmp_path),
+        "--labellers",
+        "a,b",
+        "--settled-by",
+        "a person",
+    ]
+    run(str(STUDY), "settle", "--dir", str(tmp_path), "--labellers", "a,b")
+    sampled = [json.loads(x)["id"] for x in (tmp_path / "settle_sheet.jsonl").read_text().splitlines()]
+    assert len(sampled) == 50
+    said = {i: n >= 6 for n, i in enumerate(sampled)}  # the reader of the sample says no to six agreed labels
+    rows = "".join(json.dumps({"id": i, "page_states": True, "quote_states": v}) + "\n" for i, v in said.items())
+    (tmp_path / "settled.jsonl").write_text(rows)
+    stopped = subprocess.run(args, capture_output=True, text=True)
+    assert stopped.returncode != 0 and "Label every claim" in stopped.stderr
+    assert not (tmp_path / "labels_final.jsonl").exists()  # nothing to score with
+    rest = "".join(
+        json.dumps({"id": i, "page_states": True, "quote_states": True}) + "\n" for i in ids if i not in said
+    )
+    (tmp_path / "settled.jsonl").write_text(rows + rest)  # every claim read
+    assert subprocess.run(args, capture_output=True, text=True).returncode == 0
+    final = [json.loads(x) for x in (tmp_path / "labels_final.jsonl").read_text().splitlines()]
+    assert sum(not r["quote_states"] for r in final) == 6 and len(final) == 60

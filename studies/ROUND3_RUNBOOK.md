@@ -109,7 +109,9 @@ the pages, and nothing else: not `claims.jsonl`, not the readings, not the other
 ```bash
 python bench/study/study.py settle --labellers <a>,<b>    # writes settle_sheet.jsonl for the person
 # the person writes settled.jsonl
-python bench/study/study.py final  --labellers <a>,<b>    # writes labels_final.jsonl and label_stats.json
+python bench/study/study.py final  --labellers <a>,<b> --settled-by "<who wrote settled.jsonl>"
+                                                           # writes labels_final.jsonl and label_stats.json; stops, and
+                                                           # writes no labels, when more than 5 sampled labels were overturned
 python bench/study/study.py score                          # the table, the bars, the outcome
 ```
 
