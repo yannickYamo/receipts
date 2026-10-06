@@ -115,7 +115,17 @@ python bench/study/study.py final  --labellers <a>,<b> --settled-by "<who wrote 
 python bench/study/study.py score                          # the table, the bars, the outcome
 ```
 
-The facts of Part 4's card are labelled the same way.
+The facts of Part 4's card are labelled the same way. Their settled labels go beside the card, in
+`bench/live/run6/labels_final.jsonl`, one row for each fact id.
+
+## The page of results
+
+```bash
+python bench/round3_report.py --write     # writes studies/ROUND3_RESULTS.md from the files; no model
+pytest -q                                 # fails if that page says anything the files do not
+```
+
+A run whose file is absent shows as "not run". Commit the page with the files it was written from.
 
 ## What to hand back
 
