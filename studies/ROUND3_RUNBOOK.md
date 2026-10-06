@@ -118,6 +118,17 @@ python bench/study/study.py score                          # the table, the bars
 The facts of Part 4's card are labelled the same way. Their settled labels go beside the card, in
 `bench/live/run6/labels_final.jsonl`, one row for each fact id.
 
+## How much the settlement matters
+
+```bash
+python bench/study/study.py bounds --labellers <a>,<b>
+python bench/study/study.py score --labels labels_strict.jsonl     # writes RESULT_study_strict.json
+python bench/study/study.py score --labels labels_lenient.jsonl    # writes RESULT_study_lenient.json
+```
+
+Strict says yes only where both labellers do, lenient where either does. Whoever settles, the settled
+counts lie between the two, and the page of results shows all three side by side.
+
 ## The page of results
 
 ```bash

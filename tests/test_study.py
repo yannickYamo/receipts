@@ -304,7 +304,9 @@ def test_the_round_3_page_is_written_from_the_files_and_says_what_was_not_run(st
         "Real pages (run 3)",
     ):
         assert f"- {absent}" in page.split("## Not run")[1]
-    assert "## Outcome 3" in page and "did not measurably improve" in page and "It cut 67% of the true claims." in page
+    assert (
+        "## Outcome 3" in page and "did not measurably improve" in page and "It cut 67% of the true claims." in page
+    )  # one kind of page: no "where"
     assert "no record of who settled them" in page and "Citations API**, reported and put to no bar: not run." in page
 
 
@@ -354,3 +356,59 @@ def test_the_published_round_3_page_is_what_the_files_give():
     assert published.read_text() == text, (
         "ROUND3_RESULTS.md says something the result files do not: run bench/round3_report.py --write"
     )
+
+
+def test_the_page_shows_the_strictest_and_most_lenient_labelling_beside_the_settled_one(study, tmp_path_factory):
+    one = [{"id": i, "page_states": p, "quote_states": q} for i, _, _, p, q, _ in CLAIMS]
+    two = [dict(r) for r in one]
+    two[1]["quote_states"] = False  # the labellers split on one claim
+    two[3]["page_states"] = True  # and on whether the page states another
+    for name, lab in (("a", one), ("b", two)):
+        (study / f"labels_{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in lab))
+    run(str(STUDY), "bounds", "--dir", str(study), "--labellers", "a,b")
+    strict = {r["id"]: r for r in map(json.loads, (study / "labels_strict.jsonl").read_text().splitlines())}
+    lenient = {r["id"]: r for r in map(json.loads, (study / "labels_lenient.jsonl").read_text().splitlines())}
+    assert strict["true-cut"]["quote_states"] is False and lenient["true-cut"]["quote_states"] is True
+    assert strict["wrong-figure"]["page_states"] is False and lenient["wrong-figure"]["page_states"] is True
+    root = tmp_path_factory.mktemp("repo2")
+    (root / "bench" / "study").mkdir(parents=True)
+    run(str(STUDY), "freeze", "--dir", str(root / "bench" / "study"))
+    for labels, name in (
+        ("labels_final.jsonl", ""),
+        ("labels_strict.jsonl", "_strict"),
+        ("labels_lenient.jsonl", "_lenient"),
+    ):
+        run(str(STUDY), "score", "--dir", str(study), "--labels", labels)
+        (root / "bench" / "study" / f"RESULT_study{name}.json").write_text(
+            (study / f"RESULT_study{name}.json").read_text()
+        )
+    page = run(str(BENCH / "round3_report.py"), "--bench", str(root / "bench"))
+    section = page.split("## Under each labelling")[1]
+    assert "| settled | 3 | 4 of 6 (67%) to 0 of 1 (0%) | 3 of 6 (50%) to 0 of 1 (0%) |" in section
+    assert "| strict | 3 | 5 of 6 (83%)" in section and "| lenient | 3 | 4 of 6 (67%)" in section
+    assert (
+        "2 of 6 (33%) to 0 of 1 (0%)" in section.split("| lenient |")[1].split("\n")[0]
+    )  # one fewer invention when lenient
+    assert "The outcome is the same under each." in section
+
+
+def test_the_cost_sentence_says_where_the_cost_falls():
+    r = report_module()
+    arms = {
+        "keep_all": {"wrong": 240, "delivered": 800, "rate": 0.3},
+        "both": {"wrong": 50, "delivered": 500, "rate": 0.1},
+    }
+    study = {
+        "claims": 800,
+        "pages": 24,
+        "by_family": {"a": {}, "b": {}, "c": {}},
+        "M2a_true_claims_kept": {"rate": 0.67},
+        "M1_page_does_not_state": {"arms": arms, "measurable": False},
+        "M1_quote_does_not_state": {"arms": arms, "measurable": True},
+        "outcome": {"outcome": 2, "add_the_cost_sentence": True},
+        "by_kind": {
+            "pricing": {"true_claims_kept_by_both": [47, 100]},
+            "docs": {"true_claims_kept_by_both": [71, 100]},
+        },
+    }
+    assert r.sentence(study).endswith("It cut 33% of the true claims, most of all on pricing pages, where it kept 47%.")

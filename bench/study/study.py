@@ -26,6 +26,7 @@ The steps, in order. Only `extract` and `read` call a model.
     python bench/study/study.py sheet                          a blind sheet for the labellers
     python bench/study/study.py settle --labellers a,b         the claims a person has to settle
     python bench/study/study.py final --labellers a,b --settled-by "a person"     labels_final.jsonl
+    python bench/study/study.py bounds --labellers a,b         the strictest and the most lenient labelling
     python bench/study/study.py read                           the reader on every claim
     python bench/study/study.py score                          the table, the bars and the outcome
 
@@ -287,6 +288,26 @@ def final(a: argparse.Namespace) -> None:
     )
 
 
+def bounds(a: argparse.Namespace) -> None:
+    """The two labellings no settlement can fall outside of, from the two labellers alone.
+
+    labels_strict.jsonl says yes only where both labellers say yes: the most errors anyone could find.
+    labels_lenient.jsonl says yes where either does: the fewest. Whoever settles the disputes, and
+    however, every settled count lies between the two. Score each with --labels to see whether the
+    outcome depends on the settlement at all.
+    """
+    claims, one, two = two_labellers(a)
+    ids = [c["id"] for c in claims]
+    write_rows(
+        a.dir / "labels_strict.jsonl", [{"id": i} | {q: one[i][q] and two[i][q] for q in QUESTIONS} for i in ids]
+    )
+    write_rows(
+        a.dir / "labels_lenient.jsonl", [{"id": i} | {q: one[i][q] or two[i][q] for q in QUESTIONS} for i in ids]
+    )
+    print(f"labels_strict.jsonl and labels_lenient.jsonl written for {len(ids)} claims")
+    print("score each: study.py score --labels labels_strict.jsonl, then --labels labels_lenient.jsonl")
+
+
 def read(a: argparse.Namespace) -> None:
     """The reader on every claim, the ones the code check cut too, so the reader can be scored on its own."""
     ledger, backend = Ledger.load(a.dir / "ledger.json"), backend_for(a.backend, a.model)
@@ -525,7 +546,8 @@ def score(a: argparse.Namespace) -> None:
         }
     if (a.dir / "label_stats.json").exists():
         result["labels_agreement"] = json.loads((a.dir / "label_stats.json").read_text())
-    (a.dir / "RESULT_study.json").write_text(json.dumps(result, indent=1))
+    name = "" if a.labels == "labels_final.jsonl" else "_" + Path(a.labels).stem.removeprefix("labels_")
+    (a.dir / f"RESULT_study{name}.json").write_text(json.dumps(result, indent=1))
     report(result)
 
 
@@ -576,6 +598,7 @@ def main() -> None:
         "sheet": sheet,
         "settle": settle,
         "final": final,
+        "bounds": bounds,
         "read": read,
         "score": score,
     }
