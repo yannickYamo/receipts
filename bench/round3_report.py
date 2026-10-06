@@ -293,8 +293,72 @@ def sentence(study: dict) -> str:
             "has its quote, its page and the date the page was read."
         )
     if study["outcome"]["add_the_cost_sentence"]:
-        text += f" It cut {1 - kept['rate']:.0%} of the true claims."
+        text += f" It cut {1 - kept['rate']:.0%} of the true claims"
+        kinds = {
+            k: v["true_claims_kept_by_both"]
+            for k, v in study.get("by_kind", {}).items()
+            if v["true_claims_kept_by_both"][1]
+        }
+        if len(kinds) > 1:  # where the cost falls, from the counts: the kind of page that keeps the fewest
+            worst = min(kinds, key=lambda k: kinds[k][0] / kinds[k][1])
+            text += f", most of all on {worst} pages, where it kept {kinds[worst][0] / kinds[worst][1]:.0%}"
+        text += "."
     return text
+
+
+def under_each_labelling(bench: Path, settled: dict | None) -> list[str]:
+    """The same measures under the strictest and the most lenient labelling the two labellers allow.
+
+    A settlement can only land between the two. Where they give the same outcome and the same bars,
+    nothing on this page depends on who settled the disputes.
+    """
+    named = [
+        ("settled", settled),
+        ("strict", load(bench / "study" / "RESULT_study_strict.json")),
+        ("lenient", load(bench / "study" / "RESULT_study_lenient.json")),
+    ]
+    have = [(n, r) for n, r in named if r]
+    if len(have) < 2:
+        return []
+
+    def cells(r: dict) -> list[str]:
+        p, q, a, b = (
+            r["M1_page_does_not_state"],
+            r["M1_quote_does_not_state"],
+            r["M2a_true_claims_kept"],
+            r["M2b_claims_their_quote_states_kept"],
+        )
+
+        def pair(m: dict) -> str:
+            before, after = m["arms"]["keep_all"], m["arms"]["both"]
+            return f"{pct(before['wrong'], before['delivered'])} to {pct(after['wrong'], after['delivered'])}"
+
+        return [
+            str(r["outcome"]["outcome"]),
+            pair(q),
+            pair(p),
+            f"{pct(a['kept'], a['of'])} {verdict(bool(a['passes']))}",
+            f"{pct(b['kept'], b['of'])} {verdict(bool(b['passes']))}",
+        ]
+
+    out = ["", "## Under each labelling", ""]
+    out += [
+        "Strict says yes only where both labellers do; lenient says yes where either does. Any settlement lies between them.",
+        "",
+    ]
+    out += [
+        "| Labels | Outcome | Quote does not state it, before to after | Page does not state it, before to after | True claims kept | Claims their quote states, kept |",
+        "|---|---|---|---|---|---|",
+    ]
+    out += [f"| {n} | " + " | ".join(cells(r)) + " |" for n, r in have]
+    same = len({r["outcome"]["outcome"] for _, r in have}) == 1
+    out += [
+        "",
+        "The outcome is the same under each."
+        if same
+        else "**The outcome differs between labellings: it depends on how the disputes are settled.**",
+    ]
+    return out
 
 
 def page(bench: Path) -> tuple[str, bool]:
@@ -353,6 +417,7 @@ def page(bench: Path) -> tuple[str, bool]:
                 out.append(
                     f"| {name} | {pct(*part['keep_all']['page_does_not_state'])} | {pct(*part['both']['page_does_not_state'])} | {pct(*part['true_claims_kept_by_both'])} |"
                 )
+    out += under_each_labelling(bench, study)
     missing = [a for a, _, c, _ in rows if c.startswith(NOT_RUN) or c.startswith("run, not labelled")]
     if missing:
         out += ["", "## Not run", ""] + [f"- {m}" for m in missing]

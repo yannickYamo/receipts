@@ -278,3 +278,25 @@ first model call of the round, and the suite then fails if any of them changes
 (`tests/test_freeze.py`). If one must change, every model run of the round starts again. Anything
 else (a script under `bench/`, a backend's plumbing) may be fixed when a run breaks: the fix is
 noted, and only the broken step is run again.
+
+---
+
+# Notes after the runs, 2026-10-06
+
+Written after the runs and the two labellers' work, before the labels were settled and before any
+result was published. These are not part of the plan. They are what was added once results existed,
+and they are marked as such wherever they appear.
+
+**Bounds on the labels.** The results are also given under the strictest labelling the two labellers
+allow (yes only where both say yes) and the most lenient (yes where either does). No settlement can
+fall outside them. This was added after seeing how far the two labellers differ on whether a page
+states a claim. It decides nothing: the outcome and the bars are read from the settled labels, as
+planned. It shows whether they would have been different in other hands.
+
+**The cost sentence.** The plan's sentence ends "mostly [the largest cause]", which needs every cut
+claim read and grouped. The sentence the page prints ends with where the cost falls by kind of page,
+which is a count. The reading by cause is still owed in `RESULTS.md`.
+
+**Who settled the labels, and what was not run,** are stated on the page of results
+(`ROUND3_RESULTS.md`) from the files, and in `EVALS.md`. If the labels were not settled by a person,
+the result is not the pre-registered one, and `EVALS.md` says so in those words.
