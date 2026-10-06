@@ -27,9 +27,10 @@ If your agent's output only ever gets read by you, and nobody acts on it, you pr
 ## How to use it
 
 ```bash
-git clone https://github.com/yannickYamo/receipts && cd receipts
-pip install -e .
+pip install "git+https://github.com/yannickYamo/receipts@v0.2.0"
 ```
+
+To work on it, or to run the evals, clone it and `pip install -e ".[dev,mcp]"`.
 
 `check` runs **both** stages by default: the code check, then the reader. The reader runs on the local `claude` command (a Claude Code login), against the Anthropic API with `--backend anthropic`, or against any API that speaks OpenAI's chat completions, such as OpenAI or xAI, with `--backend openai --reader-model <model>`. The claims themselves can come from any model. The reader's measured rates are for claude-haiku-4-5 only. If your `claude` setup does not serve the short name `haiku`, pass a full model id: `--reader-model claude-haiku-4-5`. If the reader can't run, the claim is cut, not passed.
 
@@ -68,7 +69,7 @@ report.supported, report.cut, report.by_reason
 
 The code stage alone is `receipts.check_claims(claims, ledger)`. No model, and weaker.
 
-To let an agent check itself, run `receipts mcp` (install with `pip install -e ".[mcp]"`). Two tools, `read_page` and `check_claims_tool`, both stages by default, and every result names which stages ran. The agent can't hand in its own page text. To audit someone else's output, `receipts audit card.html` counts the specifics and how many of them sit on a line with a link.
+To let an agent check itself, run `receipts mcp` (it needs the `mcp` package: `pip install mcp`). Two tools, `read_page` and `check_claims_tool`, both stages by default, and every result names which stages ran. The agent can't hand in its own page text. To audit someone else's output, `receipts audit card.html` counts the specifics and how many of them sit on a line with a link.
 
 ## How it works
 
@@ -171,7 +172,7 @@ The built-in fetcher is basic. No JavaScript, and sites that refuse don't get re
 
 A ledger file is trusted input. Loading refuses page text that no longer matches its hash, which catches an edit or a damaged file, but whoever can edit the text can edit the hash. The MCP server fetches addresses a model chose; private and local addresses are refused, and the connection goes to the address that was checked, so a host can't answer one thing to the check and another to the fetch.
 
-What was tested, what passed and what failed, with the failures kept in, is in [EVALS.md](EVALS.md). The reader changed after those runs; the rates for the reader in this version are not measured yet, and EVALS.md says which is which.
+What was tested, what passed and what failed, with the failures kept in, is in [EVALS.md](EVALS.md). The reader changed after those runs. The results for the reader in this version are not published yet, and EVALS.md says which reader each number is for.
 
 ## Structure
 

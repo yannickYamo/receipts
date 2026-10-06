@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2.0 (not released: the reader in this version is not measured yet)
+## 0.2.0 (2026-10-06)
+
+The rates in `EVALS.md` were measured on the reader of 0.1.0 (prompt f95a7623). The reader in this
+version (prompt 3e63cca8) is put to the plan in `studies/ROUND3_PREREGISTRATION.md`. Its results are
+not published yet, and the docs say which reader each number is for.
 
 ### The check
 

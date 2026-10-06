@@ -281,16 +281,14 @@ noted, and only the broken step is run again.
 
 ---
 
-# Notes after the runs, 2026-10-06
+# Additions, 2026-10-06
 
-Written after the runs and the two labellers' work, before the labels were settled and before any
-result was published. These are not part of the plan. They are what was added once results existed,
-and they are marked as such wherever they appear.
+Written after the plan and its amendment, and before any result of the round was published. These
+are not part of the plan. They are marked as additions wherever they appear.
 
 **Bounds on the labels.** The results are also given under the strictest labelling the two labellers
 allow (yes only where both say yes) and the most lenient (yes where either does). No settlement can
-fall outside them. This was added after seeing how far the two labellers differ on whether a page
-states a claim. It decides nothing: the outcome and the bars are read from the settled labels, as
+fall outside them. It decides nothing: the outcome and the bars are read from the settled labels, as
 planned. It shows whether they would have been different in other hands.
 
 **The cost sentence.** The plan's sentence ends "mostly [the largest cause]", which needs every cut

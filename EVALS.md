@@ -14,7 +14,7 @@
 
 ## Which reader these numbers are for
 
-Every number in the table was measured on reader prompt f95a7623. The reader in the code now is 3e63cca8: it also sees the page on either side of the quote, and that text can only cut. It has not been measured. The plan, the bars and the run order for measuring it were written before any run, in `studies/ROUND3_PREREGISTRATION.md`, and until those runs are in, the table describes the earlier reader.
+Every number in the table was measured on reader prompt f95a7623, the reader of 0.1.0. The reader in 0.2.0 is 3e63cca8: it also sees the page on either side of the quote, and that text can only cut. Its results are not published yet. The plan, the bars and the run order for measuring it were written before any run, in `studies/ROUND3_PREREGISTRATION.md`. Until its results are here, the table describes the earlier reader.
 
 ## How I ran these
 
@@ -75,9 +75,9 @@ python bench/run_redteam.py redteam2 --replay    # the red team, every claim tha
 
 ## Next, in order
 
-1. Run round 3 as pre-registered (`studies/ROUND3_PREREGISTRATION.md`). It measures the two changes below and, for the first time, how often a model told to quote states something the page doesn't.
-2. Built, not measured: the reader sees the sentences on either side, so a claim the next sentence takes back can be cut.
-3. Built, not measured: on the battle card, a fact whose quote didn't carry it gets one more quote from the same page. Its words can't change.
+1. Publish round 3 as pre-registered (`studies/ROUND3_PREREGISTRATION.md`). It measures the two changes below and, for the first time, how often a model told to quote states something the page doesn't.
+2. Built, results not published yet: the reader sees the sentences on either side, so a claim the next sentence takes back can be cut.
+3. Built, results not published yet: on the battle card, a fact whose quote didn't carry it gets one more quote from the same page. Its words can't change.
 4. A test set and labels written by people. Round 3 has a person settle the labels; it does not have a person write the set.
 
 ## What to trust it for
