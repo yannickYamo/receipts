@@ -134,7 +134,7 @@ Why the 16 were cut, read one by one and grouped:
 
 The two labellers agree on the first question for all 59 facts and on the second for 48. The 11 they
 split on are one disagreement: whether a quote that does not name the product counts as stating a fact
-about it when the page is the product's own. That is a rule for the owner to set. The labellers are
+about it when the page is the product's own. That is a rule to set before the next round: round 3 sets it (the title of the page may supply the subject, nothing else). The labellers are
 models. Until a person has labelled a sample, these labels are provisional.
 
 ## 5. Two audits before publication
@@ -226,15 +226,17 @@ review data, and each says which pages it could not read.
 
 ## 7. After these runs
 
-Everything above was measured on reader prompt f95a7623. Two things were built afterwards and have not
-been measured: the reader is shown the page on either side of the passage (prompt 3e63cca8), and the
-battle card gives a fact one more quote when its first quote did not carry it. A second outside review
-also found ten defects outside the check's decisions (the API backend's model name, a reader reply that
-answers a claim twice, a malformed ledger, the fetcher's second lookup of a host name, and others);
-each is fixed with a regression test in `tests/test_second_review_findings.py`. The code check's
-decisions did not change: sections 1 and 3 still rebuild from it.
+Everything above was measured on reader prompt f95a7623, the reader of 0.1.0. Two things were built
+afterwards, and their results are not published yet: the reader is shown the page on either side of
+the passage (prompt 3e63cca8, the reader of 0.2.0), and the battle card gives a fact one more quote
+when its first quote did not carry it. A second outside review also found ten defects outside the
+check's decisions (the API backend's model name, a reader reply that answers a claim twice, a
+malformed ledger, the fetcher's second lookup of a host name, and others); each is fixed with a
+regression test in `tests/test_second_review_findings.py`. The code check's decisions did not change:
+sections 1 and 3 still rebuild from it.
 
-The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRATION.md`.
+The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRATION.md`. Its results
+will be one page, `ROUND3_RESULTS.md`, written from the files of the runs by `bench/round3_report.py`.
 
 ## What is not measured
 

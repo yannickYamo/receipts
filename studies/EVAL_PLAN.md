@@ -12,7 +12,7 @@ yes/no questions without seeing what the check decided:
 - `page_states`: does the page state this fact?
 - `quote_states`: does the quote, alone, state everything the fact states?
 
-Where they disagree, the item is listed for the owner to settle, and results are given both ways.
+Where they disagree, the item is listed for a person to settle, and results are given both ways.
 
 What is reported:
 
@@ -22,7 +22,7 @@ What is reported:
   it is reported.
 - How often the two labellers agree.
 
-The labellers are models, not people. Until the owner has labelled a sample, these are provisional.
+The labellers are models, not people. Until a person has labelled a sample, these are provisional.
 
 ## B. A red team with the source code
 
