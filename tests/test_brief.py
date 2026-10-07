@@ -180,6 +180,10 @@ def test_a_person_is_recognised_in_the_shapes_a_press_page_uses_and_places_are_n
         "Jane Doe, its new head of support, joined in May",
         "Dr. Jane Doe leads research at Acme",
         "Jane Smith-Jones was appointed to the board",
+        "Acme was founded by Jane Doe and John Smith in 2012",
+        "Acme, started by two friends and John Smith, makes routing software",
+        "Jane Doe leads engineering at Acme",
+        "Our co-founders, Jane Doe and John Smith, met at university",
     ):
         assert names_a_person(text, "Acme"), text
     for text in (
@@ -188,6 +192,9 @@ def test_a_person_is_recognised_in_the_shapes_a_press_page_uses_and_places_are_n
         "Acme has 14 open roles in Customer Support",
         "Acme Cloud said to cut routing time",
         "Acme hired 40 engineers in North America",
+        "Acme was founded by two engineers in Berlin",
+        "Acme was founded in San Francisco and New York",
+        "Acme Cloud leads the market in routing",
     ):
         assert not names_a_person(text, "Acme Cloud"), text
 

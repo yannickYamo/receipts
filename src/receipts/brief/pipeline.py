@@ -116,7 +116,12 @@ _PERSON = [
         re.I,
     ),
     re.compile(rf"\b(?:appointed|hired|promoted|welcomed)\s+{_NAME}\b"),
-    re.compile(rf"{_NAME}\s+(?:said|says|was appointed|has been appointed)\b"),
+    re.compile(rf"{_NAME}\s+(?:said|says|was appointed|has been appointed|leads|founded|co-founded|runs|heads)\b"),
+    re.compile(rf"\b(?:founded|co-founded|started|led|run|headed)\s+by\s+{_NAME}"),  # "founded by Jane Doe"
+    re.compile(
+        rf"\b(?:founded|co-founded|started|led|run|headed)\s+by\s+[^.]{{0,60}}?\band\s+{_NAME}"
+    ),  # "... and John Smith"
+    re.compile(rf"\b{_ROLE}s?,\s+{_NAME}", re.I),  # "our co-founders, Jane Doe"
 ]
 
 
