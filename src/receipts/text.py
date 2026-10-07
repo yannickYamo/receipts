@@ -431,6 +431,55 @@ _BLOCK = {
 }
 
 
+_VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+_TABLE_ROLES = {"table", "grid", "treegrid"}
+_HEAD_ROLES = {"columnheader", "rowheader"}
+_CELL_ROLES = {"cell", "gridcell"}
+CELL_BREAK = " | "  # between the cells of a table row, which is written as one line
+
+
+def _table_part(tag: str, attrs: list) -> str:
+    """What a tag is to a table: "table", "row", "head" (a header cell), "cell", or "" for anything else.
+
+    A table made of <div>s that names its parts for screen readers (role="row", role="cell") is a
+    table here too.
+    """
+    role = (dict(attrs).get("role") or "").lower()
+    if tag == "table" or role in _TABLE_ROLES:
+        return "table"
+    if tag == "tr" or role == "row":
+        return "row"
+    if tag == "th" or role in _HEAD_ROLES:
+        return "head"
+    if tag == "td" or role in _CELL_ROLES:
+        return "cell"
+    return "thead" if tag == "thead" else ""
+
+
+def row_line(
+    cells: list[tuple[list[str], bool]], headers: list[str] | None, in_head: bool
+) -> tuple[str, list[str] | None]:
+    """One table row as one line of text, and the column headers to use for the rows after it.
+
+    On a page, what a cell means is given by where it sits: under "Pro", beside "File uploads". Read
+    cell by cell that is lost, and "10MB" is just a number. So a row is written whole, on one line,
+    and each value carries the header of its column:
+
+        File uploads | Free: 10MB | Pro: Unlimited
+
+    A header is only ever what the page marks as one (<th>, <thead>, role="columnheader"). When a row
+    does not line up with the headers, it is written plainly, cells side by side: no header is guessed.
+    """
+    texts = [" ".join(x for x in segments if x) for segments, _ in cells]
+    if len(cells) > 1 and (in_head or all(head for _, head in cells)):
+        labels = [next((x for x in segments if x), "") for segments, _ in cells]  # a header's first line names it
+        return CELL_BREAK.join(t for t in texts if t), labels
+    if headers and len(cells) == len(headers) and len(cells) > 1:
+        rest = [f"{h}: {t}" if h else t for h, t in zip(headers[1:], texts[1:], strict=True) if t]
+        return CELL_BREAK.join(x for x in [texts[0], *rest] if x), headers
+    return CELL_BREAK.join(t for t in texts if t), headers
+
+
 class _Text(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
@@ -438,28 +487,87 @@ class _Text(HTMLParser):
         self.title: list[str] = []
         self._skip = 0
         self._in_title = False
+        self._open: list[tuple[str, str]] = []  # every open tag, with what it is to a table
+        self._headers: list[list[str] | None] = [
+            None
+        ]  # column headers of each open table; the first is for rows outside any
+        self._rows: list[list[tuple[list[str], bool]]] = []  # the cells of each open row
+        self._cell: list[list[str]] = []  # the lines of text of each open cell
 
     def handle_starttag(self, tag, attrs):
         if tag == "title" and not self._skip:  # an <svg><title> is a label, not the page's title
             self._in_title = True
-        elif tag in _SKIP:
+            return
+        if tag in _SKIP:
             self._skip += 1
+        kind = _table_part(tag, attrs)
+        if tag not in _VOID:
+            self._open.append((tag, kind))
+        if kind == "table":
+            self._headers.append(None)
+        elif kind == "row":
+            self._rows.append([])
+        elif kind in ("head", "cell") and self._rows:
+            self._cell.append([""])
         elif tag in _BLOCK:
+            self._break()
+
+    def _break(self) -> None:
+        """A block ends a line: of the page, or of the cell it is in."""
+        if self._cell:
+            self._cell[-1].append("")
+        else:
             self.out.append("\n")
 
     def handle_endtag(self, tag):
         if tag == "title":
             self._in_title = False
-        elif tag in _SKIP:
+            return
+        at = next((i for i in range(len(self._open) - 1, -1, -1) if self._open[i][0] == tag), None)
+        if at is None:
+            return  # an end tag with nothing open to close
+        closing, self._open = self._open[at:], self._open[:at]
+        for closed, kind in reversed(closing):  # a tag left open closes with the one around it
+            self._close(closed, kind)
+
+    def _close(self, tag: str, kind: str) -> None:
+        if tag in _SKIP:
             self._skip = max(0, self._skip - 1)
-        elif tag in _BLOCK:
+        if kind in ("head", "cell") and self._cell and self._rows:
+            segments = [re.sub(r"\s+", " ", x).strip() for x in self._cell.pop()]
+            self._rows[-1].append((segments, kind == "head"))
+        elif kind == "row" and self._rows:
+            in_head = any(k == "thead" for _, k in self._open)
+            line, self._headers[-1] = row_line(self._rows.pop(), self._headers[-1], in_head)
+            self._emit(line)
+        elif kind == "table" and len(self._headers) > 1:
+            self._headers.pop()
             self.out.append("\n")
+        elif tag in _BLOCK:
+            self._break()
+
+    def _emit(self, line: str) -> None:
+        """A finished row: a line of the page, or of the cell that holds its table."""
+        if self._cell:
+            self._cell[-1] += [line, ""]
+        else:
+            self.out.append(f"\n{line}\n")
 
     def handle_data(self, data):
         if self._in_title:
             self.title.append(data)
-        elif not self._skip:
+        elif self._skip:
+            return
+        elif self._cell:
+            self._cell[-1][-1] += data
+        else:
             self.out.append(data)
+
+    def close(self):
+        super().close()
+        for tag, kind in reversed(self._open):  # a page cut short still gives up the rows it had
+            self._close(tag, kind)
+        self._open = []
 
 
 def html_to_text(html: str) -> tuple[str, str]:

@@ -1,0 +1,394 @@
+Jump to content
+
+Main menu
+
+Main menu
+
+move to sidebar
+hide
+
+Navigation
+
+Main page
+
+Contents
+
+Current events
+
+Random article
+
+About Wikipedia
+
+Contact us
+
+Contribute
+
+Help
+
+Learn to edit
+
+Community portal
+
+Recent changes
+
+Upload file
+
+Special pages
+
+Search
+
+Search
+
+Appearance
+
+Donate
+
+Create account
+
+Log in
+
+Personal tools
+
+Donate
+
+Create account
+
+Log in
+
+Contents
+
+move to sidebar
+hide
+
+(Top)
+
+1
+Comparison chart
+
+2
+Terminology
+
+3
+Notes
+
+4
+References
+
+Toggle the table of contents
+
+Comparison of web conferencing software
+
+3 languages
+
+العربية
+
+Deutsch
+
+Français
+
+Edit links
+
+Article
+
+Talk
+
+English
+
+Read
+
+Edit
+
+View history
+
+Tools
+
+Tools
+
+move to sidebar
+hide
+
+Actions
+
+Read
+
+Edit
+
+View history
+
+General
+
+What links here
+
+Related changes
+
+Upload file
+
+Permanent link
+
+Page information
+
+Cite this page
+
+Get shortened URL
+
+Switch to legacy parser
+
+Print/export
+
+Download as PDF
+
+Printable version
+
+In other projects
+
+Wikidata item
+
+Appearance
+
+move to sidebar
+hide
+
+From Wikipedia, the free encyclopedia
+
+This list has no precise inclusion criteria as described in the Manual of Style for standalone lists. Please improve this article by adding inclusion criteria, or discuss this issue on the talk page. (September 2015)
+
+This list is a comparison of web conferencing software available for Linux, macOS, and Windows platforms. Many of the applications support the use of videoconferencing.
+
+Comparison chart
+[edit]
+
+Program | License | Capacity | Linux | macOS | Microsoft Windows | Audio Support | Video Support | Video Quality | Chat Support | Desktop Sharing Support | Whiteboard | Upload PPT | Upload PDF | Upload Doc/DocX | Co-browsing | Mobile Device Support | Break-Out rooms | Security Access | Encrypted communication | Host meeting from Mobile | Attend meeting from Mobile | Screen share from Mobile | Cloud Based | Recording capabilities | VoIP | Embeddable | Dial in
+
+Adobe Connect | License: Proprietary | Capacity: 1–1,500 (80,000 w/webcast) | Linux: Partial | Audio Support: [note 1] | Video Quality: 1080p, 360°[1][failed verification] | Desktop Sharing: [note 2] | Co-browsing: [note 3] | Mobile Device: ✓ iPhone, iPad, and Android[2] | Attend meeting: iOS, Android and RIM | Screen share: ? | Embeddable: [3]
+
+alfaview | License: Proprietary | Capacity: 1–500 | Video Quality: HQ | Screen share: ? | Cloud Based: One-time download
+
+AT&T Connect | License: Proprietary | Capacity: 1–1,500 | Linux: [note 4] | Video Quality: HQ | Attend meeting: iOS, Android, RIM and Windows Phone | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+AnyMeeting | License: Proprietary | Capacity: 1–200 | Linux: [4] | Video Quality: HQ | Mobile Device: ✓ iPad and Android Tablets[5] | Attend meeting: iOS and Android Tablets | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+BigBlueButton | License: LGPL, GPL | Capacity: 1–150+[6][self-published source] | Video Quality: VGA, HQ | Screen share: ?
+
+Cisco WebEx | License: Proprietary | Capacity: 1–3,000 | Video Quality: VGA, HQ, HD | Encrypted: ✓ 256-bit AES,PKI,End-to-end (Transport layer: 128-bit SSLv3) | Host meeting: ✓ iOS devices, Android, and BlackBerry | Screen share: ? | Recording: ✓ Computer-based and server-based | Embeddable: ?
+
+Conference XP | License: Apache License 2.0 | Capacity: ? | Video Quality: Full HD | Desktop Sharing: ? | Upload PPT: ? | Upload PDF: ? | Upload Doc/DocX: ? | Mobile Device: ? | Break-Out rooms: ? | Security Access: ? | Encrypted: ? | Host meeting: ? | Attend meeting: ? | Screen share: ? | Cloud Based: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Discord | License: Proprietary | Capacity: 50 | Video Quality: HD, 1080p | Whiteboard: ? | Co-browsing: ? | Break-Out rooms: ? | Security Access: ? | Encrypted: ? | Screen share: ? | Cloud Based: ? | Recording: ? | Embeddable: ? | Dial in: ?
+
+GoTo Meeting | License: Proprietary | Capacity: 1–1,000 | Video Quality: HD
+
+Facebook Messenger Rooms | License: Proprietary | Capacity: 1–50
+
+FreeConferenceCall | License: Proprietary | Capacity: 1–1,000 | Video Quality: HD | Encrypted: ✓ 256-bit AES,PKI,End-to-end (Transport layer: 128-bit SSLv3) | Host meeting: ✓ iOS devices, Android, and BlackBerry | Recording: ✓ Computer-based and server-based
+
+Fuze Meeting | License: Proprietary | Capacity: 1–1,000 | Linux: Partial[7] | Microsoft Windows: ✓ (Vista, 7 & 8) | Video Quality: HD, QVGA | Mobile Device: ✓ Blackberry, iPhone, iPad, Android Phone, Android Tablet | Screen share: ? | Embeddable: ?
+
+Genesys Meeting Center | License: Proprietary | Capacity: 125+ | Video Quality: VGA | Whiteboard: ? | Upload Doc/DocX: ? | Host meeting: ? | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Galene | License: MIT Licence | Capacity: 1-1000 | Video Quality: HD | Whiteboard: No | Screen share: [8] | Dial in: [9]
+
+Google Meet | License: Proprietary | Capacity: 100–1000 | Video Quality: HD | Screen share: ? | VoIP: ? | Embeddable: ?
+
+HCL Sametime | License: Proprietary | Capacity: ? | Video Quality: VGA, HQ, HD (H.264) | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+iMeet | License: Proprietary | Capacity: Up to 125 | Linux: Partial[10] | Video Quality: HD | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+InterCall Unified Meeting (IUM) | License: Proprietary | Capacity: 125+ | Linux: Partial | Video Quality: VGA | Whiteboard: ? | Upload Doc/DocX: ? | Screen share: ? | VoIP: ? | Embeddable: ?
+
+Jami | License: GNU General Public License | Capacity: 1–8[11] | Video Quality: VGA, HQ, HD (H.264), HEVC (H.265) | Whiteboard: ? | Upload PPT: ? | Upload PDF: ? | Upload Doc/DocX: ? | Co-browsing: ? | Mobile Device: ✓ iOS and Android | Break-Out rooms: ? | Attend meeting: iOS and Android | Screen share: ? | Cloud Based: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Jitsi Meet | License: Apache License | Capacity: 1-1000+[12] | Video Quality: VGA, HQ, HD (H.264) | Whiteboard: [13] | Mobile Device: ✓ iOS and Android | Attend meeting: iOS and Android | Screen share: ? | Dial in: [14]
+
+Lifesize | License: Proprietary | Capacity: 1–300 (10,000 webinar) | Linux: [15] | Video Quality: HQ | Screen share: ?
+
+Microsoft Live Meeting (discontinued) | License: Proprietary | Capacity: ? | Video Quality: VGA, HQ | Screen share: ? | Cloud Based: Partial | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Microsoft Teams | License: Proprietary | Capacity: 10?, 250–10,000 (250–10,000 paid) | Video Quality: VGA, HQ, HD | Whiteboard: [16] | Host meeting: ? | Attend meeting: iOS, Android, WebRTC | Screen share: ? | Cloud Based: Partial | Recording: ✓ (Paid) | VoIP: ? | Embeddable: ? | Dial in: ✓ (paid; add-on)
+
+Mikogo | License: Proprietary | Capacity: 1–25 | Upload PPT: ? | Upload PDF: ? | Upload Doc/DocX: ? | Co-browsing: ? | Break-Out rooms: ? | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Netviewer | License: Proprietary | Capacity: 1–100 | Video Quality: VGA | Whiteboard: ? | Upload PPT: ? | Upload PDF: ? | Upload Doc/DocX: ? | Co-browsing: ? | Break-Out rooms: ? | Host meeting: ? | Attend meeting: ? | Screen share: ? | Cloud Based: ? | Recording: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+omNovia Web Conference | License: Proprietary | Capacity: 2–5,000 | Video Quality: VGA | Break-Out rooms: ? | Host meeting: ? | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+OpenMeetings | License: Apache License | Capacity: 1–125 | Video Quality: VGA | Mobile Device: ? | Break-Out rooms: ? | Host meeting: ? | Attend meeting: ? | Screen share: ? | Cloud Based: ? | Recording: [17] | VoIP: ? | Embeddable: ? | Dial in: ?
+
+PowWow365 | License: Proprietary | Capacity: 1–500 | Attend meeting: iOS (iPhone, iPad) | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Slack[18] | License: Proprietary | Capacity: 1 to 50 | Linux: Partial | Video Quality: VGA, HQ, HD | Break-Out rooms: ? | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Skype | License: Proprietary | Capacity: 1 to 50 | Linux: Partial [note 5] | Video Quality: VGA, HQ, HD | Break-Out rooms: ? | Screen share: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Skype for Business (discontinued) | License: Proprietary | Capacity: 1 to 1,000 (10,000 webinar[citation needed]) | Video Quality: VGA, HQ, HD | Break-Out rooms: ? | Screen share: ? | Cloud Based: Partial | Embeddable: ?
+
+StarLeaf | License: Proprietary | Capacity: 1–300 (Unlimited streaming audience) | Linux: Partial | Video Quality: HD | Screen share: ? | Embeddable: ?
+
+TeamViewer | License: Proprietary | Capacity: 1–25 | Video Quality: VGA | Whiteboard: ? | Upload PPT: [note 6] | Upload PDF: [note 6] | Upload Doc/DocX: ? | Host meeting: ? | Attend meeting: ? | Screen share: ? | Cloud Based: ? | Recording: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+TrueConf | License: Proprietary | Capacity: 1–1,000 | Video Quality: Ultra HD | Host meeting: iOS, Android, WebRTC | Attend meeting: iOS, Android, WebRTC | Screen share: ? | Dial in: [19]
+
+VenueGen | License: Proprietary | Capacity: 1–500 | Audio Support: [note 1] | Video Quality: VGA | Desktop Sharing: [note 2] | Whiteboard: ? | Upload Doc/DocX: ? | Co-browsing: [note 3] | Host meeting: ? | Attend meeting: ? | Screen share: ? | Cloud Based: ? | Recording: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+VideoMost | License: Proprietary | Capacity: 1–250 (+1,500 video broadcast) | Video Quality: HD, Full HD, Ultra HD (4K) | Mobile Device: ✓ iPad, Android Phones & Tablets | Attend meeting: iPad, Android Phones & Tablets | Screen share: ? | Embeddable: API VideoMost | Dial in: ?
+
+WizIQ | License: Proprietary | Capacity: Up to 1,999 | Video Quality: VGA, HQ, HD | Screen share: ? | Embeddable: API Web Services Archived 2020-04-13 at the Wayback Machine | Dial in: ?
+
+Yuuguu | License: Proprietary | Capacity: 1–30 | Whiteboard: ? | Upload Doc/DocX: ? | Security Access: ? | Screen share: ? | Cloud Based: ? | Recording: ? | VoIP: ? | Embeddable: ? | Dial in: ?
+
+Zoho | License: Proprietary | Capacity: 1–250 (5,000 webinar)[20] | Video Quality: HD
+
+Zoom | License: Proprietary | Capacity: 50–500 (10,000 webinar) | Linux: Partial [note 5] | Video Quality: HD | Encrypted: [21] | Screen share: ? | Cloud Based: One-time download | Embeddable: ?
+
+Program | License | Capacity | Linux | macOS | Microsoft Windows | Audio Support | Video Support | Video Quality | Chat Support | Desktop Sharing Support | Whiteboard | Upload PPT | Upload PDF | Upload Doc/DocX | Co-browsing | Mobile Device Support | Break-Out rooms | Security Access | Encrypted communication | Host meeting from Mobile | Attend meeting from Mobile | Screen share from Mobile | Cloud Based | Recording capabilities | VoIP | Embeddable | Dial in
+
+Terminology
+[edit]
+
+In the table above, the following terminology is intended to be used to describe some important features:
+
+Audio Support: the remote control software transfers audio signals across the network and plays the audio through the speakers attached to the local computer. For example, music playback software normally sends audio signals to the locally attached speakers, via some sound controller hardware. If the remote control software package supports audio transfer, the playback software can run on the remote computer, while the music can be heard from the local computer, as though the software were running locally.
+
+Co-Browsing: the navigation of the Web by several people accessing the same web pages at the same time. When session leader clicks on a link, all other users are transferred to the new page. Co-browsers should support multiple frames and support embedded multimedia (e.g., if a page contains a video player, the session leader may commence synchronized playback for all users. Passing URLs via other tools such as a chat or phone and entering them into browser by each user is not considered co-browsing.
+
+File Transfer: the software allows the user to transfer files between the local and remote computers, from within the client program's user interface.
+
+Unified Communications (UC) is a marketing buzzword describing the integration of real-time, enterprise, communication services such as instant messaging (chat), presence information, voice (including IP telephony), mobility features (including extension mobility and single number reach), audio, web & video conferencing, fixed-mobile convergence (FMC), desktop sharing, data sharing (including web connected electronic interactive whiteboards), call control and speech recognition with non-real-time communication services such as unified messaging (integrated voicemail, e-mail, SMS and fax). UC is not necessarily a single product, but a set of products that provides a consistent unified user-interface and user-experience across multiple devices and media-types.[22]
+
+Notes
+[edit]
+
+1 2 Supports two-way teleconference integration
+
+1 2 Linux users may only view another user's desktop
+
+1 2 Yes, but only via a screen-sharing "pod" with control permissions granted
+
+↑ Web based client without the ability to share
+
+1 2 Requires installation of closed-source software.
+
+1 2 Any upload possible
+
+References
+[edit]
+
+↑ Adobe (2012-01-11). "Podium HD Pod". Adobe. Retrieved 2014-02-27.
+
+↑ Adobe. "Adobe Connect Mobile". Adobe. Retrieved 18 September 2015.
+
+↑ Designed for VOIP; requires additional service to support phone. See URL https://helpx.adobe.com/adobe-connect/kb/audio-choices-connect.html
+
+↑ AnyMeeting (2013-11-22). "Presenter - Frequently Asked Questions". AnyMeeting. Archived from the original on 2020-04-02. Retrieved 2014-02-27.
+
+↑ chrisb (23 April 2013). "AnyMeeting Rolls Out New Mobile Apps for iPad and Android". AnyMeeting. Archived from the original on 10 September 2015. Retrieved 18 September 2015.
+
+↑ Dixon, Fred. "FAQ". BigBlueButton. Retrieved 17 April 2020.
+
+↑ How do I get the Fuze Linux App? : Fuze Support Archived 2011-08-23 at the Wayback Machine. Support.fuzemeeting.com. Retrieved on 2014-02-27.
+
+↑ "Galène videoconference server".
+
+↑ "Galene-sip: SIP gateway for the Galene videoconferencing server". GitHub.
+
+↑ Can iMeet run on Linux? | iMeet Community Archived 2016-03-22 at the Wayback Machine. Community.imeet.com. Retrieved on 2014-02-27.
+
+↑ Amin, Bandali (23 February 2023). "jami-20230206.0 (Világfa) released [stable]". GNU Operating System. Retrieved 25 June 2023.
+
+↑ "Jitsi Videobridge Performance Evaluation | Performance Testing".
+
+↑ "Introducing whiteboards in Jitsi Meet". December 2022.
+
+↑ "Jitsi offers a telephony interface that allows users to dial into a conference or for placing dial-out reminder calls. You can try this for free on meet.jit.si. Self-installed Jitsi Meet deployments will need to set up and configure Jigasi with a SIP provider to connect to the phone network." jitsi.org. "JitsiMeet". jitsi.org. Retrieved 24 March 2020.
+
+↑ "Video Conferencing Apps for Desktop, Mobile and Browsers".
+
+↑ "Manage the Whiteboard in Microsoft Teams"
+
+↑ User's Manual, page 18
+
+↑ Griffith, Erin (20 June 2019). "Slack Stock Soars, Putting Company's Public Value at $19.5 Billion". The New York Times.
+
+↑ "How to join conferences and call TrueConf users from a regular phone"
+
+↑ "Now you can allow up to 5,000 attendees in Zoho Webinar". 11 July 2023.
+
+↑ "It's Here! 5 Things to Know About Zoom 5.0". 27 April 2020.
+
+↑ Pleasant, Blair (2008-07-28). "What UC is and isn't". SearchUnifiedCommunications.com. Archived from the original on 2010-09-23. Retrieved 2013-07-26. UC is not a single product but rather a solution made up of a variety of communication tools and components. [...] UC is a comprehensive solution that ties several components together with user experience.
+
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Comparison_of_web_conferencing_software&oldid=1310189106"
+
+Categories:
+
+Web conferencing
+
+Multimedia software comparisons
+
+Social software
+
+Unified communications
+
+Network software comparisons
+
+Hidden categories:
+
+Articles with short description
+
+Short description is different from Wikidata
+
+Lists having no precise inclusion criteria from September 2015
+
+All lists having no precise inclusion criteria
+
+All articles with failed verification
+
+Articles with failed verification from September 2015
+
+All accuracy disputes
+
+Accuracy disputes from April 2020
+
+Webarchive template wayback links
+
+All articles with unsourced statements
+
+Articles with unsourced statements from September 2015
+
+This page was last edited on 8 September 2025, at 04:49 (UTC).
+
+Page was rendered with Parsoid.
+
+Text is available under the Creative Commons Attribution-ShareAlike 4.0 License;
+additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+
+Privacy policy
+
+About Wikipedia
+
+Disclaimers
+
+Contact Wikipedia
+
+Legal & safety contacts
+
+Code of Conduct
+
+Developers
+
+Statistics
+
+Cookie statement
+
+Mobile view
+
+Search
+
+Search
+
+Toggle the table of contents
+
+Comparison of web conferencing software
+
+3 languages
+
+Add topic

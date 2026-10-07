@@ -1,0 +1,1080 @@
+Jump to content
+
+Main menu
+
+Main menu
+
+move to sidebar
+hide
+
+Navigation
+
+Main page
+
+Contents
+
+Current events
+
+Random article
+
+About Wikipedia
+
+Contact us
+
+Contribute
+
+Help
+
+Learn to edit
+
+Community portal
+
+Recent changes
+
+Upload file
+
+Special pages
+
+Search
+
+Search
+
+Appearance
+
+Donate
+
+Create account
+
+Log in
+
+Personal tools
+
+Donate
+
+Create account
+
+Log in
+
+Contents
+
+move to sidebar
+hide
+
+(Top)
+
+1
+General
+
+2
+Features
+
+3
+Input interfaces
+
+4
+Notification interfaces
+
+5
+Revision control system integration
+
+6
+Authentication methods
+
+7
+Containers
+
+8
+See also
+
+9
+Notes
+
+10
+References
+
+11
+External links
+
+Toggle the table of contents
+
+Comparison of issue-tracking systems
+
+Add languages
+
+Add links
+
+Article
+
+Talk
+
+English
+
+Read
+
+Edit
+
+View history
+
+Tools
+
+Tools
+
+move to sidebar
+hide
+
+Actions
+
+Read
+
+Edit
+
+View history
+
+General
+
+What links here
+
+Related changes
+
+Upload file
+
+Permanent link
+
+Page information
+
+Cite this page
+
+Get shortened URL
+
+Switch to legacy parser
+
+Print/export
+
+Download as PDF
+
+Printable version
+
+In other projects
+
+Wikidata item
+
+Appearance
+
+move to sidebar
+hide
+
+From Wikipedia, the free encyclopedia
+
+This article has multiple issues. Please help improve it or discuss these issues on the talk page. (Learn how and when to remove these messages) This article may contain original research. Please improve it by verifying the claims made and adding inline citations. Statements consisting only of original research should be removed. (April 2026) (Learn how and when to remove this message) This article or section possibly contains original synthesis. Source material should verifiably mention and relate to the main topic. Relevant discussion may be found on the talk page. (April 2026) (Learn how and when to remove this message) This article needs more citations. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. Find sources: "Comparison of issue-tracking systems" – news · newspapers · books · scholar · JSTOR (October 2011) (Learn how and when to remove this message) (Learn how and when to remove this message)
+
+Notable issue tracking systems, including bug tracking systems, help desk and service desk issue tracking systems, as well as asset management systems, include the following. The comparison includes client-server application, distributed and hosted systems.
+
+General
+[edit]
+
+System names listed with a light purple background are no longer in active development.
+
+System | Creator | License | Implementation language(s) | Back end | Launch date | Latest stable release | Latest release date
+
+Apache Bloodhound | Creator: Apache Software Foundation | License: Apache | Implementation language(s): Python | Back end: MySQL, PostgreSQL, SQLite | Launch date: 2012[1] | Latest stable release: 0.8[2] | Latest release date: 2013-08-23; 13 years ago
+
+Apache Allura | Creator: Apache Software Foundation | License: Apache License 2.0 | Implementation language(s): Python | Back end: MongoDB | Launch date: 2022[3] | Latest stable release: 1.21.0[4] | Latest release date: 2026-08-31; 36 days ago
+
+Assembla Tickets | Creator: Assembla | License: Proprietary, hosted. Available for free for open source projects | Implementation language(s): Ruby | Back end: MySQL | Launch date: 2008
+
+Axosoft | Creator: Axosoft LLC | License: Proprietary, SaaS | Implementation language(s): C#, .NET | Back end: SQL Server | Launch date: 2002
+
+Azure DevOps Server (Team Foundation Server) | Creator: Microsoft | License: Proprietary, commercial | Implementation language(s): .NET | Back end: MS SQL Server 2005 & 2008 | Launch date: 2005
+
+Bugzilla | Creator: Mozilla Foundation | License: MPL | Implementation language(s): Perl | Back end: MySQL, Oracle, PostgreSQL, SQLite[5] | Launch date: 1998-09-19 | Latest stable release: 5.2[6] | Latest release date: 2024-09-03; 2 years ago
+
+Debbugs | Creator: Debian | License: GPL | Implementation language(s): Perl | Back end: Flat file, Berkeley DB indexes[citation needed] | Launch date: Between 1994 and 1999[notes 1]
+
+Dolibarr | Creator: Dolibarr community | License: GPL | Implementation language(s): PHP | Back end: MariaDB, MySQL, PostgreSQL, SQL Server (experimental)[7] | Launch date: 2018 | Latest stable release: 24.0.1[8] | Latest release date: 2026-09-07; 29 days ago
+
+Faveo Helpdesk | Creator: Ladybird Web Solution | License: Open Software License | Implementation language(s): PHP | Back end: MariaDB, MySQL[9] | Launch date: 2015
+
+FogBugz | Creator: Glitch | License: Proprietary, SaaS | Implementation language(s): ASP on Windows, PHP on macOS, FreeBSD, and Linux | Back end: SQL Server, MySQL | Launch date: 2000
+
+Fossil | Creator: D. Richard Hipp | License: BSD | Implementation language(s): C | Back end: SQLite[10] | Launch date: 2006 | Latest stable release: 2.28[11] | Latest release date: 2026-03-11; 6 months ago
+
+FusionForge | Creator: Various (open source contributors) | License: GPLv2 | Implementation language(s): PHP | Back end: PostgreSQL | Launch date: 2009-02
+
+GLPI | Creator: INDEPNET | License: GPLv2 | Implementation language(s): PHP | Back end: MariaDB, MySQL[12] | Launch date: 2003-11-17
+
+GNATS | Creator: Free Software Foundation | License: GPL | Implementation language(s): C, Web Front-end In Perl | Back end: Text files with custom daemon/search engine | Launch date: 1992 | Latest stable release: 4.2.0[13] | Latest release date: 2015-02-26; 11 years ago
+
+Helix ALM (aka TestTrack) | Creator: Perforce Software | License: Proprietary | Implementation language(s): C++, Qt5, JavaScript | Back end: Oracle, PostgreSQL, SQL Server, SQLite | Launch date: 1996 | Latest stable release: 2024.1 [14] | Latest release date: 2024-03-01; 2 years ago
+
+HP Quality Center | Creator: Hewlett-Packard, formerly Mercury Interactive | License: Proprietary | Implementation language(s): .NET (client), Java (server) | Back end: Oracle, SQL Server | Launch date: 1995
+
+Jira | Creator: Atlassian | License: Proprietary. Free community licenses for open source and academic projects | Implementation language(s): Java | Back end: MySQL, PostgreSQL, Oracle, SQL Server | Launch date: 2002 | Latest stable release: 10.1.1[15] | Latest release date: 9 October 2024; 30 May 2025
+
+Launchpad | Creator: Canonical Ltd. | License: AGPL | Implementation language(s): JavaScript, Python | Back end: PostgreSQL | Launch date: 2004-01
+
+MantisBT | Creator: Various (open source contributors) | License: GPL | Implementation language(s): PHP | Back end: MariaDB, MySQL, PostgreSQL, SQL Server (experimental), Oracle (experimental)[16] | Launch date: 2000 | Latest stable release: 2.28.4[17] | Latest release date: 2026-07-01; 3 months ago
+
+Microsoft Dynamics CRM | Creator: Microsoft | License: Proprietary, commercial | Implementation language(s): .NET | Back end: Microsoft SQL Server | Launch date: 2003
+
+OpenProject | Creator: OpenProject Foundation e.V. | License: GPL | Implementation language(s): Ruby, JavaScript | Back end: PostgreSQL[18] | Launch date: 2010
+
+org-mode | Creator: Carsten Dominik | License: GPL | Implementation language(s): Emacs | Back end: Flat file | Launch date: 2003
+
+OTRS | Creator: OTRS | License: Proprietary | Implementation language(s): Perl, JavaScript | Back end: MySQL, PostgreSQL, Oracle, SQL Server | Launch date: 2002
+
+Phabricator | Creator: Facebook | License: Apache | Implementation language(s): PHP | Launch date: 2010
+
+Redmine | Creator: Jean-Philippe Lang | License: GPLv2 | Implementation language(s): Ruby | Back end: MySQL, PostgreSQL, SQLite | Launch date: 2006 | Latest stable release: 6.1.2[19] | Latest release date: 2026-03-17; 6 months ago
+
+Request Tracker | Creator: Best Practical Solutions, LLC | License: GPLv2 | Implementation language(s): Perl | Back end: MariaDB, MySQL, PostgreSQL, Oracle, SQLite (testing only)[20] | Launch date: 1999-10-13 | Latest stable release: 6.0.3[21] | Latest release date: 2026-05-20; 4 months ago
+
+Roundup | Creator: Ka-Ping Yee, Richard Jones | License: MIT (ZPL v 2.0 for the template system) | Implementation language(s): Python | Back end: SQLite, MySQL, PostgreSQL,[22] anydbm | Launch date: 2001 | Latest stable release: 2.6.0[23] | Latest release date: 2026-07-13; 2 months ago
+
+StarTeam | Creator: originally Starbase Corporation, currently Borland | License: Proprietary | Implementation language(s): C++, Java, etc. | Back end: SQL Server recommended, Oracle, IBM Db2 supported | Launch date: Unknown
+
+Supportworks | Creator: Hornbill Systems | License: Proprietary | Implementation language(s): C++, PHP | Back end: SQL Server, MySQL, Oracle, Sybase | Launch date: 1994[24]
+
+SysAid | Creator: SysAid Technologies | License: Proprietary | Implementation language(s): C#, Java | Back end: Derby, Microsoft SQL Server, MySQL, Oracle | Launch date: 2002
+
+Trac | Creator: Edgewall Software | License: New BSD | Implementation language(s): Python | Back end: SQLite, PostgreSQL, MySQL[25] | Launch date: 2006-10-01
+
+TrackerSuite.Net | Creator: Automation Centre | License: Proprietary | Implementation language(s): C# | Back end: SQL Server, SQL Server Express | Launch date: 2006
+
+Trello | Creator: Atlassian | License: SaaS | Implementation language(s): Node.js | Back end: MongoDB | Launch date: 2011
+
+Tuleap | Creator: enalean | License: GPLv2 | Implementation language(s): php | Back end: MySQL[26] | Launch date: 2011
+
+Twproject | Creator: Open Lab | License: Proprietary, some parts LGPL | Implementation language(s): Java | Back end: all relational (uses Hibernate) | Launch date: 2003
+
+Wrike | Creator: Wrike, Inc. | License: Proprietary, hosted | Implementation language(s): Java | Back end: PostgreSQL | Launch date: 2006
+
+YouTrack | Creator: JetBrains s.r.o. | License: Proprietary, stand-alone and hosted, free version, free for open source projects | Implementation language(s): Java | Back end: JavaScript, Kotlin | Launch date: 2009
+
+Zammad | Creator: Zammad GmbH | License: AGPL | Implementation language(s): Ruby | Back end: MariaDB, MySQL, PostgreSQL[27] | Launch date: 2016[28] | Latest stable release: 7.0[29] | Latest release date: 2026-03-04; 7 months ago
+
+System | Creator | License | Implementation language(s) | Back end | Launch date | Latest stable release | Latest release date
+
+Features
+[edit]
+
+System | Documentation integration/generation, reporting | Test planning integration | Customizable workflow | Unicode support | Custom fields | SLA[30] | Plugin API[31] | Multiple projects | Full-text search | Indexed full-text search | Indexed file search | Edit conflict warning
+
+Apache Bloodhound | Documentation integration/generation, reporting: Yes, integrated wiki | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes (as of 0.6) | Full-text search: Yes | Indexed full-text search: Yes[32] uses Whoosh | Indexed file search: No | Edit conflict warning: No
+
+Assembla Tickets | Documentation integration/generation, reporting: Yes, Wiki syntax, email notification, linking to Subversion commits, document manager, charts, reports, notifications | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: No | Indexed full-text search: Unknown | Indexed file search: No | Edit conflict warning: No
+
+Axosoft | Documentation integration/generation, reporting: Yes, Team Wiki, Burndown, GitHub and TortoiseSVN integration, dashboards, custom reports for OnPremises, e-mail notifications and alerts, customer portal, RSS | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes | Multiple projects: Yes | Edit conflict warning: No
+
+Azure DevOps Server (Team Foundation Server) | Documentation integration/generation, reporting: Yes - workflow definitions, process documentation | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: Yes | Indexed file search: Yes | Edit conflict warning: No
+
+Bugzilla | Documentation integration/generation, reporting: Yes, reporting: integrated reports and charts, scheduled reports by mail | Test planning integration: Yes[33] | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes[34] | Indexed full-text search: Yes When using MySQL MyISAM[35] or Oracle Database[36] but not PostgreSQL[37] | Edit conflict warning: Yes[38]
+
+Debbugs | Documentation integration/generation, reporting: No | Test planning integration: No | Customizable workflow: No | Unicode support: Yes | Custom fields: No | SLA[30]: No | Plugin API[31]: No | Multiple projects: Unknown | Indexed file search: No | Edit conflict warning: No
+
+Faveo Helpdesk | Documentation integration/generation, reporting: Yes, Integrated Social Media, In-built Knowledge Base and Reporting | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes | Multiple projects: —N/a | Full-text search: Yes | Indexed full-text search: No | Indexed file search: No | Edit conflict warning: No
+
+FogBugz | Documentation integration/generation, reporting: Yes, Integrated wiki | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes[39] | Multiple projects: Yes | Full-text search: Yes[40] | Indexed full-text search: Yes[41] | Indexed file search: No[42] | Edit conflict warning: Yes
+
+Fossil | Documentation integration/generation, reporting: Yes, Integrated Wiki in addition to integrated versioned project documentation via web ui. | Test planning integration: No | Customizable workflow: No | Unicode support: No | Custom fields: Yes | SLA[30]: No | Plugin API[31]: No | Multiple projects: Yes[43] | Full-text search: No[44] | Indexed full-text search: No | Edit conflict warning: No
+
+FusionForge | Documentation integration/generation, reporting: Yes, integrated Mediawiki, discussion forums, news blogs, email integration, export to CSV, reporting graphs | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Edit conflict warning: No
+
+GLPI | Documentation integration/generation, reporting: Yes, Contains a proprietary knowledge base of sorts | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: Yes | Indexed file search: Yes | Edit conflict warning: No
+
+GNATS | Documentation integration/generation, reporting: No | Test planning integration: No | Customizable workflow: No | Unicode support: No | Custom fields: No | SLA[30]: No | Plugin API[31]: No | Multiple projects: Unknown | Edit conflict warning: No
+
+Helix ALM | Documentation integration/generation, reporting: Yes - Advanced reporting, integrated charts, export to Excel, workflow with triggers | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: Yes | Edit conflict warning: No
+
+HP Quality Center | Documentation integration/generation, reporting: Yes | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: No | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: No | Indexed full-text search: No | Indexed file search: No | Edit conflict warning: No
+
+Jira | Documentation integration/generation, reporting: Yes, Dashboard with reporting widgets (Open Social) Excel, Word, customizable charts, Confluence (Enterprise wiki) | Test planning integration: Yes[45] | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes[46] | Multiple projects: Yes | Full-text search: Yes[47] | Indexed full-text search: Yes Uses Lucene[47] | Indexed file search: Optional[48] | Edit conflict warning: No[49]
+
+Launchpad | Documentation integration/generation, reporting: Yes | Test planning integration: Unknown | Customizable workflow: Unknown | Unicode support: Unknown | Custom fields: Unknown | SLA[30]: Unknown | Plugin API[31]: Unknown | Multiple projects: Unknown | Full-text search: Unknown | Indexed full-text search: Unknown | Indexed file search: Unknown | Edit conflict warning: No
+
+MantisBT | Documentation integration/generation, reporting: Yes, Integration of MediaWiki, DokuWiki, XWiki | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes[50] | Indexed full-text search: Yes | Indexed file search: No[51] | Edit conflict warning: Yes
+
+Microsoft Dynamics CRM | Documentation integration/generation, reporting: Yes, reporting: integrated charts and reports, export to Excel, Mail Merge | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Unknown | Edit conflict warning: No
+
+org-mode | Documentation integration/generation, reporting: Yes, org-mode has built-in export to HTML, Latex, .md and literate programming capabilities for multiple languages in a single document | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: No | Multiple projects: Yes | Full-text search: Yes | Edit conflict warning: No
+
+OTRS | Documentation integration/generation, reporting: Yes, Advanced reporting, configurable dashboards | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: Yes | Indexed file search: No | Edit conflict warning: No
+
+Phabricator | Documentation integration/generation, reporting: Yes, integrated wiki and limited burn down charts | Test planning integration: Yes | Customizable workflow: No | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: Yes | Indexed file search: Yes | Edit conflict warning: No
+
+Redmine | Documentation integration/generation, reporting: Yes, integrated wiki, discussion forums, news blogs, email integration, calendars, Gantt Charts, RSS, export to PDF, export to Excel/CSV | Test planning integration: Yes[52] | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Optional[53] | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes[54] | Indexed full-text search: Optional, when using PostgreSQL[55] | Indexed file search: Optional[56] | Edit conflict warning: Yes[57]
+
+Request Tracker | Documentation integration/generation, reporting: Yes, MediaWiki[58] | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes[59] | Plugin API[31]: Yes[60] | Multiple projects: Yes | Full-text search: Yes[61] | Indexed full-text search: Yes[61] | Edit conflict warning: No
+
+Roundup | Documentation integration/generation, reporting: Yes, wiki can be integrated or linked | Test planning integration: No, can be implemented at tracker level | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No, can be implemented at tracker level | Plugin API[31]: Yes[62] | Multiple projects: Yes | Full-text search: Yes[63] | Indexed full-text search: Yes xapian, whoosh, SQLite FTS, PostgreSQL FTS, native | Indexed file search: Yes | Edit conflict warning: Yes
+
+StarTeam | Documentation integration/generation, reporting: No | Test planning integration: Yes[64] | Customizable workflow: Yes | Unicode support: No | Custom fields: Yes | SLA[30]: No | Plugin API[31]: No | Multiple projects: Unknown | Edit conflict warning: No
+
+Supportworks | Documentation integration/generation, reporting: Yes - Integrated reporting wizard, customizable PHP reporting tool, dashboard, optional interface with Crystal Reports, export to Microsoft Excel/CSV, knowledge base, optional asset management tool | Test planning integration: No | Customizable workflow: Yes | Unicode support: No | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes[65] | Multiple projects: Unknown | Edit conflict warning: No
+
+SysAid | Documentation integration/generation, reporting: Yes - LDAP/Email/Calendar integration, integrated Asset Management, integrated reporting, SSO, custom fields, export to CSV/PDF, KB | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: Unknown | Indexed file search: No | Edit conflict warning: No
+
+Teamwork | Documentation integration/generation, reporting: Yes | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: No | Multiple projects: Yes | Full-text search: Yes[66] | Indexed full-text search: Yes Uses Lucene | Edit conflict warning: No
+
+Trac | Documentation integration/generation, reporting: Yes, integrated wiki | Test planning integration: Yes[67] | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes[68] | Multiple projects: Yes[69] | Full-text search: Yes | Indexed full-text search: No[70] | Edit conflict warning: Yes[71]
+
+TrackerSuite.Net | Documentation integration/generation, reporting: Yes. Dashboards. Graphical reports. Integration with Crystal Reports. Reports can be exported to Microsoft Excel. | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes | Indexed full-text search: No | Indexed file search: No | Edit conflict warning: No
+
+Tuleap | Documentation integration/generation, reporting: Yes, Kanban boards, Scrum planning and burndown charts, pies, Gantt, barrs, cardwall, Document Manager with approval workflow and fine grained permissions, wikis | Test planning integration: Yes | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes with plugin fulltext | Indexed full-text search: Yes with plugin fulltext | Indexed file search: No | Edit conflict warning: No
+
+Wrike | Documentation integration/generation, reporting: Yes, real-time customized reports, export to Excel, scheduled reports by mail, alerts, discussions, Gantt charts, | Test planning integration: No | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: No | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Unknown | Edit conflict warning: Yes
+
+YouTrack | Documentation integration/generation, reporting: Yes: Wiki syntax, custom workflow, custom issue attributes, notifications (email, jabber, RSS, etc.), email integration, reports, export to HTML and CSV, integration with VCSs. | Test planning integration: Yes[72] | Customizable workflow: Yes | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes[73] | Plugin API[31]: Yes[74] | Multiple projects: Yes | Full-text search: Yes[75] | Indexed full-text search: Yes (Uses Lucene) | Edit conflict warning: No
+
+Zammad | Documentation integration/generation, reporting: Yes: Documentation integration/generation, reporting: integrated knowledge base, dashboard | Test planning integration: No | Customizable workflow: No | Unicode support: Yes | Custom fields: Yes | SLA[30]: Yes[76] | Plugin API[31]: Yes | Multiple projects: Yes | Full-text search: Yes[77] | Indexed full-text search: Yes | Indexed file search: Yes | Edit conflict warning: Yes[78]
+
+System | Dynamic documentation integration/generation | Test planning integration | Customizable workflow | Unicode support | Custom fields | SLA[30] | Plugin API[31] | Multiple projects | Full-text search | Indexed full-text search | Indexed file search | Edit conflict warning
+
+Input interfaces
+[edit]
+
+System | Web | Mobile web | Email | CLI | GUI | REST | SOAP | Mylyn[79] | Visual Studio | IntelliJ IDEA | Others
+
+Apache Bloodhound | Web: Yes | Mobile web: No | Email: Optional[80][81] | CLI: No | GUI: No | REST: No | SOAP: No | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: No | Others: Yes XMLRPC
+
+Assembla Tickets | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: Yes | Others: No
+
+Axosoft | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: Yes | REST: Yes | SOAP: Yes | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: Yes - iPhone
+
+Bugzilla | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: Yes | REST: Yes | SOAP: Yes | Mylyn[79]: Yes | Visual Studio: No[82] | IntelliJ IDEA: Yes | Others: Yes XMLRPC[83]
+
+Debbugs | Web: No | Mobile web: No | Email: Yes | CLI: Yes | GUI: No | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Dolibarr | Web: Yes | Mobile web: Yes | Email: Yes | CLI: No | GUI: Yes | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Faveo Helpdesk | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: Yes - Android App iOS App
+
+FogBugz | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: Yes | Others: Yes XML
+
+Fossil | Web: Yes | Mobile web: No | Email: No | CLI: Yes | GUI: No | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+FusionForge | Web: Yes | Mobile web: No | Email: No | CLI: No | GUI: No | REST: No | SOAP: Yes | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+GLPI | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+GNATS | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: Yes | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Helix ALM | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: Yes | REST: Yes | SOAP: Yes | Mylyn[79]: No | Visual Studio: Yes | IntelliJ IDEA: No | Others: Yes - XML
+
+HP Quality Center | Web: Yes | Mobile web: No | Email: No | CLI: No | GUI: Yes[84] | REST: Yes | SOAP: No | Mylyn[79]: Yes[85] | Visual Studio: No[82] | IntelliJ IDEA: Yes, via plugin | Others: Yes]
+
+Jira | Web: Yes | Mobile web: Yes[86] | Email: Yes | CLI: Yes[87] | GUI: Yes | REST: Yes | SOAP: Yes | Mylyn[79]: Yes | Visual Studio: No[82] | IntelliJ IDEA: Yes | Others: Yes - Android App, iPhone App
+
+Launchpad | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: Yes - Python[88]
+
+MantisBT | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: No | SOAP: Yes | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: Yes | Others: Yes - Android App
+
+Microsoft Dynamics CRM | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: No | SOAP: Yes | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+org-mode | Web: No | Mobile web: No | Email: No | CLI: Yes | GUI: No | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+OTRS | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: Yes | SOAP: Yes | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Phabricator | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: Yes | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: Yes, via plugin | Others: No
+
+Redmine | Web: Yes | Mobile web: Yes[89] | Email: Yes | CLI: Partial [notes 2] | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: Yes | Others: Yes - Android App, iOS App
+
+Request Tracker | Web: Yes | Mobile web: Yes Responsive layout after 1.5.0. Partial in previous versions. | Email: Yes | CLI: Yes | GUI: No | REST: Yes[90] | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Roundup | Web: Yes | Mobile web: Yes with Jinja2 template, basic support in classic template, can be implemented per tracker | Email: Yes | CLI: Yes | GUI: No (use web) | REST: Yes new in 2.0 | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: Yes XMLRPC[91]
+
+StarTeam | Web: Yes | Mobile web: No | Email: No | CLI: No | GUI: Yes | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: Yes | IntelliJ IDEA: No | Others: No
+
+Supportworks | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: Yes | REST: Yes[92] | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+SysAid | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: Yes | REST: Yes | SOAP: Yes | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Team Foundation Server | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: No | REST: No | SOAP: Yes | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: Yes, via plugin | Others: No
+
+Trac | Web: Yes | Mobile web: No[93] | Email: Optional[80] | CLI: No | GUI: No | REST: No | SOAP: No | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: Yes | Others: Yes XMLRPC
+
+TrackerSuite.Net | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Trello | Web: Yes | Mobile web: Yes | Email: Yes | CLI: No | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: Yes | Others: No
+
+Tuleap | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: No | REST: Yes | SOAP: Yes | Mylyn[79]: Yes | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Twproject | Web: Yes | Mobile web: No | Email: Yes | CLI: No | GUI: No | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+Wrike | Web: Yes | Mobile web: No | Email: No | CLI: No | GUI: No | REST: No | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: Yes, via plugin | Others: No
+
+YouTrack | Web: Yes | Mobile web: Yes[94] | Email: Yes | CLI: No | GUI: Yes | REST: Yes | SOAP: No | Mylyn[79]: Yes[95] | Visual Studio: No | IntelliJ IDEA: Yes | Others: No
+
+Zammad | Web: Yes | Mobile web: No | Email: Yes | CLI: Yes | GUI: No | REST: Yes | SOAP: No | Mylyn[79]: No | Visual Studio: No | IntelliJ IDEA: No | Others: No
+
+System | Web | Mobile Web | Email | CLI | GUI | REST | SOAP | Mylyn[79] | Visual Studio | IntelliJ IDEA | Others
+
+Notification interfaces
+[edit]
+
+System | Email | RSS | Atom | XMPP | Twitter
+
+Apache Bloodhound | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+Assembla Tickets | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: Yes
+
+Axosoft | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+Bugzilla | Email: Yes | RSS: Yes | Atom: Yes | XMPP: No | Twitter: No
+
+Debbugs | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Dolibarr | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Faveo Helpdesk | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+FogBugz | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+Fossil | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+FusionForge | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+GLPI | Email: Yes | RSS: No | Atom: No | XMPP: Yes | Twitter: No
+
+GNATS | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Helix ALM | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+HP Quality Center | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Jira | Email: Yes | RSS: Yes | Atom: No | XMPP: Yes | Twitter: No
+
+MantisBT | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: Yes
+
+Microsoft Dynamics CRM | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+org-mode | Email: No | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+OTRS | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Phabricator | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Redmine | Email: Yes | RSS: Yes | Atom: Yes | XMPP: Yes, via plugin | Twitter: Yes
+
+Request Tracker | Email: Yes | RSS: Yes[96] | Atom: No | XMPP: No | Twitter: No
+
+Roundup | Email: Yes | RSS: Yes[97] | Atom: Yes[97] | XMPP: No can be added to tracker with detector | Twitter: No can be added to tracker with detector
+
+StarTeam | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Supportworks | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+SysAid | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Team Foundation Server | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Trac | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: No
+
+TrackerSuite.Net | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+Twproject | Email: Yes | RSS: Yes | Atom: No | XMPP: No | Twitter: Yes
+
+Wrike | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: No
+
+YouTrack | Email: Yes | RSS: Yes | Atom: No | XMPP: Yes | Twitter: No
+
+Zammad | Email: Yes | RSS: No | Atom: No | XMPP: No | Twitter: Yes
+
+System | Email | RSS | Atom | XMPP | Twitter
+
+Revision control system integration
+[edit]
+
+System | Git | Mercurial | Bazaar | Monotone | Darcs | CVS | Subversion | Perforce | AccuRev | ClearCase | Others
+
+Apache Bloodhound | Git: Yes | Mercurial: Yes | Bazaar: Yes | Monotone: Yes | Darcs: Yes | CVS: Yes | Subversion: Yes | Perforce: Optional[98] | AccuRev: Yes | ClearCase: No | Others: No
+
+Assembla Tickets | Git: Yes | Mercurial: Yes | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: Yes | Perforce: Yes | AccuRev: No | ClearCase: No | Others: No
+
+Axosoft | Git: Yes | Mercurial: Yes[99] | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: Yes | Perforce: Yes | AccuRev: No | ClearCase: No | Others: Yes VSS, Vault Sourcegear
+
+Bugzilla | Git: Yes[100] | Mercurial: Yes[101] | Bazaar: Yes | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: Yes | AccuRev: Yes | ClearCase: No | Others: No
+
+Debbugs | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Faveo Helpdesk | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+FogBugz | Git: Yes | Mercurial: Yes | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: Yes | AccuRev: No | ClearCase: No | Others: 2[102]
+
+Fossil | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: Yes | ClearCase: No | Others: 1[103]
+
+FusionForge | Git: Yes | Mercurial: Yes | Bazaar: Yes | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+GNATS | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Helix ALM | Git: Yes | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: Yes | AccuRev: No | ClearCase: No | Others: Yes - Surround SCM
+
+HP Application Lifecycle Management | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: Yes[104] | AccuRev: Yes | ClearCase: No | Others: No
+
+Jira | Git: Yes | Mercurial: Yes | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: Yes | AccuRev: Yes[105] | ClearCase: No[106] | Others: Yes[107]
+
+MantisBT | Git: Yes | Mercurial: Yes[108] | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Microsoft Dynamics CRM | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+org-mode | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+OTRS | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Phabricator | Git: Yes | Mercurial: Yes | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Redmine | Git: Yes | Mercurial: Yes | Bazaar: Yes | Monotone: No | Darcs: Yes | CVS: Yes | Subversion: Yes | Perforce: Yes[104] | AccuRev: No | ClearCase: No | Others: No
+
+Request Tracker | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Roundup | Git: No | Mercurial: Yes | Bazaar: No | Monotone: No | Darcs: Yes | CVS: No | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: Yes can be implemented for any RCS at tracker level
+
+StarTeam | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: Yes - StarTeam includes revision control
+
+Supportworks | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+SysAid | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Team Foundation Server | Git: Yes[109] | Mercurial: No | Bazaar: Yes[110] | Monotone: No | Darcs: No | CVS: No | Subversion: Yes[111] | Perforce: No | AccuRev: No | ClearCase: No | Others: Yes - TFS includes revision control
+
+Trac | Git: Yes | Mercurial: Yes | Bazaar: Yes | Monotone: Yes | Darcs: Yes | CVS: No | Subversion: Yes | Perforce: Optional[98] | AccuRev: Yes | ClearCase: No | Others: No
+
+TrackerSuite.Net | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Tuleap | Git: Yes | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Twproject | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+Wrike | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: Yes | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+YouTrack | Git: Yes[112] | Mercurial: Yes[112] | Bazaar: No | Monotone: No | Darcs: No | CVS: Yes[112] | Subversion: Yes[112] | Perforce: Yes[112] | AccuRev: No | ClearCase: Yes[112] | Others: 3[112][113]
+
+Zammad | Git: No | Mercurial: No | Bazaar: No | Monotone: No | Darcs: No | CVS: No | Subversion: No | Perforce: No | AccuRev: No | ClearCase: No | Others: No
+
+System | Git | Mercurial | Bazaar | Monotone | Darcs | CVS | Subversion | Perforce | AccuRev | ClearCase | Others
+
+Authentication methods
+[edit]
+
+System | Form based | Public key cryptography | Two-factor | OpenID | OAuth | LDAP | Shibboleth | Others
+
+Apache Bloodhound | Form based: Yes | Public key cryptography: Optional[114] | Two-factor: No | OpenID: Optional[115] | OAuth: No | LDAP: Yes | Shibboleth: Unknown | Others: No
+
+Assembla Tickets | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: Yes | OAuth: Yes | LDAP: Yes (private version) | Shibboleth: Unknown | Others: Unknown
+
+Axosoft | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: No | LDAP: Yes | Shibboleth: No | Others: No
+
+Bugzilla | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: Optional[116] | OAuth: No | LDAP: Yes | Shibboleth: Unknown | Others: No
+
+Debbugs | Form based: No | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: No | LDAP: No | Shibboleth: No | Others: No
+
+Faveo Helpdesk | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: Yes | LDAP: Yes | Shibboleth: No | Others: No
+
+FogBugz | Form based: Yes | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Unknown
+
+Fossil | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: No | Shibboleth: Unknown | Others: Unknown
+
+FusionForge | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: Yes | OAuth: No | LDAP: Yes | Shibboleth: No | Others: Yes, CAS
+
+GLPI | Form based: Yes | Public key cryptography: No | Two-factor: Yes | OpenID: No | OAuth: No | LDAP: Yes | Shibboleth: No | Others: No
+
+GNATS | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: No | Shibboleth: Unknown | Others: Unknown
+
+Helix ALM | Form based: Yes | Public key cryptography: Optional | Two-factor: No | OpenID: Optional | OAuth: No | LDAP: Yes | Shibboleth: No | Others: Yes - custom DLL, SAML
+
+HP Quality Center | Form based: No | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: No | LDAP: Yes | Shibboleth: No | Others: Unknown
+
+Jira | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: Yes | OAuth: Yes | LDAP: Yes | Shibboleth: Yes, via plugin[117][118] | Others: Yes, via Crowd[119]
+
+MantisBT | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: Yes[120] | OAuth: Yes[121] | LDAP: Yes | Shibboleth: Unknown | Others: No
+
+Microsoft Dynamics CRM | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Unknown
+
+org-mode | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: No | Shibboleth: Unknown | Others: Unknown
+
+OTRS | Form based: Yes | Public key cryptography: Yes | Two-factor: Yes | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Unknown
+
+Phabricator | Form based: Yes | Public key cryptography: No | Two-factor: Yes | OpenID: No | OAuth: Yes | LDAP: Yes | Shibboleth: No | Others: No
+
+Redmine | Form based: Yes | Public key cryptography: Yes[122] | Two-factor: Yes | OpenID: Yes[123] | OAuth: No | LDAP: Yes | Shibboleth: Yes, via Apache (using mod_rails) | Others: No
+
+Request Tracker | Form based: Yes | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Yes[124] | OAuth: Unknown | LDAP: Yes[125] | Shibboleth: Unknown | Others: Yes[126]
+
+Roundup | Form based: Yes | Public key cryptography: No | Two-factor: Yes[127] | OpenID: Yes[128] | OAuth: Unknown | LDAP: Yes | Shibboleth: Yes[129] | Others: Yes[130]
+
+StarTeam | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: No | Shibboleth: Unknown | Others: Unknown
+
+Supportworks | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Unknown
+
+SysAid | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: No | LDAP: Yes | Shibboleth: No | Others: Yes, CAS
+
+Team Foundation Server | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Unknown
+
+Trac | Form based: Yes | Public key cryptography: Optional[114] | Two-factor: No | OpenID: Optional[115] | OAuth: No | LDAP: Yes | Shibboleth: Unknown | Others: No
+
+TrackerSuite.Net | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: No | LDAP: Yes | Shibboleth: No | Others: No
+
+Tuleap | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: Yes | OAuth: Yes | LDAP: Yes | Shibboleth: No | Others: No
+
+Twproject | Form based: Yes | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Yes, Simple container auth.
+
+Wrike | Form based: Unknown | Public key cryptography: Unknown | Two-factor: Unknown | OpenID: Unknown | OAuth: Unknown | LDAP: Yes | Shibboleth: Unknown | Others: Unknown
+
+YouTrack | Form based: Yes | Public key cryptography: No | Two-factor: Yes | OpenID: Yes | OAuth: Yes | LDAP: Yes | Shibboleth: Unknown | Others: Yes: JIRA account
+
+Zammad | Form based: Yes | Public key cryptography: No | Two-factor: No | OpenID: No | OAuth: Yes | LDAP: Yes | Shibboleth: Yes | Others: Yes: Twitter, Facebook, Google, Microsoft 365
+
+System | Form based | Public key cryptography | Two-factor | OpenID | OAuth | LDAP | Shibboleth | Others
+
+Containers
+[edit]
+
+System | Docker Image | Helm chart
+
+Apache Bloodhound | Docker Image: Unknown | Helm chart: Unknown
+
+Assembla Tickets | Docker Image: Unknown | Helm chart: Unknown
+
+Axosoft | Docker Image: Unknown | Helm chart: Unknown
+
+Bugzilla | Docker Image: Yes (Not official)[131] | Helm chart: Yes[132]
+
+Debbugs | Docker Image: Unknown | Helm chart: Unknown
+
+Faveo Helpdesk | Docker Image: Unknown | Helm chart: Unknown
+
+FogBugz | Docker Image: Unknown | Helm chart: Unknown
+
+Fossil | Docker Image: Unknown | Helm chart: Unknown
+
+FusionForge | Docker Image: Unknown | Helm chart: Unknown
+
+GLPI | Docker Image: Unknown | Helm chart: Unknown
+
+GNATS | Docker Image: Unknown | Helm chart: Unknown
+
+Helix ALM | Docker Image: Unknown | Helm chart: Unknown
+
+HP Quality Center | Docker Image: Unknown | Helm chart: Unknown
+
+Jira | Docker Image: Unknown | Helm chart: Unknown
+
+MantisBT | Docker Image: Yes (Not official)[133] | Helm chart: Unknown
+
+Microsoft Dynamics CRM | Docker Image: Unknown | Helm chart: Unknown
+
+org-mode | Docker Image: Unknown | Helm chart: Unknown
+
+OTRS | Docker Image: Unknown | Helm chart: Unknown
+
+Phabricator | Docker Image: Unknown | Helm chart: Unknown
+
+Redmine | Docker Image: Yes (Official)[134] | Helm chart: Yes (Bitnami)[135]
+
+Request Tracker | Docker Image: Unknown | Helm chart: Unknown
+
+Roundup | Docker Image: Yes (Official)[136] | Helm chart: Unknown
+
+StarTeam | Docker Image: Unknown | Helm chart: Unknown
+
+Supportworks | Docker Image: Unknown | Helm chart: Unknown
+
+SysAid | Docker Image: Unknown | Helm chart: Unknown
+
+Team Foundation Server | Docker Image: Unknown | Helm chart: Unknown
+
+Trac | Docker Image: Unknown | Helm chart: Unknown
+
+TrackerSuite.Net | Docker Image: Unknown | Helm chart: Unknown
+
+Tuleap | Docker Image: Unknown | Helm chart: Unknown
+
+Twproject | Docker Image: Unknown | Helm chart: Unknown
+
+Wrike | Docker Image: Unknown | Helm chart: Unknown
+
+YouTrack | Docker Image: Unknown | Helm chart: Unknown
+
+Zammad | Docker Image: Yes | Helm chart: Yes
+
+System | Docker Image | Helm chart
+
+See also
+[edit]
+
+Comparison of help desk issue tracking software
+
+List of personal information managers
+
+Comparison of project management software
+
+Networked Help Desk
+
+OSS through Java
+
+Notes
+[edit]
+
+↑ Debian's bug tracking system was in place as soon as 1994 according to Ian Jackson's Debbugs webpage. However, Debbugs, as a generic ITS engine, was only uploaded to Debian as version 1 in January 1999.
+
+↑ The Ruby on Rails console can be used to manually create tickets or replies
+
+References
+[edit]
+
+↑ "The Apache Bloodhound Open Source Project on Ohloh". 2013-04-06. Archived from the original on 6 April 2013. Retrieved 2022-06-07.
+
+↑ "[Announce] Apache Bloodhound 0.1.0 incubating Released". Retrieved April 2, 2013.
+
+↑ "Apache Allura Open Source project Hosting Platform". bugzilla.readthedocs.io. Retrieved 2022-11-29.
+
+↑ "Release 1.21.0". 31 August 2026. Retrieved 4 September 2026.
+
+↑ "3.6. Database Server – Bugzilla 5.1.2+ documentation". bugzilla.readthedocs.io. Retrieved 2022-06-07.
+
+↑ "5.2". 3 September 2024. Retrieved 6 November 2024.
+
+↑ "Dolibarr Open Source ERP and CRM wiki documentation". wiki.dolibarr.org. Retrieved 2022-06-07.
+
+↑ "Release 24.0.1". 7 September 2026. Retrieved 8 September 2026.
+
+↑ Ltd, Ladybird Web Solution Pvt. "Faveo Installation Guide". Faveo Installation Guide. Retrieved 2022-06-07.
+
+↑ "Fossil: Glossary". www.fossil-scm.org. Retrieved 2022-07-01.
+
+↑ "Changes for version 2.28".
+
+↑ "Prerequisites – GLPI 9.5 documentation". glpi-install.readthedocs.io. Retrieved 2022-06-07.
+
+↑ Chad Walstrom (3 March 2015). "GNU GNATS 4.2.0 Released!". Retrieved 28 September 2022.
+
+↑ "Helix ALM Release Notes". Retrieved May 2, 2024.
+
+↑ "Jira Software 10.1.x release notes".
+
+↑ "Admin Guide". www.mantisbt.org. Retrieved 2022-02-23.
+
+↑ "Release 2.28.4". 1 July 2026. Retrieved 1 July 2026.
+
+↑ "System requirements". OpenProject.org. Retrieved 2022-06-07.
+
+↑ "Tagged version 6.1.2". 17 March 2026. Retrieved 2 April 2026.
+
+↑ "README - RT 5.0.2 Documentation - Best Practical". docs.bestpractical.com. Retrieved 2022-06-07.
+
+↑ "Release 6.0.3". 20 May 2026. Retrieved 22 May 2026.
+
+↑ "Installing Roundup - Roundup 2.6.0 documentation". www.roundup-tracker.org. Retrieved 2023-11-28.
+
+↑ "Roundup 2.6.0 released". 13 July 2026.
+
+↑ "Hornbill Systems: Support Works Helpdesk". 1998-02-07. Archived from the original on February 7, 1998. Retrieved 2010-03-07.
+
+↑ "TracInstall – The Trac Project". trac.edgewall.org. Retrieved 2022-06-07.
+
+↑ "Requirements – Tuleap latest version documentation". docs.tuleap.org. Retrieved 2023-11-28.
+
+↑ "Software – Zammad documentation". docs.zammad.org. Retrieved 2022-06-07.
+
+↑ "Company Identity and Milestones". Zammad. Retrieved 18 December 2020.
+
+↑ "Major Release: Zammad 7.0 with AI features". Retrieved 6 March 2026.
+
+1 2 System supports service level agreement management
+
+1 2 System has a plugin API to allow integration with other products
+
+↑ "BloodhoundSearch – Apache Bloodhound". Archived from the original on 2013-09-10. Retrieved 2013-04-23.
+
+↑ "Testopia is a test case management extension for Bugzilla". Mozilla.org. 2010-10-05. Retrieved 2011-10-21.
+
+↑ "New Features in 2.18 :: Bugzilla". bugzilla.org. 2006-10-02. Retrieved 2011-11-16.
+
+↑ "Bug 232612 - enable boolean mode fulltext searches". Bugzilla.mozilla.org. Retrieved 2011-10-21.
+
+↑ "Bug 310717 - Oracle Bugzilla::DB::Oracle module". Bugzilla.mozilla.org. Retrieved 2011-10-21.
+
+↑ "Bug 365258 - PostgreSQL Use tsearch2 for fulltext indexing when available". Bugzilla.mozilla.org. Retrieved 2011-10-21.
+
+↑ Bugzilla 3.4.2 Release Notes
+
+↑ "FogBugz - Features - Customizable Case List". fogcreek.com. Archived from the original on 2013-07-05. Retrieved 2010-03-25.
+
+↑ "Searching in FogBugz". Fogcreek.com. Archived from the original on 2011-10-24. Retrieved 2011-10-21.
+
+↑ "Searching in FogBugz - About the FogBugz Search Engine". Fogcreek.com. Archived from the original on 2011-10-24. Retrieved 2011-10-21.
+
+↑ "Feature Request: index content of certain attachments (e.g. Word documents) in Wiki articles". Fogbugz.stackexchange.com. Archived from the original on 2012-03-02. Retrieved 2011-10-21.
+
+↑ "Fossil Server command - running multiple instances". fossil-scm.org. Retrieved 2011-01-11.
+
+↑ "Fossil: To Do List". Fossil-scm.org. Retrieved 2011-10-21.
+
+↑ "Multiple vendors". Confluence.atlassian.com. 2011-10-03. Retrieved 2011-10-21.
+
+↑ "Plugins.atlassian.com". Plugins.atlassian.com. Retrieved 2011-10-21.
+
+1 2 "JIRA - Performing Text Searches". Confluence.atlassian.com. Retrieved 2011-10-21.
+
+↑ "JIRA Searchable Attachments Plugin". Studio.plugins.atlassian.com. Retrieved 2011-10-21.{{cite web}}: CS1 maint: deprecated archival service (link)
+
+↑ Edit a JIRA Issue at the same time by two Users result in last save wins
+
+↑ "Mantis Feature List". Mantisbt.org. 2011-02-16. Retrieved 2011-10-21.
+
+↑ "0012319: Index attachments' content". MantisBT. Retrieved 2011-10-21.
+
+↑ Jenkins
+
+↑ Commercial plugin available (Redmine Reporting)
+
+↑ "Redmine".
+
+↑ Free plugin available (Redmine PostgreSQL Search)
+
+↑ Added by Xabier Elkano about (2010-09-14). "Xapian search plugin". Redmine. Retrieved 2011-10-21.
+
+↑ Redmine Feature #8691 Better handling of issue update conflict
+
+↑ "Feature list". Bestpractical.com. Retrieved 2011-10-21.
+
+↑ Needs a third-party extension (RT-Extension-SLA)
+
+↑ RT can be extended through Perl extensions, see for example RTX:: modules on MetaCPAN.org
+
+1 2 "Best Practical: What's New in 4: Fast full-text searching". Blog.bestpractical.com. 2011-06-27. Retrieved 2011-10-21.
+
+↑ "Roundup Design Detector Interface". Roundup-tracker.org. Retrieved 2014-01-03.
+
+↑ "Roundup Features". Roundup-tracker.org. Retrieved 2011-10-21.
+
+↑ Borland
+
+↑ 5005 API exists but is undocumented
+
+↑ "Smarter search and recent object functionality " teamwork's blog". Blog.twproject.com. 2009-02-20. Retrieved 2011-10-21.
+
+↑ "Test Manager plugin". Retrieved 2014-01-03.
+
+↑ "List of trac plugins". Trac.edgewall.org. 2011-08-11. Retrieved 2011-10-21.
+
+↑ "Trac 1.0". Trac.edgewall.org. 2010-09-11. Retrieved 2014-01-03.
+
+↑ "trac - Advanced Search - Indexing". Trac.edgewall.org. 2010-04-10. Retrieved 2011-10-21.
+
+↑ Trac #7145 Improve handling of conflicts due to concurrent ticket edits
+
+↑ "YouTrack integration with test management tools". Confluence.jetbrains.net. 2010-08-02. Archived from the original on 2011-10-09. Retrieved 2011-10-21.
+
+↑ "YouTrack Support Workflow and Response SLAs". 7 October 2024.
+
+↑ "YouTrack integrates with other products via REST API". Confluence.jetbrains.net. 2011-09-09. Archived from the original on 2013-01-23. Retrieved 2011-10-21.
+
+↑ "YouTrack - Search for issues". Jetbrains.com. Retrieved 2011-10-21.
+
+↑ "SLAs and Escalations • Features | Zammad". Zammad Website: SLA Feature. Retrieved 18 December 2020.
+
+↑ "Fast Full-text Search • Features | Zammad". Zammad Website: Full-text search Feature.
+
+↑ "Overview of Features | Zammad". Zammad Features. Retrieved 18 December 2020.
+
+1 2 "List of Mylyn connector extensions". Wiki.eclipse.org. 2011-08-23. Retrieved 2011-10-21.
+
+1 2 "Pluggable email handler for Trac". Trac Hacks. Retrieved 3 April 2013.
+
+↑ "email2trac utilities". SURF SARA. Retrieved 28 February 2014.
+
+1 2 3 "Tasktop Dev for Visual Studio". Visual Studio Gallery. Archived from the original on 2016-08-22. Retrieved 2016-08-08.
+
+↑ "XML-RPC doesn't work in IIS". Mozilla. 7 December 2011. Archived from the original on 3 August 2014. Retrieved 21 March 2014.
+
+↑ "HP ALM Explorer Add-in". HP. Archived from the original on 2012-06-20. Retrieved 2012-03-23.
+
+↑ "QcMylyn". Sourceforge.net. 2010-11-15. Retrieved 2011-10-21.
+
+↑ Using JIRA on a mobile device
+
+↑ By third-party extension: plugins.atlassian.com
+
+↑ Launchpadlib is a Python client library for the Launchpad RESTful API.
+
+↑ Feature #19097: Responsive layout for mobile devices - Redmine
+
+↑ "REST API for Request Tracker". Wiki.bestpractical.com. Retrieved 2011-10-21.
+
+↑ "XML-RPC access to Roundup". roundup-tracker.org. Retrieved 11 November 2016.
+
+↑ Through 5005 API, but is undocumented
+
+↑ #11953 (Responsive design for user interface) – The Trac Project
+
+↑ Introducing YouTrack Mobile
+
+↑ "Youtrack.mylyn.connector". Alexander Marchuk. Archived from the original on 5 November 2014. Retrieved 5 November 2014.
+
+↑ "Request Tracker RSS support". Wiki.bestpractical.com. 2011-10-14. Retrieved 2011-10-21.
+
+1 2 "FeedGeneration". wiki.roundup-tracker.org. 2009-02-01. Retrieved 2018-07-14.
+
+1 2 via the PerforcePlugin
+
+↑ via the Mercurial SCM Plug-In For Axosoft
+
+↑ "Git Bugzilla Extension". Theoldmonk.net. 2007-06-03. Retrieved 2011-10-21.
+
+↑ "Mercurial Bugzilla Extension". Mercurial.selenic.com. 2010-08-28. Archived from the original on 2011-10-08. Retrieved 2011-10-21.
+
+↑ Visual SourceSafe, Vault
+
+↑ Fossil
+
+1 2 "Defect Tracking Gateway". Perforce. Retrieved 2012-01-10.
+
+↑ No diff, just virtual version numbers.
+
+↑ There is an unsupported plugin for associating issues with ClearCase check-ins for an outdated version of JIRA. ClearCase support through Atlassian FishEye has been removed in all versions since April 2012. End of Support Announcement for IBM ClearCase
+
+↑ Commit Policy Plugin integrates JIRA with Bitbucket Server (formerly known as Atlassian Stash), in addition to Subversion, Git and Mercurial.
+
+↑ via the SourceHgWeb plugin Archived 2012-03-02 at the Wayback Machine
+
+↑ newly supported
+
+↑ via the bzr-tfs plugin
+
+↑ via the SVNBridge
+
+1 2 3 4 5 6 7 Via TeamCity integration
+
+↑ Visual SourceSafe, Team Foundation Server, Borland StarTeam
+
+1 2 "SSL Authentication Plugin". giel. 2009-07-01. Retrieved 2010-05-27.
+
+1 2 "OpenID Authentication Plugin". Dalius Dobravolskas. 2010-05-27. Archived from the original on 2010-06-02. Retrieved 2010-05-27.
+
+↑ "Bugzilla:OpenID Auth Plugin". Rob Lanphier. 2013-03-30. Retrieved 2015-05-07.
+
+↑ "Jira 3.8". Archived from the original on 2012-05-22. Retrieved 2012-08-01.
+
+↑ "Jira 4.x". Archived from the original on 2016-03-05. Retrieved 2020-07-26.
+
+↑ "Connecting to Crowd or Another JIRA Server for User Management - JIRA 6.4 EAP - Atlassian Documentation".
+
+↑ "MantisBT bug #8199: Add Open ID support". MantisBT. 2009-01-15. Retrieved 2010-05-27.
+
+↑ "MantisBT bug #11219: Provide OAuth inter-application authentication "tokens" mechanism". MantisBT. 2010-05-27. Retrieved 2010-05-27.
+
+↑ "Redmine SSL Auth plugin". Jorge Bernal. 2010-01-09. Retrieved 2010-05-27.
+
+↑ "Redmine Feature #699: OpenID login". Redmine. 2009-02-11. Retrieved 2010-05-27.
+
+↑ Needs a third-party extension (RT-Authen-OpenID on MetaCPAN.org)
+
+↑ Needs a third-party extension (RT::Authen::ExternalAuth)
+
+↑ See available extensions
+
+↑ HOTP/TOTP
+
+↑ developed by bugs.python.org team
+
+↑ See wiki page on ShibbolethLogin
+
+↑ Supports AUTHORIZATION header/var from front end authenticating web server/proxy.
+
+↑ "Bugzilla Docker image".
+
+↑ "Bugzilla Helm chart". GitHub. 10 April 2020.
+
+↑ "MantisBT Docker image".
+
+↑ "Redmine Official Docker Image".
+
+↑ "Bitnami redmine chart".
+
+↑ "Roundup Tracker Docker Image".
+
+External links
+[edit]
+
+v t e Bug tracking systems
+
+Years indicate the date of first stable release.
+
+Client-server | Free software | GNATS (1992) Debbugs (1994/1999) Bugzilla (1998) Request Tracker (1999) MantisBT (2000) Roundup (2001) Trac (2004) Redmine (2006) Apache Allura (2009) Maniphest (2010) Tuleap (2011) GitLab (2011) Apache Bloodhound (2012) discontinued Gitea (2016) Forgejo (2022) Proprietary | Helix ALM (formerly TestTrack) (1998) Axosoft (2002) Jira (2002) Azure DevOps Server (2005) YouTrack (2009)
+
+Distributed | Free software | Fossil (2006) Proprietary | Azure DevOps Server (2013)
+
+SaaS-only | SourceForge (1999) GNU Savannah (2000) OSDN (2002) discontinued Launchpad (2004) Assembla (2005) CodePlex (2006) discontinued GitHub (2008) Bitbucket (2008) YouTrack (2011) Azure DevOps Services (2012) GitLab (2014) Codeberg (2019) Gitea (2022)
+
+Category Comparison
+
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Comparison_of_issue-tracking_systems&oldid=1378742144"
+
+Categories:
+
+Bug and issue tracking software
+
+Software comparisons
+
+Hidden categories:
+
+Articles that may contain original research from April 2026
+
+All articles that may contain original research
+
+Articles needing additional references from October 2011
+
+All articles needing additional references
+
+Articles with multiple maintenance issues
+
+Articles with short description
+
+Short description is different from Wikidata
+
+All articles with unsourced statements
+
+Articles with unsourced statements from June 2013
+
+CS1 maint: deprecated archival service
+
+Webarchive template wayback links
+
+This page was last edited on 6 October 2026, at 00:13 (UTC).
+
+Page was rendered with Parsoid.
+
+Text is available under the Creative Commons Attribution-ShareAlike 4.0 License;
+additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+
+Privacy policy
+
+About Wikipedia
+
+Disclaimers
+
+Contact Wikipedia
+
+Legal & safety contacts
+
+Code of Conduct
+
+Developers
+
+Statistics
+
+Cookie statement
+
+Mobile view
+
+Search
+
+Search
+
+Toggle the table of contents
+
+Comparison of issue-tracking systems
+
+Add languages
+
+Add topic

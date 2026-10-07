@@ -20,7 +20,7 @@ Two more arms are reported beside them when their files exist, with no bar (cita
 The steps, in order. Only `extract` and `read` call a model.
 
     python bench/study/study.py freeze                         record the code being measured (FROZEN.json)
-    python bench/study/study.py pages
+    python bench/study/study.py pages                          (--dir names another round: its pages.json, its files)
     python bench/study/study.py extract --backend claude-code --model haiku --family claude
     python bench/study/study.py extract --backend openai --model <a model> --family gpt
     python bench/study/study.py sheet                          a blind sheet for the labellers
@@ -115,13 +115,27 @@ def freeze(a: argparse.Namespace) -> None:
     print(json.dumps(record, indent=1))
 
 
+def close(a: argparse.Namespace) -> None:
+    """Mark a round as over: its record stays, and the code that decides a claim may change again.
+
+    A round's numbers describe the code that was frozen for it. Once they are published and the next
+    version begins, the record is closed with a note saying what it describes, and the suite stops
+    holding the code to it.
+    """
+    path = a.dir / "FROZEN.json"
+    record = json.loads(path.read_text())
+    record["closed"] = a.note or "the round is over; its numbers describe the code recorded here"
+    path.write_text(json.dumps(record, indent=1) + "\n")
+    print(json.dumps(record, indent=1))
+
+
 # ── Steps that build the inputs ───────────────────────────────────────────────────────────────────
 
 
 def pages(a: argparse.Namespace) -> None:
     """Fetch every page of pages.json into the local ledger. A page that cannot be read is named and left out."""
     ledger, index = Ledger(), []
-    for p in json.loads((HERE / "pages.json").read_text()):
+    for p in json.loads((a.dir / "pages.json").read_text()):
         try:
             ev = ledger.add_url(p["url"])
         except Exception as e:
@@ -593,6 +607,7 @@ def main() -> None:
     """Parse the command line and run one step."""
     steps = {
         "freeze": freeze,
+        "close": close,
         "pages": pages,
         "extract": extract,
         "sheet": sheet,
@@ -611,6 +626,7 @@ def main() -> None:
     ap.add_argument("--settled-by", default="", help="final: who wrote settled.jsonl; it is recorded with the labels")
     ap.add_argument("--labels", default="labels_final.jsonl", help="score: the labels file to score against")
     ap.add_argument("--dir", type=Path, default=HERE, help="where the study files are")
+    ap.add_argument("--note", default="", help="close: what the closed record describes")
     a = ap.parse_args()
     steps[a.step](a)
 

@@ -1,0 +1,982 @@
+Jump to content
+
+Main menu
+
+Main menu
+
+move to sidebar
+hide
+
+Navigation
+
+Main page
+
+Contents
+
+Current events
+
+Random article
+
+About Wikipedia
+
+Contact us
+
+Contribute
+
+Help
+
+Learn to edit
+
+Community portal
+
+Recent changes
+
+Upload file
+
+Special pages
+
+Search
+
+Search
+
+Appearance
+
+Donate
+
+Create account
+
+Log in
+
+Personal tools
+
+Donate
+
+Create account
+
+Log in
+
+Contents
+
+move to sidebar
+hide
+
+(Top)
+
+1
+General information
+
+2
+Features
+
+3
+Monetary features
+
+4
+See also
+
+5
+Notes
+
+6
+References
+
+Toggle the table of contents
+
+Comparison of project management software
+
+4 languages
+
+Español
+
+हिन्दी
+
+日本語
+
+中文
+
+Edit links
+
+Article
+
+Talk
+
+English
+
+Read
+
+View source
+
+View history
+
+Tools
+
+Tools
+
+move to sidebar
+hide
+
+Actions
+
+Read
+
+View source
+
+View history
+
+General
+
+What links here
+
+Related changes
+
+Upload file
+
+Permanent link
+
+Page information
+
+Cite this page
+
+Get shortened URL
+
+Switch to legacy parser
+
+Print/export
+
+Download as PDF
+
+Printable version
+
+In other projects
+
+Meta-Wiki
+
+Wikidata item
+
+Appearance
+
+move to sidebar
+hide
+
+From Wikipedia, the free encyclopedia
+
+This article needs more citations. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. Find sources: "Comparison of project management software" – news · newspapers · books · scholar · JSTOR (April 2026) (Learn how and when to remove this message)
+
+The following is a comparison of project management software.
+
+General information
+
+Software | Web-based | Hosted on-premises | SaaS | License | Programming language
+
+24SevenOffice | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+AnyChart (AnyGantt) | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: JavaScript
+
+Apache Allura | Web-based: Yes | Hosted on-premises: Yes | License: Apache License | Programming language: Python
+
+Apache OFBiz | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Apache License | Programming language: Java, XML, FreeMarker, Groovy, JavaScript
+
+Apache Bloodhound | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Apache License | Programming language: Python
+
+Asana | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+Assembla | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Axosoft | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Basecamp | Web-based: Yes[1] | Hosted on-premises: No[2] | SaaS: Yes | License: Proprietary | Programming language: Ruby
+
+BigGantt | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: Java, Angular
+
+BigPicture | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: Java, Angular
+
+Calligra Plan | Web-based: No | Hosted on-premises: File-based | SaaS: No | License: GPL | Programming language: C++ and Java
+
+CEITON | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: ASP.NET, JavaScript
+
+Clarizen | Web-based: Yes[3] | Hosted on-premises: No | SaaS: Yes[3] | License: Proprietary
+
+ConceptDraw Project | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: Proprietary
+
+ConceptDraw PLAN | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary | Programming language: PHP and Java
+
+Copper Project | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+dotProject | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: GPL | Programming language: PHP
+
+DynaRoad | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+Easy Redmine | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Open Source | Programming language: Ruby on Rails and Vue.js
+
+Easy projects | Web-based: Yes[4] | Hosted on-premises: Yes[4] | SaaS: Yes[4] | License: Proprietary | Programming language: ASP.NET
+
+Endeavour Software Project Management | Web-based: Yes | Hosted on-premises: Yes | SaaS: Unknown | License: GPL | Programming language: Java
+
+eGroupWare | Web-based: Yes | Hosted on-premises: Yes | SaaS: Unknown | License: GPL | Programming language: PHP
+
+enQuire | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Proprietary | Programming language: Java
+
+FastTrack Schedule | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: Proprietary
+
+Feng Office Community Edition | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: AGPLv3 | Programming language: PHP
+
+FinancialForce.com | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Proprietary
+
+FogBugz | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: ASP.NET
+
+Fossil-scm | Web-based: Yes[5] | Hosted on-premises: Yes[6] | SaaS: Yes[7] | License: 2-clause BSD license | Programming language: SQLite and C
+
+Freedcamp | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+FusionForge | Web-based: Yes | Hosted on-premises: Yes | SaaS: Unknown | License: GPL | Programming language: PHP
+
+Genius Project | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Goalscape | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+GroupOffice | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Hall.com | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Unknown
+
+Helix ALM | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: C++
+
+HP Project & Portfolio Software | Web-based: Yes | Hosted on-premises: Yes | SaaS: Unknown | License: Proprietary
+
+Huddle | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+HyperOffice | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+Intaver Institute;RiskyProject | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+IRise | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: Java
+
+Jira | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: Java
+
+Launchpad | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: AGPL | Programming language: Python
+
+LibrePlan | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: AGPL | Programming language: Java
+
+LiquidPlanner | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary | Programming language: Ruby
+
+MacProject | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+MantisBT | Web-based: Yes | Hosted on-premises: Yes | SaaS: No | License: GPL | Programming language: PHP
+
+Meridian Systems;Proliance | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Microsoft Dynamics AX | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: Proprietary | Programming language: X++
+
+Microsoft Office Project Server | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Microsoft Project | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Microsoft SharePoint Server | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Microsoft Team Foundation Server | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Milestones Professional | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: Proprietary | Programming language: C++
+
+Mingle | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: Ruby on Rails
+
+Monday.com | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+MyWorkPLAN | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+NetPoint | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+NetSuite | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+O3Spaces | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+OmniPlan | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: Proprietary
+
+Onepager pro | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: Proprietary | Programming language: ASP.NET
+
+Open Workbench | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Open source
+
+OpenProj | Web-based: No | Hosted on-premises: Unknown | SaaS: Yes | License: CPAL | Programming language: Java
+
+OpenProject | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: GPL | Programming language: Ruby on Rails and Angular
+
+OnlyOffice | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: GPL | Programming language: ASP.NET
+
+Oracle Primavera EPPM (Primavera P6) | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+phpGroupWare | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: GPL | Programming language: PHP
+
+PHProjekt | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: LGPL | Programming language: PHP
+
+Pivotal Tracker | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Unknown | Programming language: Ruby
+
+Planisware | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+PLANTA Project | Web-based: Yes | Hosted on-premises: Yes | SaaS: No | License: Proprietary
+
+Priority Matrix | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+Project KickStart | Web-based: No | Hosted on-premises: Yes | SaaS: Unknown | License: Proprietary
+
+Project Team Builder | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Projector PSA | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+ProjectLibre | Web-based: No (Cloud based version under development)[8] | Hosted on-premises: Yes | SaaS: No (Included in future plans)[9] | License: CPAL | Programming language: Java
+
+ProjectManager.com | Web-based: Yes[10] | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+Project.net | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: GPL | Programming language: Java
+
+Projectplace | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+ProjeQtOr | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: AGPL | Programming language: PHP
+
+Prolog | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Pyrus | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+RationalPlan | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Redmine | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes[11][12][13] | License: GPL | Programming language: Ruby
+
+SAP Business ByDesign | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Proprietary
+
+Sciforma | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Scoro | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary | Programming language: PHP[14]
+
+Seavus Project Viewer (software) | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: C++
+
+Severa | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Unknown
+
+Shortcut Software | Web-based: Yes | SaaS: Yes | License: Proprietary | Programming language: Clojure, JavaScript
+
+Smartsheet | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Proprietary | Programming language: PHP
+
+Spider Project | Web-based: No | Hosted on-premises: No | SaaS: No | License: Proprietary
+
+Streamtime Software | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary | Programming language: PHP
+
+Taiga | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: AGPL | Programming language: Python
+
+TaskJuggler | Web-based: No | Hosted on-premises: Yes | SaaS: No | License: GPL | Programming language: Ruby
+
+Teamcenter | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+TeamDynamixHE | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Tom's Planner | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+Trac | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: (modified) BSD license | Programming language: Python
+
+TrackerSuite.Net | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Traction TeamPage | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: Java
+
+Trello | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary | Programming language: CoffeeScript, Backbone.js, HTML5, Mustache templating language, MongoDB, Node.js, Socket.io
+
+Tuleap | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: GPL
+
+Twproject | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+UniPhi | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary | Programming language: ASP.NET
+
+Vpmi | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+web2project | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Unknown | License: GPL | Programming language: PHP
+
+Windchill (software);ProjectLink | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Workamajig | Web-based: Yes | Hosted on-premises: Yes | SaaS: Yes | License: Proprietary
+
+Workfront | Web-based: Yes[15] | Hosted on-premises: No | SaaS: Yes | License: Proprietary
+
+WorkPLAN Enterprise | Web-based: No | Hosted on-premises: Unknown | SaaS: Unknown | License: Proprietary
+
+Workspace.com | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Proprietary
+
+Wrike | Web-based: Yes | Hosted on-premises: Unknown | SaaS: Yes | License: Proprietary
+
+Zoho Projects | Web-based: Yes | Hosted on-premises: No | SaaS: Yes | License: Proprietary | Programming language: PHP
+
+Features
+
+Software | Collaborative software | Issue tracking system | Scheduling | Project portfolio management | Resource management | Document management | Workflow system | Reporting and analyses
+
+24SevenOffice | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+AnyChart (AnyGantt) | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Apache Allura | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+Apache OFBiz | Collaborative software: Unknown | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Unknown
+
+Apache Bloodhound | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: Yes | Reporting and analyses: No
+
+Asana | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Assembla | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Axosoft | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Basecamp | Collaborative software: Yes[16] | Issue tracking system: No | Scheduling: No | Project portfolio management: No | Resource management: Yes[15] | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+BigGantt | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+BigPicture | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Calligra Plan | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: No
+
+CEITON | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Clarizen | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+ConceptDraw Project | Collaborative software: Yes[17] | Issue tracking system: Yes[18] | Scheduling: Yes[19] | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Copper Project | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+dotProject | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+DynaRoad | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Easy Redmine | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Easy projects | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: Yes
+
+Endeavour Software Project Management | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+eGroupWare | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+enQuire | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+FastTrack Schedule | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Feng Office Community Edition | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+FinancialForce.com | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: Yes
+
+FogBugz | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Fossil-scm | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: No | Reporting and analyses: No
+
+Freedcamp | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Genius Project | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Goalscape | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Group-Office | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+Hall.com | Collaborative software: Yes | Issue tracking system: No | Scheduling: No | Project portfolio management: No | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+Helix ALM | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+HP Project & Portfolio Software | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Huddle | Collaborative software: Yes | Issue tracking system: No | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+Hyperoffice | Collaborative software: Yes | Issue tracking system: No | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+IRise | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Jira | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+Launchpad | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: No | Document management: No | Workflow system: No | Reporting and analyses: No
+
+LibrePlan | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: Yes
+
+LiquidPlanner | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+MacProject | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: No
+
+MantisBT | Collaborative software: No | Issue tracking system: Yes | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: No | Reporting and analyses: No
+
+Microsoft Dynamics AX | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Microsoft Office Project Server | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Microsoft Project | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: Yes
+
+Microsoft SharePoint Server | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: No
+
+Microsoft Team Foundation Server | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Milestones Professional | Collaborative software: No | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+MyWorkPLAN | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+NetPoint | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: No
+
+NetSuite | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+O3Spaces | Collaborative software: Yes | Issue tracking system: No | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+OnePager Pro | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+OmniPlan | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: Yes
+
+Open Workbench | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: No
+
+OpenProj | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: No
+
+OpenProject | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes (via OpenProject plug-ins)[20]
+
+Oracle Primavera EPPM (Primavera P6) | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+phpGroupWare | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Unknown | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+PHProjekt | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: No | Reporting and analyses: No
+
+Pivotal Tracker | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Planisware | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+PLANTA Project | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Project KickStart | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: Yes[21] | Workflow system: Yes[22] | Reporting and analyses: Yes[23]
+
+Project Team Builder | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes[24] | Project portfolio management: Yes[24] | Resource management: Yes[24] | Document management: No | Workflow system: Yes | Reporting and analyses: Yes[24]
+
+ProjectLibre | Collaborative software: No (Enterprise ProjectLibre and PPMLibre under development)[8][25] | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No (Enterprise ProjectLibre and PPMLibre under development)[8][25] | Resource management: Yes | Document management: No[26] | Workflow system: No | Reporting and analyses: Yes
+
+ProjectLink | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+ProjectManager.com | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Project.net | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Projector PSA | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Projectplace | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: No
+
+ProjeQtOr | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Proliance | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes[27] | Reporting and analyses: Yes[28]
+
+Prolog | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Pyrus | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+RationalPlan | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Redmine | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: No
+
+SAP Business ByDesign | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Sciforma | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Scoro | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Severa | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Smartsheet | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+Spider Project | Collaborative software: No | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: Yes
+
+Streamtime Software | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: No | Workflow system: Yes | Reporting and analyses: Yes
+
+TaskJuggler | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: No | Workflow system: No | Reporting and analyses: No
+
+Teamcenter | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+TeamDynamixHE | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+TeamLab | Collaborative software: Yes | Issue tracking system: No | Scheduling: Yes | Project portfolio management: Yes | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+Trac | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: No | Resource management: No | Document management: No | Workflow system: Yes | Reporting and analyses: No
+
+TrackerSuite.Net | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Traction TeamPage | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: No | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+Trello | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Unknown | Resource management: Unknown | Document management: No | Workflow system: No | Reporting and analyses: Unknown
+
+Tuleap | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: No | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Twproject | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+UniPhi | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+VPMi | Collaborative software: Unknown | Issue tracking system: Unknown | Scheduling: Unknown | Project portfolio management: Unknown | Resource management: Unknown | Document management: Unknown | Workflow system: Unknown | Reporting and analyses: Unknown
+
+web2project | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: No | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: No | Reporting and analyses: Yes
+
+Workamajig | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Workfront | Collaborative software: Yes | Issue tracking system: Yes[15] | Scheduling: Yes[15] | Project portfolio management: Yes[15] | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+WorkPLAN Enterprise | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Workspace.com | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Unknown | Reporting and analyses: Unknown
+
+Wrike | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: Yes | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Zoho Projects | Collaborative software: Yes | Issue tracking system: Yes | Scheduling: Yes | Project portfolio management: No | Resource management: Yes | Document management: Yes | Workflow system: Yes | Reporting and analyses: Yes
+
+Monetary features
+
+Software | Budget management | Time tracking | Invoicing
+
+24SevenOffice | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+AnyChart (AnyGantt) | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Apache Allura | Budget management: No | Time tracking: No | Invoicing: No
+
+Apache OFBiz | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Apache Bloodhound | Budget management: No | Time tracking: No | Invoicing: No
+
+Asana | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Assembla | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Axosoft | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Basecamp | Budget management: No | Time tracking: No | Invoicing: No
+
+BigGantt | Budget management: No | Time tracking: Yes | Invoicing: No
+
+BigPicture | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Calligra Plan | Budget management: No | Time tracking: No | Invoicing: No
+
+CEITON | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Clarizen | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+ConceptDraw Project | Budget management: Yes[29] | Time tracking: Yes[30] | Invoicing: No
+
+Copper Project | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+dotProject | Budget management: No | Time tracking: Yes[a] | Invoicing: Yes[a]
+
+DynaRoad | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Easy Redmine | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Easy projects | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+eGroupWare | Budget management: No | Time tracking: Yes | Invoicing: No
+
+enQuire | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+FastTrack Schedule | Budget management: No | Time tracking: No | Invoicing: No
+
+Feng Office Community Edition | Budget management: No | Time tracking: Yes | Invoicing: Yes
+
+FinancialForce.com | Budget management: No | Time tracking: Yes | Invoicing: Yes
+
+FogBugz | Budget management: No | Time tracking: Yes | Invoicing: No
+
+FusionForge | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Genius Project | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Hall.com | Budget management: No | Time tracking: No | Invoicing: No
+
+Helix ALM | Budget management: No | Time tracking: Yes | Invoicing: No
+
+HP Project & Portfolio Software | Budget management: No | Time tracking: No | Invoicing: No
+
+Huddle | Budget management: No | Time tracking: No | Invoicing: No
+
+Hyperoffice | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Jira | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Launchpad | Budget management: No | Time tracking: No | Invoicing: No
+
+LibrePlan | Budget management: No | Time tracking: Yes | Invoicing: No
+
+LiquidPlanner | Budget management: No | Time tracking: Yes | Invoicing: No
+
+MacProject | Budget management: No | Time tracking: No | Invoicing: No
+
+MantisBT | Budget management: No | Time tracking: Yes[31] | Invoicing: No
+
+Microsoft Dynamics AX | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Microsoft Office Project Server | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Microsoft Project | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Microsoft SharePoint Server | Budget management: No | Time tracking: No | Invoicing: No
+
+Microsoft Team Foundation Server | Budget management: No | Time tracking: No | Invoicing: No
+
+Milestones Professional | Budget management: No | Time tracking: No | Invoicing: No
+
+MyWorkPLAN | Budget management: Yes | Time tracking: No | Invoicing: No
+
+NetPoint | Budget management: No | Time tracking: No | Invoicing: No
+
+NetSuite | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+O3Spaces | Budget management: No | Time tracking: No | Invoicing: No
+
+OmniPlan | Budget management: No | Time tracking: No | Invoicing: No
+
+OnePager Pro | Budget management: No | Time tracking: No | Invoicing: No
+
+Open Workbench | Budget management: No | Time tracking: No | Invoicing: No
+
+OpenProj | Budget management: No | Time tracking: No | Invoicing: No
+
+OpenProject | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Oracle Primavera EPPM (Primavera P6) | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+phpGroupWare | Budget management: No | Time tracking: No | Invoicing: No
+
+PHProjekt | Budget management: No | Time tracking: Yes[32] | Invoicing: No
+
+Pivotal Tracker | Budget management: No | Time tracking: No | Invoicing: No
+
+Planisware | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+PLANTA Project | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Project KickStart | Budget management: No | Time tracking: No | Invoicing: No
+
+Project Team Builder | Budget management: No | Time tracking: No | Invoicing: No
+
+ProjectLibre | Budget management: Yes[33] | Time tracking: Yes[34] | Invoicing: No
+
+ProjectManager.com | Budget management: Yes[35] | Time tracking: Yes[36] | Invoicing: No
+
+Project.net | Budget management: No | Time tracking: Yes[37] | Invoicing: Yes
+
+Projectplace | Budget management: No | Time tracking: No | Invoicing: No
+
+ProjeQtOr | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Proliance | Budget management: No | Time tracking: No | Invoicing: No
+
+Prolog | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Pyrus | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+RationalPlan | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Redmine | Budget management: No | Time tracking: Yes | Invoicing: No
+
+SAP Business ByDesign | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Sciforma | Budget management: Yes | Time tracking: Yes[38] | Invoicing: No
+
+Scoro | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Severa | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Smartsheet | Budget management: No | Time tracking: No | Invoicing: No
+
+Streamtime Software | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+Spider Project | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+TaskJuggler | Budget management: No | Time tracking: No | Invoicing: No
+
+Teamcenter | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+TeamDynamixHE | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+TeamLab | Budget management: No | Time tracking: No | Invoicing: No
+
+Tom's Planner | Budget management: No | Time tracking: No | Invoicing: No
+
+Trac | Budget management: No | Time tracking: No | Invoicing: No
+
+TrackerSuite.Net | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Traction TeamPage | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Trello | Budget management: No | Time tracking: No | Invoicing: No
+
+Tuleap | Budget management: No | Time tracking: No | Invoicing: No
+
+Twproject | Budget management: Yes[39] | Time tracking: Yes | Invoicing: No
+
+UniPhi | Budget management: Yes | Time tracking: Yes | Invoicing: Yes
+
+VPMi | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+web2project | Budget management: No | Time tracking: No[40] | Invoicing: No
+
+Workamajig | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+Workfront | Budget management: Yes | Time tracking: Yes | Invoicing: No
+
+WorkPLAN Enterprise | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Workspace.com | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Wrike | Budget management: No | Time tracking: Yes | Invoicing: No
+
+Zoho Projects | Budget management: Yes[41] | Time tracking: Yes[41] | Invoicing: Yes[41]
+
+See also
+
+Kanban (development)
+
+Project management software
+
+Project planning
+
+Comparison of scrum software
+
+Comparison of development estimation software
+
+Comparison of source-code-hosting facilities
+
+Comparison of CRM systems
+
+Notes
+
+1 2 Includes a very simple time tracking mechanism, enough to produce relevant data for invoicing as well as to compare it with the actual overall budget.
+
+References
+
+↑ O'Dell, Jolie (13 January 2009). "Twitter for Teams: Teambox Launches Web-Based Collaboration Tool". ReadWriteWeb. Archived from the original on 2 May 2012. Retrieved 5 May 2012.
+
+↑ "Basecamp 2 Help". basecamp.com. Retrieved 16 June 2017.
+
+1 2 Morochove, Richard (26 February 2008). "Simpler Project-Managing Apps Get the Job Done". PCWorld. Retrieved 13 May 2012.
+
+1 2 3 "Easy Projects Rating". Retrieved 16 July 2012.{{cite web}}: CS1 maint: deprecated archival service (link)
+
+↑ "Fossil SCM - Lightweight self hosting web based distributed issue tracker Wiki and version control". 12 August 2012. Retrieved 2 July 2013.
+
+↑ "Fossil repository hosting - A single executable for Windows Mac Linux and others". Retrieved 2 July 2013.
+
+↑ "ChiselApp ChangeOver Complete - CHISEL FOSSIL SCM HOSTING". Andreas Kupries. 30 April 2013. Retrieved 1 May 2013.
+
+1 2 3 "New Release of ProjectLibre and Update on Cloud Progress". ProjectLibre. 10 July 2015. Archived from the original on 16 July 2015. Retrieved 15 July 2015.
+
+↑ "SaaS Subscription - No Installation (Future)". ProjectLibre. Archived from the original on 15 July 2015. Retrieved 15 July 2015.
+
+↑ "Project Management FAQ's". ProjectManager.com. Retrieved 11 May 2013.
+
+↑ "Planio — Simple Web-Based Project Management". Planio. 21 March 2013. Retrieved 21 March 2013.
+
+↑ "SaaS Redmine Hosting Plans". S.Ruttloff, Computer Hard- & Software Software- und IT-Dienstleistungen. 21 March 2013. Archived from the original on 9 March 2013. Retrieved 21 March 2013.
+
+↑ "Peygir Project and Team Management System". Bonyan Ltd. 9 February 2018. Retrieved 9 February 2018.
+
+↑ "Scoro API". api.scoro.ee. Retrieved 5 December 2016.
+
+1 2 3 4 5 Setiawan, Eko (5 December 2011). "The 7 Most Popular Online Project Management Tools". Dynamicwp. Retrieved 11 May 2012.
+
+↑ Evans, Meryl K (17 August 2009). "Teambox: Collaborate Freely with Your Team". Gigaom. Archived from the original on 11 May 2012. Retrieved 5 May 2012.
+
+↑ "Exchange project data". ConceptDraw. Retrieved 25 September 2013.
+
+↑ "Track Project Plan vs. the Actuals". ConceptDraw. Retrieved 25 September 2013.
+
+↑ "How to Create a Multi-Project Schedule". ConceptDraw. Retrieved 25 September 2013.
+
+↑ "OpenProject Reporting Plugin". The Open Project Foundation. Retrieved 14 July 2015.
+
+↑ "What's New — Project KickStart Pro 4 Key Features — Document Management". Experience In Software, Inc. Archived from the original on 22 April 2012. Retrieved 11 April 2012.
+
+↑ "Project Planning Software". Experience In Software, Inc. Archived from the original on 26 April 2012. Retrieved 11 April 2012.
+
+↑ "Increase Communication & Collaboration". Experience In Software, Inc. Archived from the original on 26 April 2012. Retrieved 11 April 2012.
+
+1 2 3 4 Vanhoucke, M. and A. Shtub, January 2011, PM World Today,(featured paper), Vol. XIII, Issue I
+
+1 2 "Products". ProjectLibre. Retrieved 14 July 2015.
+
+↑ "Document Management". Projectlibre. Retrieved 14 July 2015.
+
+↑ "General Contractor Solutions - Transforming the way the world works". www.meridiansystems.com. Retrieved 16 June 2017.
+
+↑ "Analytics & Dashboards - Real Estate & Workplace Solutions". realestate.trimble.com. Retrieved 16 June 2017.
+
+↑ "Working with project cost". ConceptDraw. Retrieved 25 September 2013.
+
+↑ "How to Shift Dates in project". ConceptDraw. Retrieved 25 September 2013.
+
+↑ "Mantis Bug Tracker". Mantisbt.org. Retrieved 17 March 2013.
+
+↑ Webfusion Ltd. "Phprojekt - Project management software". 123-reg.co.uk. Retrieved 17 March 2013.
+
+↑ "Project Budget". ProjectLibre. Retrieved 26 July 2015.
+
+↑ "ProjectLibre:open source replacement of MS Project". ProjectsatWork. Retrieved 26 July 2015.
+
+↑ "Expense Tracking Software". Retrieved 11 May 2013.
+
+↑ "Project Management Software Features". ProjectManager.com. Retrieved 17 March 2013.
+
+↑ "Account for Your Time". Project.net. Retrieved 13 May 2014.
+
+↑ "Sciforma 5.0: Project Management Software and Project Portfolio Management Software-Sciforma-Netherlands". Sciforma.com. Retrieved 17 March 2013.
+
+↑ "Practical cost management with Twproject". OpenLab. Retrieved 3 June 2013.{{cite web}}: CS1 maint: deprecated archival service (link)
+
+↑ Welcome. "Welcome". web2Project. Retrieved 17 March 2013.
+
+1 2 3 "Project Management Tools | Features : Zoho Projects". Zoho.com. Retrieved 17 March 2013.
+
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Comparison_of_project_management_software&oldid=1364585119"
+
+Categories:
+
+Project management software
+
+Software comparisons
+
+Hidden categories:
+
+Articles with short description
+
+Short description with empty Wikidata description
+
+Wikipedia indefinitely semi-protected pages
+
+Articles needing additional references from April 2026
+
+All articles needing additional references
+
+Use dmy dates from June 2017
+
+CS1 maint: deprecated archival service
+
+This page was last edited on 17 July 2026, at 10:43 (UTC).
+
+Page was rendered with Parsoid.
+
+Text is available under the Creative Commons Attribution-ShareAlike 4.0 License;
+additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+
+Privacy policy
+
+About Wikipedia
+
+Disclaimers
+
+Contact Wikipedia
+
+Legal & safety contacts
+
+Code of Conduct
+
+Developers
+
+Statistics
+
+Cookie statement
+
+Mobile view
+
+Search
+
+Search
+
+Toggle the table of contents
+
+Comparison of project management software
+
+4 languages
+
+Add topic

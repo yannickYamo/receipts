@@ -98,3 +98,52 @@ def test_html_title_ignores_svg_and_a_missing_head_close():
         "<html><head><title>Acme</title><body><svg><title>Globex logo</title></svg><p>Hello there.</p></body></html>"
     )
     assert title == "Acme" and text == "Hello there."
+
+
+# ── A table row is one line, and a value carries the header of its column ───────────────────────────
+
+TABLE = """<html><head><title>Acme pricing</title></head><body><h1>Plans</h1>
+<table><thead><tr><th></th><th><div>Free</div><div>$0</div><a>Start</a></th><th>Pro<br>$49 /month</th></tr></thead>
+<tbody><tr><th scope=row>File uploads</th><td>10MB</td><td>Unlimited</td></tr>
+<tr><td>SSO</td><td></td><td><svg aria-label="yes"><path/></svg>Included</td></tr>
+<tr><td colspan=3>All plans include support</td></tr></tbody></table>
+<p>After the table.</p>
+<div role="table"><div role="row"><span role="columnheader">Plan</span><span role="columnheader">Seats</span></div>
+<div role="row"><span role="cell">Team</span><span role="cell">25 <b>seats</b></span></div></div>
+<table><tr><td>Starter</td><td>$19</td></tr><tr><td>Growth</td><td>$29</td></tr></table>
+<p>Unclosed <b>bold<p>next para</p><br/></body></html>"""
+
+
+def test_a_table_row_is_one_line_and_each_value_carries_its_column():
+    from receipts.text import html_to_text
+
+    title, text = html_to_text(TABLE)
+    lines = [x for x in text.split("\n") if x]
+    assert title == "Acme pricing"
+    assert "Free $0 Start | Pro $49 /month" in lines  # the header row, whole
+    assert "File uploads | Free: 10MB | Pro: Unlimited" in lines  # a header is named by its first line
+    assert "SSO | Pro: Included" in lines  # an empty cell says nothing, and so is left out
+    assert "All plans include support" in lines  # a row that does not line up is written plainly
+    assert "Team | Seats: 25 seats" in lines  # a table made of divs that names its parts
+    assert "Starter | $19" in lines and "Growth | $29" in lines  # no header marked: none is guessed
+    assert lines[-2:] == ["Unclosed bold", "next para"]  # tags left open do not lose the text
+
+
+def test_a_value_quoted_from_a_row_is_checked_against_the_whole_row():
+    from receipts import Claim, Ledger, check_claim
+    from receipts.text import html_to_text, quote_passage
+
+    _, text = html_to_text(TABLE + "<p>" + "Acme is a file service for small teams. " * 6 + "</p>")
+    led = Ledger()
+    ev = led.add_text("https://acme.example/pricing", text, "Acme pricing")
+    assert (
+        quote_passage("Pro: Unlimited", text) == "file uploads | free: 10mb | pro: unlimited"
+    )  # the reader sees the row
+
+    def decide(claim, quote):
+        return check_claim(Claim("a", claim, quote, ev.id, "Acme"), led)
+
+    assert decide("Acme Free allows file uploads of 10MB", "File uploads | Free: 10MB").supported
+    assert decide("Acme Free allows file uploads of 20MB", "File uploads | Free: 10MB").reason == "figure_not_in_quote"
+    assert decide("Acme Pro allows file uploads of 10MB", "File uploads | Pro: 10MB").reason == "quote_not_in_source"
+    assert decide("Acme Pro costs $49 a month", "Pro $49 /month").supported

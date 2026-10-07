@@ -1,0 +1,50 @@
+[
+ {
+  "name": "Issue trackers",
+  "evidence_id": "ee221d644",
+  "url": "https://en.wikipedia.org/wiki/Comparison_of_issue-tracking_systems",
+  "file": "issue-trackers.txt",
+  "chars": 60868,
+  "table_rows": 259
+ },
+ {
+  "name": "Project management",
+  "evidence_id": "ec87af556",
+  "url": "https://en.wikipedia.org/wiki/Comparison_of_project_management_software",
+  "file": "project-management.txt",
+  "chars": 52503,
+  "table_rows": 323
+ },
+ {
+  "name": "Web conferencing",
+  "evidence_id": "e2d3ca1b1",
+  "url": "https://en.wikipedia.org/wiki/Comparison_of_web_conferencing_software",
+  "file": "web-conferencing.txt",
+  "chars": 16911,
+  "table_rows": 44
+ },
+ {
+  "name": "Time tracking",
+  "evidence_id": "e61da4ce8",
+  "url": "https://en.wikipedia.org/wiki/Comparison_of_time-tracking_software",
+  "file": "time-tracking.txt",
+  "chars": 17890,
+  "table_rows": 30
+ },
+ {
+  "name": "Help desk",
+  "evidence_id": "eb8b7ea5b",
+  "url": "https://en.wikipedia.org/wiki/Comparison_of_help_desk_issue_tracking_software",
+  "file": "help-desk.txt",
+  "chars": 6674,
+  "table_rows": 18
+ },
+ {
+  "name": "Source code hosting",
+  "evidence_id": "e0ef0493b",
+  "url": "https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities",
+  "file": "source-code-hosting.txt",
+  "chars": 30528,
+  "table_rows": 99
+ }
+]

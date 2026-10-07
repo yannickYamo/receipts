@@ -50,6 +50,12 @@ def frozen(bench: Path) -> tuple[str, bool]:
     study = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(study)
     now = study.frozen_now()
+    if record.get("closed"):  # the round is over: the page describes the code recorded, and the code has moved on
+        files = ", ".join(f"`{f}` {h}" for f, h in record["files"].items())
+        return (
+            f"commit {record.get('commit_at_freeze', '')[:7]}, {files}, reader prompt {record['reader_prompt']} · {record['closed']}",
+            True,
+        )
     same = now["files"] == record["files"] and now["reader_prompt"] == record["reader_prompt"]
     files = ", ".join(f"`{f}` {h}" for f, h in record["files"].items())
     where = f"commit {record.get('commit_at_freeze', '')[:7]}, {files}, reader prompt {record['reader_prompt']}"

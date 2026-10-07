@@ -1,0 +1,298 @@
+Jump to content
+
+Main menu
+
+Main menu
+
+move to sidebar
+hide
+
+Navigation
+
+Main page
+
+Contents
+
+Current events
+
+Random article
+
+About Wikipedia
+
+Contact us
+
+Contribute
+
+Help
+
+Learn to edit
+
+Community portal
+
+Recent changes
+
+Upload file
+
+Special pages
+
+Search
+
+Search
+
+Appearance
+
+Donate
+
+Create account
+
+Log in
+
+Personal tools
+
+Donate
+
+Create account
+
+Log in
+
+Contents
+
+move to sidebar
+hide
+
+(Top)
+
+1
+See also
+
+2
+References
+
+Toggle the table of contents
+
+Comparison of time-tracking software
+
+Add languages
+
+Add links
+
+Article
+
+Talk
+
+English
+
+Read
+
+View source
+
+View history
+
+Tools
+
+Tools
+
+move to sidebar
+hide
+
+Actions
+
+Read
+
+View source
+
+View history
+
+General
+
+What links here
+
+Related changes
+
+Upload file
+
+Permanent link
+
+Page information
+
+Cite this page
+
+Get shortened URL
+
+Switch to legacy parser
+
+Print/export
+
+Download as PDF
+
+Printable version
+
+In other projects
+
+Wikidata item
+
+Appearance
+
+move to sidebar
+hide
+
+From Wikipedia, the free encyclopedia
+
+This article has multiple issues. Please help improve it or discuss these issues on the talk page. (Learn how and when to remove these messages) This article needs more citations. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed. Find sources: "Comparison of time-tracking software" – news · newspapers · books · scholar · JSTOR (August 2013) (Learn how and when to remove this message) This article may require cleanup to meet Wikipedia's quality standards. The specific problem is: The platform column is not consistent and several of the features read like ads rather than encyclopedic information. Please help improve this article if you can. (December 2014) (Learn how and when to remove this message) This article may contain original research. Please improve it by verifying the claims made and adding inline citations. Statements consisting only of original research should be removed. (April 2026) (Learn how and when to remove this message) This article or section possibly contains original synthesis. Source material should verifiably mention and relate to the main topic. Relevant discussion may be found on the talk page. (April 2026) (Learn how and when to remove this message) (Learn how and when to remove this message)
+
+This is a comparison of notable time-tracking software packages and web hosted services.
+
+Name | Platform support | Launched | Features | Integration | Data-storage | Licensing
+
+ActivTrak | Platform support: Microsoft Windows, MacOS, ChromeOS | Launched: 2009 | Features: Productivity reporting, application & website usage statistics, benchmarks & goal setting, screenshots, real-time user activity reporting, website blocking. | Integration: Salesforce, ZenDesk, Jira, Xero, Splunk, Zapier, BigQuery, Microsoft Teams, Monday.com, Tableau, Power BI, Looker Studio | Data-storage: Cloud-Based. Export to various formats | Licensing: Subscription-based
+
+Ceiton | Platform support: Web application | Launched: 2001 | Features: Time-tracking and reporting, timesheets, invoicing. Full project support, integrated with workflow and long-term shift planning. Supports mobile devices. | Integration: Export to SAP, Microsoft Excel, CSV and pdf. | Data-storage: Web-based, MS SQL, Oracle. | Licensing: License
+
+Clarizen | Platform support: Web application | Launched: 2005 | Features: Collaborative project execution software. Clarizen’s Time Tracking features include cost and billing rates, timesheets, billing approvals process and time-tracking reports. | Integration: Integrate with Salesforce, Google docs, Microsoft Outlook. Mobile- iPhone/Android app | Data-storage: Export and import projects to and from Microsoft Excel | Licensing: Subscription-based
+
+Easy Redmine | Platform support: Web application | Launched: 2007 | Features: Project management and time-tracking software that integrates with Redmine. It supports Waterfall and Agile methodologies, provides public/private cloud and on-premises hosting, includes risk and resource management, mind maps, Gantt charts, a B2B-focused CRM module, integrates with MediaWiki and GitLab | Integration: Outlook plugin, data import from Redmine, Jira, Microsoft Project, Microsoft Excel, integrations using Zapier and Make, | Data-storage: MySQL database (Percona), Exports to PDF, Excel, CSV, iCal | Licensing: Open Source
+
+Everhour | Platform support: Web application | Launched: 2015 | Features: Team-oriented time tracking software that natively integrates into different project management systems. Includes project budgeting, resources planning, reporting and invoicing. | Integration: Asana, Basecamp, GitHub, Trello, Insightly, Xero, Pivotal Tracker, Jira, Teamwork, BitBucket, QuickBooks | Data-storage: Hosted. Export to Microsoft Excel, CSV | Licensing: Subscription-based
+
+Fanurio | Platform support: Microsoft Windows, Mac, Linux, Java | Launched: 2006 | Features: Invoicing, time tracking, billing | Integration: Address Book | Data-storage: HSQLDB | Licensing: Subscription-based
+
+FogBugz | Platform support: Web application | Launched: 2000 | Features: Automatic and manual time tracking, estimates, milestones, and reports. | Integration: Available in FogBugz Tasker, FogBugz Issue Desk, FogBugz Agile, and FogBugz Dev Hub. | Data-storage: Web-based, hosted. | Licensing: Subscription-based
+
+FreshBooks | Platform support: Web application | Launched: 2004 | Features: Invoicing, time tracking, online credit card and ACH payments, estimates, expenses, projects, staff and client management, double-entry accounting, personalized branding, customizable accounting and business reports and iPhone and Android apps.[1] | Integration: Gusto, G Suite, FundBox, Stripe, Bookkeeping Express, Bench, HubSpot, Yearli, Piesync, Zapier, Hurdlr, Capsule, Revamp CRM, noCRM.io, OneSaaS, 123FormBuilder, Acuity Scheduling, Bidsketch, Avalara Trustfile, Partial.ly, AON, Boomr, Track, Projects, Asana, Basecamp, Everhour, Trello, EazyBI, Collbox, ProWorkflow, Expiration Reminder, Shopify, Enlighten.me, Skyvia, Klipfolio, AgileCRM, Barcloud, Wufoo, Eventbrite, Salesforce, Slack, Square, Freshdesk, Campaign Monitor, WooCommerce, Yalla, Constant Contact, Insightly, MailChimp, ZenDesk, HoneyBooks, Selz, BigCommerce, ToDoList, Artichoke, Calendly, WordPress, Meetup, Geckoboard, HappyFox, Magneto, Podia, Formstack, Gravity, InfusionSoft, Clio, Universe, Solve, Daycast, Intervals, SharpSpring, Prospero, Proposify, AWeber, Natero, Everlance, LiveChat, Teachable, Expensify, InView, Tangentia, Checkeeper, SherpaDesk, ClicData[2] | Data-storage: Cloud-Based. Export to various formats | Licensing: Subscription-based
+
+Grindstone | Platform support: Microsoft Windows | Launched: 2008 | Features: Stopwatch, AFK detection, search tasks, profiles, custom fields, breakdowns, timesheets, invoices. After installation, a portable version can be generated, too. | Integration: Export to Microsoft Excel, PDF | Data-storage: XML | Licensing: CC BY-ND 3.0 US
+
+GroupOffice | Platform support: Web application | Launched: 2020 | Features: Time tracking and time-based reporting, timesheets, project budgeting, invoicing, expenses, CRM, groupware | Integration: Built as module for open-source platform | Data-storage: Hosted. Export to Microsoft Excel, CSV | Licensing: Subscription- or license-based
+
+Harvest | Platform support: Web application | Launched: 2006 | Features: Time tracking and reporting, timesheets, invoicing, expenses, project budgeting | Integration: iPhone, Android, Mac, Google Apps, Quickbooks, Xero, Basecamp, Trello, Asana | Data-storage: Hosted. Export to Microsoft Excel, CSV, Google Docs | Licensing: Subscription-based
+
+Instant | Platform support: Web application, Mac, iOS, Android | Launched: 2015 | Features: Automatically tracks time spent on phone usage, at places, while traveling, sleeping and fitness activities. With a chatbot coach, reports and goals. Used for consumers and employee wellness programs. | Integration: Can export CSV, integrates with Apple Health, Google Fit, Samsung S Health and Fitbit. | Data-storage: Locally stored on phone, can back up on iCloud or Google Drive | Licensing: Subscription-based
+
+LiquidPlanner | Platform support: Web application | Launched: 2008 | Features: Customizable activity codes, reviews, estimate trend charts, date drift trend charts, custom filtering, programming API, and export to XML, CSV, or to Quickbooks. | Integration: Fully integrated with the LiquidPlanner Project Management environment. Time tracking integrated with LiquidPlanner Analytics. | Data-storage: Export to Microsoft Excel, Quickbooks, or in CSV format. | Licensing: Proprietary
+
+ManicTime | Platform support: Microsoft Windows, Mac | Launched: 2008 | Features: Automatic time tracking software, which tracks computer usage and stores all data locally. It allows users to track time spent on various projects and tasks. When used on multiple machines, locally installed server generates combined reports, which are accessible with a web browser or sent by email. | Integration: Microsoft Office, JIRA, Moves app, Google calendar, FreshBooks, QuickBooks, Skype | Data-storage: SQLite, PostgreSQL, Microsoft SQL Server | Licensing: Free or license-based
+
+Redmine | Platform support: Web application | Launched: 2006 | Features: Project management and issue tracking with time tracking, forums, wikis, and project flows. Includes Gantt charts and a calendar. | Integration: IDEs, version control systems, mobile phones, and browsers. | Data-storage: SQLite, PostgreSQL | Licensing: Open-source
+
+Replicon | Platform support: Web application | Launched: 1996 | Features: Provides employee time tracking, project time tracking, expense tracking and scheduling. Includes text reports with custom columns, graphical reports, email reminders, multiple approval paths, time off calendar. | Integration: Quickbooks, Microsoft Project, ADP, Oracle, SAP, PeopleSoft, JD Edwards, Ceridian, WSDL/XML API, Mobile - iPhone/Android available | Data-storage: Hosted. Export to XML, Microsoft Excel, CSV, PDF | Licensing: Subscription-based
+
+Teamwork | Platform support: Web application | Launched: 2007 | Features: Complete web-based project management software with timesheet module, ASP available | Integration: MS Project, open source Java API | Data-storage: Any SQL compliant Database | Licensing: Subscription-based
+
+Tick | Platform support: Web application | Launched: 2006 | Features: Employee time tracking, instant budget feedback, reporting and invoice integrations. Edit time directly in Basecamp. Includes mobile apps, web app, chrome extension, REST API and more. | Integration: iPhone, Android, Apple Watch, Mac App, Chrome Extension, Zapier, Quickbooks, Freshbooks, Basecamp, Asana, Trello | Data-storage: Hosted. Export to Microsoft Excel, CSV, Google Docs FreshBooks, Basecamp and QuickBooks | Licensing: Subscription-based
+
+Time Clock Wizard | Platform support: Web application | Launched: 2014 | Features: Time Clock Wizard is a software, which includes a mobile app, that allows unlimited users and employees to work in a single schedule, whereas, optional services such as web design, merchant accounts and other business loans credit to the company's business model. | Integration: iPhone, iPad, CSV, email | Data-storage: Hosted | Licensing: Subscription-Based
+
+Time Doctor | Platform support: Web application, Microsoft Windows, Linux, iOS, Android | Launched: 2012 | Features: TimeDoctor is a time tracking and productivity tool which employs screenshots, website & application usage monitoring, keyboard & mouse activity, and task & project time logging. It also has web-based reporting. | Integration: Basecamp, Asana, JIRA, Podio, Teamwork.com, Slack, Trello, GitHub, and 20 others | Data-storage: Hosted and export options available | Licensing: Free and subscription-based
+
+TimeTiger | Platform support: Web application | Launched: 1998 | Features: Team and enterprise time tracking, project tracking, reporting, and analysis. | Integration: Bi-directional sync with MS Project, export to Excel and QuickBooks, integration SDK | Data-storage: Hosted | Licensing: Subscription-based
+
+Timewarrior | Platform support: Linux | Launched: 2008 | Features: Command line interface | Integration: JSON | Data-storage: File | Licensing: MIT License
+
+TMetric | Platform support: Web application, Microsoft Windows | Launched: 2016 | Features: User-friendly interface, Projects budgeting, Project management, Task and time-tracking, Invoicing, Billable time and rates, Detailed time and money reports, Task tags, Team management, Time-sheet export, Workday timeline, Downloadable version | Integration: Integrates with Asana, Basecamp, GitHub, Trello, Wrike, JIRA, GitLab and many more. | Data-storage: Web-based, hosted. | Licensing: Free and subscription-based
+
+Toggl | Platform support: Web application, iOS, Android | Launched: 2006 | Features: Toggl allows users to track the time spent on various projects and analyze productivity. It is cloud-based and can be up and running from scratch in less than a minute. You can use Toggl on the web, as a desktop widget or on your mobile – all your data gets synced in real time. | Integration: Export to Excel, FreshBooks, and Asana, Basecamp, GitHub, Teamweek integration SDK | Data-storage: Web-based, hosted. | Licensing: Free and subscription-based
+
+Tracker | Platform support: Web application, Microsoft Windows, Mac, iOS, Android | Launched: 2008 | Features: Includes a Web-enabled time reporting module, with automated approval routing and messaging. | Integration: Other Tracker Suite modules, Microsoft Project | Data-storage: Microsoft SQL | Licensing: License-based
+
+TSheets | Platform support: Web application, iOS, Android | Launched: 2008 | Features: Mobile time tracking, manual or automated time entry, employee job/shift scheduling, real-time GPS location tracking, customizable alerts & reminders, detailed reporting, invoicing, PTO & vacation tracking, kiosk functionality, open API, and more. | Integration: integrates with Intuit QuickBooks Online & Desktop, Xero, ADP, Gusto, Square, Expensify, and other payroll/accounting solutions. | Data-storage: Hosted. Export reports in CSV, PDF and others. | Licensing: Free and Subscription-based
+
+Xpert-Timer | Platform support: Microsoft Windows, Android | Launched: 1999 | Features: Native Project time-tracking software that includes a To-Do list, document management, client management and invoicing module in the PRO Version. The Windows version includes a time bar that floats on the Windows desktop that allows users to keep an eye on the time spent on a project. Multiple reports are included. | Integration: Bi-directional sync with Android XT MOBILE version, export to Excel and CSV. Full access to database. | Data-storage: MS Access, MySQL, Microsoft SQL (also Express) | Licensing: License-based
+
+ZipBooks | Platform support: Web application, iOS | Launched: 2015 | Features: Time tracking, flexible billing tracking, invoicing, credit card processing, recurring payments, late payment reminders, transactions, bank integration, bank account reconciliation, estimates, expenses, staff and client management, accounting, customer feedback, financial reports, 1099 contractor management, multiple currency support | Integration: iPhone, ZenDesk, G Suite, Chrome Web Store time tracking extension | Data-storage: Hosted. Export to various formats | Licensing: Subscription-based
+
+Zoho Projects | Platform support: Web application, iOS, Android | Launched: 2005 | Features: Project management software with a wide range of time tracking functionalities to record the start and end dates, calculate the time spent on tasks, differentiate billable and non-billable hours, generate invoices, and to establish and manage an approval process for timesheets. The time logging process can be automated by starting and stopping timers for tasks.[3] | Integration: Integrates with Zoho Invoice, Zoho Books[4] and enables export of timesheet data in xls/csv formats. | Data-storage: MySQL | Licensing: Subscription-based
+
+See also
+
+Deployment management
+
+Flextime plan
+
+Project management software
+
+Timesheet
+
+Working time
+
+References
+
+↑ FreshBooks. "Features". FreshBooks. Retrieved 2019-06-11.
+
+↑ FreshBooks. "Accounting Software Add-Ons & Integration". FreshBooks. Retrieved 2019-06-11.
+
+↑ "Timesheet Software Web : Zoho Projects". www.zoho.com. Retrieved 2015-11-04.
+
+↑ "Zoho Projects Integrations". www.zoho.com. Retrieved 2015-11-04.
+
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Comparison_of_time-tracking_software&oldid=1376230203"
+
+Categories:
+
+Administrative software
+
+Lists of software
+
+Software comparisons
+
+Hidden categories:
+
+Articles with short description
+
+Short description is different from Wikidata
+
+Wikipedia indefinitely semi-protected pages
+
+Articles needing additional references from August 2013
+
+All articles needing additional references
+
+Articles needing cleanup from December 2014
+
+All pages needing cleanup
+
+Wikipedia pages needing cleanup from December 2014
+
+Articles that may contain original research from April 2026
+
+All articles that may contain original research
+
+Articles with multiple maintenance issues
+
+This page was last edited on 22 September 2026, at 22:39 (UTC).
+
+Page was rendered with Parsoid.
+
+Text is available under the Creative Commons Attribution-ShareAlike 4.0 License;
+additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+
+Privacy policy
+
+About Wikipedia
+
+Disclaimers
+
+Contact Wikipedia
+
+Legal & safety contacts
+
+Code of Conduct
+
+Developers
+
+Statistics
+
+Cookie statement
+
+Mobile view
+
+Search
+
+Search
+
+Toggle the table of contents
+
+Comparison of time-tracking software
+
+Add languages
+
+Add topic
