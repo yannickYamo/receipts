@@ -8,6 +8,10 @@
   fact, a figure or a person's name is cut. Not measured yet: the plan is
   `studies/BRIEF_PREREGISTRATION.md`, the harness `bench/brief/`.
 - The fetcher can return a page's links, so further pages of a site are found in code.
+- `receipts.decision`: the reader's stage on a decision model, which answers with a probability; a
+  claim stands when it reaches a threshold. A client for TypeSafe AI's Jev. Not on the command line
+  and not measured: `bench/bakeoff/` puts it beside the measured reader on the saved sets, by a plan
+  written first (`studies/BAKEOFF_PREREGISTRATION.md`).
 
 ## 0.2.0 (2026-10-06)
 

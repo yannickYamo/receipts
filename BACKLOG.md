@@ -2,8 +2,16 @@
 
 What is deliberately not in 0.2.0. Each needs a measurement of its own before it ships.
 
-- Other readers. The reader can be any model the backends reach, and only claude-haiku-4-5 is
-  measured. Measure a second reader on the round 3 claims.
+- A decision model as the reader. The reader's job is one yes/no question, and models built to decide
+  answer it with a probability, which turns the reader's strictness into a number the caller sets.
+  `receipts.decision` has the reader and a client for TypeSafe AI's Jev; `bench/bakeoff/` scores it
+  against the measured reader on the saved sets (`studies/BAKEOFF_PREREGISTRATION.md`). Not run yet.
+  OpenAI's Decisions API is the same kind of thing; an adapter waits for its request format to be
+  published. If a decision reader is level, offer it on the command line, with fixed cut reasons
+  (swapped actor, wrong figure, wrong company, reversal, added claim, part for whole) chosen by the
+  model in place of free text.
+- Other chat readers. The reader can be any model the backends reach, and only claude-haiku-4-5 is
+  measured. The bake-off harness scores any of them on the saved sets.
 - Other support judges on the same pairs: MiniCheck, HHEM, AlignScore.
 - The Citations API as a source of quotes: accept its cited text as a claim's quote directly.
 - A test set written by people, not only labelled by them.
