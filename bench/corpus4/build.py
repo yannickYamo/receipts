@@ -30,7 +30,9 @@ for name, url in PAGES.items():
     rows = sum(" | " in line for line in ev.text.split("\n"))
     file = name.lower().replace(" ", "-") + ".txt"
     (HERE / file).write_text(ev.text)
-    index.append({"name": name, "evidence_id": ev.id, "url": url, "file": file, "chars": len(ev.text), "table_rows": rows})
+    index.append(
+        {"name": name, "evidence_id": ev.id, "url": url, "file": file, "chars": len(ev.text), "table_rows": rows}
+    )
     print(name, ev.id, f"{len(ev.text):,} characters, {rows} table rows")
 ledger.save(HERE / "ledger.json")
 (HERE / "index.json").write_text(json.dumps(index, indent=1))
