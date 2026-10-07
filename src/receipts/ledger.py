@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .core import Evidence
-from .fetch import fetch
+from .fetch import HOW, fetch, fetch_page
 
 
 class Ledger(Mapping[str, Evidence]):
@@ -18,6 +18,7 @@ class Ledger(Mapping[str, Evidence]):
 
     def __init__(self, items: list[Evidence] | None = None) -> None:
         self._items: dict[str, Evidence] = {e.id: e for e in items or []}
+        self._via: dict[str, str] = {}  # evidence id -> how the page got here (fetch.HOW)
 
     def __getitem__(self, key: str) -> Evidence:
         return self._items[key]
@@ -28,7 +29,9 @@ class Ledger(Mapping[str, Evidence]):
     def __len__(self) -> int:
         return len(self._items)
 
-    def add_text(self, url: str, text: str, title: str = "", fetched_at: str | None = None) -> Evidence:
+    def add_text(
+        self, url: str, text: str, title: str = "", fetched_at: str | None = None, via: str = "supplied"
+    ) -> Evidence:
         """Record a page whose text the caller already holds (a tool result, a file, a test).
 
         A page read again with different text gets an id of its own. The earlier text stays, so a claim
@@ -42,16 +45,34 @@ class Ledger(Mapping[str, Evidence]):
         when = fetched_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
         ev = Evidence(id=key, url=url, text=text, title=title, fetched_at=when, sha256=digest)
         self._items[ev.id] = ev
+        self._via[ev.id] = via
         return ev
 
-    def add_url(self, url: str, **kw) -> Evidence:
-        """Fetch a page and record it. Raises fetch.FetchError when it cannot be read."""
-        title, text = fetch(url, **kw)
-        return self.add_text(url, text, title)
+    def how(self, evidence_id: str) -> str:
+        """How a page got here, in words: fetched by code, rendered by a browser, returned by a service, or supplied."""
+        return HOW.get(self._via.get(evidence_id, ""), self._via.get(evidence_id, ""))
+
+    def via(self, evidence_id: str) -> str:
+        """How a page got here, as the short name the ledger file keeps."""
+        return self._via.get(evidence_id, "")
+
+    def add_url(self, url: str, via: str = "code", **kw) -> Evidence:
+        """Fetch a page and record it, with how it was fetched. Raises fetch.FetchError when it cannot be read."""
+        if via == "code":
+            title, text = fetch(url, **kw)
+        else:
+            title, text, _ = fetch_page(url, via, **kw)
+        return self.add_text(url, text, title, via=via)
 
     def save(self, path: str | Path) -> None:
         """Write the ledger to a JSON file."""
-        Path(path).write_text(json.dumps([asdict(e) for e in self._items.values()], indent=1, ensure_ascii=False))
+        Path(path).write_text(
+            json.dumps(
+                [asdict(e) | {"via": self._via.get(e.id, "")} for e in self._items.values()],
+                indent=1,
+                ensure_ascii=False,
+            )
+        )
 
     @classmethod
     def load(cls, path: str | Path) -> Ledger:
@@ -78,4 +99,6 @@ class Ledger(Mapping[str, Evidence]):
                     f"{path}: the text of {page['url']} no longer matches its hash; it changed after the fetch"
                 )
             items.append(Evidence(**page))
-        return cls(items)
+        ledger = cls(items)
+        ledger._via = {e["id"]: e["via"] for e in raw if isinstance(e.get("via"), str)}
+        return ledger

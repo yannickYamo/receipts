@@ -106,7 +106,7 @@ def render_html(card: Card) -> str:
     unread = "".join(f"<tr><td>{h(p)}</td><td>{h(u)}</td><td>{h(w)}</td></tr>" for p, u, w in card.unread)
     sources = "".join(
         f'<tr><td>{h(e.id)}</td><td><a href="{h(e.url, quote=True)}">{h(e.title or e.url)}</a></td>'
-        f"<td>{h(e.fetched_at[:10])}</td><td>{h(e.sha256[:12])}</td></tr>"
+        f"<td>{h(e.fetched_at[:10])}</td><td>{h(card.ledger.how(e.id))}</td><td>{h(e.sha256[:12])}</td></tr>"
         for e in card.ledger.values()
     )
     notes = "".join(f"<li>{h(n)}</li>" for n in card.notes)
@@ -126,7 +126,7 @@ def render_html(card: Card) -> str:
 <div class="box them"><h3>{h(card.them)}</h3>{_facts(card, card.them)}</div></div>
 <h2>Cut before it reached the card</h2>
 <div class="box cut"><ul>{cut_facts}{cut_lines}</ul>{"" if cut_facts or cut_lines else '<p class="empty">Nothing was cut.</p>'}</div>
-<h2>Sources</h2><div class="box"><table><tr><th>id</th><th>page</th><th>read</th><th>sha256</th></tr>{sources}</table>
+<h2>Sources</h2><div class="box"><table><tr><th>id</th><th>page</th><th>read</th><th>how</th><th>sha256</th></tr>{sources}</table>
 {f"<table><tr><th>product</th><th>could not be read</th><th>why</th></tr>{unread}</table>" if unread else ""}
 {f"<ul>{notes}</ul>" if notes else ""}</div>
 </main></body></html>

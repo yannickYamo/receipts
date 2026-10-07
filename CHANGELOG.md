@@ -8,6 +8,12 @@
   fact, a figure or a person's name is cut. Not measured yet: the plan is
   `studies/BRIEF_PREREGISTRATION.md`, the harness `bench/brief/`.
 - The fetcher can return a page's links, so further pages of a site are found in code.
+- Two more ways to read a page, chosen with `--fetcher`: a headless browser for pages whose text
+  arrives by JavaScript, and Firecrawl. Both pass the same address and robots.txt checks first. A bot
+  check or a refusal is never taken for a page.
+- `receipts add page.html --url ...` adds a page you saved yourself.
+- The ledger records how each page arrived (fetched by code, rendered by a browser, returned by a
+  service, supplied by the user), and every card and brief shows it.
 - `receipts.decision`: the reader's stage on a decision model, which answers with a probability; a
   claim stands when it reaches a threshold. A client for TypeSafe AI's Jev. Not on the command line
   and not measured: `bench/bakeoff/` puts it beside the measured reader on the saved sets, by a plan

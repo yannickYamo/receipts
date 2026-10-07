@@ -261,7 +261,14 @@ class Card:
             "backend": self.backend,
             "stats": self.stats(),
             "sources": [
-                {"id": e.id, "url": e.url, "title": e.title, "fetched_at": e.fetched_at, "sha256": e.sha256}
+                {
+                    "id": e.id,
+                    "url": e.url,
+                    "title": e.title,
+                    "fetched_at": e.fetched_at,
+                    "sha256": e.sha256,
+                    "via": self.ledger.via(e.id),
+                }
                 for e in self.ledger.values()
             ],
             "unread": [{"product": p, "url": u, "why": w} for p, u, w in self.unread],
@@ -322,7 +329,9 @@ UNREAD = "the reader could not be run on it"
 Log = Callable[[str], None]
 
 
-def _fetch_pages(card: Card, backend: Backend, urls: dict[str, list[str]], limit: int, log: Log) -> dict[str, str]:
+def _fetch_pages(
+    card: Card, backend: Backend, urls: dict[str, list[str]], limit: int, log: Log, fetcher: str = "code"
+) -> dict[str, str]:
     """Find and fetch pages for both products. Returns evidence id -> product; failures go on the card."""
     page_of: dict[str, str] = {}
     for product in (card.us, card.them):
@@ -335,7 +344,7 @@ def _fetch_pages(card: Card, backend: Backend, urls: dict[str, list[str]], limit
                 card.notes.append(f"no pages were found for {product}: {e}")
         for url in addresses[:limit]:
             try:
-                ev = card.ledger.add_url(url)
+                ev = card.ledger.add_url(url, via=fetcher)
             except FetchError as e:
                 card.unread.append((product, url, str(e)))
                 log(f"could not read {url}: {e}")
@@ -495,6 +504,7 @@ def build_card(
     ledger: Ledger | None = None,
     reader: Backend | None = None,
     requote: bool = True,
+    fetcher: str = "code",
     log: Log = lambda s: None,
 ) -> Card:
     """Build a battle card for `us` against `them`. The steps are the ones in the module docstring.
@@ -510,7 +520,7 @@ def build_card(
         backend=backend.name,
         reader=f"{reader.name}, prompt {READER_VERSION}" if reader else "",
     )
-    page_of = _fetch_pages(card, backend, urls or {}, pages_per_product, log)
+    page_of = _fetch_pages(card, backend, urls or {}, pages_per_product, log, fetcher)
     extract_facts(card, backend, page_of, facts_per_page, log)
     if reader and card.supported:
         read_facts(card, reader, log)

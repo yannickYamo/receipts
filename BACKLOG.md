@@ -24,4 +24,6 @@ What is deliberately not in 0.2.0. Each needs a measurement of its own before it
 - Pages that are not in English, and pages that are not about software.
 - The brief on more than one seller, and on companies whose news lives on another site (a job board,
   a press wire): today only the company's own pages are read.
-- A fetcher for pages that need JavaScript, or a documented hand-off to one.
+- The browser fetcher cannot promise that the address it checked is the address it dialled, as the
+  plain fetcher can. It checks every request and throws the page away if any went somewhere private,
+  and it is kept out of the MCP server. Pinning the address inside the browser is not done.

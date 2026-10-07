@@ -37,7 +37,7 @@ from ..battlecard.pipeline import (
     requote_cut_facts,
 )
 from ..core import Claim
-from ..fetch import FetchError, fetch_with_links
+from ..fetch import FetchError, fetch_page, fetch_with_links
 from ..ledger import Ledger
 from ..reader import READER_VERSION, as_data
 from ..text import figures_in
@@ -232,7 +232,14 @@ class Brief:
             "reader": card.reader,
             "stats": self.stats(),
             "sources": [
-                {"id": e.id, "url": e.url, "title": e.title, "fetched_at": e.fetched_at, "sha256": e.sha256}
+                {
+                    "id": e.id,
+                    "url": e.url,
+                    "title": e.title,
+                    "fetched_at": e.fetched_at,
+                    "sha256": e.sha256,
+                    "via": card.ledger.via(e.id),
+                }
                 for e in card.ledger.values()
             ],
             "unread": [{"url": u, "why": w} for _, u, w in card.unread],
@@ -252,13 +259,15 @@ class Brief:
         }
 
 
-def read_pages(card: Card, company: str, url: str, extra: list[str], limit: int, log: Log) -> dict[str, str]:
+def read_pages(
+    card: Card, company: str, url: str, extra: list[str], limit: int, log: Log, fetcher: str = "code"
+) -> dict[str, str]:
     """Read the home page, then the pages code picks from its links and the ones the user named."""
     page_of: dict[str, str] = {}
     links: list[tuple[str, str]] = []
     try:
-        title, text, links = fetch_with_links(url)
-        ev = card.ledger.add_text(url, text, title)
+        title, text, links = fetch_with_links(url) if fetcher == "code" else fetch_page(url, fetcher)
+        ev = card.ledger.add_text(url, text, title, via=fetcher)
         page_of[ev.id] = company
         log(f"read {url} ({len(text):,} characters)")
     except FetchError as e:
@@ -267,7 +276,7 @@ def read_pages(card: Card, company: str, url: str, extra: list[str], limit: int,
     wanted = list(dict.fromkeys([*extra, *pick_pages(url, links, max(0, limit - 1 - len(extra)))]))
     for address in wanted[: max(0, limit - 1)]:
         try:
-            ev = card.ledger.add_url(address)
+            ev = card.ledger.add_url(address, via=fetcher)
         except FetchError as e:
             card.unread.append((company, address, str(e)))
             log(f"could not read {address}: {e}")
@@ -340,6 +349,7 @@ def build_brief(
     signals_per_page: int = 10,
     reader: Backend | None = None,
     requote: bool = True,
+    fetcher: str = "code",
     log: Log = lambda s: None,
 ) -> Brief:
     """Build a brief on the company at `url` for someone who sells `seller`. The steps are in the module docstring.
@@ -356,7 +366,7 @@ def build_brief(
         reader=f"{reader.name}, prompt {READER_VERSION}" if reader else "",
     )
     brief = Brief(seller=seller.strip(), company=company, url=url, card=card)
-    page_of = read_pages(card, company, url, list(pages or []), max_pages, log)
+    page_of = read_pages(card, company, url, list(pages or []), max_pages, log, fetcher)
     extract_facts(
         card, backend, page_of, signals_per_page, log, system=SIGNAL_SYSTEM, schema=SIGNAL_SCHEMA, topics=SIGNALS
     )

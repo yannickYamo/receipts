@@ -3,6 +3,7 @@
 receipts check claims.json --ledger ledger.json     both stages; exit 1 when any claim is unsupported
 receipts check claims.json --ledger l.json --code-only    the code stage alone: no model, and weaker
 receipts fetch URL... --ledger ledger.json          read pages into a ledger
+receipts add page.html --url URL --ledger l.json    add a page you saved yourself; the ledger says it was supplied
 receipts audit card.html [--ledger ledger.json]     count the specifics in any text, and how many can be checked
 receipts card --us A --them B --out DIR             build a battle card
 receipts brief --sell TEXT --company URL --out DIR  brief on a company before you write to it
@@ -23,7 +24,8 @@ from . import Claim, Ledger, check_claims
 from .audit import audit
 from .backends import BackendError
 from .core import Report
-from .fetch import FetchError
+from .fetch import FETCHERS, FetchError
+from .text import html_to_text
 
 
 def _load_claims(path: str) -> list[Claim]:
@@ -107,13 +109,28 @@ def _fetch(a: argparse.Namespace) -> int:
     failed = 0
     for url in a.urls:
         try:
-            ev = ledger.add_url(url)
+            ev = ledger.add_url(url, via=a.fetcher)
             print(f"{ev.id}  {url}  ({len(ev.text):,} characters)")
         except FetchError as e:
             failed += 1
             print(f"could not read {url}: {e}", file=sys.stderr)
     ledger.save(path)
     return 1 if failed else 0
+
+
+def _add(a: argparse.Namespace) -> int:
+    """Add a page the user saved to the ledger. It is recorded as supplied: no code fetched it."""
+    path = Path(a.ledger)
+    ledger = Ledger.load(path) if path.exists() else Ledger()
+    raw = Path(a.file).read_text(errors="replace")
+    is_html = Path(a.file).suffix.lower() in (".html", ".htm") or raw.lstrip()[:1] == "<"
+    title, text = html_to_text(raw) if is_html else ("", raw.strip())
+    if len(text) < 200:
+        raise ValueError(f"{a.file}: almost no text in it")
+    ev = ledger.add_text(a.url, text, a.title or title, via="supplied")
+    ledger.save(path)
+    print(f"{ev.id}  {a.url}  ({len(ev.text):,} characters, supplied by you, not fetched)")
+    return 0
 
 
 def _audit(a: argparse.Namespace) -> int:
@@ -144,6 +161,7 @@ def _card(a: argparse.Namespace) -> int:
         a.us,
         a.them,
         backend,
+        fetcher=a.fetcher,
         urls={k: v for k, v in urls.items() if v},
         pages_per_product=a.pages,
         reader=reader,
@@ -188,6 +206,7 @@ def _brief(a: argparse.Namespace) -> int:
             pages=pages,
             max_pages=a.pages,
             reader=reader,
+            fetcher=a.fetcher,
             log=lambda s: print(s, file=sys.stderr),
         )
         briefs.append(brief)
@@ -216,6 +235,12 @@ def _add_brief_command(sub) -> None:
         "--reader-model",
         default="haiku",
         help='the model that reads signals against quotes; "none" for the code check only',
+    )
+    b.add_argument(
+        "--fetcher",
+        choices=FETCHERS,
+        default="code",
+        help="how pages are read: plain requests (code), a headless browser, or Firecrawl; the ledger records which",
     )
     b.add_argument("--out", default="out")
     b.set_defaults(run=_brief)
@@ -251,6 +276,12 @@ def _add_card_command(sub) -> None:
         default="haiku",
         help='the model that reads facts against quotes; "none" for the code check only',
     )
+    b.add_argument(
+        "--fetcher",
+        choices=FETCHERS,
+        default="code",
+        help="how pages are read: plain requests (code), a headless browser, or Firecrawl; the ledger records which",
+    )
     b.add_argument("--out", default="out")
     b.set_defaults(run=_card)
 
@@ -264,6 +295,27 @@ def _mcp(a: argparse.Namespace) -> int:
         raise BackendError('the mcp package is not installed: pip install -e ".[mcp]"') from e
 
 
+def _add_ledger_commands(sub) -> None:
+    """The `fetch` and `add` commands: the two ways a page gets into a ledger."""
+    f = sub.add_parser("fetch", help="read pages into a ledger")
+    f.add_argument("urls", nargs="+")
+    f.add_argument("--ledger", required=True)
+    f.add_argument(
+        "--fetcher",
+        choices=FETCHERS,
+        default="code",
+        help="how pages are read: plain requests (code), a headless browser, or Firecrawl; the ledger records which",
+    )
+    f.set_defaults(run=_fetch)
+
+    d = sub.add_parser("add", help="add a page you saved yourself to a ledger; it is recorded as supplied, not fetched")
+    d.add_argument("file", help="the saved page: an .html file, or plain text")
+    d.add_argument("--url", required=True, help="the address the page was saved from")
+    d.add_argument("--ledger", required=True)
+    d.add_argument("--title", default="")
+    d.set_defaults(run=_add)
+
+
 def main(argv: list[str] | None = None) -> int:
     """Parse the command line and run the command. Returns the exit code."""
     p = argparse.ArgumentParser(
@@ -273,10 +325,7 @@ def main(argv: list[str] | None = None) -> int:
 
     _add_check_command(sub)
 
-    f = sub.add_parser("fetch", help="read pages into a ledger")
-    f.add_argument("urls", nargs="+")
-    f.add_argument("--ledger", required=True)
-    f.set_defaults(run=_fetch)
+    _add_ledger_commands(sub)
 
     u = sub.add_parser("audit", help="count the specifics in a text and how many can be checked")
     u.add_argument("file")

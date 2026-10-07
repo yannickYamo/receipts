@@ -87,7 +87,7 @@ def _one(brief: Brief) -> str:
     cut += "".join(f'<li>{h(t)}<div class="why">{h(w)}</div></li>' for t, w in brief.skipped)
     sources = "".join(
         f'<tr><td>{h(e.id)}</td><td><a href="{h(e.url, quote=True)}">{h(e.title or e.url)}</a></td>'
-        f"<td>{h(e.fetched_at[:10])}</td><td>{h(e.sha256[:12])}</td></tr>"
+        f"<td>{h(e.fetched_at[:10])}</td><td>{h(card.ledger.how(e.id))}</td><td>{h(e.sha256[:12])}</td></tr>"
         for e in card.ledger.values()
     )
     unread = "".join(f"<tr><td>{h(u)}</td><td>{h(w)}</td></tr>" for _, u, w in card.unread)
@@ -101,7 +101,7 @@ def _one(brief: Brief) -> str:
 <h2>A first message</h2><div class="box">{_lines(brief, "message", "No message could be rested on the signals.")}</div>
 <h2>Cut before it reached this page</h2>
 <div class="box cut"><ul>{cut}</ul>{"" if cut else '<p class="empty">Nothing was cut.</p>'}</div>
-<h2>Sources</h2><div class="box"><table><tr><th>id</th><th>page</th><th>read</th><th>sha256</th></tr>{sources}</table>
+<h2>Sources</h2><div class="box"><table><tr><th>id</th><th>page</th><th>read</th><th>how</th><th>sha256</th></tr>{sources}</table>
 {f"<table><tr><th>could not be read</th><th>why</th></tr>{unread}</table>" if unread else ""}
 {f"<ul>{notes}</ul>" if notes else ""}</div>
 </section>"""
