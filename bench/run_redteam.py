@@ -6,6 +6,7 @@ python bench/run_redteam.py redteam --after-fix  the same set again, kept beside
 python bench/run_redteam.py redteam2             the second red team, written against the fixed check
 python bench/run_redteam.py redteam2 --tag=v2    any set again, kept beside the earlier runs under that name
 python bench/run_redteam.py redteam3             the third red team (studies/ROUND3_PREREGISTRATION.md)
+python bench/run_redteam.py redteam4             the fourth, on pages that are mostly tables (studies/ROUND4_PREREGISTRATION.md)
 
 --reader-model=<name> picks the reader (default haiku). The result names the model it was read with.
 """
@@ -20,7 +21,7 @@ from receipts.reader import READER_VERSION, read_pairs
 
 HERE = Path(__file__).parent
 NAME = next((x for x in sys.argv[1:] if not x.startswith("--")), "redteam")  # redteam, redteam2
-CORPUS = {"redteam": "corpus2", "redteam2": "corpus", "redteam3": "corpus3"}[NAME]
+CORPUS = {"redteam": "corpus2", "redteam2": "corpus", "redteam3": "corpus3", "redteam4": "corpus4"}[NAME]
 NAMED = next((x.split("=", 1)[1] for x in sys.argv[1:] if x.startswith("--tag=")), "")
 TAG = (
     "_after_fix"

@@ -1,0 +1,14 @@
+[
+ {"kind": "pricing", "subject": "Figma", "url": "https://www.figma.com/pricing/"},
+ {"kind": "pricing", "subject": "Vercel", "url": "https://vercel.com/pricing"},
+ {"kind": "pricing", "subject": "Airtable", "url": "https://www.airtable.com/pricing"},
+ {"kind": "pricing", "subject": "Slack", "url": "https://slack.com/pricing"},
+ {"kind": "pricing", "subject": "Intercom", "url": "https://www.intercom.com/pricing"},
+ {"kind": "pricing", "subject": "Asana", "url": "https://asana.com/pricing"},
+ {"kind": "pricing", "subject": "monday.com", "url": "https://monday.com/pricing"},
+ {"kind": "pricing", "subject": "ClickUp", "url": "https://clickup.com/pricing"},
+ {"kind": "pricing", "subject": "Shopify", "url": "https://www.shopify.com/pricing"},
+ {"kind": "pricing", "subject": "Stripe", "url": "https://stripe.com/pricing"},
+ {"kind": "pricing", "subject": "Supabase", "url": "https://supabase.com/pricing"},
+ {"kind": "pricing", "subject": "Cloudflare", "url": "https://www.cloudflare.com/plans/"}
+]

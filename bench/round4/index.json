@@ -1,0 +1,98 @@
+[
+ {
+  "kind": "pricing",
+  "subject": "Figma",
+  "url": "https://www.figma.com/pricing/",
+  "evidence_id": "e57120e50",
+  "characters": 26834,
+  "sha256": "42deb314438657691167fc6a193d621a96e4c9a946dc4c993af607412f0a609d"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Vercel",
+  "url": "https://vercel.com/pricing",
+  "evidence_id": "effdc467f",
+  "characters": 15459,
+  "sha256": "674f61ae6c58f69523c4220ae5d9ba3a11967fe39deaaf14398cd587f067f08b"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Airtable",
+  "url": "https://www.airtable.com/pricing",
+  "evidence_id": "e7d2a477a",
+  "characters": 9251,
+  "sha256": "56c4bf1427ed55ef8256e0211fd4acb8b83502c9feea7e6d8026fd4e4b28cafc"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Slack",
+  "url": "https://slack.com/pricing",
+  "evidence_id": "e8b6e674e",
+  "characters": 32662,
+  "sha256": "98080a32df7e26f1cb56b7a85f08603a33d4b8a9c07aca3801fe2e92ba632169"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Intercom",
+  "url": "https://www.intercom.com/pricing",
+  "evidence_id": "e21bc2cd4",
+  "characters": 11655,
+  "sha256": "baaaa912a357918743819b8397e5b372ad27cd7cfe74b84fe6b6d15100250c6c"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Asana",
+  "url": "https://asana.com/pricing",
+  "evidence_id": "ea27f07cc",
+  "characters": 43493,
+  "sha256": "07dfc2d99ede35e0b50951a12b122becce6a034687e192e8daea4bfaa5349087"
+ },
+ {
+  "kind": "pricing",
+  "subject": "monday.com",
+  "url": "https://monday.com/pricing",
+  "evidence_id": "efe3eb2f3",
+  "characters": 53897,
+  "sha256": "3350031cd5ee03b65490ec035250824cc721b50a7093c5082d68ef8401547577"
+ },
+ {
+  "kind": "pricing",
+  "subject": "ClickUp",
+  "url": "https://clickup.com/pricing",
+  "evidence_id": "e6cf362a7",
+  "characters": 14745,
+  "sha256": "a591c4480cae030834db0d3bedfd7ca39d558f3aa4d9c911181685646b7768bf"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Shopify",
+  "url": "https://www.shopify.com/pricing",
+  "evidence_id": "ebe5a2d4c",
+  "characters": 21617,
+  "sha256": "fb7908f90068dcce874b3efd358a94f9b597fd6725830b82b4fd7ff9b753b92a"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Stripe",
+  "url": "https://stripe.com/pricing",
+  "evidence_id": "ebedd4a79",
+  "characters": 39273,
+  "sha256": "91b4613c25ca168a105c10934b6a89dd906b713861d312fd9758fc8fcd1a0125"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Supabase",
+  "url": "https://supabase.com/pricing",
+  "evidence_id": "ef91e99d7",
+  "characters": 22285,
+  "sha256": "24a9215804ed665dd52b0509aec918de644974773bb89ea5463ed0883dcf7076"
+ },
+ {
+  "kind": "pricing",
+  "subject": "Cloudflare",
+  "url": "https://www.cloudflare.com/plans/",
+  "evidence_id": "e7e2022be",
+  "characters": 18475,
+  "sha256": "0126e832f957d3c5e2439c5d3b16a86caffb727a8f22e2093c343775c5a13801"
+ }
+]

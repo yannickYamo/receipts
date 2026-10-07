@@ -32,6 +32,7 @@ SETS = {
     "redteam": ("corpus2", [], ["redteam.jsonl"]),
     "redteam2": ("corpus", [], ["redteam2.jsonl"]),
     "redteam3": ("corpus3", [], ["redteam3.jsonl"]),
+    "redteam4": ("corpus4", [], ["redteam4.jsonl"]),
 }
 # The measured reader's saved answers for each set: the newest that is in the repository.
 BASELINE = {
@@ -40,6 +41,7 @@ BASELINE = {
     "redteam": ["readings_redteam_v2.json", "readings_redteam_after_fix.json"],
     "redteam2": ["readings_redteam2_v2.json", "readings_redteam2_shipped.json"],
     "redteam3": ["readings_redteam3.json"],
+    "redteam4": ["readings_redteam4.json"],
 }
 THRESHOLDS = [round(0.05 * i, 2) for i in range(1, 20)]
 SLACK = 2  # claims a new reader may be behind the measured one on a set and still count as level with it

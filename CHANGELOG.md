@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- A table row is read as one line, and each value carries the header of its column:
+  `File uploads | Free: 10MB | Pro: Unlimited`. This holds for HTML tables and for tables made of other
+  elements that name their rows and cells. A header is only what the page marks as one. Before, each
+  cell was a line of its own, and a value could not be quoted with what it belongs to. This changes
+  what the check reads on a page with tables, so it is put to a round of its own before any number is
+  claimed for it (`studies/ROUND4_PREREGISTRATION.md`).
+- A finished round can be closed (`study.py close`): its record stays, and the suite stops holding the
+  code to it.
+
 - `receipts brief`: a brief on a company before you write to it. Code picks the pages from the
   company's own site, a model lists signals with quotes, and each signal goes through the code check
   and the reader. The reasons and the draft message cite the signals they rest on; a line that adds a

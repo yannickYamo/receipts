@@ -16,3 +16,4 @@ bench/traces/pages/
 bench/study/ledger.json
 # Pages of other sites read for the brief study stay local.
 bench/brief/*/ledger-*.json
+bench/round4/ledger.json
