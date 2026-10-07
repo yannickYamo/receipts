@@ -1,6 +1,48 @@
 # Evals
 
-**receipts is a guard for AI agents that research the web: every claim has to carry a quote from a page the code actually fetched, or it gets cut. This file is the list of tests it was held to, what passed, and what failed. One test failed and two results are still open, and they're in the table with everything else. If you only read the table, you'll have the honest version.**
+**receipts is a guard for AI agents that research the web: every claim has to carry a quote from a page the code actually fetched, or it gets cut. This file is the list of tests it was held to, what passed, and what failed. Some bars were missed, and they're in the tables with everything else. If you only read the table, you'll have the honest version.**
+
+## Round 3: the reader in 0.2.0
+
+The plan, its amendment and the sentence each outcome would put in the README were written before any run (`studies/ROUND3_PREREGISTRATION.md`). The table is copied from `studies/ROUND3_RESULTS.md`, which a script writes from the files of the runs; the test suite fails if that page says anything the files don't.
+
+| Measure | Bar set before the run | Result | |
+|---|---|---|---|
+| Round 2 again, true claims kept | at least 51 of 60 | 52 | met |
+| Round 2 again, unsupported claims cut | at least 54 of 60 | 60 | met |
+| The reader run three times: verdicts that changed | at most 2 | 0 of 76 | met |
+| Second red team again: got past both stages | at most 10 of 40 | 5 | met |
+| Second red team again: retractions past both | at most 2 of 6 | 1 | met |
+| Third red team, fresh: retractions past both | at most 2 | 0 of 7 | met |
+| Third red team, fresh: joined table lines past both | at most 2 | 0 of 10 | met |
+| Third red team, all techniques | none set | 1 of 40 | |
+| Instructions planted on the page: passes, planted against plain | at most 1 more | 1 against 0, of 20 pairs | met, at the limit |
+| 864 claims, 24 real pages: delivered with a quote that doesn't state them | at most half the bare model's | 34% before, 12% after | met |
+| Same claims: delivered and not stated by the page at all | at most half, when there are 20 | 9 of 864 before, 4 of 576 after | no bar: too few |
+| Same claims: true claims kept | at least 70% | 572 of 855 (67%) | **missed** |
+| Same claims: claims whose quote states them, kept | at least 85% | 504 of 568 (89%) | met |
+| A live battle card: true facts kept | at least 80% | 43 of 56 (77%) | **missed** |
+| Reader, list price for 100 claims | reported | $0.36 | |
+
+**What it shows.** Told to quote their source, four models from three families attached a quote that doesn't state the claim one time in three. receipts cut that to about one in eight. That is what it does.
+
+**What it doesn't show.** That it catches inventions. Only 9 of the 864 claims stated something the page doesn't, and 4 were still there after the check. That is too few to put to a bar, and the pre-registered sentence for this outcome says so in the README.
+
+**What it costs.** One true claim in three. By kind of page it kept 83% of true claims on encyclopedia articles, 71% on documentation, and 47% on pricing pages, where a value sits in a column away from the name it belongs to. That is the first thing to fix.
+
+**Three ways this is not the result as planned.**
+
+- The labels were not settled by a person, so the result is not the pre-registered one. Two labellers of different model families labelled every claim, and a third model family settled the 148 they disputed or marked unsupported, plus a sample of 50. Of that sample, 2 agreed labels were overturned.
+- The two labellers agree on "the quote states it" for 91% of claims (kappa 0.79) and on "the page states it" for 97% (kappa 0.18). The second kappa is low because almost every claim is stated by its page: on the few that might not be, the labellers mostly disagree. So the count of inventions is soft: 3 of 864 by the most lenient reading of the two labellers, 29 by the strictest.
+- Two runs were not made: the Citations API arm, and the re-read of the 59 facts of live run 3.
+
+**How much rests on the labels.** `ROUND3_RESULTS.md` gives every measure under the strictest and the most lenient labelling the two labellers allow, which no settlement can fall outside. The outcome is the same under each. One bar is not: "claims whose quote states them, kept" is 89% as settled and 83% under the most lenient labels, which is under its bar of 85%.
+
+The models were reached through an API gateway, which decides which model answers to a name; the run records the names it used.
+
+## The reader of 0.1.0
+
+Everything from here to the audits was measured on the earlier reader (prompt f95a7623), which did not see the page around a quote.
 
 | Eval | Bar set before the run | Result | |
 |---|---|---|---|
@@ -11,10 +53,6 @@
 | Real pages: facts the check kept that the page states | at least 95% | 43 of 43 | pass, on a run where the model proposed nothing false |
 | Real pages: true facts the check kept | none set | 43 of 59 | open |
 | A red team that had the source code: false claims that got through | none set | 15 of 40 | open |
-
-## Which reader these numbers are for
-
-Every number in the table was measured on reader prompt f95a7623, the reader of 0.1.0. The reader in 0.2.0 is 3e63cca8: it also sees the page on either side of the quote, and that text can only cut. Its results are not published yet. The plan, the bars and the run order for measuring it were written before any run, in `studies/ROUND3_PREREGISTRATION.md`. Until its results are here, the table describes the earlier reader.
 
 ## How I ran these
 
@@ -42,7 +80,7 @@ What it did do was cut 16 true facts. About one in four.
 
 **A guard that blocks a valid answer has a bug, and this one is mine.** I read the 16 one at a time. Eight were cases where the quote held a value but not what the value belongs to - a price without its plan name. Six were facts that added a word the quote didn't have. One was a faithful paraphrase. One tripped the negation rule.
 
-## Red team: 15 of 40 still get through
+## Red team on the earlier reader: 15 of 40 got through
 
 I gave an agent the source code and asked it to build false claims designed to pass. The first set got 9 of 40 past both stages, all by the same trick: lifting a quote out of its sentence, so "$425" comes out of "$425 million." I fixed that by making the reader read the whole sentence.
 
@@ -75,13 +113,13 @@ python bench/run_redteam.py redteam2 --replay    # the red team, every claim tha
 
 ## Next, in order
 
-1. Publish round 3 as pre-registered (`studies/ROUND3_PREREGISTRATION.md`). It measures the two changes below and, for the first time, how often a model told to quote states something the page doesn't.
-2. Built, results not published yet: the reader sees the sentences on either side, so a claim the next sentence takes back can be cut.
-3. Built, results not published yet: on the battle card, a fact whose quote didn't carry it gets one more quote from the same page. Its words can't change.
-4. A test set and labels written by people. Round 3 has a person settle the labels; it does not have a person write the set.
+1. Keep a value with the name it belongs to on pricing pages. That is where half the true claims are lost.
+2. Have a person settle the round 3 labels, and make the two runs that were not made.
+3. Measure the two experiments: the brief on a company, and a reader that answers with a probability.
+4. A test set written by people.
 
 ## What to trust it for
 
-Trust it to stop invented quotes and changed figures. Don't trust it against someone who has read the source code and is picking sentences a page later contradicts, and don't trust that a cut claim was false: on those pricing pages every claim it cut was true.
+Trust it to stop invented quotes and changed figures, and to remove most claims whose quote doesn't back them. Don't trust it against someone who has read the source code and is picking sentences a page later contradicts, and don't trust that a cut claim was false: most claims it cuts are true ones with a quote that doesn't carry them.
 
 The guard moved the work. It didn't remove it: you're still the one answerable for the claim that ships, and this file only tells you where to look first.

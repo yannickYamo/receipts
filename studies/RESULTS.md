@@ -227,7 +227,7 @@ review data, and each says which pages it could not read.
 ## 7. After these runs
 
 Everything above was measured on reader prompt f95a7623, the reader of 0.1.0. Two things were built
-afterwards, and their results are not published yet: the reader is shown the page on either side of
+afterwards and measured in round 3 (section 8): the reader is shown the page on either side of
 the passage (prompt 3e63cca8, the reader of 0.2.0), and the battle card gives a fact one more quote
 when its first quote did not carry it. A second outside review also found ten defects outside the
 check's decisions (the API backend's model name, a reader reply that answers a claim twice, a
@@ -235,8 +235,12 @@ malformed ledger, the fetcher's second lookup of a host name, and others); each 
 regression test in `tests/test_second_review_findings.py`. The code check's decisions did not change:
 sections 1 and 3 still rebuild from it.
 
-The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRATION.md`. Its results
-will be one page, `ROUND3_RESULTS.md`, written from the files of the runs by `bench/round3_report.py`.
+The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRATION.md`.
+
+## 8. Round 3
+
+The results of round 3 are one page, `ROUND3_RESULTS.md`, written from the files of the runs by
+`bench/round3_report.py` and checked against them by the test suite. `EVALS.md` reads them.
 
 ## What is not measured
 
