@@ -18,8 +18,7 @@ The reader is claude-haiku-4-5. Every script takes its name: `--reader-model=<na
 scripts, `--model` for `run_two_stage.py` and for `study.py read`, `--reader-model` for `receipts`.
 The default is the short name `haiku`. If the `claude` command on the machine does not serve that
 name, pass the full id (`claude-haiku-4-5`) to every step below, the same one each time. Each result
-file names the reader it was read with. Note in the hand-back which route the calls took (a personal
-login, an API key, a gateway): the model behind a name is the route's to decide.
+file names the reader it was read with.
 
 ## Before the freeze: check that every model can be reached
 

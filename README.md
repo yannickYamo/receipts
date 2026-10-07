@@ -193,6 +193,7 @@ src/receipts/decision.py     the reader's stage on a decision model (not measure
 bench/                       test sets, red-team sets, labels, saved model answers, live runs
 studies/                     the pre-registrations, the evaluation plan and the full results
 EVALS.md                     what was tested, what passed and what failed
+SECURITY.md                  what it is built to withstand, and how to report a problem
 CHANGELOG.md                 what changed in each version
 BACKLOG.md                   what is left out on purpose
 ```
