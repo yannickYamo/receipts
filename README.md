@@ -189,6 +189,7 @@ src/receipts/core.py         the code check          src/receipts/reader.py     
 src/receipts/ledger.py       pages, dates, hashes    src/receipts/audit.py       count specifics in any text
 src/receipts/battlecard/     the worked example      src/receipts/mcp_server.py  the check as an MCP server
 src/receipts/brief/          a second example: a brief on a company before you write to it
+src/receipts/decision.py     the reader's stage on a decision model (not measured yet)
 bench/                       test sets, red-team sets, labels, saved model answers, live runs
 studies/                     the pre-registrations, the evaluation plan and the full results
 EVALS.md                     what was tested, what passed and what failed
