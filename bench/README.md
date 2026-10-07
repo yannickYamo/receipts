@@ -11,7 +11,7 @@ python bench/run_redteam.py redteam2 --replay    # the second red team
 python bench/traces/score.py                     # real pages against the blind labels
 ```
 
-**Which reader the saved answers are from.** Every `readings_*.json` here was made with reader prompt f95a7623. The reader in the code now also sees the page around each quote (prompt 3e63cca8); its runs are the files ending in `_v2`, the third red team, the planted-instruction set and `study/`. To run a set on it without replacing the published answers, give the run a name: `python bench/run_two_stage.py round2 --tag v2`, `python bench/run_redteam.py redteam2 --tag=v2`. The plan for those runs is `studies/ROUND3_PREREGISTRATION.md`.
+**Which reader the saved answers are from.** Every `readings_*.json` here was made with reader prompt f95a7623. The reader in the code now also sees the page around each quote (prompt 3e63cca8). It was measured in round 3, and the files of that round are not in this folder. To run a set on it without replacing the published answers, give the run a name: `python bench/run_two_stage.py round2 --tag v2`, `python bench/run_redteam.py redteam2 --tag=v2`. The plan for those runs is `studies/ROUND3_PREREGISTRATION.md`.
 
 **The evidence.** `corpus/` and `corpus2/` each hold the plain text of six English Wikipedia articles about software companies, read 2026-10-03, under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Each has an `index.json` giving every article's address, and `build.py` fetches them again. `corpus3/` is six more, read 2026-10-04, for round 3's red team.
 

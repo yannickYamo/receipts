@@ -239,8 +239,70 @@ The plan for measuring the changed reader, with its bars, is `ROUND3_PREREGISTRA
 
 ## 8. Round 3
 
-The results of round 3 are one page, `ROUND3_RESULTS.md`, written from the files of the runs by
-`bench/round3_report.py` and checked against them by the test suite. `EVALS.md` reads them.
+Plan: `ROUND3_PREREGISTRATION.md`, with its amendment and its dated additions. Measured code: `core.py`
+59f710ad699d8fb9, `text.py` b0bae52357db889c, `reader.py` 24b0ee00c397867a, reader prompt 3e63cca8,
+which is the code of 0.2.0. Reader: claude-haiku-4-5. Extractors: four models of three families
+(two Claude, one GPT, one Grok).
+
+**The files of these runs are not in this repository.** Sections 1 to 6 are rebuilt by the test suite
+from saved files. This section is a report: the numbers below were written by `bench/round3_report.py`
+from the run files where the runs were made, and cannot be rebuilt here.
+
+| Measure | Bar | Result | |
+|---|---|---|---|
+| Round 2, true claims kept | at least 51 of 60 | 52 of 60 (87%) | met |
+| Round 2, unsupported claims cut | at least 54 of 60 | 60 of 60 (100%) | met |
+| Reader, three runs: verdicts that changed | at most 2 | 0 of 76 | met |
+| Second red team, past both stages | at most 10 of 40 | 5 of 40 (12%) | met |
+| Second red team, retractions past both | at most 2 of 6 | 1 of 6 | met |
+| Real pages (run 3), true facts kept on the same quotes | at least 41 of 59 | not run | |
+| Third red team, retractions past both | at most 2 | 0 of 7 | met |
+| Third red team, joined lines past both | at most 2 | 0 of 10 | met |
+| Third red team, all techniques, past both | none set | 1 of 40 (2%) | no bar |
+| Planted instructions: passes, planted against plain | at most 1 more | 1 against 0, of 20 pairs | met |
+| Delivered claims the page does not state | at most half, when the bare model has 20 | 9 of 864 (1%) before, 4 of 576 (1%) after; difference interval [-0.011, 0.0016]; fewer than 20, so no bar applies | no bar |
+| Delivered claims whose quote does not state them | at most half, interval below zero | 296 of 864 (34%) before, 72 of 576 (12%) after; difference interval [-0.276, -0.1607] | met |
+| True claims kept | at least 70% | 572 of 855 (67%), interval [0.5858, 0.7444] | **missed** |
+| Claims their quote states, kept | at least 85% | 504 of 568 (89%), interval [0.8295, 0.9354] | met |
+| Reader, list price per 100 claims | reported | $0.36, 5.52s a claim | no bar |
+| Live battle card, true facts kept | at least 80%, and no second quote on a fact the page does not state | 43 of 56 (77%); 1 kept on a second quote, 0 of them not stated by the page | **missed** |
+
+The Citations API arm was not run. The re-read of the facts of live run 3 was not run.
+
+**Outcome 2**, because the share of delivered claims whose quote does not state them is at most half
+the bare model's. The README's sentence for that outcome, filled from these numbers, is the second
+paragraph of the README.
+
+**Labels.** Two labellers of different model families labelled all 864 claims. A third model family,
+not a person, settled 148 of them: the 98 the two disputed or marked unsupported, and a sample of 50.
+The two labellers agree on "the page states it" for 838 of 864 (97%, kappa 0.177) and on "the quote
+states it" for 788 of 864 (91%, kappa 0.793). Of the 50 agreed labels read as a check, 2 were
+overturned. Because the labels were not settled by a person, this is not the pre-registered result.
+
+By kind of page, and by model family:
+
+| | Claims the page does not state, before | after | True claims kept |
+|---|---|---|---|
+| docs | 3 of 288 (1%) | 1 of 204 (0%) | 203 of 285 (71%) |
+| encyclopedia | 4 of 288 (1%) | 3 of 238 (1%) | 235 of 284 (83%) |
+| pricing | 2 of 288 (1%) | 0 of 134 (0%) | 134 of 286 (47%) |
+| claude | 7 of 432 (2%) | 2 of 249 (1%) | 247 of 425 (58%) |
+| gpt | 1 of 216 (0%) | 1 of 160 (1%) | 159 of 215 (74%) |
+| grok | 1 of 216 (0%) | 1 of 167 (1%) | 166 of 215 (77%) |
+
+Under each labelling. Strict says yes only where both labellers do; lenient says yes where either
+does. Any settlement lies between them.
+
+| Labels | Outcome | Quote does not state it, before to after | Page does not state it, before to after | True claims kept | Claims their quote states, kept |
+|---|---|---|---|---|---|
+| settled | 2 | 296 of 864 (34%) to 72 of 576 (12%) | 9 of 864 (1%) to 4 of 576 (1%) | 572 of 855 (67%) missed | 504 of 568 (89%) met |
+| strict | 2 | 302 of 864 (35%) to 77 of 576 (13%) | 29 of 864 (3%) to 17 of 576 (3%) | 559 of 835 (67%) missed | 499 of 562 (89%) met |
+| lenient | 2 | 226 of 864 (26%) to 45 of 576 (8%) | 3 of 864 (0%) to 2 of 576 (0%) | 574 of 861 (67%) missed | 531 of 638 (83%) missed |
+
+The outcome is the same under each.
+
+**The two misses have one cause.** True claims kept, and the live card, both fall short on pricing
+pages: a value in a table quoted without its row or its column. Round 4 is planned for that.
 
 ## What is not measured
 

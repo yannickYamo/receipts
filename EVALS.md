@@ -4,7 +4,7 @@
 
 ## Round 3: the reader in 0.2.0
 
-The plan, its amendment and the sentence each outcome would put in the README were written before any run (`studies/ROUND3_PREREGISTRATION.md`). The table is copied from `studies/ROUND3_RESULTS.md`, which a script writes from the files of the runs; the test suite fails if that page says anything the files don't.
+The plan, its amendment and the sentence each outcome would put in the README were written before any run (`studies/ROUND3_PREREGISTRATION.md`). The full record is in `studies/RESULTS.md`, section 8. One thing sets this round apart from the earlier ones: the files of its runs are not in this repository, so these numbers cannot be rebuilt from it the way every earlier number can.
 
 | Measure | Bar set before the run | Result | |
 |---|---|---|---|
@@ -30,13 +30,14 @@ The plan, its amendment and the sentence each outcome would put in the README we
 
 **What it costs.** One true claim in three. By kind of page it kept 83% of true claims on encyclopedia articles, 71% on documentation, and 47% on pricing pages, where a value sits in a column away from the name it belongs to. That is the first thing to fix.
 
-**Three ways this is not the result as planned.**
+**Four ways this is not the result as planned.**
 
+- The files of the runs are not published. Every earlier number in this file replays from saved files with no model; these are reported, not reproducible from the repository.
 - The labels were not settled by a person, so the result is not the pre-registered one. Two labellers of different model families labelled every claim, and a third model family settled the 148 they disputed or marked unsupported, plus a sample of 50. Of that sample, 2 agreed labels were overturned.
 - The two labellers agree on "the quote states it" for 91% of claims (kappa 0.79) and on "the page states it" for 97% (kappa 0.18). The second kappa is low because almost every claim is stated by its page: on the few that might not be, the labellers mostly disagree. So the count of inventions is soft: 3 of 864 by the most lenient reading of the two labellers, 29 by the strictest.
 - Two runs were not made: the Citations API arm, and the re-read of the 59 facts of live run 3.
 
-**How much rests on the labels.** `ROUND3_RESULTS.md` gives every measure under the strictest and the most lenient labelling the two labellers allow, which no settlement can fall outside. The outcome is the same under each. One bar is not: "claims whose quote states them, kept" is 89% as settled and 83% under the most lenient labels, which is under its bar of 85%.
+**How much rests on the labels.** Every measure was also computed under the strictest labelling the two labellers allow (yes only where both say yes) and the most lenient (yes where either does). No settlement can fall outside those two. The outcome is the same under each: quotes that don't state the claim fall from 35% to 13% under the strictest and from 26% to 8% under the most lenient. One bar is not the same: "claims whose quote states them, kept" is 89% as settled and 83% under the most lenient labels, which is under its bar of 85%.
 
 ## The reader of 0.1.0
 
@@ -112,7 +113,7 @@ python bench/run_redteam.py redteam2 --replay    # the red team, every claim tha
 ## Next, in order
 
 1. Keep a value with the name it belongs to on pricing pages. That is where half the true claims are lost.
-2. Have a person settle the round 3 labels, and make the two runs that were not made.
+2. Publish the files of round 3, have a person settle its labels, and make the two runs that were not made.
 3. Measure the two experiments: the brief on a company, and a reader that answers with a probability.
 4. A test set written by people.
 

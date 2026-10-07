@@ -21,8 +21,9 @@
 
 ## 0.2.0 (2026-10-06)
 
-The reader in this version (prompt 3e63cca8) was measured in round 3: `studies/ROUND3_RESULTS.md`,
-with every bar it missed. `EVALS.md` says which reader each number is for.
+The reader in this version (prompt 3e63cca8) was measured in round 3. The results, with every bar
+it missed, are in `EVALS.md` and `studies/RESULTS.md`, section 8. `EVALS.md` says which reader each
+number is for.
 
 ### The check
 
