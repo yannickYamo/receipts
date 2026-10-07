@@ -1,0 +1,50 @@
+{
+ "pricing": [
+  "https://buttondown.com/pricing",
+  "https://www.notion.com/pricing",
+  "https://about.gitlab.com/pricing/",
+  "https://sentry.io/pricing/",
+  "https://posthog.com/pricing",
+  "https://plausible.io/#pricing",
+  "https://www.fastmail.com/pricing/",
+  "https://tailscale.com/pricing",
+  "https://www.freshworks.com/freshdesk/pricing/",
+  "https://www.zendesk.com/pricing/",
+  "https://linear.app/pricing",
+  "https://www.figma.com/pricing/",
+  "https://vercel.com/pricing",
+  "https://www.airtable.com/pricing",
+  "https://slack.com/pricing",
+  "https://www.intercom.com/pricing",
+  "https://www.hubspot.com/pricing",
+  "https://asana.com/pricing",
+  "https://monday.com/pricing",
+  "https://clickup.com/pricing",
+  "https://www.shopify.com/pricing",
+  "https://stripe.com/pricing",
+  "https://www.datadoghq.com/pricing/",
+  "https://supabase.com/pricing",
+  "https://www.cloudflare.com/plans/",
+  "https://zoom.us/pricing"
+ ],
+ "docs": [
+  "https://docs.stripe.com/rate-limits",
+  "https://www.postgresql.org/docs/current/limits.html",
+  "https://developers.cloudflare.com/workers/platform/limits/",
+  "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+  "https://react.dev/learn",
+  "https://kubernetes.io/docs/concepts/overview/"
+ ],
+ "company": [
+  "https://zulip.com/",
+  "https://tailscale.com/company",
+  "https://www.cockroachlabs.com/careers/",
+  "https://grafana.com/whats-new/"
+ ],
+ "reviews": [
+  "https://www.g2.com/products/zendesk-support-suite/reviews",
+  "https://www.capterra.com/p/164283/Zendesk/",
+  "https://www.trustradius.com/products/zendesk/reviews",
+  "https://www.trustpilot.com/review/zendesk.com"
+ ]
+}

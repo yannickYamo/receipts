@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import http.client
 import ipaddress
+import json
+import os
 import socket
 import ssl
 import time
@@ -179,10 +181,10 @@ def _get(url: str, timeout: float, respect_robots: bool) -> tuple[str, str]:
         raise FetchError(f"could not connect ({getattr(e, 'reason', e)})") from e
 
 
-def _as_text(kind: str, body: str) -> tuple[str, str]:
+def _as_text(kind: str, body: str, rendered: bool = False) -> tuple[str, str]:
     title, text = html_to_text(body) if kind != "text/plain" else ("", body.strip())
     if len(text) < 200:
-        raise FetchError("the page has almost no text without JavaScript")
+        raise FetchError("the page has almost no text" + ("" if rendered else " without JavaScript"))
     return title, text
 
 
@@ -238,3 +240,175 @@ def fetch_with_links(
     kind, body = _get(url, timeout, respect_robots)
     title, text = _as_text(kind, body)
     return title, text, links_in(body, url) if kind != "text/plain" else []
+
+
+# ── Other ways to get a page ──────────────────────────────────────────────────────────────────────
+#
+# The fetcher above reads what a site serves to a plain request. Two kinds of page it cannot read:
+# one whose text arrives by JavaScript, and one behind a service the user already pays to read pages
+# for them. Both are opt-in, both go through the same address and robots.txt checks first, and the
+# ledger records which one a page came through.
+#
+# A site that refuses automated requests is refused here too, whichever way is chosen: its robots.txt
+# is asked for with a plain request, and a 401 or 403 there is read as "no". Nothing here is built to
+# get past a refusal.
+
+HOW = {
+    "code": "fetched by code",
+    "browser": "rendered by a headless browser, then read by code",
+    "firecrawl": "returned by Firecrawl",
+    "supplied": "supplied by the user, not fetched",
+    "": "not recorded",
+}
+FETCHERS = ("code", "browser", "firecrawl")
+MAX_RENDERED = 8_000_000  # characters of HTML after scripts ran
+_SKIP_KINDS = {"image", "media", "font"}  # a rendered page is read for its text
+
+
+def _allowed(url: str, verdicts: dict[str, bool]) -> bool:
+    """May the browser request `url`? http(s) to a public host only; each host is looked up once per page."""
+    try:
+        host = urlsplit(url).hostname or ""
+    except ValueError:
+        return False
+    if url.startswith(("data:", "blob:", "about:")):
+        return True  # no request leaves the machine
+    if host not in verdicts:
+        try:
+            check_address(url)
+            verdicts[host] = True
+        except FetchError:
+            verdicts[host] = False
+    return verdicts[host] and urlsplit(url).scheme in ("http", "https")
+
+
+def _playwright():
+    try:
+        from playwright.sync_api import sync_playwright  # pyright: ignore
+    except ImportError as e:
+        raise FetchError(
+            "the browser fetcher needs playwright: pip install playwright && playwright install chromium"
+        ) from e
+    return sync_playwright
+
+
+def _render(url: str, timeout: float, launch, verdicts: dict[str, bool], refused: list[str]) -> tuple[str, str]:
+    """(HTML after scripts ran, final address). Every request is checked; what was refused is added to `refused`."""
+
+    def guard(route):
+        request = route.request
+        if request.resource_type in _SKIP_KINDS:
+            route.abort()
+        elif _allowed(request.url, verdicts):
+            route.continue_()
+        else:
+            refused.append(request.url)
+            route.abort()
+
+    def watch(request):  # a redirect is followed without passing the guard: see where it went
+        if not _allowed(request.url, verdicts):
+            refused.append(request.url)
+
+    with launch() as p:
+        browser = p.chromium.launch()
+        try:
+            context = browser.new_context(user_agent=USER_AGENT, service_workers="block", accept_downloads=False)
+            context.route("**/*", guard)
+            context.on("request", watch)
+            page = context.new_page()
+            try:
+                page.goto(url, wait_until="networkidle", timeout=timeout * 1000)
+            except Exception as e:  # a page that never goes quiet is read as it stands
+                if "Timeout" not in type(e).__name__:
+                    raise
+            return page.content(), page.url
+        finally:
+            browser.close()
+
+
+def fetch_rendered(
+    url: str, *, timeout: float = 30, respect_robots: bool = True, launch=None
+) -> tuple[str, str, list[tuple[str, str]]]:
+    """(title, text, links) of a page after its scripts ran, read by a headless browser (pip install playwright).
+
+    Every request the page makes is checked before it is sent: only http(s), only public hosts. A
+    request that was redirected to a host that is not public spoils the whole fetch: the page is
+    thrown away and FetchError is raised. The browser looks names up itself, so unlike the plain
+    fetcher this cannot promise that the address checked is the address dialled; that is why this way
+    is for addresses a person chose, and the MCP server, whose addresses a model chooses, never uses it.
+    """
+    check_address(url)
+    if respect_robots and not allowed_by_robots(url):
+        raise FetchError("the site's robots.txt does not allow it")
+    verdicts: dict[str, bool] = {}
+    refused: list[str] = []
+    try:
+        html, final = _render(url, timeout, launch or _playwright(), verdicts, refused)
+    except FetchError:
+        raise
+    except Exception as e:
+        raise FetchError(f"the browser could not read the page ({str(e).splitlines()[0][:200]})") from e
+    if [u for u in refused if urlsplit(u).scheme in ("http", "https")] or not _allowed(final, verdicts):
+        raise FetchError("the page reached for an address that is not on the public internet")
+    if len(html) > MAX_RENDERED:
+        raise FetchError("the rendered page is larger than 8 MB")
+    title, text = _as_text("text/html", html, rendered=True)
+    return title, text, links_in(html, final)
+
+
+def _post_json(url: str, headers: dict, body: dict, timeout: float) -> dict:
+    req = urllib.request.Request(url, data=json.dumps(body).encode(), headers=headers, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:  # noqa: S310 - a fixed https address
+            return json.loads(r.read().decode("utf-8", "replace"))
+    except urllib.error.HTTPError as e:
+        try:
+            said = json.loads(e.read().decode("utf-8", "replace")).get("error", "")
+        except (ValueError, AttributeError):
+            said = ""
+        raise FetchError(f"Firecrawl answered {e.code}" + (f": {str(said)[:200]}" if said else "")) from e
+    except (urllib.error.URLError, TimeoutError, OSError, ValueError) as e:
+        raise FetchError(f"could not reach Firecrawl ({getattr(e, 'reason', e)})") from e
+
+
+def fetch_firecrawl(
+    url: str, *, timeout: float = 90, respect_robots: bool = True, api_key: str | None = None, post=None
+) -> tuple[str, str, list[tuple[str, str]]]:
+    """(title, text, links) of a page as Firecrawl returns it, in Markdown. The key is read from FIRECRAWL_API_KEY.
+
+    The text is what Firecrawl sent back, not what this machine read: the ledger says so. The page is
+    asked for fresh (no cached copy), so the date in the ledger is the date it was read. The address is
+    checked here before it is sent on, and the site's robots.txt is honoured here as for any fetch.
+    """
+    check_address(url)
+    if respect_robots and not allowed_by_robots(url):
+        raise FetchError("the site's robots.txt does not allow it")
+    key = api_key or os.environ.get("FIRECRAWL_API_KEY") or ""
+    if not key and post is None:
+        raise FetchError("no key for Firecrawl: set FIRECRAWL_API_KEY")
+    body = {"url": url, "formats": ["markdown", "links"], "onlyMainContent": False, "maxAge": 0}
+    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+    reply = (post or _post_json)("https://api.firecrawl.dev/v2/scrape", headers, body, timeout)
+    data = reply.get("data") if isinstance(reply, dict) else None
+    if not isinstance(data, dict) or not reply.get("success"):
+        raise FetchError(
+            f"Firecrawl returned no page ({str(reply.get('error', reply) if isinstance(reply, dict) else reply)[:200]})"
+        )
+    meta = data.get("metadata") or {}
+    status = meta.get("statusCode")
+    if isinstance(status, int) and status >= 400:
+        raise FetchError(f"the site answered {status}")
+    text = str(data.get("markdown") or "").strip()
+    if len(text) < 200:
+        raise FetchError("the page has almost no text")
+    if len(text) > MAX_BYTES:
+        raise FetchError("the page is larger than 3 MB")
+    links = [(u, "") for u in data.get("links") or [] if isinstance(u, str) and urlsplit(u).scheme in ("http", "https")]
+    return str(meta.get("title") or ""), text, links
+
+
+def fetch_page(url: str, how: str = "code", **kw) -> tuple[str, str, list[tuple[str, str]]]:
+    """(title, text, links) of a page by one of FETCHERS. Raises FetchError when it cannot be read."""
+    if how not in FETCHERS:
+        raise FetchError(f"no such way to fetch a page: {how}")
+    return {"code": fetch_with_links, "browser": fetch_rendered, "firecrawl": fetch_firecrawl}[how](url, **kw)
