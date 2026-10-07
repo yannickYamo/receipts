@@ -38,8 +38,6 @@ The plan, its amendment and the sentence each outcome would put in the README we
 
 **How much rests on the labels.** `ROUND3_RESULTS.md` gives every measure under the strictest and the most lenient labelling the two labellers allow, which no settlement can fall outside. The outcome is the same under each. One bar is not: "claims whose quote states them, kept" is 89% as settled and 83% under the most lenient labels, which is under its bar of 85%.
 
-The models were reached through an API gateway, which decides which model answers to a name; the run records the names it used.
-
 ## The reader of 0.1.0
 
 Everything from here to the audits was measured on the earlier reader (prompt f95a7623), which did not see the page around a quote.
