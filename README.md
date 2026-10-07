@@ -176,7 +176,7 @@ It cuts true facts. About one true fact in four on real pricing pages, usually a
 
 It doesn't stop someone who writes claims specifically to beat it. It doesn't know whether a page is right - point it at a wrong page and you get a well-sourced wrong claim.
 
-The built-in fetcher is basic. No JavaScript, and sites that refuse don't get read; G2 and Capterra answered 403 in every live run. The card names the pages it couldn't read, which is the point.
+Some pages can't be read, and it doesn't try to get round a site that says no. The plain fetcher reads what a site serves to a simple request. For a page whose text arrives by JavaScript there are two more ways, `--fetcher browser` (a headless browser; `pip install playwright`) and `--fetcher firecrawl` (your Firecrawl key). On a fixed list of 40 pages the plain fetcher read 35 and the browser 36, with much more text on four of them. Review sites such as G2 and Capterra refuse automated reading with a 403 or a bot check, whichever way is used, and none of them was read. For those, save the page from your own browser and hand it in with `receipts add page.html --url ...`. Every source on a card says how it got there: fetched by code, rendered by a browser, returned by a service, or supplied by you.
 
 A ledger file is trusted input. Loading refuses page text that no longer matches its hash, which catches an edit or a damaged file, but whoever can edit the text can edit the hash. The MCP server fetches addresses a model chose; private and local addresses are refused, and the connection goes to the address that was checked, so a host can't answer one thing to the check and another to the fetch.
 

@@ -6,7 +6,7 @@ import pytest
 
 from receipts import Ledger
 from receipts.cli import main
-from receipts.fetch import FetchError, _allowed, fetch_firecrawl, fetch_page, fetch_rendered
+from receipts.fetch import FetchError, _allowed, fetch_firecrawl, fetch_page, fetch_rendered, is_a_wall
 
 TEXT = "Acme Starter costs $20 per seat per month. " * 8
 HTML = f"<html><head><title>Acme pricing</title></head><body><p>{TEXT}</p><a href='/about'>About</a></body></html>"
@@ -106,8 +106,8 @@ class FakeRoute:
 class FakeBrowser:
     """A stand-in for playwright: the page "requests" a list of addresses through the guard, then has content."""
 
-    def __init__(self, requests, html=HTML, final="https://acme.example/pricing", redirects=()):
-        self.requests, self.html, self.final, self.redirects = requests, html, final, redirects
+    def __init__(self, requests, html=HTML, final="https://acme.example/pricing", redirects=(), status=200):
+        self.requests, self.html, self.final, self.redirects, self.status = requests, html, final, redirects, status
         self.sent, self.aborted, self.closed = [], [], False
         self.chromium = self
 
@@ -140,6 +140,7 @@ class FakeBrowser:
             self.guard(route)
         for address in self.redirects:  # followed by the browser without passing the guard
             self.watch(FakeRoute(self, address, "document").request)
+        return type("Response", (), {"status": self.status})()
 
     def content(self):
         return self.html
@@ -207,11 +208,24 @@ def test_a_page_that_reaches_for_a_private_address_is_thrown_away(monkeypatch):
 
 def test_a_challenge_page_with_no_text_is_not_a_page(monkeypatch):
     addresses(monkeypatch)
-    wall = FakeBrowser(
-        [("https://reviews.example/p", "document")], html="<html><body>Checking your browser</body></html>"
+    check = (
+        "This website uses a security service. This page is displayed while the website verifies you are not a bot. "
+        * 4
     )
-    with pytest.raises(FetchError, match="almost no text"):
+    page = f"<html><title>Just a moment...</title><body>{check}</body></html>"
+    wall = FakeBrowser([("https://reviews.example/p", "document")], html=page)
+    with pytest.raises(FetchError, match="bot check in place of the page"):
         fetch_rendered("https://reviews.example/p", launch=lambda: wall)
+    refused = FakeBrowser([("https://reviews.example/p", "document")], status=403)
+    with pytest.raises(FetchError, match="the site answered 403"):
+        fetch_rendered("https://reviews.example/p", launch=lambda: refused)
+    with pytest.raises(FetchError, match="bot check"):
+        fetch_firecrawl(
+            "https://reviews.example/p", api_key="k", post=lambda u, h, b, t: firecrawl_says(markdown=check)
+        )
+    assert not is_a_wall(
+        "How CAPTCHA works", "An article about captcha. " * 200
+    )  # a long page that uses the word is a page
 
 
 # ── The ledger says how each page got here ──────────────────────────────────────────────────────────

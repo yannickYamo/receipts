@@ -20,9 +20,12 @@ HERE = Path(__file__).parent
 def main() -> None:
     """Fetch every page of urls.json by each way named on the command line, and merge into the result file."""
     ways = [w for w in sys.argv[1:] if w in FETCHERS] or ["code"]
+    only = {x.split("=", 1)[1] for x in sys.argv[1:] if x.startswith("--kind=")}  # run again for one kind of page
     out = HERE / "RESULT_reach.json"
     result = json.loads(out.read_text()) if out.exists() else {}
     for kind, urls in json.loads((HERE / "urls.json").read_text()).items():
+        if only and kind not in only:
+            continue
         for url in urls:
             row = result.setdefault(url, {"kind": kind})
             for way in ways:

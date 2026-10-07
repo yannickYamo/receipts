@@ -1,0 +1,513 @@
+{
+ "https://buttondown.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 3917,
+   "prices": 12
+  },
+  "browser": {
+   "read": true,
+   "characters": 3885,
+   "prices": 12
+  }
+ },
+ "https://www.notion.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 22867,
+   "prices": 10
+  },
+  "browser": {
+   "read": true,
+   "characters": 22721,
+   "prices": 10
+  }
+ },
+ "https://about.gitlab.com/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 30493,
+   "prices": 16
+  },
+  "browser": {
+   "read": true,
+   "characters": 35179,
+   "prices": 16
+  }
+ },
+ "https://sentry.io/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 8945,
+   "prices": 49
+  },
+  "browser": {
+   "read": true,
+   "characters": 9177,
+   "prices": 50
+  }
+ },
+ "https://posthog.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 12976,
+   "prices": 20
+  },
+  "browser": {
+   "read": true,
+   "characters": 13385,
+   "prices": 23
+  }
+ },
+ "https://plausible.io/#pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 8873,
+   "prices": 3
+  },
+  "browser": {
+   "read": true,
+   "characters": 8918,
+   "prices": 12
+  }
+ },
+ "https://www.fastmail.com/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 23019,
+   "prices": 48
+  },
+  "browser": {
+   "read": true,
+   "characters": 23019,
+   "prices": 48
+  }
+ },
+ "https://tailscale.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 30326,
+   "prices": 9
+  },
+  "browser": {
+   "read": true,
+   "characters": 30326,
+   "prices": 9
+  }
+ },
+ "https://www.freshworks.com/freshdesk/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 22846,
+   "prices": 42
+  },
+  "browser": {
+   "read": true,
+   "characters": 26099,
+   "prices": 42
+  }
+ },
+ "https://www.zendesk.com/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 70633,
+   "prices": 21
+  },
+  "browser": {
+   "read": true,
+   "characters": 72754,
+   "prices": 21
+  }
+ },
+ "https://linear.app/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 3011,
+   "prices": 5
+  },
+  "browser": {
+   "read": true,
+   "characters": 3011,
+   "prices": 5
+  }
+ },
+ "https://www.figma.com/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 26676,
+   "prices": 9
+  },
+  "browser": {
+   "read": true,
+   "characters": 27147,
+   "prices": 9
+  }
+ },
+ "https://vercel.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 15460,
+   "prices": 59
+  },
+  "browser": {
+   "read": true,
+   "characters": 15459,
+   "prices": 59
+  }
+ },
+ "https://www.airtable.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 9251,
+   "prices": 2
+  },
+  "browser": {
+   "read": true,
+   "characters": 17371,
+   "prices": 17
+  }
+ },
+ "https://slack.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 32097,
+   "prices": 7
+  },
+  "browser": {
+   "read": true,
+   "characters": 35284,
+   "prices": 7
+  }
+ },
+ "https://www.intercom.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 11657,
+   "prices": 27
+  },
+  "browser": {
+   "read": true,
+   "characters": 12294,
+   "prices": 27
+  }
+ },
+ "https://www.hubspot.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": false,
+   "why": "the page has almost no text without JavaScript"
+  },
+  "browser": {
+   "read": true,
+   "characters": 23368,
+   "prices": 19
+  }
+ },
+ "https://asana.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 43493,
+   "prices": 13
+  },
+  "browser": {
+   "read": true,
+   "characters": 46768,
+   "prices": 14
+  }
+ },
+ "https://monday.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 53929,
+   "prices": 89
+  },
+  "browser": {
+   "read": true,
+   "characters": 54176,
+   "prices": 89
+  }
+ },
+ "https://clickup.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 13338,
+   "prices": 13
+  },
+  "browser": {
+   "read": true,
+   "characters": 17630,
+   "prices": 70
+  }
+ },
+ "https://www.shopify.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 19111,
+   "prices": 39
+  },
+  "browser": {
+   "read": true,
+   "characters": 19228,
+   "prices": 40
+  }
+ },
+ "https://stripe.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 39273,
+   "prices": 55
+  },
+  "browser": {
+   "read": true,
+   "characters": 39095,
+   "prices": 55
+  }
+ },
+ "https://www.datadoghq.com/pricing/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 247907,
+   "prices": 299
+  },
+  "browser": {
+   "read": true,
+   "characters": 248447,
+   "prices": 299
+  }
+ },
+ "https://supabase.com/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 18548,
+   "prices": 104
+  },
+  "browser": {
+   "read": true,
+   "characters": 18544,
+   "prices": 104
+  }
+ },
+ "https://www.cloudflare.com/plans/": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 17562,
+   "prices": 131
+  },
+  "browser": {
+   "read": true,
+   "characters": 18969,
+   "prices": 131
+  }
+ },
+ "https://zoom.us/pricing": {
+  "kind": "pricing",
+  "code": {
+   "read": true,
+   "characters": 1441,
+   "prices": 2
+  },
+  "browser": {
+   "read": true,
+   "characters": 23649,
+   "prices": 29
+  }
+ },
+ "https://docs.stripe.com/rate-limits": {
+  "kind": "docs",
+  "code": {
+   "read": true,
+   "characters": 11523,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 11713,
+   "prices": 0
+  }
+ },
+ "https://www.postgresql.org/docs/current/limits.html": {
+  "kind": "docs",
+  "code": {
+   "read": true,
+   "characters": 3418,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 3418,
+   "prices": 0
+  }
+ },
+ "https://developers.cloudflare.com/workers/platform/limits/": {
+  "kind": "docs",
+  "code": {
+   "read": true,
+   "characters": 26486,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 26484,
+   "prices": 0
+  }
+ },
+ "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api": {
+  "kind": "docs",
+  "code": {
+   "read": true,
+   "characters": 15807,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 15862,
+   "prices": 0
+  }
+ },
+ "https://react.dev/learn": {
+  "kind": "docs",
+  "code": {
+   "read": true,
+   "characters": 14065,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 14105,
+   "prices": 0
+  }
+ },
+ "https://kubernetes.io/docs/concepts/overview/": {
+  "kind": "docs",
+  "code": {
+   "read": true,
+   "characters": 35393,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 35872,
+   "prices": 0
+  }
+ },
+ "https://zulip.com/": {
+  "kind": "company",
+  "code": {
+   "read": true,
+   "characters": 6164,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 6164,
+   "prices": 0
+  }
+ },
+ "https://tailscale.com/company": {
+  "kind": "company",
+  "code": {
+   "read": true,
+   "characters": 7327,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 7327,
+   "prices": 0
+  }
+ },
+ "https://www.cockroachlabs.com/careers/": {
+  "kind": "company",
+  "code": {
+   "read": true,
+   "characters": 6668,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 9928,
+   "prices": 0
+  }
+ },
+ "https://grafana.com/whats-new/": {
+  "kind": "company",
+  "code": {
+   "read": true,
+   "characters": 11595,
+   "prices": 0
+  },
+  "browser": {
+   "read": true,
+   "characters": 15375,
+   "prices": 0
+  }
+ },
+ "https://www.g2.com/products/zendesk-support-suite/reviews": {
+  "kind": "reviews",
+  "code": {
+   "read": false,
+   "why": "the site answered 403"
+  },
+  "browser": {
+   "read": false,
+   "why": "the site answered 403"
+  }
+ },
+ "https://www.capterra.com/p/164283/Zendesk/": {
+  "kind": "reviews",
+  "code": {
+   "read": false,
+   "why": "the site answered 403"
+  },
+  "browser": {
+   "read": false,
+   "why": "the site answered 403"
+  }
+ },
+ "https://www.trustradius.com/products/zendesk/reviews": {
+  "kind": "reviews",
+  "code": {
+   "read": false,
+   "why": "the site's robots.txt does not allow it"
+  },
+  "browser": {
+   "read": false,
+   "why": "the site's robots.txt does not allow it"
+  }
+ },
+ "https://www.trustpilot.com/review/zendesk.com": {
+  "kind": "reviews",
+  "code": {
+   "read": false,
+   "why": "the site's robots.txt does not allow it"
+  },
+  "browser": {
+   "read": false,
+   "why": "the site's robots.txt does not allow it"
+  }
+ }
+}

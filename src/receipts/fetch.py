@@ -181,8 +181,35 @@ def _get(url: str, timeout: float, respect_robots: bool) -> tuple[str, str]:
         raise FetchError(f"could not connect ({getattr(e, 'reason', e)})") from e
 
 
+# What a site shows in place of a page while it decides whether the visitor is a person. It is not the
+# page, and it must never become evidence. Looked for only in short texts: an article may use these words.
+_WALL = (
+    "just a moment",
+    "verifies you are not a bot",
+    "verify you are human",
+    "verifying you are human",
+    "checking your browser",
+    "enable javascript and cookies to continue",
+    "attention required",
+    "access denied",
+    "are you a robot",
+    "unusual traffic",
+    "captcha",
+)
+
+
+def is_a_wall(title: str, text: str) -> bool:
+    """Is this a bot check or a refusal page, and not the page that was asked for?"""
+    if len(text) > 2000:
+        return False
+    seen = f"{title} {text}".lower()
+    return any(mark in seen for mark in _WALL)
+
+
 def _as_text(kind: str, body: str, rendered: bool = False) -> tuple[str, str]:
     title, text = html_to_text(body) if kind != "text/plain" else ("", body.strip())
+    if is_a_wall(title, text):
+        raise FetchError("the site put up a bot check in place of the page")
     if len(text) < 200:
         raise FetchError("the page has almost no text" + ("" if rendered else " without JavaScript"))
     return title, text
@@ -292,8 +319,8 @@ def _playwright():
     return sync_playwright
 
 
-def _render(url: str, timeout: float, launch, verdicts: dict[str, bool], refused: list[str]) -> tuple[str, str]:
-    """(HTML after scripts ran, final address). Every request is checked; what was refused is added to `refused`."""
+def _render(url: str, timeout: float, launch, verdicts: dict[str, bool], refused: list[str]) -> tuple[str, str, int]:
+    """(HTML after scripts ran, final address, the site's status). Every request is checked; refusals go in `refused`."""
 
     def guard(route):
         request = route.request
@@ -316,12 +343,13 @@ def _render(url: str, timeout: float, launch, verdicts: dict[str, bool], refused
             context.route("**/*", guard)
             context.on("request", watch)
             page = context.new_page()
+            answer = None
             try:
-                page.goto(url, wait_until="networkidle", timeout=timeout * 1000)
+                answer = page.goto(url, wait_until="networkidle", timeout=timeout * 1000)
             except Exception as e:  # a page that never goes quiet is read as it stands
                 if "Timeout" not in type(e).__name__:
                     raise
-            return page.content(), page.url
+            return page.content(), page.url, int(getattr(answer, "status", 0) or 0)
         finally:
             browser.close()
 
@@ -343,13 +371,15 @@ def fetch_rendered(
     verdicts: dict[str, bool] = {}
     refused: list[str] = []
     try:
-        html, final = _render(url, timeout, launch or _playwright(), verdicts, refused)
+        html, final, status = _render(url, timeout, launch or _playwright(), verdicts, refused)
     except FetchError:
         raise
     except Exception as e:
         raise FetchError(f"the browser could not read the page ({str(e).splitlines()[0][:200]})") from e
     if [u for u in refused if urlsplit(u).scheme in ("http", "https")] or not _allowed(final, verdicts):
         raise FetchError("the page reached for an address that is not on the public internet")
+    if status >= 400:
+        raise FetchError(f"the site answered {status}")
     if len(html) > MAX_RENDERED:
         raise FetchError("the rendered page is larger than 8 MB")
     title, text = _as_text("text/html", html, rendered=True)
@@ -399,6 +429,8 @@ def fetch_firecrawl(
     if isinstance(status, int) and status >= 400:
         raise FetchError(f"the site answered {status}")
     text = str(data.get("markdown") or "").strip()
+    if is_a_wall(str(meta.get("title") or ""), text):
+        raise FetchError("the site put up a bot check in place of the page")
     if len(text) < 200:
         raise FetchError("the page has almost no text")
     if len(text) > MAX_BYTES:
