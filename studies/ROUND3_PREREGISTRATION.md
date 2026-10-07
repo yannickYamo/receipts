@@ -293,8 +293,12 @@ planned. It shows whether they would have been different in other hands.
 
 **The cost sentence.** The plan's sentence ends "mostly [the largest cause]", which needs every cut
 claim read and grouped. The sentence the page prints ends with where the cost falls by kind of page,
-which is a count. The reading by cause is still owed in `RESULTS.md`.
+which is a count. The reading of every cut claim by cause was not done.
 
-**Who settled the labels, and what was not run,** are stated on the page of results
-(`ROUND3_RESULTS.md`) from the files, and in `EVALS.md`. If the labels were not settled by a person,
+**Who settled the labels, and what was not run,** are stated with the results, in `RESULTS.md`
+section 8 and in `EVALS.md`. If the labels were not settled by a person,
 the result is not the pre-registered one, and `EVALS.md` says so in those words.
+
+**Published without its files, 2026-10-07.** The results are in `RESULTS.md`, section 8. The files of
+the runs are not in the repository, so the page `bench/round3_report.py` writes from them is not
+either, and the numbers are a report, not something the repository can rebuild.

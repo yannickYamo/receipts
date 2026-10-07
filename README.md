@@ -4,6 +4,8 @@
 
 **receipts is a small Python package that sits between a research agent and the document a human will act on. Every claim the agent makes has to carry a verbatim quote from a page that code fetched, with a link and the date it was read. A claim the check can't tie to its quote gets cut, and the cut is listed with a reason. A model may point at evidence; only code may vouch for it.**
 
+On 864 claims from 24 real pages, written by models of 3 families that were told to quote their source, 34% came with a quote that does not state the claim. After receipts, 12%. It kept 67% of the true ones. Only 9 of the 864 stated something the page does not, too few to say receipts catches inventions. It cut 33% of the true claims, most of all on pricing pages, where it kept 47%. Every bar, the ones it missed included, is in [EVALS.md](EVALS.md).
+
 ![A battle card where every line opens to its quote and page](docs/card.png)
 
 Core has no dependencies, needs Python 3.10+, and is MIT licensed. Repo: https://github.com/yannickYamo/receipts
@@ -127,13 +129,19 @@ on this card: every line links to the page and quote it rests on
 
 A line about us from that run: "Freshdesk publishes clear per-agent prices, billed annually: Growth $19, Pro $55, Enterprise $89." A line about them, which is there because the facts say so: "Zendesk claims its AI Agents can achieve up to 80% automation. It also includes built-in QA scoring for 100% of AI interactions." And the objection handling that follows from it - "That is their 'up to' claim. With Freshdesk, the Freddy AI Agent is on every plan with 500 complimentary AI sessions, so you can test it on your own tickets."
 
-A second example is a brief on a company before you write to it:
+## Experiments, not measured
+
+Two things are in the repo and carry no numbers yet. Treat them as experiments until they do.
+
+**A brief on a company before you write to it.**
 
 ```bash
 receipts brief --sell "a help desk for support teams" --company https://example.com --out out/
 ```
 
-Code reads the company's home page and follows its own links to its news, careers and about pages. A model lists signals from them, such as a new office, open roles or a launch, and each signal goes through the same check. You get what the company's own pages say, why that might matter to you now, and a draft first message in which every sentence about the company opens to its quote. What you sell is taken in your own words and isn't checked. Facts about a named person are left out. This example hasn't been measured yet; the plan is in `studies/BRIEF_PREREGISTRATION.md`.
+Code reads the company's home page and follows its own links to its news, careers and about pages. A model lists signals from them, such as a new office, open roles or a launch, and each signal goes through the same check. You get what the company's own pages say, why that might matter to you now, and a draft first message in which every sentence about the company opens to its quote. What you sell is taken in your own words and isn't checked. Facts about a named person are left out. The plan for measuring it is `studies/BRIEF_PREREGISTRATION.md`.
+
+**A reader that answers with a probability.** `receipts.decision` runs the reader's stage on a model built to decide, so how strict the reader is becomes a number you set. It isn't on the command line. The plan for putting it beside the measured reader is `studies/BAKEOFF_PREREGISTRATION.md`.
 
 ## Why I built it
 
@@ -172,7 +180,9 @@ A search tool finds the pages, a fetcher reads them, receipts decides what the a
 
 ## What it doesn't do yet
 
-It cuts true facts. About one true fact in four on real pricing pages, usually a price quoted without its plan name. The trade is deliberate: cutting a true line costs you a line, keeping a false one costs the rep the room, and this is built for the second.
+It cuts true facts. One in three across the 24 pages of round 3, and about half on pricing pages, where a value sits apart from the name it belongs to. On a live battle card it kept 43 of 56 true facts, under the bar of 80% set for it. The trade is deliberate: cutting a true line costs you a line, keeping a false one costs the rep the room, and this is built for the second.
+
+It isn't shown to catch inventions. Models told to quote their source rarely state something the page doesn't (9 claims in 864), which is too few to measure a catch rate on. What it removes is the claim whose quote doesn't back it.
 
 It doesn't stop someone who writes claims specifically to beat it. It doesn't know whether a page is right - point it at a wrong page and you get a well-sourced wrong claim.
 
@@ -180,7 +190,7 @@ Some pages can't be read, and it doesn't try to get round a site that says no. T
 
 A ledger file is trusted input. Loading refuses page text that no longer matches its hash, which catches an edit or a damaged file, but whoever can edit the text can edit the hash. The MCP server fetches addresses a model chose; private and local addresses are refused, and the connection goes to the address that was checked, so a host can't answer one thing to the check and another to the fetch.
 
-What was tested, what passed and what failed, with the failures kept in, is in [EVALS.md](EVALS.md). The reader changed after those runs. The results for the reader in this version are not published yet, and EVALS.md says which reader each number is for.
+What was tested, what passed and what failed, with the failures kept in, is in [EVALS.md](EVALS.md). The results for the reader in this version are round 3, and EVALS.md says which reader each number is for.
 
 ## Structure
 
@@ -188,8 +198,8 @@ What was tested, what passed and what failed, with the failures kept in, is in [
 src/receipts/core.py         the code check          src/receipts/reader.py      the reader stage
 src/receipts/ledger.py       pages, dates, hashes    src/receipts/audit.py       count specifics in any text
 src/receipts/battlecard/     the worked example      src/receipts/mcp_server.py  the check as an MCP server
-src/receipts/brief/          a second example: a brief on a company before you write to it
-src/receipts/decision.py     the reader's stage on a decision model (not measured yet)
+src/receipts/brief/          experiment: a brief on a company before you write to it
+src/receipts/decision.py     experiment: the reader's stage on a decision model
 bench/                       test sets, red-team sets, labels, saved model answers, live runs
 studies/                     the pre-registrations, the evaluation plan and the full results
 EVALS.md                     what was tested, what passed and what failed
